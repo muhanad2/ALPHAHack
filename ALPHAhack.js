@@ -651,9 +651,3 @@ function modTick() {
             s = s + 1;
         }
     }
-function toDirectionalVector(vector, yaw, pitch) {
-    //http://stackoverflow.com/questions/1568568/how-to-convert-euler-angles-to-directional-vector
-    vector[0] = Math.cos(yaw) * Math.cos(pitch);
-    vector[1] = Math.sin(pitch);
-    vector[2] = Math.sin(yaw) * Math.cos(pitch);
-}
