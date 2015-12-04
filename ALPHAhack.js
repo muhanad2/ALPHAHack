@@ -312,7 +312,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                 starter.setTextColor(Color.GREEN);
             }
             starter2 = new CheckBox(ctx);
-            starter2.setText("chain kit");
+            starter2.setText("chain kit(bug)");
             starter2.setTextColor(Color.BLUE);             
             starter2.setChecked(starter2ch);
             starter2.setOnClickListener(new View.OnClickListener({
