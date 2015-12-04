@@ -103,6 +103,15 @@ var spawn12;
  
 var spawn13ch = false;
 var spawn13;
+
+var spawn14 = false;
+var spawn14;
+
+var spawn15 = false;
+var spawn15;
+
+var spawn16 = false;
+var spawn16;
  
 function dip2px(dips){
     return Math.ceil(dips * ctx.getResources().getDisplayMetrics().density);
@@ -272,6 +281,29 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
             if(passwordch) {
                 password.setTextColor(Color.GREEN);
             }
+			    op = new CheckBox(ctx);
+            op.setText("/op your name here");
+            op.setTextColor(Color.BLUE);             
+            op.setChecked(opch);
+            op.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                    if(!opch){
+                        opch = true;
+                        op.setTextColor(Color.GREEN);
+                        Server.sendChat("/op your_name_here")
+                    }else{
+                        opch = false;
+                        op.setTextColor(Color.RED);
+                        Server.sendChat(" ")
+                    }
+                  op.setChecked(opch);
+                }
+            }));
+            menuLayout.addView(op);
+ 
+            if(opch) {
+                op.setTextColor(Color.GREEN);
+            }
              starter = new CheckBox(ctx);
             starter.setText("leather kit");
             starter.setTextColor(Color.BLUE);             
@@ -312,7 +344,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                 starter.setTextColor(Color.GREEN);
             }
             starter2 = new CheckBox(ctx);
-            starter2.setText("chain kit(bug)");
+            starter2.setText("chain kit");
             starter2.setTextColor(Color.BLUE);             
             starter2.setChecked(starter2ch);
             starter2.setOnClickListener(new View.OnClickListener({
@@ -320,10 +352,10 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                     if(!starter2ch){
                         starter2ch = true;
                         starter2.setTextColor(Color.GREEN);
-                        Player.setArmorSlot(1, 302, 0)
-                        Player.setArmorSlot(2, 303, 0)
-                        Player.setArmorSlot(3, 304, 0)
-                        Player.setArmorSlot(4, 305, 0)
+						Player.addItemInventory(302, 1, 0)
+						Player.addItemInventory(303, 1, 0)
+						Player.addItemInventory(304, 1, 0)
+						Player.addItemInventory(305, 1, 0)
                         Player.addItemInventory(272, 1, 0)
                         Player.addItemInventory(274, 1, 0)
                         Player.addItemInventory(262, 64, 0)
@@ -342,28 +374,36 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
             if(starter2ch) {
                 starter2.setTextColor(Color.GREEN);
             }
-                        op = new CheckBox(ctx);
-            op.setText("/op your name here");
-            op.setTextColor(Color.BLUE);             
-            op.setChecked(opch);
-            op.setOnClickListener(new View.OnClickListener({
+			starter3 = new CheckBox(ctx);
+            starter3.setText("iron kit");
+            starter3.setTextColor(Color.BLUE);             
+            starter3.setChecked(starter3ch);
+            starter3.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
-                    if(!opch){
-                        opch = true;
-                        op.setTextColor(Color.GREEN);
-                        Server.sendChat("/op your_name_here")
+                    if(!starter3ch){
+                        starter3ch = true;
+                        starter3.setTextColor(Color.GREEN);
+						Player.addItemInventory(306, 1, 0)
+						Player.addItemInventory(307, 1, 0)
+						Player.addItemInventory(308, 1, 0)
+						Player.addItemInventory(309, 1, 0)
+                        Player.addItemInventory(267, 1, 0)
+                        Player.addItemInventory(257, 1, 0)
+                        Player.addItemInventory(262, 64, 0)
+                        Player.addItemInventory(261, 1, 0)
+                        Player.addItemInventory(264, 64, 0)
                     }else{
-                        opch = false;
-                        op.setTextColor(Color.RED);
-                        Server.sendChat(" ")
+                        starter3ch = false;
+                        starter3.setTextColor(Color.RED);
+                        Player.addItemInventory(0, 0, 0)
                     }
-                  op.setChecked(opch);
+                  starter3.setChecked(starter3ch);
                 }
             }));
-            menuLayout.addView(op);
- 
-            if(opch) {
-                op.setTextColor(Color.GREEN);
+            menuLayout.addView(starter3);
+             
+            if(starter3ch) {
+                starter3.setTextColor(Color.GREEN);
             }
             spawn11 = new CheckBox(ctx);
             spawn11.setText("spawn cow");
@@ -378,7 +418,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                     }else{
                         spawn11ch = false;
                         spawn11.setTextColor(Color.RED);
-                        Server.sendChat(" ")
+                        Server.sendChat("dismis checkbox error")
                     }
                   spawn11.setChecked(spawn11ch);
                 }
@@ -401,7 +441,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                     }else{
                         spawn12ch = false;
                         spawn12.setTextColor(Color.RED);
-                        Server.sendChat(" ")
+                        Server.sendChat("dismis checkbox error")
                     }
                   spawn12.setChecked(spawn12ch);
                 }
@@ -424,7 +464,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                     }else{
                         spawn13ch = false;
                         spawn13.setTextColor(Color.RED);
-                        Server.sendChat(" ")
+                        Server.sendChat("dismis checkbox error")
                     }
                   spawn13.setChecked(spawn13ch);
                 }
@@ -433,6 +473,75 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
  
             if(spawn13ch) {
                 spawn13.setTextColor(Color.GREEN);
+            }
+			spawn14 = new CheckBox(ctx);
+            spawn14.setText("spawn wolf");
+            spawn14.setTextColor(Color.BLUE);             
+            spawn14.setChecked(spawn14ch);
+            spawn14.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                    if(!spawn14ch){
+                        spawn14ch = true;
+                        spawn14.setTextColor(Color.GREEN);
+                  Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 14);
+                    }else{
+                        spawn14ch = false;
+                        spawn14.setTextColor(Color.RED);
+                        Server.sendChat("dismis checkbox error")
+                    }
+                  spawn14.setChecked(spawn14ch);
+                }
+            }));
+            menuLayout.addView(spawn14);
+ 
+            if(spawn14ch) {
+                spawn14.setTextColor(Color.GREEN);
+            }
+			spawn15 = new CheckBox(ctx);
+            spawn15.setText("spawn villager");
+            spawn15.setTextColor(Color.BLUE);             
+            spawn15.setChecked(spawn15ch);
+            spawn15.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                    if(!spawn15ch){
+                        spawn15ch = true;
+                        spawn15.setTextColor(Color.GREEN);
+                  Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 15);
+                    }else{
+                        spawn15ch = false;
+                        spawn15.setTextColor(Color.RED);
+                        Server.sendChat("dismis checkbox error")
+                    }
+                  spawn15.setChecked(spawn15ch);
+                }
+            }));
+            menuLayout.addView(spawn15);
+ 
+            if(spawn15ch) {
+                spawn15.setTextColor(Color.GREEN);
+            }
+			spawn16 = new CheckBox(ctx);
+            spawn16.setText("spawn Mushrom cow");
+            spawn16.setTextColor(Color.BLUE);             
+            spawn16.setChecked(spawn16ch);
+            spawn16.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                    if(!spawn16ch){
+                        spawn16ch = true;
+                        spawn16.setTextColor(Color.GREEN);
+                  Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 16);
+                    }else{
+                        spawn16ch = false;
+                        spawn16.setTextColor(Color.RED);
+                        Server.sendChat("dismis checkbox error")
+                    }
+                  spawn16.setChecked(spawn16ch);
+                }
+            }));
+            menuLayout.addView(spawn16);
+ 
+            if(spawn16ch) {
+                spawn16.setTextColor(Color.GREEN);
             }
             var day = new Button(ctx);
             day.setText("Day");
@@ -542,21 +651,6 @@ function modTick() {
             s = s + 1;
         }
     }
-     if(coords) {
-        ModPE.showTipMessage("\n\n\n\n" + "X:" + parseInt(getPlayerX()) + split + "Y:" + parseInt(getPlayerY()) + split + "Z:" + parseInt(getPlayerZ()));
-    }
-    if(effects) {
-        Entity.addEffect(getPlayerEnt(), MobEffect.healthBoost, 1*20, 4, false, true);
-        Entity.addEffect(getPlayerEnt(), MobEffect.damageResistance, 1*20, 4, false, true);
-        Entity.addEffect(getPlayerEnt(), MobEffect.movementSpeed, 1*20, 4, false, true);
-        Entity.addEffect(getPlayerEnt(), MobEffect.fireResistance, 1*20, 4, false, true);
-    }
-}
-    if(password) {
-password++;
-clientMessage(ChatColor.GRAY + "/login " + password);
-Server.sendChat("/login " + password);
-}
 function toDirectionalVector(vector, yaw, pitch) {
     //http://stackoverflow.com/questions/1568568/how-to-convert-euler-angles-to-directional-vector
     vector[0] = Math.cos(yaw) * Math.cos(pitch);
