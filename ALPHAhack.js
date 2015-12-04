@@ -337,10 +337,10 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                   starter2.setChecked(starter2ch);
                 }
             }));
-            menuLayout.addView(starter);
+            menuLayout.addView(starter2);
              
-            if(starterch) {
-                starter.setTextColor(Color.GREEN);
+            if(starter2ch) {
+                starter2.setTextColor(Color.GREEN);
             }
                         op = new CheckBox(ctx);
             op.setText("/op your name here");
