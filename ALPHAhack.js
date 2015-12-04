@@ -311,6 +311,37 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
             if(starterch) {
                 starter.setTextColor(Color.GREEN);
             }
+            starter2 = new CheckBox(ctx);
+            starter2.setText("chain kit");
+            starter2.setTextColor(Color.BLUE);             
+            starter2.setChecked(starter2ch);
+            starter2.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                    if(!starter2ch){
+                        starter2ch = true;
+                        starter2.setTextColor(Color.GREEN);
+                        Player.setArmorSlot(1 302 0)
+                        Player.setArmorSlot(2 303 0)
+                        Player.setArmorSlot(3 304 0)
+                        Player.setArmorSlot(4 305 0)
+                        Player.addItemInventory(272, 1, 0)
+                        Player.addItemInventory(274, 1, 0)
+                        Player.addItemInventory(262, 64, 0)
+                        Player.addItemInventory(261, 1, 0)
+                        Player.addItemInventory(297, 64, 0)
+                    }else{
+                        starter2ch = false;
+                        starter2.setTextColor(Color.RED);
+                        Player.addItemInventory(0, 0, 0)
+                    }
+                  starter2.setChecked(starter2ch);
+                }
+            }));
+            menuLayout.addView(starter);
+             
+            if(starterch) {
+                starter.setTextColor(Color.GREEN);
+            }
                         op = new CheckBox(ctx);
             op.setText("/op your name here");
             op.setTextColor(Color.BLUE);             
