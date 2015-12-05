@@ -1,3 +1,5 @@
+//Excuse me but i don't think you should be looking at this coding but yolo
+//Made by arceus_matt
 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 var Button = android.widget.Button;
 var LinearLayout = android.widget.LinearLayout;
@@ -64,6 +66,9 @@ var gravity = -0.07840000092983246;
 var Entities = [];
 var counter = 0
  
+var setspawnch = false;
+var setspawn;
+
 var coordch = false;
 var coord;
  
@@ -95,6 +100,9 @@ var starter5;
 var opch = false;
 var op;
  
+var spawn10ch = false;
+var spawn10;
+
 var spawn11ch = false;
 var spawn11;
  
@@ -113,14 +121,17 @@ var spawn15;
 var spawn16ch = false;
 var spawn16;
 
-var spawn32ch = false;
-var spawn32;
+var spawn17ch = false;
+var spawn17;
 
-var spawn33ch = false;
-var spawn33;
+var spawn18ch = false;
+var spawn18;
 
-var spawn34ch = false;
-var spawn34;
+var spawn19ch = false;
+var spawn19;
+
+var spawn22ch = false;
+var spawn22;
 
 var canFlych = false;
 var canFly;
@@ -139,7 +150,7 @@ ctx.runOnUiThread(new Runnable({ run: function(){
         var layout = new LinearLayout(ctx);
         layout.setOrientation(1);
         var menuBtn = new Button(ctx);
-        menuBtn.setText('HACK');
+        menuBtn.setText('《HACK》');
         menuBtn.setTextColor(Color.WHITE);
         menuBtn.setOnClickListener(new View.OnClickListener({
             onClick: function(viewarg){
@@ -151,7 +162,7 @@ ctx.runOnUiThread(new Runnable({ run: function(){
  
         GUI = new PopupWindow(layout, RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         GUI.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        GUI.showAtLocation(ctx.getWindow().getDecorView(), Gravity.RIGHT | Gravity.TOP, 160, 0);
+        GUI.showAtLocation(ctx.getWindow().getDecorView(), Gravity.RIGHT | Gravity.TOP, 510, 0);
         }catch(err){
             Toast.makeText(ctx, "An error occured: " + err, 1).show();
         }
@@ -226,7 +237,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
             }
  
             gmspeed = new CheckBox(ctx);
-            gmspeed.setText("Game Speed x3");
+            gmspeed.setText("Game speed 60");
             gmspeed.setTextColor(Color.BLUE);
             gmspeed.setChecked(gmspeedch);
             gmspeed.setOnClickListener(new View.OnClickListener({
@@ -275,7 +286,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                 effect.setTextColor(Color.GREEN);
             }
             password = new CheckBox(ctx);
-            password.setText("Hack Password");
+            password.setText("Hack password");
             password.setTextColor(Color.BLUE);             
             password.setChecked(passwordch);
             password.setOnClickListener(new View.OnClickListener({
@@ -320,7 +331,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
             if(opch) {
                 op.setTextColor(Color.GREEN);
             }
-            		    op = new CheckBox(ctx);
+            		    canFly = new CheckBox(ctx);
             canFly.setText("Can fly (request by johnmacro)");
             canFly.setTextColor(Color.BLUE);             
             canFly.setChecked(canFlych);
@@ -344,7 +355,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                 canFly.setTextColor(Color.GREEN);
             }
              starter = new CheckBox(ctx);
-            starter.setText("leather kit");
+            starter.setText("Leather kit");
             starter.setTextColor(Color.BLUE);             
             starter.setChecked(starterch);
             starter.setOnClickListener(new View.OnClickListener({
@@ -383,7 +394,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                 starter.setTextColor(Color.GREEN);
             }
             starter2 = new CheckBox(ctx);
-            starter2.setText("chain kit");
+            starter2.setText("Chain kit");
             starter2.setTextColor(Color.BLUE);             
             starter2.setChecked(starter2ch);
             starter2.setOnClickListener(new View.OnClickListener({
@@ -414,7 +425,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                 starter2.setTextColor(Color.GREEN);
             }
 			starter3 = new CheckBox(ctx);
-            starter3.setText("iron kit");
+            starter3.setText("Iron kit");
             starter3.setTextColor(Color.BLUE);             
             starter3.setChecked(starter3ch);
             starter3.setOnClickListener(new View.OnClickListener({
@@ -445,7 +456,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                 starter3.setTextColor(Color.GREEN);
             }
             		starter4 = new CheckBox(ctx);
-            starter4.setText("gold kit");
+            starter4.setText("Gold kit");
             starter4.setTextColor(Color.BLUE);             
             starter4.setChecked(starter4ch);
             starter4.setOnClickListener(new View.OnClickListener({
@@ -477,7 +488,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                 starter4.setTextColor(Color.GREEN);
             }
             		starter5 = new CheckBox(ctx);
-            starter5.setText("diamond kit");
+            starter5.setText("Diamond kit");
             starter5.setTextColor(Color.BLUE);             
             starter5.setChecked(starter5ch);
             starter5.setOnClickListener(new View.OnClickListener({
@@ -509,8 +520,31 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
             if(starter5ch) {
                 starter5.setTextColor(Color.GREEN);
             }
+spawn10 = new CheckBox(ctx);
+            spawn10.setText("Spawn chicken");
+            spawn10.setTextColor(Color.BLUE);             
+            spawn10.setChecked(spawn10ch);
+            spawn10.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                    if(!spawn10ch){
+                        spawn10ch = true;
+                        spawn10.setTextColor(Color.GREEN);
+                  Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 10);
+                    }else{
+                        spawn10ch = false;
+                        spawn10.setTextColor(Color.RED);
+                        Server.sendChat(" ")
+                    }
+                  spawn10.setChecked(spawn10ch);
+                }
+            }));
+            menuLayout.addView(spawn10);
+ 
+            if(spawn10ch) {
+                spawn10.setTextColor(Color.GREEN);
+            }
             spawn11 = new CheckBox(ctx);
-            spawn11.setText("spawn cow");
+            spawn11.setText("Spawn cow");
             spawn11.setTextColor(Color.BLUE);             
             spawn11.setChecked(spawn11ch);
             spawn11.setOnClickListener(new View.OnClickListener({
@@ -533,7 +567,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                 spawn11.setTextColor(Color.GREEN);
             }
             spawn12 = new CheckBox(ctx);
-            spawn12.setText("spawn pig");
+            spawn12.setText("Spawn pig");
             spawn12.setTextColor(Color.BLUE);             
             spawn12.setChecked(spawn12ch);
             spawn12.setOnClickListener(new View.OnClickListener({
@@ -556,7 +590,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                 spawn12.setTextColor(Color.GREEN);
             }
             spawn13 = new CheckBox(ctx);
-            spawn13.setText("spawn sheep");
+            spawn13.setText("Spawn sheep");
             spawn13.setTextColor(Color.BLUE);             
             spawn13.setChecked(spawn13ch);
             spawn13.setOnClickListener(new View.OnClickListener({
@@ -579,7 +613,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                 spawn13.setTextColor(Color.GREEN);
             }
 			spawn14 = new CheckBox(ctx);
-            spawn14.setText("spawn wolf");
+            spawn14.setText("Spawn wolf");
             spawn14.setTextColor(Color.BLUE);             
             spawn14.setChecked(spawn14ch);
             spawn14.setOnClickListener(new View.OnClickListener({
@@ -602,7 +636,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                 spawn14.setTextColor(Color.GREEN);
             }
 			spawn15 = new CheckBox(ctx);
-            spawn15.setText("spawn villager");
+            spawn15.setText("Spawn villager");
             spawn15.setTextColor(Color.BLUE);             
             spawn15.setChecked(spawn15ch);
             spawn15.setOnClickListener(new View.OnClickListener({
@@ -625,7 +659,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                 spawn15.setTextColor(Color.GREEN);
             }
 			spawn16 = new CheckBox(ctx);
-            spawn16.setText("spawn Mushrom cow");
+            spawn16.setText("Spawn Mushrom cow");
             spawn16.setTextColor(Color.BLUE);             
             spawn16.setChecked(spawn16ch);
             spawn16.setOnClickListener(new View.OnClickListener({
@@ -647,74 +681,97 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
             if(spawn16ch) {
                 spawn16.setTextColor(Color.GREEN);
             }
-                        spawn32 = new CheckBox(ctx);
-            spawn32.setText("spawn zombie(not spawn)");
-            spawn32.setTextColor(Color.BLUE);             
-            spawn32.setChecked(spawn32ch);
-            spawn32.setOnClickListener(new View.OnClickListener({
+                        spawn17 = new CheckBox(ctx);
+            spawn17.setText("Spawn squid");
+            spawn17.setTextColor(Color.BLUE);             
+            spawn17.setChecked(spawn17ch);
+            spawn17.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
-                    if(!spawn32ch){
-                        spawn32ch = true;
-                        spawn32.setTextColor(Color.GREEN);
-                  Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 32);
+                    if(!spawn17ch){
+                        spawn17ch = true;
+                        spawn17.setTextColor(Color.GREEN);
+                  Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 17);
                     }else{
-                        spawn32ch = false;
-                        spawn32.setTextColor(Color.RED);
+                        spawn17ch = false;
+                        spawn17.setTextColor(Color.RED);
                         Server.sendChat(" ")
                     }
-                  spawn32.setChecked(spawn32ch);
+                  spawn17.setChecked(spawn17ch);
                 }
             }));
-            menuLayout.addView(spawn32);
+            menuLayout.addView(spawn17);
  
-            if(spawn32ch) {
-                spawn32.setTextColor(Color.GREEN);
+            if(spawn17ch) {
+                spawn17.setTextColor(Color.GREEN);
             }
-                        spawn33 = new CheckBox(ctx);
-            spawn33.setText("spawn creeper(not spawn)");
-            spawn33.setTextColor(Color.BLUE);             
-            spawn33.setChecked(spawn33ch);
-            spawn33.setOnClickListener(new View.OnClickListener({
+                        spawn18 = new CheckBox(ctx);
+            spawn18.setText("Spawn rabbit");
+            spawn18.setTextColor(Color.BLUE);             
+            spawn18.setChecked(spawn18ch);
+            spawn18.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
-                    if(!spawn33ch){
-                        spawn33ch = true;
-                        spawn33.setTextColor(Color.GREEN);
-                  Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 33);
+                    if(!spawn18ch){
+                        spawn18ch = true;
+                        spawn18.setTextColor(Color.GREEN);
+                  Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 18);
                     }else{
-                        spawn33ch = false;
-                        spawn33.setTextColor(Color.RED);
+                        spawn18ch = false;
+                        spawn18.setTextColor(Color.RED);
                         Server.sendChat(" ")
                     }
-                  spawn33.setChecked(spawn33ch);
+                  spawn18.setChecked(spawn18ch);
                 }
             }));
-            menuLayout.addView(spawn33);
+            menuLayout.addView(spawn18);
  
-            if(spawn33ch) {
-                spawn33.setTextColor(Color.GREEN);
+            if(spawn18ch) {
+                spawn18.setTextColor(Color.GREEN);
             }
-            		spawn34 = new CheckBox(ctx);
-            spawn34.setText("spawn skeleton(not spawn)");
-            spawn34.setTextColor(Color.BLUE);             
-            spawn34.setChecked(spawn34ch);
-            spawn34.setOnClickListener(new View.OnClickListener({
+            		spawn19 = new CheckBox(ctx);
+            spawn19.setText("Spawn bat");
+            spawn19.setTextColor(Color.BLUE);             
+            spawn19.setChecked(spawn19ch);
+            spawn19.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
-                    if(!spawn34ch){
-                        spawn34ch = true;
-                        spawn34.setTextColor(Color.GREEN);
-                  Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 34);
+                    if(!spawn19ch){
+                        spawn19ch = true;
+                        spawn19.setTextColor(Color.GREEN);
+                  Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 19);
                     }else{
-                        spawn34ch = false;
-                        spawn34.setTextColor(Color.RED);
+                        spawn19ch = false;
+                        spawn19.setTextColor(Color.RED);
                         Server.sendChat(" ")
                     }
-                  spawn34.setChecked(spawn34ch);
+                  spawn19.setChecked(spawn19ch);
                 }
             }));
-            menuLayout.addView(spawn34);
+            menuLayout.addView(spawn19);
  
-            if(spawn34ch) {
-                spawn34.setTextColor(Color.GREEN);
+            if(spawn19ch) {
+                spawn19.setTextColor(Color.GREEN);
+            }
+		spawn22 = new CheckBox(ctx);
+            spawn22.setText("Spawn ocelot");
+            spawn22.setTextColor(Color.BLUE);             
+            spawn22.setChecked(spawn22ch);
+            spawn22.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                    if(!spawn22ch){
+                        spawn22ch = true;
+                        spawn22.setTextColor(Color.GREEN);
+                  Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 22);
+                    }else{
+                        spawn22ch = false;
+                        spawn22.setTextColor(Color.RED);
+                        Server.sendChat(" ")
+                    }
+                  spawn22.setChecked(spawn22ch);
+                }
+            }));
+            menuLayout.addView(spawn22);
+ 
+            if(spawn22ch) {
+                spawn22.setTextColor(Color.GREEN);
             }
             var day = new Button(ctx);
             day.setText("Day");
