@@ -402,7 +402,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                         Player.addItemInventory(257, 1, 0)
                         Player.addItemInventory(262, 64, 0)
                         Player.addItemInventory(261, 1, 0)
-                        Player.addItemInventory(264, 64, 0)
+                        Player.addItemInventory(364, 64, 0)
                     }else{
                         starter3ch = false;
                         starter3.setTextColor(Color.RED);
@@ -415,6 +415,71 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
              
             if(starter3ch) {
                 starter3.setTextColor(Color.GREEN);
+            }
+            		starter4 = new CheckBox(ctx);
+            starter4.setText("gold kit");
+            starter4.setTextColor(Color.BLUE);             
+            starter4.setChecked(starter4ch);
+            starter4.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                    if(!starter4ch){
+                        starter4ch = true;
+                        starter4.setTextColor(Color.GREEN);
+						Player.addItemInventory(314, 1, 0)
+						Player.addItemInventory(315, 1, 0)
+						Player.addItemInventory(316, 1, 0)
+						Player.addItemInventory(317, 1, 0)
+                        Player.addItemInventory(283, 1, 0)
+                        Player.addItemInventory(285, 1, 0)
+                        Player.addItemInventory(262, 64, 0)
+                        Player.addItemInventory(261, 1, 0)
+                        Player.addItemInventory(396, 64, 0)
+                        Player.addItemInventory(322, 64, 0)
+                    }else{
+                        starter4ch = false;
+                        starter4.setTextColor(Color.RED);
+                        Player.addItemInventory(0, 0, 0)
+                    }
+                  starter4.setChecked(starter4ch);
+                }
+            }));
+            menuLayout.addView(starter4);
+             
+            if(starter4ch) {
+                starter4.setTextColor(Color.GREEN);
+            }
+            		starter5 = new CheckBox(ctx);
+            starter5.setText("diamond kit");
+            starter5.setTextColor(Color.BLUE);             
+            starter5.setChecked(starter5ch);
+            starter5.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                    if(!starter5ch){
+                        starter5ch = true;
+                        starter5.setTextColor(Color.GREEN);
+						Player.addItemInventory(310, 1, 0)
+						Player.addItemInventory(311, 1, 0)
+						Player.addItemInventory(312, 1, 0)
+						Player.addItemInventory(313, 1, 0)
+                        Player.addItemInventory(276, 1, 0)
+                        Player.addItemInventory(278, 1, 0)
+                        Player.addItemInventory(262, 64, 0)
+                        Player.addItemInventory(261, 1, 0)
+                        Player.addItemInventory(116, 1, 0)
+                        Player.addItemInventory(384, 255, 0)
+                        Player,addItemInventory(364, 64, 0)
+                    }else{
+                        starter5ch = false;
+                        starter5.setTextColor(Color.RED);
+                        Player.addItemInventory(0, 0, 0)
+                    }
+                  starter5.setChecked(starter5ch);
+                }
+            }));
+            menuLayout.addView(starter5);
+             
+            if(starter5ch) {
+                starter5.setTextColor(Color.GREEN);
             }
             spawn11 = new CheckBox(ctx);
             spawn11.setText("spawn cow");
