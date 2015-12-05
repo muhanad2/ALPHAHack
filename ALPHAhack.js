@@ -651,7 +651,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                     if(!spawn33ch){
                         spawn33ch = true;
                         spawn33.setTextColor(Color.GREEN);
-                  Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 33); try
+                  Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 33);
                     }else{
                         spawn33ch = false;
                         spawn33.setTextColor(Color.RED);
