@@ -254,11 +254,11 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                     if(!effectch){
                         effectch = true;
                         effect.setTextColor(Color.GREEN);
-                        Entity.addEffect(getPlayerEnt(), MobEffect.nightVision, 30*20, 0, false, true);
+                        Entity.addEffect(getPlayerEnt(), MobEffect.jump, 999*20, 0, false, true);
                     }else{
                         effectch = false;
                         effect.setTextColor(Color.RED);
-                        Entity.addEffect(getPlayerEnt(), MobEffect.jump, 30*20, 0, false, true);
+                        Entity.addEffect(getPlayerEnt(), MobEffect.jump, 999*20, 0, false, true);
                         Entity.removeAllEffects(getPlayerEnt());
                     }
                     effect.setChecked(effectch);
@@ -554,7 +554,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
             if(spawn16ch) {
                 spawn16.setTextColor(Color.GREEN);
             }
-spawn32 = new CheckBox(ctx);
+                        spawn32 = new CheckBox(ctx);
             spawn32.setText("spawn zombie");
             spawn32.setTextColor(Color.BLUE);             
             spawn32.setChecked(spawn32ch);
@@ -577,7 +577,7 @@ spawn32 = new CheckBox(ctx);
             if(spawn32ch) {
                 spawn32.setTextColor(Color.GREEN);
             }
-spawn33 = new CheckBox(ctx);
+                        spawn33 = new CheckBox(ctx);
             spawn33.setText("spawn creeper");
             spawn33.setTextColor(Color.BLUE);             
             spawn33.setChecked(spawn33ch);
@@ -586,7 +586,7 @@ spawn33 = new CheckBox(ctx);
                     if(!spawn33ch){
                         spawn33ch = true;
                         spawn33.setTextColor(Color.GREEN);
-                  Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 33);
+                  Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 33); try
                     }else{
                         spawn33ch = false;
                         spawn33.setTextColor(Color.RED);
@@ -599,6 +599,29 @@ spawn33 = new CheckBox(ctx);
  
             if(spawn33ch) {
                 spawn33.setTextColor(Color.GREEN);
+            }
+            		spawn34 = new CheckBox(ctx);
+            spawn34.setText("spawn skeleton");
+            spawn34.setTextColor(Color.BLUE);             
+            spawn34.setChecked(spawn34ch);
+            spawn34.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                    if(!spawn34ch){
+                        spawn34ch = true;
+                        spawn34.setTextColor(Color.GREEN);
+                  Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 34);
+                    }else{
+                        spawn34ch = false;
+                        spawn34.setTextColor(Color.RED);
+                        Server.sendChat(" ")
+                    }
+                  spawn34.setChecked(spawn34ch);
+                }
+            }));
+            menuLayout.addView(spawn34);
+ 
+            if(spawn34ch) {
+                spawn34.setTextColor(Color.GREEN);
             }
             var day = new Button(ctx);
             day.setText("Day");
