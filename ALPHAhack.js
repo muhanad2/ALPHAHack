@@ -130,11 +130,20 @@ var spawn18;
 var spawn19ch = false;
 var spawn19;
 
+var spawn20ch = false;
+var spawn20;
+
+var spawn21ch = false;
+var spawn21;
+
 var spawn22ch = false;
 var spawn22;
 
 var canFlych = false;
 var canFly;
+
+var expch = false;
+var exp;
  
 function dip2px(dips){
     return Math.ceil(dips * ctx.getResources().getDisplayMetrics().density);
@@ -162,7 +171,7 @@ ctx.runOnUiThread(new Runnable({ run: function(){
  
         GUI = new PopupWindow(layout, RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         GUI.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        GUI.showAtLocation(ctx.getWindow().getDecorView(), Gravity.RIGHT | Gravity.TOP, 510, 0);
+        GUI.showAtLocation(ctx.getWindow().getDecorView(), Gravity.LEFT | Gravity.TOP, 50, 0);
         }catch(err){
             Toast.makeText(ctx, "An error occured: " + err, 1).show();
         }
@@ -749,6 +758,52 @@ spawn10 = new CheckBox(ctx);
  
             if(spawn19ch) {
                 spawn19.setTextColor(Color.GREEN);
+            }
+spawn20 = new CheckBox(ctx);
+            spawn20.setText("Spawn iron golem");
+            spawn20.setTextColor(Color.BLUE);             
+            spawn20.setChecked(spawn20ch);
+            spawn20.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                    if(!spawn20ch){
+                        spawn20ch = true;
+                        spawn20.setTextColor(Color.GREEN);
+                  Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 20);
+                    }else{
+                        spawn20ch = false;
+                        spawn20.setTextColor(Color.RED);
+                        Server.sendChat(" ")
+                    }
+                  spawn20.setChecked(spawn20ch);
+                }
+            }));
+            menuLayout.addView(spawn20);
+ 
+            if(spawn20ch) {
+                spawn20.setTextColor(Color.GREEN);
+            }
+spawn21 = new CheckBox(ctx);
+            spawn21.setText("Spawn snow golem");
+            spawn21.setTextColor(Color.BLUE);             
+            spawn21.setChecked(spawn21ch);
+            spawn21.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                    if(!spawn21ch){
+                        spawn21ch = true;
+                        spawn21.setTextColor(Color.GREEN);
+                  Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 21);
+                    }else{
+                        spawn21ch = false;
+                        spawn21.setTextColor(Color.RED);
+                        Server.sendChat(" ")
+                    }
+                  spawn21.setChecked(spawn21ch);
+                }
+            }));
+            menuLayout.addView(spawn21);
+ 
+            if(spawn21ch) {
+                spawn21.setTextColor(Color.GREEN);
             }
 		spawn22 = new CheckBox(ctx);
             spawn22.setText("Spawn ocelot");
