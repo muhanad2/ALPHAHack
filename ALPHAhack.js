@@ -112,6 +112,15 @@ var spawn15;
 
 var spawn16ch = false;
 var spawn16;
+
+var spawn32ch = false;
+var spawn32;
+
+var spawn33ch = false;
+var spawn33;
+
+var spawn34ch = false;
+var spawn34;
  
 function dip2px(dips){
     return Math.ceil(dips * ctx.getResources().getDisplayMetrics().density);
@@ -170,6 +179,7 @@ function mainMenu(){
             creative.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
                     Level.setGameMode(1);
+Server.sendChat("/gamemode 1")
                 }
             }));
             menuLayout.addView(creative);
@@ -180,6 +190,7 @@ function mainMenu(){
             survival.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
                     Level.setGameMode(0);
+Server.sendChat("/gamemode 0")
                 }
             }));
             menuLayout.addView(survival);
@@ -243,11 +254,11 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                     if(!effectch){
                         effectch = true;
                         effect.setTextColor(Color.GREEN);
-                        effects = true;
+                        Entity.addEffect(getPlayerEnt(), MobEffect.nightVision, 30*20, 0, false, true);
                     }else{
                         effectch = false;
                         effect.setTextColor(Color.RED);
-                        effects = false;
+                        Entity.addEffect(getPlayerEnt(), MobEffect.jump, 30*20, 0, false, true);
                         Entity.removeAllEffects(getPlayerEnt());
                     }
                     effect.setChecked(effectch);
@@ -418,7 +429,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                     }else{
                         spawn11ch = false;
                         spawn11.setTextColor(Color.RED);
-                        Server.sendChat("dismis checkbox error")
+                        Server.sendChat(" ")
                     }
                   spawn11.setChecked(spawn11ch);
                 }
@@ -441,7 +452,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                     }else{
                         spawn12ch = false;
                         spawn12.setTextColor(Color.RED);
-                        Server.sendChat("dismis checkbox error")
+                        Server.sendChat(" ")
                     }
                   spawn12.setChecked(spawn12ch);
                 }
@@ -464,7 +475,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                     }else{
                         spawn13ch = false;
                         spawn13.setTextColor(Color.RED);
-                        Server.sendChat("dismis checkbox error")
+                        Server.sendChat(" ")
                     }
                   spawn13.setChecked(spawn13ch);
                 }
@@ -487,7 +498,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                     }else{
                         spawn14ch = false;
                         spawn14.setTextColor(Color.RED);
-                        Server.sendChat("dismis checkbox error")
+                        Server.sendChat(" ")
                     }
                   spawn14.setChecked(spawn14ch);
                 }
@@ -510,7 +521,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                     }else{
                         spawn15ch = false;
                         spawn15.setTextColor(Color.RED);
-                        Server.sendChat("dismis checkbox error")
+                        Server.sendChat(" ")
                     }
                   spawn15.setChecked(spawn15ch);
                 }
@@ -533,7 +544,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                     }else{
                         spawn16ch = false;
                         spawn16.setTextColor(Color.RED);
-                        Server.sendChat("dismis checkbox error")
+                        Server.sendChat(" ")
                     }
                   spawn16.setChecked(spawn16ch);
                 }
@@ -542,6 +553,52 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
  
             if(spawn16ch) {
                 spawn16.setTextColor(Color.GREEN);
+            }
+spawn32 = new CheckBox(ctx);
+            spawn32.setText("spawn zombie");
+            spawn32.setTextColor(Color.BLUE);             
+            spawn32.setChecked(spawn32ch);
+            spawn32.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                    if(!spawn32ch){
+                        spawn32ch = true;
+                        spawn32.setTextColor(Color.GREEN);
+                  Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 32);
+                    }else{
+                        spawn32ch = false;
+                        spawn32.setTextColor(Color.RED);
+                        Server.sendChat(" ")
+                    }
+                  spawn32.setChecked(spawn32ch);
+                }
+            }));
+            menuLayout.addView(spawn32);
+ 
+            if(spawn32ch) {
+                spawn32.setTextColor(Color.GREEN);
+            }
+spawn33 = new CheckBox(ctx);
+            spawn33.setText("spawn creeper");
+            spawn33.setTextColor(Color.BLUE);             
+            spawn33.setChecked(spawn33ch);
+            spawn33.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                    if(!spawn33ch){
+                        spawn33ch = true;
+                        spawn33.setTextColor(Color.GREEN);
+                  Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 33);
+                    }else{
+                        spawn33ch = false;
+                        spawn33.setTextColor(Color.RED);
+                        Server.sendChat(" ")
+                    }
+                  spawn33.setChecked(spawn33ch);
+                }
+            }));
+            menuLayout.addView(spawn33);
+ 
+            if(spawn33ch) {
+                spawn33.setTextColor(Color.GREEN);
             }
             var day = new Button(ctx);
             day.setText("Day");
