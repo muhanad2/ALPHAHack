@@ -222,7 +222,7 @@ Server.sendChat("/gamemode 0")
             menuLayout.addView(survival);
 
  var spam = new Button(ctx);
-            spam.setText("Spamer");
+            spam.setText("Spammer(request ALLMC)");
             spam.setTextColor(Color.BLUE);
             spam.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
@@ -354,7 +354,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                 op.setTextColor(Color.GREEN);
             }
             		    canFly = new CheckBox(ctx);
-            canFly.setText("Can fly (request by johnmacro)");
+            canFly.setText("Can fly in survival (request by Johnmacro)");
             canFly.setTextColor(Color.BLUE);             
             canFly.setChecked(canFlych);
             canFly.setOnClickListener(new View.OnClickListener({
@@ -362,11 +362,14 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                     if(!canFlych){
                         canFlych = true;
                         canFly.setTextColor(Color.GREEN);
-                        Player.canFly(1)
+                        Player.canFly()
+                        Player.isFlying()
+                        Player.setCanFly(1)
                     }else{
                         canFlych = false;
                         canFly.setTextColor(Color.RED);
-                        Player.canFly(0)
+                        Player.canFly()
+                        Player.setCanFly(0)
                     }
                   canFly.setChecked(canFlych);
                 }
