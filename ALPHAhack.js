@@ -246,7 +246,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                 gmspeed.setTextColor(Color.GREEN);
             }
              effect = new CheckBox(ctx);
-            effect.setText("Effects(bug)");
+            effect.setText("Effects(crash in server)");
             effect.setTextColor(Color.BLUE);
             effect.setChecked(effectch);
             effect.setOnClickListener(new View.OnClickListener({
@@ -254,12 +254,14 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                     if(!effectch){
                         effectch = true;
                         effect.setTextColor(Color.GREEN);
-                        Entity.addEffect(getPlayerEnt(), MobEffect.jump, 999*20, 0, false, true);
+                        Entity.addEffect(getPlayerEnt(), MobEffect.jump, 999*999, 0, false, true);
+                        Entity.addEffect(getPlayerEnt(), MobEffect.damageResistance, 999*999, 0, false, true);
+                        Entity.addEffect(getPlayerEnt(), MobEffect.hunger, 999*999, 0, false, true);
+                        Entity.addEffect(getPlayerEnt(), MobEffect.damageBoost, 999*999, 0, false, true);
                     }else{
                         effectch = false;
                         effect.setTextColor(Color.RED);
-                        Entity.addEffect(getPlayerEnt(), MobEffect.jump, 999*20, 0, false, true);
-                        Entity.removeAllEffects(getPlayerEnt());
+                        //spacer :p
                     }
                     effect.setChecked(effectch);
                 }
@@ -620,7 +622,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                 spawn16.setTextColor(Color.GREEN);
             }
                         spawn32 = new CheckBox(ctx);
-            spawn32.setText("spawn zombie");
+            spawn32.setText("spawn zombie(not spawn)");
             spawn32.setTextColor(Color.BLUE);             
             spawn32.setChecked(spawn32ch);
             spawn32.setOnClickListener(new View.OnClickListener({
@@ -643,7 +645,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                 spawn32.setTextColor(Color.GREEN);
             }
                         spawn33 = new CheckBox(ctx);
-            spawn33.setText("spawn creeper");
+            spawn33.setText("spawn creeper(not spawn)");
             spawn33.setTextColor(Color.BLUE);             
             spawn33.setChecked(spawn33ch);
             spawn33.setOnClickListener(new View.OnClickListener({
@@ -666,7 +668,7 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
                 spawn33.setTextColor(Color.GREEN);
             }
             		spawn34 = new CheckBox(ctx);
-            spawn34.setText("spawn skeleton");
+            spawn34.setText("spawn skeleton(not spawn)");
             spawn34.setTextColor(Color.BLUE);             
             spawn34.setChecked(spawn34ch);
             spawn34.setOnClickListener(new View.OnClickListener({
