@@ -144,6 +144,9 @@ var canFly;
 
 var expch = false;
 var exp;
+
+var spamch = false;
+var spam;
  
 function dip2px(dips){
     return Math.ceil(dips * ctx.getResources().getDisplayMetrics().density);
@@ -217,7 +220,17 @@ Server.sendChat("/gamemode 0")
                 }
             }));
             menuLayout.addView(survival);
- 
+
+ var spam = new Button(ctx);
+            spam.setText("Spamer");
+            spam.setTextColor(Color.BLUE);
+            spam.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+Server.sendChat("**§lAlpha Hack spam§r**::        SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM SPAM.")
+                }
+            }));
+            menuLayout.addView(spam);
+
             coord = new CheckBox(ctx);
             coord.setText("Coordinates");
             coord.setTextColor(Color.BLUE);
