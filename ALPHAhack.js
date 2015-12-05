@@ -121,6 +121,9 @@ var spawn33;
 
 var spawn34ch = false;
 var spawn34;
+
+var canFlych = false;
+var canFly;
  
 function dip2px(dips){
     return Math.ceil(dips * ctx.getResources().getDisplayMetrics().density);
@@ -316,6 +319,29 @@ clientMessage(ChatColor.BLUE + "X:" + Math.round(cX) + " Y:" + Math.round(cY) + 
  
             if(opch) {
                 op.setTextColor(Color.GREEN);
+            }
+            		    op = new CheckBox(ctx);
+            canFly.setText("Can fly (request by johnmacro)");
+            canFly.setTextColor(Color.BLUE);             
+            canFly.setChecked(canFlych);
+            canFly.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                    if(!canFlych){
+                        canFlych = true;
+                        canFly.setTextColor(Color.GREEN);
+                        Player.canFly(1)
+                    }else{
+                        canFlych = false;
+                        canFly.setTextColor(Color.RED);
+                        Player.canFly(0)
+                    }
+                  canFly.setChecked(canFlych);
+                }
+            }));
+            menuLayout.addView(canFly);
+ 
+            if(canFlych) {
+                canFly.setTextColor(Color.GREEN);
             }
              starter = new CheckBox(ctx);
             starter.setText("leather kit");
