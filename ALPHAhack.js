@@ -222,7 +222,7 @@ Server.sendChat("/gamemode 0")
             menuLayout.addView(survival);
 
  var spam = new Button(ctx);
-            spam.setText("Spammer(request ALLMC)");
+            spam.setText("Spammer(request by ALLMC)");
             spam.setTextColor(Color.BLUE);
             spam.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
@@ -850,6 +850,7 @@ spawn21 = new CheckBox(ctx);
             day.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
                     Level.setTime(200);
+                    Server.sendChat("/time set 200")
                 }
             }));
             menuLayout.addView(day);
@@ -860,6 +861,7 @@ spawn21 = new CheckBox(ctx);
             night.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
                     Level.setTime(14000);
+                    Server.sendChat("/time set 14000")
                 }
             }));
             menuLayout.addView(night);
