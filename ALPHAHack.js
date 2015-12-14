@@ -168,6 +168,181 @@ function dip2px(dips){
     return Math.ceil(dips * ctx.getResources().getDisplayMetrics().density);
 }
  
+var button = new android.widget.Button(ctx);
+            button.setText("Spawn Mobs");
+            button.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+SpawnMenu();
+                }
+            }));
+            menuLayout.addView(button);
+            
+            var button = new android.widget.Button(ctx);
+            button.setText("Give Menu");
+            button.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+GiveMenu()
+                }
+            }));
+            menuLayout.addView(button);
+            function SpawnMenu() {
+SpClose()
+Close()
+ctx.runOnUiThread(new java.lang.Runnable({ run: function(){
+        try{
+            var menuLayout = new android.widget.LinearLayout(ctx);
+            var menuScroll = new android.widget.ScrollView(ctx);
+            var menuLayout1 = new android.widget.LinearLayout(ctx);
+            menuLayout.setOrientation(1);
+            menuLayout1.setOrientation(1);
+
+            menuScroll.addView(menuLayout);
+            menuLayout1.addView(menuScroll);
+
+            var button = new android.widget.Button(ctx);
+            button.setText("Spawn Chicken");
+            button.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 10);
+                }
+            }));
+            menuLayout.addView(button);
+
+            var button = new android.widget.Button(ctx);
+            button.setText("Spawn Cow");
+            button.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 11);
+                }
+            }));
+            menuLayout.addView(button);
+
+            var button = new android.widget.Button(ctx);
+            button.setText("Spawn Pig");
+            button.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 12);
+                }
+            }));
+            menuLayout.addView(button);
+
+            var button = new android.widget.Button(ctx);
+            button.setText("Spawn Sheep");
+            button.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 13);
+                }
+            }));
+            menuLayout.addView(button);
+
+            var button = new android.widget.Button(ctx);
+            button.setText("Spawn Wolf");
+            button.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 14);
+                }
+            }));
+            menuLayout.addView(button);
+
+            var button = new android.widget.Button(ctx);
+            button.setText("Spawn Villager");
+            button.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 15);
+                }
+            }));
+            menuLayout.addView(button);
+
+            var button = new android.widget.Button(ctx);
+            button.setText("Spawn Mooshroom");
+            button.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 16);
+                }
+            }));
+            menuLayout.addView(button);
+
+            var button = new android.widget.Button(ctx);
+            button.setText("Spawn Zombie");
+            button.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 32);
+                }
+            }));
+            menuLayout.addView(button);
+
+            var button = new android.widget.Button(ctx);
+            button.setText("Spawn Creeper");
+            button.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 33);
+                }
+            }));
+            menuLayout.addView(button);
+
+            var button = new android.widget.Button(ctx);
+            button.setText("Spawn Skeleton");
+            button.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 34);
+                }
+            }));
+            menuLayout.addView(button);
+
+            var button = new android.widget.Button(ctx);
+            button.setText("Spawn Spider");
+            button.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 35);
+                }
+            }));
+            menuLayout.addView(button);
+
+            var button = new android.widget.Button(ctx);
+            button.setText("Spawn Zombie Pigman");
+            button.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 36);
+                }
+            }));
+            menuLayout.addView(button);
+
+            var button = new android.widget.Button(ctx);
+            button.setText("Spawn Slime");
+            button.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 37);
+                }
+            }));
+            menuLayout.addView(button);
+
+            var button = new android.widget.Button(ctx);
+            button.setText("Spawn Enderman");
+            button.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 38);
+                }
+            }));
+            menuLayout.addView(button);
+
+            var button = new android.widget.Button(ctx);
+            button.setText("Spawn Silverfish");
+            button.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 39);
+                }
+            }));
+            menuLayout.addView(button);
+
+            SMenu = new android.widget.PopupWindow(menuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/2, ctx.getWindowManager().getDefaultDisplay().getHeight());
+            SMenu.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.Color.TRANSPARENT));
+            SMenu.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.CENTER | android.view.Gravity.TOP, 0, 0);
+        }catch(error){
+            print("A Error Has Happen: " + error);
+        }
+    }}));
+}
+            
 function checkVersion() {
     var r  = new java.lang.Runnable() {
         run: function() {
