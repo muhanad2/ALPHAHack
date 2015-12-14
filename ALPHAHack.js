@@ -172,7 +172,7 @@ function checkVersion() {
     var r  = new java.lang.Runnable() {
         run: function() {
             try {
-                var urls= new java.net.URL(" https://raw.githubusercontent.com/ArceusMatt/MCPE-AlphaHack/master/VERSION ");
+                var urls= new java.net.URL("https://raw.githubusercontent.com/ArceusMatt/MCPE-AlphaHack/master/VERSION");
                 var check = urls.openConnection();
                 check.setRequestMethod("GET");
                 check.setDoOutput(true);
@@ -348,15 +348,15 @@ Server.sendChat("**§lAlpha Hack spam§r**::        SPAM SPAM SPAM SPAM SPAM SPA
             }));
             menuLayout.addView(spam);
 
-var B_check = new android.widget.Button(ctx);
-		B_check.setText("Check For Updates");
-       B_check.setTextColor(Color.BLUE);
-		B_check.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){
-				checkForUpdate=false;
-			}
-		});
-		menuLayout.addView(B_check); 
+//var B_check = new android.widget.Button(ctx);
+		//B_check.setText("Check For Updates");
+       //B_check.setTextColor(Color.BLUE);
+		//B_check.setOnClickListener(new android.view.View.OnClickListener() {
+			//onClick: function(v){
+				//checkForUpdate=false;
+			//}
+		//});
+		//menuLayout.addView(B_check); 
 
             coord = new CheckBox(ctx);
             coord.setText("Coordinates");
