@@ -149,7 +149,6 @@ var GUIColor11 = Color.GREEN;
 var GUIColor12 = Color.MAGENTA;
 
 var GUIName = Color.WHITE;
-var GUIName2 = Color.BLACK;
 
 var checkForUpdate=false;
 var updateWindow=false; 
@@ -457,7 +456,9 @@ showMenuBtn();
 var pa = new android.widget.Button(ctx);
 		pa.setText("Restart script");
 		pa.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){            net.zhuoweizhang.mcpelauncher.ScriptManager.setEnabled(modpeFile, true);
+			onClick: function(v){ 
+ net.zhuoweizhang.mcpelauncher.ScriptManager.setEnabled(modpeFile, true);
+
 net.zhuoweizhang.mcpelauncher.ScriptManager.setEnabled(modpeFile, false);
 			}
 		});
@@ -468,7 +469,7 @@ var l1 = new Button(ctx);
             l1.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 GUIColor = GUIColor1
-GUIName2 = GUIName
+var GUIName = Color.WHITE;
                 }
             }));
             lmenuLayout.addView(l1);
@@ -478,7 +479,7 @@ GUIName2 = GUIName
             l2.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 GUIColor = GUIColor2
-GUIName2 = GUIName
+ var GUIName = Color.BLACK;
                 }
             }));
             lmenuLayout.addView(l2);
@@ -488,7 +489,7 @@ var l3 = new Button(ctx);
             l3.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 GUIColor = GUIColor3
-GUIName = GUIName2
+var GUIName = Color.BLACK
                 }
             }));
             lmenuLayout.addView(l3);
@@ -516,7 +517,7 @@ var l6 = new Button(ctx);
             l6.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 GUIColor = GUIColor6
-GUIName2 = GUIName
+var GUIName = Color.WHITE;
                 }
             }));
             lmenuLayout.addView(l6);
@@ -526,7 +527,7 @@ var l7 = new Button(ctx);
             l7.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 GUIColor = GUIColor7
-GUIName = GUIName2
+var GUIName = Color.BLACK;
                 }
             }));
             lmenuLayout.addView(l7);
@@ -536,7 +537,7 @@ var l8 = new Button(ctx);
             l8.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 GUIColor = GUIColor8
-GUIName = GUIName2
+var GUIName = Color.BLACK;
                 }
             }));
             lmenuLayout.addView(l8);
@@ -546,7 +547,7 @@ var l9 = new Button(ctx);
             l9.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 GUIColor = GUIColor9
-GUIName = GUIName2
+var GUIName = Color.BLACK;
                 }
             }));
             lmenuLayout.addView(l9);
@@ -556,7 +557,7 @@ var l10 = new Button(ctx);
             l10.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 GUIColor = GUIColor10
-GUIName2 = GUIName
+var GUIName = Color.WHITE
                 }
             }));
             lmenuLayout.addView(l10);
@@ -566,7 +567,6 @@ var l11 = new Button(ctx);
             l11.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 GUIColor = GUIColor11
-GUIName2 = GUIName
                 }
             }));
             lmenuLayout.addView(l11);
@@ -576,7 +576,6 @@ var l12 = new Button(ctx);
             l12.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 GUIColor = GUIColor12
-GUIName = GUIName2
                 }
             }));
             lmenuLayout.addView(l12);
