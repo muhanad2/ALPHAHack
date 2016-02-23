@@ -132,6 +132,7 @@ var saddle = false;
 var instakilled = false;
 var instabreak = false;
 var stackheart = false;
+var parti = false;
 //end of false-true
 
 var GUIColor = Color.TRANSPARENT
@@ -1182,6 +1183,22 @@ Player.setCanFly(0);
 }
             }));
             zmenuLayout.addView(f);
+
+var p = new android.widget.Button(ctx);
+            p.setText("Blaze particle: "+(parti?"on":"off"));
+            p.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+parti?parti=false:parti=true;
+p.setText("Ender particle: "+(parti?"on":"off"));
+if(parti == true){
+clientMessage("§cYour now a Blaze :o");
+}
+if(parti == false){
+clientMessage("§7Blaze particles off");
+                }
+}
+            }));
+            zmenuLayout.addView(p);
 
 		var B_exit = new android.widget.Button(ctx);
 		B_exit.setText("Exit");
@@ -4124,6 +4141,7 @@ hackcount++
 if(GUI!=null&&GUI.isShowing()==false&&(menu==null||menu.isShowing()==false))showMenuBtn();
 if (onlyday)
 Level.setTime(0);
+if (parti)Level.addParticle(ParticleType.lava, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
  if(checkForUpdate==false) {
         print("Checking for updates");
         ctx.runOnUiThread(new java.lang.Runnable({
