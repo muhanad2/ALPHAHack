@@ -106,11 +106,11 @@ var Uri = android.net.Uri;
 var GUI;
 var menu;
 var exitUI; 
-var version = "0.4.5 ";
+var version = "0.4.6 ";
 var name = "Alphα Hαck";
 var name2 = "Alphα Hαck";
 var authers = "Arceus_matt";
-var version2 = "0.4.5";
+var version2 = "0.4.6";
 var ModName = "Alphα Hαck";
 var auther = "Arceus_matt";
 var copyright = "©";
@@ -133,6 +133,7 @@ var instakilled = false;
 var instabreak = false;
 var stackheart = false;
 var parti = false;
+var parti2 = false;
 //end of false-true
 
 var GUIColor = Color.TRANSPARENT
@@ -202,7 +203,7 @@ menuBtn.setTextSize(24);
                 exit();
 GUI.dismiss();
 menuBtn = null;
-//ShowMenuBtn.dismiss();
+clientMessage("§9§oAlpha hack 0.4.6 changelog: added one more particle in modpe menu, fixed zombie villager spawn. enjoy!§r");
             }
         }));
         layout.addView(menuBtn);
@@ -1189,7 +1190,7 @@ var p = new android.widget.Button(ctx);
             p.setOnClickListener(new android.view.View.OnClickListener({
                 onClick: function(viewarg){
 parti?parti=false:parti=true;
-p.setText("Ender particle: "+(parti?"on":"off"));
+p.setText("Blaze particle: "+(parti?"on":"off"));
 if(parti == true){
 clientMessage("§cYour now a Blaze :o");
 }
@@ -1199,6 +1200,22 @@ clientMessage("§7Blaze particles off");
 }
             }));
             zmenuLayout.addView(p);
+
+var p2 = new android.widget.Button(ctx);
+            p2.setText("Tnt particle: "+(parti2?"on":"off"));
+            p2.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+parti2?parti2=false:parti2=true;
+p2.setText("Tnt particle: "+(parti2?"on":"off"));
+if(parti2 == true){
+clientMessage("§cYour now a Tnt exploding :o");
+}
+if(parti2 == false){
+clientMessage("§7Tnt particles off");
+                }
+}
+            }));
+            zmenuLayout.addView(p2);
 
 		var B_exit = new android.widget.Button(ctx);
 		B_exit.setText("Exit");
@@ -1482,7 +1499,7 @@ var spawn44 = new Button(ctx);
             spawn44.setText("Spawn Zombie villager");
             spawn44.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
-                    Level.spawnMob(Player.getX(), layer.getY(), Player.getZ(), 44);
+                    Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 44);
                 }
             }));
             smenuLayout.addView(spawn44);
@@ -4142,6 +4159,7 @@ if(GUI!=null&&GUI.isShowing()==false&&(menu==null||menu.isShowing()==false))show
 if (onlyday)
 Level.setTime(0);
 if (parti)Level.addParticle(ParticleType.lava, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if (parti2)Level.addParticle(ParticleType.largeexplode, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
  if(checkForUpdate==false) {
         print("Checking for updates");
         ctx.runOnUiThread(new java.lang.Runnable({
