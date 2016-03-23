@@ -149,7 +149,11 @@ function updateVersion() {
                 }
                 var threadt = new java.lang.Thread(ru);
                 threadt.start();
-            }
+            } 
+    catch(err) {
+        print("Error: \n" + err);
+    }
+}
 
 
 var sspam = false;
