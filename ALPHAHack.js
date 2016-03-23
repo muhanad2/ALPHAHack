@@ -108,12 +108,12 @@ print("New update! " + newUpdate);
     var threadt = new java.lang.Thread(r);
     threadt.start();
 }
-
 function updateVersion() {
+    try {
                 var ru  = new java.lang.Runnable() {
                     run: function() {
                         try {
-                            var urls = new java.net.URL("https://raw.githubusercontent.com/ArceusMatt/ALPHAHack/master/ALPHAHack.js");
+var urls = new java.net.URL("https://raw.githubusercontent.com/ArceusMatt/ALPHAHack/master/ALPHAHack.js");
                             var check = urls.openConnection();
                             check.setRequestMethod("GET");
                             check.setDoOutput(true);
@@ -131,12 +131,12 @@ function updateVersion() {
                             update.write(updateMod);
                             update.flush();
                             update.close();
-                            
+                             
                             try {
                                 net.zhuoweizhang.mcpelauncher.ScriptManager.setEnabled(modpeFile, false);
                                 net.zhuoweizhang.mcpelauncher.ScriptManager.setEnabled(modpeFile, true);
-								print(version + space + "installed");
-								  
+                                print("installed");
+                                   
                             }
                             catch(err) {
                                 print("Error: \n" + err);
@@ -149,12 +149,11 @@ function updateVersion() {
                 }
                 var threadt = new java.lang.Thread(ru);
                 threadt.start();
-            } 
+            }
     catch(err) {
         print("Error: \n" + err);
     }
 }
-
 
 var sspam = false;
 
