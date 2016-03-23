@@ -104,12 +104,11 @@ print("New update! " + newUpdate);
                             } 
             }
         }
-    }
+}
     var threadt = new java.lang.Thread(r);
     threadt.start();
 }
 function updateVersion() {
-    try {
                 var ru  = new java.lang.Runnable() {
                     run: function() {
                         try {
@@ -150,10 +149,6 @@ var urls = new java.net.URL("https://raw.githubusercontent.com/ArceusMatt/ALPHAH
                 var threadt = new java.lang.Thread(ru);
                 threadt.start();
             }
-    catch(err) {
-        print("Error: \n" + err);
-    }
-}
 
 var sspam = false;
 
