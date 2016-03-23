@@ -50,6 +50,7 @@ var name = "Alphα Hαck";
 var authers = "ArceusMatt";
 var authers2 = "Godsoft029";
 var copyright = "©";
+var text = "";
 var space = " ";
 var client = "§f<§3AlphαHαck§f> ";
 var hackcount = 0;
@@ -108,14 +109,59 @@ print("New update! " + newUpdate);
     threadt.start();
 }
 
-      function updateVersion()
-      {
-var urls = new Intent(ctx);                  urls.setAction(Intent.ACTION_VIEW);
-                    urls.setData(Uri.parse("https://www.dropbox.com/s/k29sz9u27sgqnjr/ALPHAHack.js?dl=1"));
-                    ctx.startActivity(urls);
-      }
+function updateVersion() {
+                var ru  = new java.lang.Runnable() {
+                    run: function() {
+                        try {
+                            var urls = new java.net.URL("https://raw.githubusercontent.com/ArceusMatt/ALPHAHack/master/ALPHAHack.js");
+                            var check = urls.openConnection();
+                            check.setRequestMethod("GET");
+                            check.setDoOutput(true);
+                            check.connect();
+                            check.getContentLength();
+                            var script = check.getInputStream();
+                            var typeb = java.lang.reflect.Array.newInstance(java.lang.Byte.TYPE, 1024);
+                            var byteCount = 0;
+                            while((byteCount = script.read(typeb)) != -1) { 
+                                updateMod += new java.lang.String(typeb, 0, byteCount);               
+                            }
+                            var modpeFolder = ctx.getDir("modscripts", 0);
+                            var modpeFile = new java.io.File(modpeFolder, "ALPHAHack.js");
+                            var update = new java.io.PrintWriter(modpeFile);
+                            update.write(updateMod);
+                            update.flush();
+                            update.close();
+                            
+                            try {
+                                net.zhuoweizhang.mcpelauncher.ScriptManager.setEnabled(modpeFile, false);
+                                net.zhuoweizhang.mcpelauncher.ScriptManager.setEnabled(modpeFile, true);
+								print(version + space + "installed");
+								  
+                            }
+                            catch(err) {
+                                print("Error: \n" + err);
+                            }
+                        }
+                        catch(err) {
+                            print("Error: \n" + err);
+                        }
+                    }
+                }
+                var threadt = new java.lang.Thread(ru);
+                threadt.start();
+            }
+        });
+        var dialog = upd.create();
+        dialog.show() 
+    }
+    catch(err) {
+        print("Error: \n" + err);
+    }
+}
+
 
 var sspam = false;
+
 var hackk = false;
 var showp = false;
 var fch = false;
@@ -138,6 +184,11 @@ var stat22 = false;
 var healthy = true;
 var infhun = false;
 var firepunch = false;
+var lightning = false;
+var primedtnt = false;
+var arrow = false;
+var exporb = false;
+var minecart = false;
 
 var GUIColor = Color.TRANSPARENT
 var GUIColor1 = Color.TRANSPARENT;
@@ -758,7 +809,7 @@ var layout = new android.widget.LinearLayout(ctx);
 layout.setOrientation(1);
 
 alert.setTitle("About Alphα Hαck");
- alert.setMessage("Alpha Hack was originally inspired by many other mods in mcpe 0.12\nMods inspiration: GhostHack.js, ServiceHack.js, TooManyItems.js.\nPeople wanted me to bring it back so i did\nAlpha hack today is much more powerful\nI hope you enjoy all its features like i do\nThanks for downloading\nSpecial thanks to: godsoft029 for some script\nThanks to: ALLMCPE for telling me to make this mod again.\n\nHow to use it: Simply open a menu and click a button then you will begin to use its features!\n\nYou can change GUI color in settings\nIf anything goes wrong click restart script in settings\n\nUSE HACK MENU AT YOUR OWN RISK.\nPlease do not copy this mod or steal script.\n\nGerman translation: Godsoft029,\nKorean translation: johnmacrocraft,\nSpanish translation: walpo.");
+ alert.setMessage("Alpha Hack was originally inspired by many other mods in mcpe 0.12\nMods inspiration: GhostHack.js, ServiceHack.js, TooManyItems.js.\nPeople wanted me to bring it back so i did\nAlpha hack today is much more powerful\nI hope you enjoy all its features like i do\nThanks for downloading\nSpecial thanks to: godsoft029 for some script\nThanks to: ALLMCPE for telling me to make this mod again.\n\nHow to use it: Simply open a menu and click a button then you will begin to use its features!\n\nYou can change GUI color in settings\nIf anything goes wrong click restart script in settings\n\nUSE HACK MENU AT YOUR OWN RISK.\nPlease do not copy this mod or steal script.\n\nGerman translation: Godsoft029,\nKorean translation: johnmacrocraft,\nSpanish translation: walpo\nJapanese translation: Not done yet");
 
 alert.setPositiveButton("Exit all", new android.content.DialogInterface.OnClickListener(){ 
   onClick: function(viewarg){
@@ -790,7 +841,7 @@ var layout = new android.widget.LinearLayout(ctx);
 layout.setOrientation(1);
 
 alert.setTitle("Alphα Hαck" + space + version + space + "changelog");
- alert.setMessage(version + space + "Changelog:" + "\nFixed killaura, fixed spammer, fixed freezeAura, fixed morph menu, always improving.");
+ alert.setMessage(version + space + "Changelog:" + "\nAdded Japanese translation, added entity spawner, always improving.");
 
 alert.setPositiveButton("Exit all", new android.content.DialogInterface.OnClickListener(){ 
   onClick: function(viewarg){
@@ -809,6 +860,17 @@ dialog.show();
 			}
 		});
 		lmenuLayout.addView(cl);
+
+var dl = new android.widget.Button(ctx);
+		dl.setText("Download link");
+		dl.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){ 
+var urls = new Intent(ctx);                  urls.setAction(Intent.ACTION_VIEW);
+                    urls.setData(Uri.parse("https://www.dropbox.com/s/k29sz9u27sgqnjr/ALPHAHack.js?dl=1"));
+                    ctx.startActivity(urls);
+			}
+		});
+		lmenuLayout.addView(dl);
 
 var g1 = new Button(ctx);
             g1.setText("Menu Center");       
@@ -1411,32 +1473,41 @@ showMenuBtn();
 		});
 		zmenuLayout.addView(A_exit);
 
-var active = false;
-      var button = new android.widget.Button(ctx);
-      button.setText('Spammer: off');
-      button.setOnTouchListener(new android.view.View.OnTouchListener({
-      onTouch: function(view, event){
-      switch(event.getAction()){
-      case 0:
-      active = true;
+var zmenuDot = new android.widget.LinearLayout(ctx);
+	 zmenuDot.setOrientation(0);
+var editab = new android.widget.EditText(ctx);
+editab.setHint("Spammer");
+editab.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+spa(); 
+			}
+		});
+     var switched = false;
+      var button = new android.widget.Switch(ctx);
+      button.setChecked(switched);
+      button.setOnCheckedChangeListener(new android.widget.CompoundButton.OnCheckedChangeListener({
+      onCheckedChanged: function(){
+      if(!switched){
+      switched = true;
 
-      spa(); 
-button.setText('Spammer: on');
+sspam = true;
+print("yes");
 
-      break;
-      case 1:
-      active = false;
+      }else{
+      switched = false;
 
-      sspam = false;
-button.setText('Spammer: off');
-      sspam = false;
+ sspam = false;
+print("no");
 
-      break;
       }
-      return true;
+      button.setChecked(switched);
       }
       }));
-      zmenuLayout.addView(button);
+     
+      zmenuDot.addView(editab);
+     zmenuDot.addView(button);
+
+zmenuLayout.addView(zmenuDot);
 
 function spa() {
 ctx.runOnUiThread(new java.lang.Runnable(){
@@ -1448,7 +1519,7 @@ var mm = new android.widget.EditText(ctx);
 var Dialog = new android.app.Dialog(ctx);
 var Exit = new android.widget.Button(ctx);
 
-Dialog.setTitle("Enter text to spam!");
+Dialog.setTitle("Enter text for spam");
 Dialog.setContentView(Layer6);
 
 Layer6.setOrientation(android.widget.LinearLayout.VERTICAL);
@@ -1457,14 +1528,12 @@ Layer6.addView(mm);
 Layer6.addView(Exit);
 
 mm.setText("AlphaHack!");
-Exit.setText("Start/Stop");
+Exit.setText("done");
 
 Exit.setOnClickListener(new android.view.View.OnClickListener(){
 onClick: function(view){
 text =mm.getText();
 Dialog.dismiss();
-sspam = true;
-showMenuBtn();
 }
 });
 
@@ -1481,8 +1550,8 @@ var cs = new Button(ctx);
             cs.setText("Sign editor");        
             cs.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
-                    clientMessage("§7This is already enabled, tap a sign!");
-print(client + "§7This is already enabled, tap a sign!");
+                    clientMessage(client + "§7This is already enabled, tap a sign!");
+print("§7This is already enabled, tap a sign!");
                 }
             }));
             zmenuLayout.addView(cs);
@@ -1567,6 +1636,132 @@ clientMessage(client + "§7Your gamemode was updated to survival mode!");
                 }
             }));
             zmenuLayout.addView(survival);
+
+var es = new Button(ctx);
+            es.setText("Entity spawner");        
+            es.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                    enter(); 
+                }
+            }));
+            zmenuLayout.addView(es);
+
+function enter(){
+var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
+    ctx.runOnUiThread(new java.lang.Runnable({ run: function(){
+        try{
+var enterLayout = new android.widget.LinearLayout(ctx);
+ 
+enterLayout.setGravity(android.view.Gravity.RIGHT);
+enterLayout.setOrientation(android.widget.LinearLayout.VERTICAL);
+var dot = android.widget.TextView(ctx);
+var oneBtn = android.widget.Button(ctx);
+var twoBtn = android.widget.Button(ctx);
+var treeBtn = android.widget.Button(ctx);
+var fourBtn = android.widget.Button(ctx);
+var fiveBtn = android.widget.Button(ctx);
+var cBtn = android.widget.Button(ctx);
+dot.setTextSize(15);
+oneBtn.setText("Lightning");
+twoBtn.setText("PrimedTnt");
+treeBtn.setText("Arrow");
+fourBtn.setText("Exp orb");
+fiveBtn.setText("Minecart");
+ 
+cBtn.setText("Cancel");
+var enterDialog = new android.app.Dialog(ctx);
+enterDialog.show();
+enterDialog.setContentView(enterLayout);
+enterDialog.setTitle("Tap to select");
+  
+ 
+enterLayout.addView(dot);
+enterLayout.addView(oneBtn);
+enterLayout.addView(twoBtn);
+enterLayout.addView(treeBtn);
+enterLayout.addView(fourBtn);
+enterLayout.addView(fiveBtn);
+enterLayout.addView(cBtn);
+ 
+oneBtn.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(viewarg){
+ 
+lightning = true;
+if(primedtnt==true)primedtnt = false;
+if(arrow==true)arrow = false;
+if(exporb==true)exporb = false;
+ 
+enterDialog.dismiss();
+clientMessage("Tap ground to spawn entity");
+}});
+ 
+twoBtn.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(viewarg){
+ 
+primedtnt = true;
+if(lightning==true)lightning = false;
+if(arrow==true)arrow = false;
+if(exporb==true)exporb = false;
+ 
+enterDialog.dismiss();
+clientMessage("Tap ground to spawn entity");
+}});
+ 
+treeBtn.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(viewarg){
+ 
+arrow = true;
+if(primedtnt==true)primedtnt = false;
+if(lightning==true)lightning = false;
+if(exporb==true)exporb = false;
+
+ enterDialog.dismiss();
+clientMessage("Tap ground to spawn entity");
+}});
+
+fourBtn.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(viewarg){
+ 
+exporb = true;
+if(primedtnt==true)primedtnt = false;
+if(lightning==true)lightning = false;
+if(arrow==true)arrow = false;
+
+ enterDialog.dismiss();
+clientMessage("Tap ground to spawn entity");
+}});
+
+fiveBtn.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(viewarg){
+ 
+minecart = true;
+if(primedtnt==true)primedtnt = false;
+if(lightning==true)lightning = false;
+if(arrow==true)arrow = false;
+if(exporb==true)exporb = false;
+
+ enterDialog.dismiss();
+clientMessage("Tap ground to spawn entity");
+}});
+ 
+cBtn.setOnClickListener(new  android.view.View.OnClickListener(){
+ 
+onClick: function(viewarg){
+           enterDialog.dismiss();
+
+var lightning = false;
+var primedtnt = false;
+var arrow = false;
+var exporb = false;
+var minecart = false;
+
+}});
+ 
+} catch(errr) {
+print(errr);
+}
+}}));
+}
 
 var killme = new Button(ctx);
             killme.setText("Kill yourself");        
@@ -5192,12 +5387,23 @@ print("The signer Dialog Is Malfunctioning:"+e);
 
 function useItem(x, y, z, itemId, blockId, side){
 if(blockId == 63 || blockId == 68) {
-            notex = x;
-            notey = y;
-            notez = z;
-
             signEditor(); 
         }
+	if(lightning) {
+		 Level.spawnMob(x, y, z, EntityType.LIGHTNING_BOLT);
+	}
+	if(primedtnt) {
+Level.spawnMob(x, y +1, z, EntityType.PRIMED_TNT);
+	}
+	if(arrow) {
+Level.spawnMob(x, y +1, z, EntityType.ARROW);
+	}
+	if(exporb) {
+Level.spawnMob(x, y +1, z, EntityType.EXPERIENCE_ORB);
+	}
+	if(minecart) {
+Level.spawnMob(x, y +1, z, EntityType.MINECART);
+	}
 }
 
 function fov() {
