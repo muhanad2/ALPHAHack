@@ -1,4 +1,4 @@
-g//Ctx context
+//Ctx context
 
 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 
