@@ -1,0 +1,8 @@
+Arceus_matt progress:
+Main menu button, main menu, all other menus, buttons inside all menus, all modpe script in modpe menu besides water walk, all variables & all other scripts.
+
+Godsoft028 progress:
+On/off text on buttons, rptask, server enabler, and a few things in hack menu.
+
+Applqpak progress:
+Creating new UDP DoS, iOS AlphaHack app. 
