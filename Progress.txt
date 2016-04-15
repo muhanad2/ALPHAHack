@@ -1,7 +1,7 @@
 -Developers-
 
 Arceus_matt progress:
-Main menu button, main menu, all other menus, buttons inside all menus, all modpe script in modpe menu besides water walk & autobreak, all variables & all other scripts.
+Main menu button, main menu, all other menus, buttons inside all menus, all variables, modpe script in modpe menu, all other scripts besides water walk & autobreak.
 
 Godsoft028 progress:
 On/off text on buttons, rptask, server enabler, and a few things in hack menu, water walk, german translate.
