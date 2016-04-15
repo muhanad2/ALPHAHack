@@ -53,7 +53,7 @@ var menu;
 //AlphaHack variables
 
 var num0  = 0;
-var version = "0.7.4";
+var version = "0.7.3";
 var name = "AlphαHαck";
 var authers = "ArceusMatt";
 var authers2 = "Godsoft029";
