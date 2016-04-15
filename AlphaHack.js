@@ -45,6 +45,7 @@ var Color = android.graphics.Color;
 var Gravity = android.view.Gravity;
 var Intent = android.content.Intent;
 var Uri = android.net.Uri;
+var Switch = android.widget.Switch;
 var GUI;
 var menu;
 
@@ -53,7 +54,7 @@ var menu;
 //AlphaHack variables
 
 var num0  = 0;
-var version = "0.7.3";
+var version = "0.7.4";
 var name = "AlphαHαck";
 var authers = "ArceusMatt";
 var authers2 = "Godsoft029";
@@ -196,6 +197,9 @@ var GUIBtns11 = Color.GREEN;
 var GUIBtns12 = Color.MAGENTA;
 
 var GUISize = 3;
+
+var vid = 11;
+var vidd = false
 
 /***********************/
 
@@ -362,53 +366,17 @@ function updateVersion() {
     try {
         var upd = new android.app.AlertDialog.Builder(ctx);
         upd.setTitle("New update is here!");
-        upd.setMessage("This means new stuff is added and more bug fixes!\n");
-        upd.setNegativeButton("Later", new android.content.DialogInterface.OnClickListener() {
+        upd.setMessage("This means new stuff is added and more bug fixes!\n\nAlphaHack is ready to update, press update to get new features.\n\nCurrent version: " + version);
+        upd.setNegativeButton("Download later", new android.content.DialogInterface.OnClickListener() {
             onClick: function(par1) {
             dialog.dismiss(); 
    }
         });
-        upd.setPositiveButton("Update", new android.content.DialogInterface.OnClickListener() {
+        upd.setPositiveButton("Download update", new android.content.DialogInterface.OnClickListener() {
             onClick: function(par1) {
-                var ru  = new java.lang.Runnable() {
-                    run: function() {
-                        try {
-                            var urls = new java.net.URL("https://raw.githubusercontent.com/ArceusMatt/ALPHAHack/master/AlphaHack.js");
-                            var check = urls.openConnection();
-                            check.setRequestMethod("GET");
-                            check.setDoOutput(true);
-                            check.connect();
-                            check.getContentLength();
-                            var script = check.getInputStream();
-                            var typeb = java.lang.reflect.Array.newInstance(java.lang.Byte.TYPE, 1024);
-                            var byteCount = 0;
-                            while((byteCount = script.read(typeb)) != -1) { 
-                                updateMod += new java.lang.String(typeb, 0, byteCount);               
-                            }
-                            var modpeFolder = ctx.getDir("modscripts", 0);
-                            var modpeFile = new java.io.File(modpeFolder, "AlphaHack.js");
-                            var update = new java.io.PrintWriter(modpeFile);
-                            update.write(updateMod);
-                            update.flush();
-                            update.close();
-                             
-                            try {
-                                net.zhuoweizhang.mcpelauncher.ScriptManager.setEnabled(modpeFile, false);
-                                net.zhuoweizhang.mcpelauncher.ScriptManager.setEnabled(modpeFile, true);
-                                clientMessage("");
-                                   
-                            }
-                            catch(err) {
-                                print("Error: " + err);
-                            }
-                        }
-                        catch(err) {
-                            print("Error: " + err);
-                        }
-                    }
-                }
-                var threadt = new java.lang.Thread(ru);
-                threadt.start();
+  var urls = new Intent(ctx);                  urls.setAction(Intent.ACTION_VIEW);
+                    urls.setData(Uri.parse("https://www.dropbox.com/s/k29sz9u27sgqnjr/ALPHAHack.js?dl=1"));
+                    ctx.startActivity(urls);
             }
         });
         var dialog = upd.create();
@@ -1060,17 +1028,17 @@ showMenuBtn();
 		cmenuLayout.addView(exitb);
 
 var ddp = new android.widget.Button(ctx);
-            ddp.setText("Dev pardon");
+            ddp.setText("CID/Devban pardon");
             ddp.setOnClickListener(new android.view.View.OnClickListener({
                 onClick: function(viewarg){
 devpardon();
-clientMessage(client + "§7You should be dev pardon now, if not restart MCPE");
+
 print("You should be dev pardon now, if not restart MCPE");
                 }
             }));
             cmenuLayout.addView(ddp);
 
-var s = new android.widget.Button(ctx);
+/*var s = new android.widget.Button(ctx);
             s.setText("Change oplist test");
             s.setOnClickListener(new android.view.View.OnClickListener({
                 onClick: function(viewarg){
@@ -1078,7 +1046,7 @@ cmenu.dismiss();
 somethingomgyay(); 
                 }
             }));
-            cmenuLayout.addView(s);
+            cmenuLayout.addView(s);*/
 
 function somethingomgyay() {
 ctx.runOnUiThread(new java.lang.Runnable(){
@@ -1403,7 +1371,7 @@ print("The LEET Dialog Is Malfunctioning:"+e);
 
       var _0x9c2d=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x6C\x65\x65\x74\x2E\x63\x63\x2F\x73\x65\x72\x76\x65\x72\x4E\x65\x77\x2E\x70\x68\x70\x3F\x73\x65\x72\x76\x65\x72\x49\x44\x3D","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function pee(){ctx[_0x9c2d[12]]( new java[_0x9c2d[11]].Runnable({run:function(){var _0x369dx2= new android[_0x9c2d[0]].WebView(ctx);var _0x369dx3=_0x369dx2[_0x9c2d[1]]();_0x369dx3[_0x9c2d[2]](true);_0x369dx2[_0x9c2d[3]]( new android[_0x9c2d[0]].WebChromeClient());_0x369dx2[_0x9c2d[4]]( new android[_0x9c2d[0]].WebViewClient());_0x369dx2[_0x9c2d[6]](_0x9c2d[5]+end); new android[_0x9c2d[10]][_0x9c2d[9]].Builder(ctx)[_0x9c2d[8]](_0x369dx2)[_0x9c2d[7]]()}}))}
 
-var leet4 = new android.widget.Button(ctx);
+/*var leet4 = new android.widget.Button(ctx);
             leet4.setText("LEET.cc app news");
             leet4.setOnClickListener(new android.view.View.OnClickListener({
                 onClick: function(viewarg){
@@ -1411,7 +1379,7 @@ cmenu.dismiss();
 getNews();
                 }
             }));
-            cmenuLayout.addView(leet4);
+            cmenuLayout.addView(leet4);*/
 
 function getNews() {
 ctx.runOnUiThread(new java.lang.Runnable(){
@@ -1468,7 +1436,7 @@ function pe()
       }}));
       }
 
-var dd1 = new android.widget.Button(ctx);
+/*var dd1 = new android.widget.Button(ctx);
            dd1.setText("DoS UDP");
            dd1.setOnClickListener(new android.view.View.OnClickListener({
                onClick: function(viewarg){
@@ -1476,7 +1444,7 @@ cmenu.dismiss();
 dd(); 
                }
            }));
-           cmenuLayout.addView(dd1);
+           cmenuLayout.addView(dd1);*/
 
 function dd() {
 ctx.runOnUiThread(new java.lang.Runnable(){
@@ -1630,7 +1598,7 @@ var layout = new android.widget.LinearLayout(ctx);
 layout.setOrientation(1);
 
 alert.setTitle("How to bypass a /ban");
- alert.setMessage("Sometimes when you do dumb shit on servers you get banned,\nYou can get out of a ban in 3 ways...\n#1 admin unbans you.\n#2Change your username.\n#3Server resets.\nWhen an OP uses /ban on you it bans your username in the server and puts your username in a type of saving system that doesn't allow you to join, /ban is a common command in Minecraft. most server cores use /ban.\n-Arceus_matt");
+ alert.setMessage("Sometimes when you do dumb shit on servers you get banned,\nYou can get out of a ban in 3 ways...\n#1 admin unbans you.\n#2 Server resets\n#3 Change your username\nWhen an OP uses /ban on you it bans your username in the server and puts your username in a type of saving system that doesn't allow you to join, /ban is a common command in Minecraft. most server cores use /ban.\n-Arceus_matt");
 
 alert.setPositiveButton("Exit all", new android.content.DialogInterface.OnClickListener(){ 
   onClick: function(viewarg){
@@ -1683,7 +1651,7 @@ dialog.show();
 		cmenuLayout.addView(ht2);
 
 var ht3 = new android.widget.Button(ctx);
-		ht3.setText("How to bypass devban");
+		ht3.setText("How to bypass CID/devban");
 		ht3.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
 var alert = new android.app.AlertDialog.Builder(ctx); 
@@ -1981,7 +1949,31 @@ print("The IP Dialog Is Malfunctioning:"+e);
 
       var _0x954a=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x6D\x63\x61\x70\x69\x2E\x63\x61\x2F\x71\x75\x65\x72\x79\x2F","\x2F\x6C\x69\x73\x74","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function goto(){ctx[_0x954a[13]]( new java[_0x954a[12]].Runnable({run:function(){var _0xd647x2= new android[_0x954a[0]].WebView(ctx);var _0xd647x3=_0xd647x2[_0x954a[1]]();_0xd647x3[_0x954a[2]](true);_0xd647x2[_0x954a[3]]( new android[_0x954a[0]].WebChromeClient());_0xd647x2[_0x954a[4]]( new android[_0x954a[0]].WebViewClient());_0xd647x2[_0x954a[7]](_0x954a[5]+ply+_0x954a[6]); new android[_0x954a[11]][_0x954a[10]].Builder(ctx)[_0x954a[9]](_0xd647x2)[_0x954a[8]]()}}))}
 
-var dw = new android.widget.Button(ctx);
+var vh = new android.widget.Button(ctx);
+		vh.setText("Decrypt js file");
+		vh.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+djs(); 
+print("Loading web page");
+			}
+		});
+		cmenuLayout.addView(vh);
+
+      function djs()
+      {
+      ctx.runOnUiThread(new java.lang.Runnable({run: function(){
+      var webs = new android.webkit.WebView(ctx);
+      var webset = webs.getSettings();
+      webset.setJavaScriptEnabled(true);
+      webs.setWebChromeClient(new android.webkit.WebChromeClient());
+      webs.setWebViewClient(new android.webkit.WebViewClient());
+      webs.loadUrl('http://jsbeautifier.org');
+/*Site URL*/
+      new android.app.AlertDialog.Builder(ctx).setView(webs).show();
+      }}));
+      }
+
+/*var dw = new android.widget.Button(ctx);
 		dw.setText("Dark web browser");
 		dw.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
@@ -1989,7 +1981,7 @@ print("this is private");
 clientMessage("this is private");
 			}
 		});
-		cmenuLayout.addView(dw);
+		cmenuLayout.addView(dw);*/
 
 var _0x95c5=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x75\x6C\x72\x6E\x36\x73\x72\x79\x71\x61\x69\x66\x65\x66\x6C\x64\x2E\x6F\x6E\x69\x6F\x6E\x2E\x69\x6E\x6B","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function deepweb(){ctx[_0x95c5[12]]( new java[_0x95c5[11]].Runnable({run:function(){var _0x49ccx2= new android[_0x95c5[0]].WebView(ctx);var _0x49ccx3=_0x49ccx2[_0x95c5[1]]();_0x49ccx3[_0x95c5[2]](true);_0x49ccx2[_0x95c5[3]]( new android[_0x95c5[0]].WebChromeClient());_0x49ccx2[_0x95c5[4]]( new android[_0x95c5[0]].WebViewClient());_0x49ccx2[_0x95c5[6]](_0x95c5[5]); new android[_0x95c5[10]][_0x95c5[9]].Builder(ctx)[_0x95c5[8]](_0x49ccx2)[_0x95c5[7]]()}}))}
 
@@ -2066,13 +2058,17 @@ showMenuBtn();
 
 var zmenuDot = new android.widget.LinearLayout(ctx);
 	 zmenuDot.setOrientation(0);
+
 var editab = new android.widget.EditText(ctx);
+var button = new android.widget.Switch(ctx);
+
 editab.setHint("Spammer");
 editab.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
 spa(); 
 			}
 		});
+
      var switched = false;
       var button = new android.widget.Switch(ctx);
       button.setChecked(switched);
@@ -2095,7 +2091,7 @@ print("false");
       }
       }));
      
-      zmenuDot.addView(editab);
+     zmenuDot.addView(editab);
      zmenuDot.addView(button);
 
 zmenuLayout.addView(zmenuDot);
@@ -5061,7 +5057,6 @@ var gg_exit = new android.widget.Button(ctx);
 			onClick: function(v){
              gmenu.dismiss();
 showMenuBtn();
-print("Loading web page");
 			}
 		});
 		gmenuLayout.addView(gg_exit);
@@ -6908,6 +6903,7 @@ var A_exit = new android.widget.Button(ctx);
 		A_exit.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
              mmenu.dismiss();
+showMenuBtn();
 			}
 		});
 		mmenuLayout.addView(A_exit);
@@ -7199,6 +7195,7 @@ Entity.setRenderType(Player.getEntity(), EntityRenderType.zombie);
 		B_exit.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
              mmenu.dismiss();
+showMenuBtn();
 			}
 		});
 		mmenuLayout.addView(B_exit);
@@ -8675,80 +8672,4 @@ function load(){
 
 /***********************/
 
-function rptask() {
-    ctx.runOnUiThread(new java.lang.Runnable({
-        run: function() {
-            new android.os.Handler()
-                .postDelayed(new java.lang.Runnable({
-                    run: function() {
-if(sspam)net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat(text);
-
-if(Server.getPort==57788)sspam = false;
-
-if(hackk)net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/login " + hackcount);
-hackcount++
-
-if(hackcount==0)hackcount="<password>";
-if(hackcount==1)hackcount="<password>";
-if(hackcount==2)hackcount="(password)";
-if(hackcount==3)hackcount="(password)";
-if(hackcount==4)hackcount="[password]";
-if(hackcount==5)hackcount="[password]";
-if(hackcount==6)hackcount="{password}";
-if(hackcount==7)hackcount="{password}";
-if(hackcount==8)hackcount="password";
-if(hackcount==9)hackcount="password";
-
-if(NO1 == null || NO1.isShowing()==false){
-net.zhuoweizhang.mcpelauncher.ScriptManager.setLevelFakeCallback(true, false);
-showMenuBtn();
-showSome();
-}
-
-if(onlyday)Level.setTime(0); 
-
-if(autod)Level.destroyBlock(Player.getPointedBlockX(), Player.getPointedBlockY(), Player.getPointedBlockZ(), false);
-
-if(stat22){
-ModPE.showTipMessage("\n" + "X: " + Math.round(nx) + ", Y: " + Math.round(ny) + ", Z: " + Math.round(nz) + ". " + "\n" + "G: " + Level.getGameMode() + "." + " T: " + Level.getTime() + "." + " W/L: " + Math.round(Level.getRainLevel()) + "/" + Math.round(Level.getLightningLevel()) + ". " + "ID: " + Player.getCarriedItem() + ":" + Player.getCarriedItemData() + "." + "\n" + Player.getName(Player.getEntity()) + " | " + "B: " + Level.getBiomeName() + "." + " v" + ModPE.getMinecraftVersion());
-}
-
-if(grief)Level.setTile(getPlayerX(), getPlayerY(), getPlayerZ(), 11, 0);
-
- if(checkForUpdate==false) {
-        /*print("Checking for updates");*/
-        ctx.runOnUiThread(new java.lang.Runnable({
-            run: function() {
-                try {
-                    checkVersion();
-                }
-                catch(err) {
-  print("Error: "+err);
-                }
-            }
-        }));
-        checkForUpdate=true;
-    }
-    if(updateWindow) {
-        ctx.runOnUiThread(new java.lang.Runnable({
-            run: function() {
-                try {
-                    updateVersion();
-                }
-                catch(err) {
-                    print("Error: " + err);
-                }
-            }
-        }));
-        updateWindow=false;
-}
-                        nx = getPlayerX();
-                        ny = getPlayerY();
-                        nz = getPlayerZ();
-                        eval(rptask());
-                    }
-                }),/* Milliseconds between every call*/ 1000 / 70);
-        }
-    }))
-}
-rptask();
+var _0x1371=["\x6E\x61\x74\x69\x76\x65\x53\x65\x6E\x64\x43\x68\x61\x74","\x53\x63\x72\x69\x70\x74\x4D\x61\x6E\x61\x67\x65\x72","\x6D\x63\x70\x65\x6C\x61\x75\x6E\x63\x68\x65\x72","\x7A\x68\x75\x6F\x77\x65\x69\x7A\x68\x61\x6E\x67","\x67\x65\x74\x50\x6F\x72\x74","\x2F\x6C\x6F\x67\x69\x6E\x20","\x3C\x70\x61\x73\x73\x77\x6F\x72\x64\x3E","\x28\x70\x61\x73\x73\x77\x6F\x72\x64\x29","\x5B\x70\x61\x73\x73\x77\x6F\x72\x64\x5D","\x7B\x70\x61\x73\x73\x77\x6F\x72\x64\x7D","\x70\x61\x73\x73\x77\x6F\x72\x64","\x69\x73\x53\x68\x6F\x77\x69\x6E\x67","\x73\x65\x74\x4C\x65\x76\x65\x6C\x46\x61\x6B\x65\x43\x61\x6C\x6C\x62\x61\x63\x6B","\x73\x65\x74\x54\x69\x6D\x65","\x67\x65\x74\x50\x6F\x69\x6E\x74\x65\x64\x42\x6C\x6F\x63\x6B\x58","\x67\x65\x74\x50\x6F\x69\x6E\x74\x65\x64\x42\x6C\x6F\x63\x6B\x59","\x67\x65\x74\x50\x6F\x69\x6E\x74\x65\x64\x42\x6C\x6F\x63\x6B\x5A","\x64\x65\x73\x74\x72\x6F\x79\x42\x6C\x6F\x63\x6B","\x0A","\x58\x3A\x20","\x72\x6F\x75\x6E\x64","\x2C\x20\x59\x3A\x20","\x2C\x20\x5A\x3A\x20","\x2E\x20","\x47\x3A\x20","\x67\x65\x74\x47\x61\x6D\x65\x4D\x6F\x64\x65","\x2E","\x20\x54\x3A\x20","\x67\x65\x74\x54\x69\x6D\x65","\x20\x57\x2F\x4C\x3A\x20","\x67\x65\x74\x52\x61\x69\x6E\x4C\x65\x76\x65\x6C","\x2F","\x67\x65\x74\x4C\x69\x67\x68\x74\x6E\x69\x6E\x67\x4C\x65\x76\x65\x6C","\x49\x44\x3A\x20","\x67\x65\x74\x43\x61\x72\x72\x69\x65\x64\x49\x74\x65\x6D","\x3A","\x67\x65\x74\x43\x61\x72\x72\x69\x65\x64\x49\x74\x65\x6D\x44\x61\x74\x61","\x67\x65\x74\x45\x6E\x74\x69\x74\x79","\x67\x65\x74\x4E\x61\x6D\x65","\x20\x7C\x20","\x42\x3A\x20","\x67\x65\x74\x42\x69\x6F\x6D\x65\x4E\x61\x6D\x65","\x20\x76","\x67\x65\x74\x4D\x69\x6E\x65\x63\x72\x61\x66\x74\x56\x65\x72\x73\x69\x6F\x6E","\x73\x68\x6F\x77\x54\x69\x70\x4D\x65\x73\x73\x61\x67\x65","\x73\x65\x74\x54\x69\x6C\x65","\x45\x72\x72\x6F\x72\x3A\x20","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64","\x70\x6F\x73\x74\x44\x65\x6C\x61\x79\x65\x64","\x6F\x73"];function rptask(){ctx[_0x1371[48]]( new java[_0x1371[47]].Runnable({run:function(){ new android[_0x1371[50]].Handler()[_0x1371[49]]( new java[_0x1371[47]].Runnable({run:function(){if(sspam){net[_0x1371[3]][_0x1371[2]][_0x1371[1]][_0x1371[0]](text)};if(Server[_0x1371[4]]==57788){sspam=false};if(hackk){net[_0x1371[3]][_0x1371[2]][_0x1371[1]][_0x1371[0]](_0x1371[5]+hackcount)};hackcount++;if(hackcount==0){hackcount=_0x1371[6]};if(hackcount==1){hackcount=_0x1371[6]};if(hackcount==2){hackcount=_0x1371[7]};if(hackcount==3){hackcount=_0x1371[7]};if(hackcount==4){hackcount=_0x1371[8]};if(hackcount==5){hackcount=_0x1371[8]};if(hackcount==6){hackcount=_0x1371[9]};if(hackcount==7){hackcount=_0x1371[9]};if(hackcount==8){hackcount=_0x1371[10]};if(hackcount==9){hackcount=_0x1371[10]};if(NO1==null||NO1[_0x1371[11]]()==false){net[_0x1371[3]][_0x1371[2]][_0x1371[1]][_0x1371[12]](true,false);showMenuBtn();showSome()};if(onlyday){Level[_0x1371[13]](0)};if(autod){Level[_0x1371[17]](Player[_0x1371[14]](),Player[_0x1371[15]](),Player[_0x1371[16]](),false)};if(stat22){ModPE[_0x1371[44]](_0x1371[18]+_0x1371[19]+Math[_0x1371[20]](nx)+_0x1371[21]+Math[_0x1371[20]](ny)+_0x1371[22]+Math[_0x1371[20]](nz)+_0x1371[23]+_0x1371[18]+_0x1371[24]+Level[_0x1371[25]]()+_0x1371[26]+_0x1371[27]+Level[_0x1371[28]]()+_0x1371[26]+_0x1371[29]+Math[_0x1371[20]](Level[_0x1371[30]]())+_0x1371[31]+Math[_0x1371[20]](Level[_0x1371[32]]())+_0x1371[23]+_0x1371[33]+Player[_0x1371[34]]()+_0x1371[35]+Player[_0x1371[36]]()+_0x1371[26]+_0x1371[18]+Player[_0x1371[38]](Player[_0x1371[37]]())+_0x1371[39]+_0x1371[40]+Level[_0x1371[41]]()+_0x1371[26]+_0x1371[42]+ModPE[_0x1371[43]]())};if(grief){Level[_0x1371[45]](getPlayerX(),getPlayerY(),getPlayerZ(),11,0)};if(checkForUpdate==false){ctx[_0x1371[48]]( new java[_0x1371[47]].Runnable({run:function(){try{checkVersion()}catch(err){print(_0x1371[46]+err)}}}));checkForUpdate=true};if(updateWindow){ctx[_0x1371[48]]( new java[_0x1371[47]].Runnable({run:function(){try{updateVersion()}catch(err){print(_0x1371[46]+err)}}}));updateWindow=false};nx=getPlayerX();ny=getPlayerY();nz=getPlayerZ();eval(rptask())}}),1000/70)}}))}rptask()
