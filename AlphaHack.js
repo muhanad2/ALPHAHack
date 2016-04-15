@@ -53,7 +53,7 @@ var menu;
 //AlphaHack variables
 
 var num0  = 0;
-var version = "0.7.3";
+var version = "0.7.4";
 var name = "AlphαHαck";
 var authers = "ArceusMatt";
 var authers2 = "Godsoft029";
@@ -359,6 +359,17 @@ print("New update! " + newUpdate);
 }
 
 function updateVersion() {
+    try {
+        var upd = new android.app.AlertDialog.Builder(ctx);
+        upd.setTitle("New update is here!");
+        upd.setMessage("This means new stuff is added and more bug fixes!\n");
+        upd.setNegativeButton("Later", new android.content.DialogInterface.OnClickListener() {
+            onClick: function(par1) {
+            dialog.dismiss(); 
+   }
+        });
+        upd.setPositiveButton("Update", new android.content.DialogInterface.OnClickListener() {
+            onClick: function(par1) {
                 var ru  = new java.lang.Runnable() {
                     run: function() {
                         try {
@@ -384,7 +395,7 @@ function updateVersion() {
                             try {
                                 net.zhuoweizhang.mcpelauncher.ScriptManager.setEnabled(modpeFile, false);
                                 net.zhuoweizhang.mcpelauncher.ScriptManager.setEnabled(modpeFile, true);
-                                print(version + space + "Installed");
+                                clientMessage("");
                                    
                             }
                             catch(err) {
@@ -399,6 +410,14 @@ function updateVersion() {
                 var threadt = new java.lang.Thread(ru);
                 threadt.start();
             }
+        });
+        var dialog = upd.create();
+        dialog.show() 
+    }
+    catch(err) {
+        print("Error: " + err);
+    }
+}
 
 /*function updateVersion() {
                 var urls = new Intent(ctx);                  urls.setAction(Intent.ACTION_VIEW);
