@@ -12,5 +12,3 @@ Creating new UDP DoS, iOS AlphaHack app, AlphaHack website.
 -Helpers-
 
 Johnmacrocraft progress: Korean translate, autobreak.
-
-Walpo progress: Spanish translate.
