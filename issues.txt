@@ -1,6 +1,6 @@
 #1 Moving main menu button onClick listener does not work.
 #2 Leet patching some sites.
-#3 Somethings do not work without op perm - Server side issue server does not see you are cmode or using any other feature in alpha hack which can make the feature not work correctly.
+#3 Server side does not see user as Cmode ModPE.api issue
 #4 Web view dialogs do not let you use EditText text box only paste text
 #5 0.14.2 & 0.15.0.a+ issues with block launcher
 #6 DDoS feature not sending packets
