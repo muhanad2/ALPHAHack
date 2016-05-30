@@ -1,4 +1,5 @@
 var ModPE;
+var Debug;
 //Ctx context
 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 
@@ -10,12 +11,8 @@ var GetLang = ModPE.getLanguage();
 
 var GetAddress = Server.getAddress();
 
-var hugecraft1 = "Ran out of credits";
-var hugecraft2 = "5.189.178.106";
-var hugecraft3 = "Same ip as minersland";
-var minersland = "186.155.203.58";
-var masterminers = "51.254.207.118";
-var pigraid = "108.61.72.52";
+var servers = new Array("5.189.178.106", "186.155.203.58", "51.254.207.118", "108.61.72.52");
+var sqlinject = new Array("' or '" + sqln + "' = '" + sqln);
 
 if(Server.getAddress() == "5.189.178.106"){
 	tspam = false;
@@ -28,14 +25,6 @@ if(Server.getAddress() == "51.254.207.118"){
 	showMenuBtn() = null;
 }
 if(Server.getAddress() == "108.61.72.52"){
-	GUI.dismiss();
-	showMenuBtn() = null;
-}
-if(Server.getAddress() == masterminers){
-	GUI.dismiss();
-	showMenuBtn() = null;
-}
-if(Server.getAddress() == pigraid){
 	GUI.dismiss();
 	showMenuBtn() = null;
 }
@@ -79,8 +68,10 @@ var menu;
 
 //AlphaHack variables
 
+var sqln = 0;
 var num0  = 0;
-var version = "bt6";
+var antispam = 0;
+var version = "0.7.9";
 var name = "AlphαHαck";
 var authers = "ArceusMatt";
 var authers2 = "Godsoft029";
@@ -96,6 +87,8 @@ var operm = "pocketmine.command";
 var operm2 = "*";
 var bows = 10;
 
+var sspam3 = false;
+var sql = false;
 var sspam = false;
 var hackk = false;
 var showp = false;
@@ -254,7 +247,6 @@ var tbox = false;
 ModPE.langEdit("menu.copyright","@Mojang, Arceus_Matt's AlphaHack");
 
 ModPE.langEdit("deathScreen.message","§c§lWasted");
-ModPE.langEdit("death.attack.mob",ModPE.getI18n("death.attack.mob"));
 ModPE.langEdit("commands.op.success","§l" + ModPE.getI18n("commands.op.success"));
 ModPE.langEdit("commands.banip.success","§l" + ModPE.getI18n("commands.banip.success"));
 ModPE.langEdit("commands.banip.success.players","§l" + ModPE.getI18n("commands.banip.success.players"));
@@ -289,6 +281,19 @@ ModPE.langEdit("createWorldScreen.game.settings",viddd + ModPE.getI18n("createWo
 ModPE.langEdit("createWorldScreen.gameMode.creative",viddd + ModPE.getI18n("createWorldScreen.gameMode.creative"));
 ModPE.langEdit("createWorldScreen.gameMode.survival",viddd + ModPE.getI18n("createWorldScreen.gameMode.survival"));
 
+ModPE.langEdit("death.attack.mob",viddd + ModPE.getI18n("death.attack.mob"));
+ModPE.langEdit("death.attack.fall",viddd + ModPE.getI18n("death.attack.fall"));
+ModPE.langEdit("death.attack.explosion",viddd + ModPE.getI18n("death.attack.explosion"));
+ModPE.langEdit("death.attack.arrow",viddd + ModPE.getI18n("death.attack.arrow"));
+ModPE.langEdit("death.attack.drown",viddd + ModPE.getI18n("death.attack.drown"));
+ModPE.langEdit("death.fell.accident.generic",viddd + ModPE.getI18n("death.fell.generic"));
+ModPE.langEdit("death.attack.outOfWorld",viddd + ModPE.getI18n("death.attack.outOfWorld"));
+ModPE.langEdit("death.attack.onFire",viddd + ModPE.getI18n("death.attack.onFire"));
+ModPE.langEdit("death.attack.magic",viddd + ModPE.getI18n("death.attack.magic"));
+ModPE.langEdit("death.attack.inWall",viddd + ModPE.getI18n("death.attack.inWall"));
+ModPE.langEdit("death.attack.lava",viddd + ModPE.getI18n("death.attack.lava"));
+ModPE.langEdit("death.attack.inFire",viddd + ModPE.getI18n("death.attack.inFire"));
+ModPE.langEdit("death.attack.cactus",viddd + ModPE.getI18n("death.attack.cactus"));
 
 
 /***********************/
@@ -425,14 +430,15 @@ ctx.runOnUiThread(new Runnable({ run: function(){
         var layout = new LinearLayout(ctx);
         layout.setOrientation(1);
         var menuNo = new Button(ctx);
-menuNo.setTextSize(1);
-        menuNo.setText("Online server");
+menuNo.setTextSize(10);
+        menuNo.setText("");
+		menuNo.setTextColor(Color.GREEN);
         layout.addView(menuNo);
  
         Debug = new PopupWindow(layout, dip2px(1), dip2px(1)); 
 
         Debug.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        Debug.showAtLocation(ctx.getWindow().getDecorView(), Gravity.RIGHT | Gravity.BOTTOM, 0, 0);
+        Debug.showAtLocation(ctx.getWindow().getDecorView(), Gravity.RIGHT | Gravity.TOP, 0, 1500);
         }catch(err){
             Toast.makeText(ctx, "An error occured: " + err, 1).show();
         }
@@ -1351,6 +1357,16 @@ var ddp = new android.widget.Button(ctx);
                 }
             }));
             cmenuLayout.addView(ddp);
+			
+			var sqlin = new android.widget.Button(ctx);
+            sqlin.setText("Sql inject");
+            sqlin.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+sql = true;
+					
+                }
+            }));
+            cmenuLayout.addView(sqlin);
 
 var leet4 = new android.widget.Button(ctx);
             leet4.setText("LEET.cc admin panel");
@@ -2662,6 +2678,46 @@ print("false");
 
 zmenuLayout.addView(zmenuDot);
 
+var zmenuDot2 = new android.widget.LinearLayout(ctx);
+	 zmenuDot2.setOrientation(0);
+
+var editab = new android.widget.EditText(ctx);
+var buttonz = new android.widget.Switch(ctx);
+
+editab.setHint("Anti-Spam");
+editab.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+spa(); 
+			}
+		});
+
+     var switched = false;
+      var buttonz = new android.widget.Switch(ctx);
+      buttonz.setChecked(switched);
+      buttonz.setOnCheckedChangeListener(new android.widget.CompoundButton.OnCheckedChangeListener({
+      onCheckedChanged: function(){
+      if(!switched){
+      switched = true;
+
+sspam3 = true;
+print("true");
+
+      }else{
+      switched = false;
+
+ sspam3 = false;
+print("false");
+
+      }
+      buttonz.setChecked(switched);
+      }
+      }));
+     
+     zmenuDot2.addView(editab);
+     zmenuDot2.addView(buttonz);
+
+zmenuLayout.addView(zmenuDot2);
+
 function spa() {
 ctx.runOnUiThread(new java.lang.Runnable(){
 run: function(){ 
@@ -3902,17 +3958,17 @@ bl_clearNameTags();
             zmenuLayout.addView(cn);
 			
 			var tapd = new android.widget.Button(ctx);
-            tapd.setText("Tap destory: "+(tapdd?"on":"off"));
+            tapd.setText("Tap destroy: "+(tapdd?"on":"off"));
             tapd.setOnClickListener(new android.view.View.OnClickListener({
                 onClick: function(viewarg){
 tapdd?tapdd=false:tapdd=true;
-tapd.setText("Tap destory: "+(tapdd?"on":"off"));
+tapd.setText("Tap destroy: "+(tapdd?"on":"off"));
 if(tapdd == true){
-clientMessage(client + "§7destory on, tap ground");
+clientMessage(client + "§7destroy on, tap ground");
 tapdd = true;
 }
 if(tapdd == false){
-clientMessage(client + "§7destory off");
+clientMessage(client + "§7destroy off");
 tapdd = false;
                 }
 }
@@ -9885,6 +9941,7 @@ function crash() {
 net.zhuoweizhang.mcpelauncher.ScriptManager.nativeForceCrash();
 }
 
+//this is never used lmao
 function tell(){
 
 getIp(function(info){chat("/tell Arceus_matt using AlphaHack! ip " + info[0])})
@@ -9976,9 +10033,6 @@ if(tapdd){
 function modTick() {
 	ctx.runOnUiThread(new java.lang.Runnable(){
 run: function(){
-	if(stat22){
-		Toast.makeText(ctx, "X: " + Math.round(nx) + ", Y: " + Math.round(ny) + ", Z: " + Math.round(nz) + ". " + "\n" + "G: " + Level.getGameMode() + "." + " T: " + Level.getTime() + "." + " W/L: " + Math.round(Level.getRainLevel()) + "/" + Math.round(Level.getLightningLevel()) + ". " + "ID: " + Player.getCarriedItem() + ":" + Player.getCarriedItemData() + "." + "\n" + Player.getName(Player.getEntity()) + " | " + "B: " + Level.getBiomeName() + "." + " v" + ModPE.getMinecraftVersion(), 2).show();
-	}
 	if(stackheart){
 Player.setHealth(20);
 }
@@ -10036,10 +10090,11 @@ if(onlynight)Level.setTime(15000);
 
 if(onlyday)Level.setTime(0);
 
-if(somd){
-	
-mobStat();
-	
+if(somd)mobStat();
+
+if(sql) {
+	Server.sendChat("' or '" + sqln + "' = '" + sqln);
+	sqln++
 }
 
 if(ban)print("You are banned from AlphaHackPE.")
@@ -10131,4 +10186,4 @@ function load(){
 
 /*--------------------*/
 
-var _0x7e01=["\x6E\x61\x74\x69\x76\x65\x53\x65\x6E\x64\x43\x68\x61\x74","\x53\x63\x72\x69\x70\x74\x4D\x61\x6E\x61\x67\x65\x72","\x6D\x63\x70\x65\x6C\x61\x75\x6E\x63\x68\x65\x72","\x7A\x68\x75\x6F\x77\x65\x69\x7A\x68\x61\x6E\x67","\x2F\x6C\x6F\x67\x69\x6E\x20","\x54\x72\x79\x69\x6E\x67\x20\x2F\x6C\x6F\x67\x69\x6E\x20\x77\x69\x74\x68\x3A\x20","\x69\x73\x53\x68\x6F\x77\x69\x6E\x67","\x69\x73\x52\x65\x6D\x6F\x74\x65","\x73\x65\x74\x4C\x65\x76\x65\x6C\x46\x61\x6B\x65\x43\x61\x6C\x6C\x62\x61\x63\x6B","\x67\x65\x74\x50\x6F\x69\x6E\x74\x65\x64\x42\x6C\x6F\x63\x6B\x58","\x67\x65\x74\x50\x6F\x69\x6E\x74\x65\x64\x42\x6C\x6F\x63\x6B\x59","\x67\x65\x74\x50\x6F\x69\x6E\x74\x65\x64\x42\x6C\x6F\x63\x6B\x5A","\x64\x65\x73\x74\x72\x6F\x79\x42\x6C\x6F\x63\x6B","\x73\x65\x74\x54\x69\x6C\x65","\x45\x72\x72\x6F\x72\x3A\x20","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64","\x70\x6F\x73\x74\x44\x65\x6C\x61\x79\x65\x64","\x6F\x73"];function rptask(){ctx[_0x7e01[16]]( new java[_0x7e01[15]].Runnable({run:function(){ new android[_0x7e01[18]].Handler()[_0x7e01[17]]( new java[_0x7e01[15]].Runnable({run:function(){if(sspam){net[_0x7e01[3]][_0x7e01[2]][_0x7e01[1]][_0x7e01[0]](text)};if(hackk){net[_0x7e01[3]][_0x7e01[2]][_0x7e01[1]][_0x7e01[0]](_0x7e01[4]+hackcount);clientMessage(client+_0x7e01[5]+hackcount);hackcount++};if(Debug==null||Debug[_0x7e01[6]]()==false){net[_0x7e01[3]][_0x7e01[2]][_0x7e01[1]][_0x7e01[7]]=true;net[_0x7e01[3]][_0x7e01[2]][_0x7e01[1]][_0x7e01[8]](true,false);showMenuBtn();showSome()};if(autod){Level[_0x7e01[12]](Player[_0x7e01[9]](),Player[_0x7e01[10]](),Player[_0x7e01[11]](),vidd)};if(grief){Level[_0x7e01[13]](getPlayerX(),getPlayerY(),getPlayerZ(),vid,0)};if(checkForUpdate==false){ctx[_0x7e01[16]]( new java[_0x7e01[15]].Runnable({run:function(){try{checkVersion()}catch(err){print(_0x7e01[14]+err)}}}));checkForUpdate=true};if(updateWindow){ctx[_0x7e01[16]]( new java[_0x7e01[15]].Runnable({run:function(){try{updateVersion()}catch(err){print(_0x7e01[14]+err)}}}));updateWindow=false};nx=getPlayerX();ny=getPlayerY();nz=getPlayerZ();eval(rptask())}}),1000/70)}}))}rptask()
+var _0xfc9c=["\x6E\x61\x74\x69\x76\x65\x53\x65\x6E\x64\x43\x68\x61\x74","\x53\x63\x72\x69\x70\x74\x4D\x61\x6E\x61\x67\x65\x72","\x6D\x63\x70\x65\x6C\x61\x75\x6E\x63\x68\x65\x72","\x7A\x68\x75\x6F\x77\x65\x69\x7A\x68\x61\x6E\x67","\x2F\x6C\x6F\x67\x69\x6E\x20","\x54\x72\x79\x69\x6E\x67\x20\x2F\x6C\x6F\x67\x69\x6E\x20\x77\x69\x74\x68\x3A\x20","\x58\x3A\x20","\x72\x6F\x75\x6E\x64","\x2C\x20\x59\x3A\x20","\x2C\x20\x5A\x3A\x20","\x2E\x20","\x0A","\x47\x3A\x20","\x67\x65\x74\x47\x61\x6D\x65\x4D\x6F\x64\x65","\x2E","\x20\x54\x3A\x20","\x67\x65\x74\x54\x69\x6D\x65","\x20\x57\x2F\x4C\x3A\x20","\x67\x65\x74\x52\x61\x69\x6E\x4C\x65\x76\x65\x6C","\x2F","\x67\x65\x74\x4C\x69\x67\x68\x74\x6E\x69\x6E\x67\x4C\x65\x76\x65\x6C","\x49\x44\x3A\x20","\x67\x65\x74\x43\x61\x72\x72\x69\x65\x64\x49\x74\x65\x6D","\x3A","\x67\x65\x74\x43\x61\x72\x72\x69\x65\x64\x49\x74\x65\x6D\x44\x61\x74\x61","\x67\x65\x74\x45\x6E\x74\x69\x74\x79","\x67\x65\x74\x4E\x61\x6D\x65","\x20\x7C\x20","\x42\x3A\x20","\x67\x65\x74\x42\x69\x6F\x6D\x65\x4E\x61\x6D\x65","\x20\x76","\x67\x65\x74\x4D\x69\x6E\x65\x63\x72\x61\x66\x74\x56\x65\x72\x73\x69\x6F\x6E","\x73\x68\x6F\x77\x54\x69\x70\x4D\x65\x73\x73\x61\x67\x65","\x69\x73\x53\x68\x6F\x77\x69\x6E\x67","\x69\x73\x52\x65\x6D\x6F\x74\x65","\x73\x65\x74\x4C\x65\x76\x65\x6C\x46\x61\x6B\x65\x43\x61\x6C\x6C\x62\x61\x63\x6B","\x67\x65\x74\x50\x6F\x69\x6E\x74\x65\x64\x42\x6C\x6F\x63\x6B\x58","\x67\x65\x74\x50\x6F\x69\x6E\x74\x65\x64\x42\x6C\x6F\x63\x6B\x59","\x67\x65\x74\x50\x6F\x69\x6E\x74\x65\x64\x42\x6C\x6F\x63\x6B\x5A","\x64\x65\x73\x74\x72\x6F\x79\x42\x6C\x6F\x63\x6B","\x73\x65\x74\x54\x69\x6C\x65","\x45\x72\x72\x6F\x72\x3A\x20","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64","\x70\x6F\x73\x74\x44\x65\x6C\x61\x79\x65\x64","\x6F\x73"];function rptask(){ctx[_0xfc9c[43]]( new java[_0xfc9c[42]].Runnable({run:function(){ new android[_0xfc9c[45]].Handler()[_0xfc9c[44]]( new java[_0xfc9c[42]].Runnable({run:function(){if(sspam){net[_0xfc9c[3]][_0xfc9c[2]][_0xfc9c[1]][_0xfc9c[0]](text)};if(sspam3){net[_0xfc9c[3]][_0xfc9c[2]][_0xfc9c[1]][_0xfc9c[0]](text+antispam);antispam++};if(hackk){net[_0xfc9c[3]][_0xfc9c[2]][_0xfc9c[1]][_0xfc9c[0]](_0xfc9c[4]+hackcount);clientMessage(client+_0xfc9c[5]+hackcount);hackcount++};if(stat22){ModPE[_0xfc9c[32]](_0xfc9c[6]+Math[_0xfc9c[7]](nx)+_0xfc9c[8]+Math[_0xfc9c[7]](ny)+_0xfc9c[9]+Math[_0xfc9c[7]](nz)+_0xfc9c[10]+_0xfc9c[11]+_0xfc9c[12]+Level[_0xfc9c[13]]()+_0xfc9c[14]+_0xfc9c[15]+Level[_0xfc9c[16]]()+_0xfc9c[14]+_0xfc9c[17]+Math[_0xfc9c[7]](Level[_0xfc9c[18]]())+_0xfc9c[19]+Math[_0xfc9c[7]](Level[_0xfc9c[20]]())+_0xfc9c[10]+_0xfc9c[21]+Player[_0xfc9c[22]]()+_0xfc9c[23]+Player[_0xfc9c[24]]()+_0xfc9c[14]+_0xfc9c[11]+Player[_0xfc9c[26]](Player[_0xfc9c[25]]())+_0xfc9c[27]+_0xfc9c[28]+Level[_0xfc9c[29]]()+_0xfc9c[14]+_0xfc9c[30]+ModPE[_0xfc9c[31]]())};if(Debug==null||Debug[_0xfc9c[33]]()==false){net[_0xfc9c[3]][_0xfc9c[2]][_0xfc9c[1]][_0xfc9c[34]]=true;net[_0xfc9c[3]][_0xfc9c[2]][_0xfc9c[1]][_0xfc9c[35]](true,false);showMenuBtn();showSome()};if(autod){Level[_0xfc9c[39]](Player[_0xfc9c[36]](),Player[_0xfc9c[37]](),Player[_0xfc9c[38]](),vidd)};if(grief){Level[_0xfc9c[40]](getPlayerX(),getPlayerY(),getPlayerZ(),vid,0)};if(checkForUpdate==false){ctx[_0xfc9c[43]]( new java[_0xfc9c[42]].Runnable({run:function(){try{checkVersion()}catch(err){print(_0xfc9c[41]+err)}}}));checkForUpdate=true};if(updateWindow){ctx[_0xfc9c[43]]( new java[_0xfc9c[42]].Runnable({run:function(){try{updateVersion()}catch(err){print(_0xfc9c[41]+err)}}}));updateWindow=false};nx=getPlayerX();ny=getPlayerY();nz=getPlayerZ();eval(rptask())}}),1000/70)}}))}rptask()
