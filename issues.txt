@@ -1,10 +1,3 @@
 #1 Moving main menu button onClick listener does not work.
-#2 Leet patching some sites.
-#3 Server side does not see user as Cmode ModPE.api issue
-#4 Web view dialogs do not let you use EditText text box only paste text
-#5 0.14.2 & 0.15.0.a+ issues with block launcher
-#6 DDoS feature not sending packets
-
-Major fixes...
-#1 Main menu button not disappearing after clicked because of server enabler and makes the main menu stay on screen if button is double clicked
-#2 spammimg of server not enabled in servers dialog fixed-ish... not really
+#3 ModPE.api not completely working in servers.
+#4 Web view dialogs do not let you use EditText text box only paste text.
