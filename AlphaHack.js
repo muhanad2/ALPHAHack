@@ -2008,12 +2008,11 @@ Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
       }}));
       }
 
-var dd = new android.widget.Button(ctx);
+/*var dd = new android.widget.Button(ctx);
 		dd.setText("Deepweb");
 		dd.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
 var alert = new android.app.AlertDialog.Builder(ctx); 
-/*alert.setTitle("Alphα Hαck" + space + version + space + "changelog"); */
 
 var scroll = new android.widget.ScrollView(ctx); 
 var layout = new android.widget.LinearLayout(ctx); 
@@ -2040,7 +2039,7 @@ var dialog = alert.create();
 dialog.show();
 			}
 		});
-		cmenuLayout.addView(dd);
+		cmenuLayout.addView(dd);*/
 
       var _0x782c=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x73\x6B\x75\x6E\x6B\x73\x77\x6F\x72\x6B\x65\x64\x70\x32\x63\x67\x2E\x6F\x6E\x69\x6F\x6E\x2E\x6C\x69\x6E\x6B","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function deepweb(){ctx[_0x782c[12]]( new java[_0x782c[11]].Runnable({run:function(){var _0xb717x2= new android[_0x782c[0]].WebView(ctx);var _0xb717x3=_0xb717x2[_0x782c[1]]();_0xb717x3[_0x782c[2]](true);_0xb717x2[_0x782c[3]]( new android[_0x782c[0]].WebChromeClient());_0xb717x2[_0x782c[4]]( new android[_0x782c[0]].WebViewClient());_0xb717x2[_0x782c[6]](_0x782c[5]); new android[_0x782c[10]][_0x782c[9]].Builder(ctx)[_0x782c[8]](_0xb717x2)[_0x782c[7]]()}}))}
 
