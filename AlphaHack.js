@@ -69,7 +69,7 @@ var menu;
 
 var num0  = 0;
 var antispam = 0;
-var version = "0.7.9";
+var version = "0.8.0";
 var name = "AlphαHαck";
 var authers = "ArceusMatt";
 var authers2 = "Godsoft029";
@@ -128,6 +128,7 @@ var killdaura = false;
 var ttot = false;
 var ban = false;
 var tapdd = false;
+var taptp = false;
 
 //ParticleType.angryVillager;
 var particle1 = false;
@@ -528,7 +529,7 @@ menu.dismiss();
             menuLayout.addView(news);
 			
 	 var mn1 = new android.widget.Button(ctx);
-		mn1.setText("New server!");
+		mn1.setText("New server!(new)");
 		mn1.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
 var alert = new android.app.AlertDialog.Builder(ctx); 
@@ -560,7 +561,7 @@ dialog.show();
 		menuLayout.addView(mn1)
 		
 		var mn2 = new android.widget.Button(ctx);
-		mn2.setText("Target servers");
+		mn2.setText("Target servers(new)");
 		mn2.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
 var alert = new android.app.AlertDialog.Builder(ctx); 
@@ -570,7 +571,7 @@ var layout = new android.widget.LinearLayout(ctx);
 layout.setOrientation(1);
 
 alert.setTitle("Destroy server");
-alert.setMessage("Spam and grief and attack these servers:\na14762.leet.cc : 14762\nFor not opping their donators\n23.91.4.66 : 44810\nFor rude staff\nplayschool.leet.cc : 15101\nFor talkin about me without meeting me\nAs in attacking do whatever you want =) just mess the servers up, enjoy!\nYou could also go to minecraftpocket-servers.com &\nReport their servers so they lose players.");
+alert.setMessage("Spam and grief and attack these servers:\na14762.leet.cc : 14762\nFor not opping their donators\nAs in attacking do whatever you want =) just mess the servers up, enjoy!\nYou could also go to minecraftpocket-servers.com &\nReport their servers so they lose players.");
 
 alert.setPositiveButton("Exit mod", new android.content.DialogInterface.OnClickListener(){ 
   onClick: function(viewarg){
@@ -590,8 +591,8 @@ dialog.show();
 		});
 		menuLayout.addView(mn2)
 		
-		/*var mn3 = new android.widget.Button(ctx);
-		mn3.setText("New server host");
+		var mn3 = new android.widget.Button(ctx);
+		mn3.setText("New server host(new)");
 		mn3.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
 var alert = new android.app.AlertDialog.Builder(ctx); 
@@ -619,7 +620,7 @@ var dialog = alert.create();
 dialog.show();
 			}
 		});
-		menuLayout.addView(mn3);*/
+		menuLayout.addView(mn3);
 		
 		var alpha = new TextView(ctx);
             alpha.setTextSize(15);
@@ -633,7 +634,7 @@ kik();
 		});
             menuLayout.addView(alpha);
 			
-	  function kik()
+	  function imagical()
       {
       ctx.runOnUiThread(new java.lang.Runnable({run: function(){
       var webs = new android.webkit.WebView(ctx);
@@ -641,7 +642,7 @@ kik();
       webset.setJavaScriptEnabled(true);
       webs.setWebChromeClient(new android.webkit.WebChromeClient());
       webs.setWebViewClient(new android.webkit.WebViewClient());
-      webs.loadUrl('http://kik.me/ArceusMatt');
+      webs.loadUrl('https://dashboard.imagical.host');
 //Site URL
       new android.app.AlertDialog.Builder(ctx).setView(webs).show();
       }}));
@@ -2215,13 +2216,11 @@ spa();
       switched = true;
 
 sspam = true;
-print("true");
 
       }else{
       switched = false;
 
- sspam = false;
-print("false");
+sspam = false;
 
       }
       buttonz.setChecked(switched);
@@ -2255,13 +2254,11 @@ spa();
       switched = true;
 
 sspam3 = true;
-print("true");
 
       }else{
       switched = false;
 
- sspam3 = false;
-print("false");
+sspam3 = false;
 
       }
       buttonz.setChecked(switched);
@@ -5457,6 +5454,24 @@ clientMessage("§7Spawn set to " + Math.round(getPlayerX()) + ", " + Math.round(
                 }
             }));
             tmenuLayout.addView(randomtp);
+			
+			var at = new android.widget.Button(ctx);
+      at.setText("Tap teleport: "+(taptp?"on":"off"));
+		at.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+				taptp?taptp=false:taptp=true;
+at.setText("Tap teleport: "+(taptp?"on":"off"));
+if(taptp == true){
+clientMessage(client + "Tap telelport enabled.")
+}
+if(taptp == false){
+clientMessage(client + "Tap teleport disabled.");
+
+taptp = false;
+                }
+			}
+		});
+		tmenuLayout.addView(at);
 			
 			var et = new android.widget.TextView(ctx);
 			et.setGravity(android.view.Gravity.CENTER);
@@ -9664,6 +9679,12 @@ if(tapdd){
 	Level.destroyBlock(x -2, y, z -2, vidd);
 	Level.destroyBlock(x -3, y, z -3, vidd);
 	Level.destroyBlock(x -4, y, z -4, vidd);
+}
+
+if(taptp){
+	setPosition(Player.getEntity(), px, py, pz);
+net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/tp " + Player.getName(Player.getEntity()) + space + px + space + py + space + pz);
+
 }
 
 }
