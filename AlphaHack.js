@@ -317,51 +317,7 @@ clientMessage(client + "\n§7Server §emc31069.imagical.host - 31069" + "\n" + "
 clientMessage("§2≡≡=======»§a>§9 α §a<§2«======≡≡§f§r");
 }
 
-var checkForUpdate=false;
-var updateWindow=false; 
-var newUpdate;
-var updateMod;
 
-function checkVersion() {
-    var r  = new java.lang.Runnable() {
-        run: function() {
-            try {
- var urls= new java.net.URL("https://raw.githubusercontent.com/ArceusMatt/ALPHAHack/master/Version.txt");
-                var check = urls.openConnection();
-                check.setRequestMethod("GET");
-                check.setDoOutput(true);
-                check.connect();
-                check.getContentLength();
-                var script = check.getInputStream();
-                var typeb = java.lang.reflect.Array.newInstance(java.lang.Byte.TYPE, 1024);
-                var byteCount = 0; 
-                var checkedVersion;
-                while((byteCount = script.read(typeb)) != -1) { 
-                    checkedVersion = new java.lang.String(typeb, 0, byteCount);               
-                }
-                newUpdate = checkedVersion;
-                if(version+"\n" != checkedVersion) {
-print("New update! " + newUpdate);
-                    updateWindow=true;
-                }
-                else if(version+"\n"==checkedVersion){
-                /*print("No update available");*/
-                }
-            }
-            catch(err) {
-                
-                if(err=="Java or site error: ") {
-                                
-                            }
-                            else {
-                                print("Error: " + err);
-                            } 
-            }
-        }
-}
-    var threadt = new java.lang.Thread(r);
-    threadt.start();
-}
 
 function updateVersion() {
     try {
@@ -957,14 +913,14 @@ print("The new Dialog Is Malfunctioning:"+e);
                 onClick: function(viewarg){         
 GUIColor = GUIColor1
 var GUIName = Color.WHITE;
-if(GUIName = Color.WHITE){
+if(GUIColor =! GUIColor1){
 	var file = new java.io.File( android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/AlphaHackPE/menus/", "color.txt/");
         var path=android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/AlphaHackPE/menus/" ; 
         java.io.File(path).mkdirs(); 
         file.createNewFile();
         var write = new java.io.OutputStreamWriter(new java.io.FileOutputStream(file));
         var string="";
-        newcolor = Color.YELLOW
+        newcolor = GUIColor2
         write.append(newcolor.toString());
         write.close();
 }
