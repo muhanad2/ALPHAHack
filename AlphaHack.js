@@ -228,6 +228,7 @@ function checkcolor(){
     GUIColor = newcolor
     }
 }
+checkcolor();
 
 ModPE.langEdit("menu.copyright","@Mojang, Arceus_Matt's AlphaHack");
 
