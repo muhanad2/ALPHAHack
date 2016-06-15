@@ -58,7 +58,6 @@ var viddd = "§3";
 var tbox = false;
 
 var sspam3 = false;
-var sql = false;
 var sspam = false;
 var hackk = false;
 var showp = false;
@@ -207,6 +206,28 @@ var GUIBtns11 = Color.GREEN;
 var GUIBtns12 = Color.MAGENTA;
 
 var GUISize = 3;
+
+function checkcolor(){
+ var line, string = "";
+    var file = new java.io.File( android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/AlphaHackPE/menus/", "colors.txt/");
+    var path=android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/AlphaHackPE/menus/"; 
+    if(!file.exists()){
+    clientMessage("Theres an error here"); 
+  java.io.File(path).mkdirs(); 
+    }
+    else {
+    var readfile = new java.io.BufferedReader(new java.io.FileReader(file));
+    while((line = readfile.readLine()) != null) {
+        var t1 = line + java.lang.System.getProperty("line.seperator");
+        string += t1.substring(0, t1.length - 4);
+        var t2 = line;
+        if((line = readfile.readLine()) != null) string += "\n";
+        line = t2;
+    } 
+    newcolor=parseInt(string.split(",")[0]);
+    GUIColor = newcolor
+    }
+}
 
 ModPE.langEdit("menu.copyright","@Mojang, Arceus_Matt's AlphaHack");
 
@@ -399,11 +420,8 @@ menuBtn.setTextSize(20);
         //menuBtn.setText("");
         menuBtn.setOnClickListener(new View.OnClickListener({
             onClick: function(viewarg){
-
 mainMenu();
-
 GUI.dismiss();
-
             }
         }));
         layout.addView(menuBtn);
@@ -455,7 +473,7 @@ Toast.makeText(ctx, "Closed successfully", 1).show();
             }));
             menuLayout.addView(exitb);
 			
-			var news = new TextView(ctx);
+	    var news = new TextView(ctx);
             news.setTextSize(15);
             news.setText("News");
             news.setTextColor(Color.WHITE);
@@ -512,6 +530,7 @@ alert.setPositiveButton("Exit mod", new android.content.DialogInterface.OnClickL
     
 dialog.dismiss();
 menu.dismiss();
+showMenuBtn();
       }});
 
 alert.setNegativeButton("Back to menu", new android.content.DialogInterface.OnClickListener(){ 
@@ -542,6 +561,7 @@ alert.setPositiveButton("Go to site", new android.content.DialogInterface.OnClic
   onClick: function(viewarg){
     
 dialog.dismiss();
+showMenuBtn();
 imagical();
       }});
 
@@ -586,11 +606,8 @@ if(GetLang=="it_IT")btn1.setText('Impostazioni');
 btn1.setTextColor(GUIBtns);
 		btn1.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
-
-lmenu_menu();  
-
+lmenu_menu(); 
 menu.dismiss(); 
-
 			}
 		});
 		menuLayout.addView(btn1);
@@ -636,8 +653,8 @@ var exit = new android.widget.Button(ctx);
 		exit.setText("Exit");
 		exit.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
-             lmenu.dismiss();
-showMenuBtn();
+				lmenu.dismiss();
+				showMenuBtn();
 			}
 		});
 		lmenuLayout.addView(exit);
@@ -837,11 +854,11 @@ new5();
             }));
             lmenuLayout.addView(mct);
 			
-					function new5() {
+function new5() {
 ctx.runOnUiThread(new java.lang.Runnable(){
 run: function(){ 
 try{
-fov = new android.widget.PopupWindow();
+new5 = new android.widget.PopupWindow();
 var Layer = new android.widget.LinearLayout(ctx);
 var select1 = new android.widget.Button(ctx);
 var select2 = new android.widget.Button(ctx);
@@ -860,6 +877,7 @@ Layer.addView(select1);
 Layer.addView(select2);
 Layer.addView(select3);
 Layer.addView(select4);
+
 Layer.addView(select5);
 //Layer.addView(Exit);
  
@@ -932,7 +950,17 @@ print("The new Dialog Is Malfunctioning:"+e);
                 onClick: function(viewarg){         
 GUIColor = GUIColor1
 var GUIName = Color.WHITE;
-settings1();
+if(GUIName = Color.WHITE){
+	var file = new java.io.File( android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/AlphaHackPE/menus/", "color.txt/");
+        var path=android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/AlphaHackPE/menus/" ; 
+        java.io.File(path).mkdirs(); 
+        file.createNewFile();
+        var write = new java.io.OutputStreamWriter(new java.io.FileOutputStream(file));
+        var string="";
+        var newcolor = "Color.WHITE"
+        write.append(newcolor.toString());
+        write.close();
+}
                 }
             }));
             lmenuLayout.addView(l1);
@@ -1146,8 +1174,8 @@ GUIBtns = GUIBtns12
 		exit2.setText("Exit");
 		exit2.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
-             lmenu.dismiss();
-showMenuBtn();
+				lmenu.dismiss();
+				showMenuBtn();
 			}
 		});
 		lmenuLayout.addView(exit2);
@@ -1174,63 +1202,6 @@ menu = new PopupWindow(menuLayout1, ctx.getWindowManager().getDefaultDisplay().g
 menuLayout1.setBackgroundDrawable(bg);
 menuLayout1.setPadding(20,0,20,0);
             menu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
-            }catch(error){
-                Toast.makeText(ctx, "An error occured: " + error, 1).show();
-            }
-    }}));
-}
-
-/***********************/
-
-//Main menu header.
-
-function headerView(){
-ctx.runOnUiThread(new Runnable({ run: function(){
-        try{
-            var headerLayout = new LinearLayout(ctx);
-            var headerScroll = new ScrollView(ctx);
-            var headerLayout1 = new LinearLayout(ctx);
-            headerLayout.setOrientation(1);
-            headerLayout1.setOrientation(1);
-            headerScroll.addView(headerLayout);
-            headerLayout1.addView(headerScroll);
-
-            var name = new TextView(ctx);
-            name.setTextSize(20);
-            name.setText("Alphα Hαck" + space + version + space + copyright);
-            name.setTextColor(GUIName);
-            name.setGravity(Gravity.CENTER);
-            headerLayout.addView(name);
-
-var maker = new TextView(ctx);
-            maker.setTextSize(15);
-            maker.setText(authers + space + "&" + space + authers2);
-            maker.setTextColor(GUIName);
-            maker.setGravity(Gravity.CENTER);
-            headerLayout.addView(maker);
-
-var exitb = new Button(ctx);
-            exitb.setText("Exit AlphαHαck");
-exitb.setTextColor(Color.RED);
-            exitb.setOnClickListener(new View.OnClickListener({
-                onClick: function(viewarg){
-
-                    menu.dismiss();
-
-header.dismiss(); 
-
-Toast.makeText(ctx, "Closed successfully", 1).show();
-
-showMenuBtn();
-                }
-            }));
-            headerLayout.addView(exitb);
-
-header = new PopupWindow(headerLayout1, dip2px(180), dip2px(180));
-
-header = new PopupWindow(headerLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/3, ctx.getWindowManager().getDefaultDisplay().getHeight()/4);
-header.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            header.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | Gravity.TOP, 0, 0);
             }catch(error){
                 Toast.makeText(ctx, "An error occured: " + error, 1).show();
             }
