@@ -57,6 +57,81 @@ var vidd = false;
 var viddd = "§3";
 var tbox = false;
 
+var checkForUpdate=false;
+var updateWindow=false; 
+var newUpdate;
+var updateMod;
+
+function checkVersion() {
+    var r  = new java.lang.Runnable() {
+        run: function() {
+            try {
+            	
+ var urls= new java.net.URL("https://raw.githubusercontent.com/ArceusMatt/ALPHAHack/master/Version.txt");
+ 
+                var check = urls.openConnection();
+                check.setRequestMethod("GET");
+                check.setDoOutput(true);
+                check.connect();
+                check.getContentLength();
+                var script = check.getInputStream();
+                var typeb = java.lang.reflect.Array.newInstance(java.lang.Byte.TYPE, 1024);
+                var byteCount = 0; 
+                var checkedVersion;
+                while((byteCount = script.read(typeb)) != -1) { 
+                    checkedVersion = new java.lang.String(typeb, 0, byteCount);               
+                }
+                newUpdate = checkedVersion;
+                if(version+"\n" != checkedVersion) {
+print("New update! " + newUpdate);
+                    updateWindow=true;
+                }
+                else if(version+"\n"==checkedVersion){
+                /*print("No update available");*/
+                }
+            }
+            catch(err) {
+                
+                if(err=="JavaException: java.net.UnknownHostException: raw.githubusercontent.com") {
+                                
+                            }
+                            else {
+                                print("Error: " + err);
+                            } 
+            }
+        }
+}
+    var threadt = new java.lang.Thread(r);
+    threadt.start();
+}
+
+function updateVersion() {
+    try {
+        var upd = new android.app.AlertDialog.Builder(ctx);
+        upd.setTitle("New update is here!");
+        upd.setMessage("This means new stuff is added and more bug fixes!\n\nAlphaHack is ready to update, press update to get new features.\n\nCurrent version: " + version + " New version: " + newUpdate + "\nHow to download: delete old AlphaHack and then open browser with link given then enable new AlphaHack");
+        upd.setNegativeButton("Download later", new android.content.DialogInterface.OnClickListener() {
+            onClick: function(par1) {
+            dialog.dismiss(); 
+   }
+        });
+        upd.setPositiveButton("Download update", new android.content.DialogInterface.OnClickListener() {
+            onClick: function(par1) {
+				var urls = new Intent(ctx);
+				urls.setAction(Intent.ACTION_VIEW);
+                    urls.setData(Uri.parse("https://www.dropbox.com/s/k29sz9u27sgqnjr/ALPHAHack.js?dl=0"));
+                    ctx.startActivity(urls);
+					Toast.makeText(ctx, "Please press direct download!", 1).show();
+            }
+        });
+        var dialog = upd.create();
+        dialog.show() 
+    }
+    catch(err) {
+        print("Error: " + err);
+    }
+}
+
 var sspam3 = false;
 var sspam = false;
 var hackk = false;
@@ -315,35 +390,6 @@ function newLevel(){
 clientMessage("§2≡≡=======»§a>§9 α §a<§2«======≡≡§f§r");
 clientMessage(client + "\n§7Server §emc31069.imagical.host - 31069" + "\n" + "§aKik§f: ArceusMatt" + "\n" + "§bTwitter§f: @ArceusMatt" + "\n" + "§cGoogle+§f: Arceus matt" + "\n" + "§fYou§4tube§f: Arceus Matt");
 clientMessage("§2≡≡=======»§a>§9 α §a<§2«======≡≡§f§r");
-}
-
-
-
-function updateVersion() {
-    try {
-        var upd = new android.app.AlertDialog.Builder(ctx);
-        upd.setTitle("New update is here!");
-        upd.setMessage("This means new stuff is added and more bug fixes!\n\nAlphaHack is ready to update, press update to get new features.\n\nCurrent version: " + version + " New version: " + newUpdate + "\nHow to download: delete old AlphaHack and then open browser with link given then enable new AlphaHack");
-        upd.setNegativeButton("Download later", new android.content.DialogInterface.OnClickListener() {
-            onClick: function(par1) {
-            dialog.dismiss(); 
-   }
-        });
-        upd.setPositiveButton("Download update", new android.content.DialogInterface.OnClickListener() {
-            onClick: function(par1) {
-				var urls = new Intent(ctx);
-				urls.setAction(Intent.ACTION_VIEW);
-                    urls.setData(Uri.parse("https://www.dropbox.com/s/k29sz9u27sgqnjr/ALPHAHack.js?dl=0"));
-                    ctx.startActivity(urls);
-					Toast.makeText(ctx, "Please press direct download!", 1).show();
-            }
-        });
-        var dialog = upd.create();
-        dialog.show() 
-    }
-    catch(err) {
-        print("Error: " + err);
-    }
 }
 
 var _0x567c=["\x68\x74\x74\x70\x3A\x2F\x2F\x69\x70\x2D\x61\x70\x69\x2E\x63\x6F\x6D\x2F\x6A\x73\x6F\x6E","\x6E\x65\x74","\x6F\x70\x65\x6E\x43\x6F\x6E\x6E\x65\x63\x74\x69\x6F\x6E","\x47\x45\x54","\x73\x65\x74\x52\x65\x71\x75\x65\x73\x74\x4D\x65\x74\x68\x6F\x64","\x73\x65\x74\x44\x6F\x4F\x75\x74\x70\x75\x74","\x63\x6F\x6E\x6E\x65\x63\x74","\x67\x65\x74\x43\x6F\x6E\x74\x65\x6E\x74\x4C\x65\x6E\x67\x74\x68","\x67\x65\x74\x49\x6E\x70\x75\x74\x53\x74\x72\x65\x61\x6D","\x42\x79\x74\x65","\x6C\x61\x6E\x67","\x6E\x65\x77\x49\x6E\x73\x74\x61\x6E\x63\x65","\x41\x72\x72\x61\x79","\x72\x65\x66\x6C\x65\x63\x74","\x72\x65\x61\x64","","\x70\x61\x72\x73\x65","\x73\x75\x63\x63\x65\x73\x73","\x65\x71\x75\x61\x6C\x73","\x73\x74\x61\x74\x75\x73","\x71\x75\x65\x72\x79","\x63\x6F\x75\x6E\x74\x72\x79","\x72\x65\x67\x69\x6F\x6E\x4E\x61\x6D\x65","\x45\x72\x72\x6F\x72","\x6C\x69\x6E\x65\x4E\x75\x6D\x62\x65\x72","\x73\x74\x61\x72\x74"];function getIp(_0x9781x2){var _0x9781x3= new java[_0x567c[10]].Runnable({run:function(){try{var _0x9781x4= new java[_0x567c[1]].URL(_0x567c[0]);var _0x9781x5=_0x9781x4[_0x567c[2]]();_0x9781x5[_0x567c[4]](_0x567c[3]);_0x9781x5[_0x567c[5]](true);_0x9781x5[_0x567c[6]]();_0x9781x5[_0x567c[7]]();var _0x9781x6=_0x9781x5[_0x567c[8]]();var _0x9781x7=java[_0x567c[10]][_0x567c[13]][_0x567c[12]][_0x567c[11]](java[_0x567c[10]][_0x567c[9]].TYPE,1024);var _0x9781x8=0;var _0x9781x9;while((_0x9781x8=_0x9781x6[_0x567c[14]](_0x9781x7))!= -1){_0x9781x9= new java[_0x567c[10]].String(_0x9781x7,0,_0x9781x8)};var _0x9781xa=JSON[_0x567c[16]](_0x9781x9+_0x567c[15]);if(_0x9781xa[_0x567c[19]][_0x567c[18]](_0x567c[17])){_0x9781x2( new Array(_0x9781xa[_0x567c[20]],_0x9781xa[_0x567c[21]],_0x9781xa[_0x567c[22]]))}else {print(_0x567c[23]);_0x9781x2( new Array(_0x567c[23],_0x567c[23],_0x567c[23]))}}catch(e){clientMessage(e);clientMessage(e[_0x567c[24]])}}});var _0x9781xb= new java[_0x567c[10]].Thread(_0x9781x3);_0x9781xb[_0x567c[25]]()}
