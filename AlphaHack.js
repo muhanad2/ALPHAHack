@@ -1,3 +1,8 @@
+var ModPE;
+var Debug;
+var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
+var GetLang = ModPE.getLanguage();
+
 /*
 
 Main author: Arceusmatt/Arceu_matt.
@@ -11,11 +16,6 @@ Contact @ArceusMatt for any questions
 Always get my revenge. =) enjoy!
 
 */
-
-var ModPE;
-var Debug;
-var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
-var GetLang = ModPE.getLanguage();
 
 var Button = android.widget.Button;
 var LinearLayout = android.widget.LinearLayout;
@@ -207,6 +207,8 @@ var GUIBtns12 = Color.MAGENTA;
 
 var GUISize = 3;
 
+var newcolor = GUIColor;
+
 function checkcolor(){
  var line, string = "";
     var file = new java.io.File( android.os.Environment.getExternalStorageDirectory().getAbsolutePath()+"/AlphaHackPE/menus/", "colors.txt/");
@@ -348,7 +350,7 @@ print("New update! " + newUpdate);
             }
             catch(err) {
                 
-                if(err=="JavaException: java.net.UnknownHostException: raw.githubusercontent.com") {
+                if(err=="Java or site error: ") {
                                 
                             }
                             else {
@@ -675,7 +677,7 @@ net.zhuoweizhang.mcpelauncher.ScriptManager.setEnabled(modpeFile, false);
 		});
 		lmenuLayout.addView(pa);
 		
-					var exitc = new Button(ctx);
+	    var exitc = new Button(ctx);
             exitc.setText("Complete exit");
             exitc.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
@@ -962,7 +964,7 @@ if(GUIName = Color.WHITE){
         file.createNewFile();
         var write = new java.io.OutputStreamWriter(new java.io.FileOutputStream(file));
         var string="";
-        var newcolor = "Color.WHITE"
+        newcolor = Color.YELLOW
         write.append(newcolor.toString());
         write.close();
 }
