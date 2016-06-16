@@ -3572,6 +3572,22 @@ function sethealth(){
 Entity.setMaxHealth(getPlayerEnt(), newheart);
 }
 
+var spider = new Button(ctx);
+spider.setText("Spider wall glider");
+spider.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+				Level.setTile(getPlayerX(), getPlayerY(), getPlayerZ(), 65, 0);
+				Level.setTile(getPlayerX(), getPlayerY() +1, getPlayerZ(), 65, 0);
+				Level.setTile(getPlayerX(), getPlayerY() +2, getPlayerZ(), 65, 0);
+				Level.setTile(getPlayerX(), getPlayerY() +3, getPlayerZ(), 65, 0);
+				Level.setTile(getPlayerX(), getPlayerY() +4, getPlayerZ(), 65, 0);
+				Level.setTile(getPlayerX(), getPlayerY() +6, getPlayerZ(), 65, 0);
+				Level.setTile(getPlayerX(), getPlayerY() +7, getPlayerZ(), 65, 0);
+                }
+            }));
+            zmenuLayout.addView(spider);
+
+
 		var B_exit = new android.widget.Button(ctx);
 		B_exit.setText("Exit");
 		B_exit.setOnClickListener(new android.view.View.OnClickListener() {
