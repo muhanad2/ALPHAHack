@@ -1,25 +1,18 @@
 var ModPE;
 var Debug;
 var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
+
 var GetLang = ModPE.getLanguage();
 
 /*
-
-Main author: Arceusmatt/Arceu_matt.
+Main author: ArceusMatt/Arceu_matt.
 Help by: GodSoft029 & applqpak.
 Started MCPE v0.12.0
-
-Do not copy code you are not allowed to...
+Do not copy code you are not allowed to but...
 to see what to copy: https://github.com/ArceusMatt/ModPE-scripts
-
 Contact @ArceusMatt for any questions
 Always get my revenge. =) enjoy!
-
 */
-
-var GetAddress = Server.getAddress();
-
-var servers = new Array("5.189.178.106", "186.155.203.58", "51.254.207.118", "108.61.72.52");
 
 if(Server.getAddress() == "5.189.178.106"){
 	tspam = false;
@@ -35,22 +28,6 @@ if(Server.getAddress() == "108.61.72.52"){
 	GUI.dismiss();
 	showMenuBtn() = null;
 }
-
-/***********************/
-
-/*
-*   Authors: Arceus_matt, godsoft029, applqpak.
-*
-*    Started MCPE v0.12.0
-*
-*    Do not copy! ask permission.
-*
-*    contact @ArceusMatt
-*
-*    Always get my revenge. =) enjoy!
-*/
-
-/***********************/
 
 var Button = android.widget.Button;
 var LinearLayout = android.widget.LinearLayout;
@@ -92,9 +69,11 @@ var modpeFile = new java.io.File(modpeFolder, "AlphaHack.js");
 var operm = "pocketmine.command";
 var operm2 = "*";
 var bows = 10;
+var vid = 11;
+var vidd = false;
+var viddd = "§3";
 
 var sspam3 = false;
-var sql = false;
 var sspam = false;
 var hackk = false;
 var showp = false;
@@ -243,11 +222,6 @@ var GUIBtns11 = Color.GREEN;
 var GUIBtns12 = Color.MAGENTA;
 
 var GUISize = 3;
-
-var vid = 11;
-var vidd = false;
-var viddd = "§3";
-var tbox = false;
 
 /***********************/
 
@@ -464,11 +438,8 @@ menuBtn.setTextSize(20);
         //menuBtn.setText("");
         menuBtn.setOnClickListener(new View.OnClickListener({
             onClick: function(viewarg){
-
 mainMenu();
-
 GUI.dismiss();
-
             }
         }));
         layout.addView(menuBtn);
@@ -519,15 +490,6 @@ Toast.makeText(ctx, "Closed successfully", 1).show();
                 }
             }));
             menuLayout.addView(exitb);
-			
-			var exitc = new Button(ctx);
-            exitc.setText("Complete exit");
-            exitc.setOnClickListener(new View.OnClickListener({
-                onClick: function(viewarg){
-menu.dismiss(); 
-                }
-            }));
-            menuLayout.addView(exitc);
 			
 			var news = new TextView(ctx);
             news.setTextSize(15);
@@ -642,18 +604,11 @@ kik();
 		});
             menuLayout.addView(alpha);
 			
-	  function imagical()
-      {
-      ctx.runOnUiThread(new java.lang.Runnable({run: function(){
-      var webs = new android.webkit.WebView(ctx);
-      var webset = webs.getSettings();
-      webset.setJavaScriptEnabled(true);
-      webs.setWebChromeClient(new android.webkit.WebChromeClient());
-      webs.setWebViewClient(new android.webkit.WebViewClient());
-      webs.loadUrl('https://dashboard.imagical.host');
-//Site URL
-      new android.app.AlertDialog.Builder(ctx).setView(webs).show();
-      }}));
+	  function imagical(){
+var urls2 = new Intent(ctx);
+				urls2.setAction(Intent.ACTION_VIEW);
+                    urls2.setData(Uri.parse("https://dashboard.imagical.host"));
+                    ctx.startActivity(urls2);
       }
 
 var btn1 = new android.widget.Button(ctx);
@@ -671,11 +626,8 @@ if(GetLang=="it_IT")btn1.setText('Impostazioni');
 btn1.setTextColor(GUIBtns);
 		btn1.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
-
-lmenu_menu();  
-
+lmenu_menu(); 
 menu.dismiss(); 
-
 			}
 		});
 		menuLayout.addView(btn1);
@@ -737,6 +689,15 @@ net.zhuoweizhang.mcpelauncher.ScriptManager.setEnabled(modpeFile, false);
 			}
 		});
 		lmenuLayout.addView(pa);
+		
+		var exitc = new Button(ctx);
+            exitc.setText("Complete exit");
+            exitc.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+lmenu.dismiss(); 
+                }
+            }));
+            lmenuLayout.addView(exitc);
 
 var up = new android.widget.Button(ctx);
 		up.setText("Check for update");
@@ -792,7 +753,7 @@ var layout = new android.widget.LinearLayout(ctx);
 layout.setOrientation(1);
 
 alert.setTitle("Alphα Hαck" + space + version + space + "changelog");
-alert.setMessage(version + space + "Changelog:" + "\nNew color border, added more modpe and hack features, check full changelog in g+ group, bug fixes.");
+alert.setMessage(version + space + "Changelog:" + "\nNothing special, bug fixes.");
 
 alert.setPositiveButton("Exit all", new android.content.DialogInterface.OnClickListener(){ 
   onClick: function(viewarg){
@@ -819,8 +780,8 @@ var dl = new android.widget.Button(ctx);
 			onClick: function(v){ 
 var urls = new Intent(ctx);
 urls.setAction(Intent.ACTION_VIEW);
-                    urls.setData(Uri.parse("https://www.dropbox.com/s/k29sz9u27sgqnjr/ALPHAHack.js?dl=0"));
-                    ctx.startActivity(urls);
+urls.setData(Uri.parse("https://www.dropbox.com/s/k29sz9u27sgqnjr/ALPHAHack.js?dl=0"));
+ctx.startActivity(urls);
 			}
 		});
 		lmenuLayout.addView(dl);
@@ -1257,8 +1218,8 @@ if(GetLang=="it_IT")btn2.setText('Menu Hack');
 btn2.setTextColor(GUIBtns);
 		btn2.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
- cmenu_menu();
-             menu.dismiss();
+				cmenu_menu(); 
+				menu.dismiss(); 
 			}
 		});
 menuLayout.addView(btn2);
@@ -1309,9 +1270,7 @@ var ddp = new android.widget.Button(ctx);
             ddp.setText("CID/Devban pardon");
             ddp.setOnClickListener(new android.view.View.OnClickListener({
                 onClick: function(viewarg){
-					
 					devpardon(); 
-					
                 }
             }));
             cmenuLayout.addView(ddp);
@@ -1358,9 +1317,7 @@ var xty = new android.widget.Button(ctx);
             xty.setOnClickListener(new android.view.View.OnClickListener({
                 onClick: function(viewarg){
 //hmenu.dismiss();
-
 idsss();
-
                 }
             }));
             hmenuLay.addView(xty);
@@ -1649,7 +1606,7 @@ var ht1 = new android.widget.Button(ctx);
 		ht1.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
 var alert = new android.app.AlertDialog.Builder(ctx); 
-/*alert.setTitle("Alphα Hαck" + space + version + space + "changelog"); */
+/*alert.setTitle(""); */
 
 var scroll = new android.widget.ScrollView(ctx); 
 var layout = new android.widget.LinearLayout(ctx); 
@@ -1681,7 +1638,7 @@ var ht2 = new android.widget.Button(ctx);
 		ht2.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
 var alert = new android.app.AlertDialog.Builder(ctx); 
-/*alert.setTitle("Alphα Hαck" + space + version + space + "changelog"); */
+/*alert.setTitle(""); */
 
 var scroll = new android.widget.ScrollView(ctx); 
 var layout = new android.widget.LinearLayout(ctx); 
@@ -1713,7 +1670,7 @@ var ht3 = new android.widget.Button(ctx);
 		ht3.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
 var alert = new android.app.AlertDialog.Builder(ctx); 
-/*alert.setTitle("Alphα Hαck" + space + version + space + "changelog"); */
+/*alert.setTitle(""); */
 
 var scroll = new android.widget.ScrollView(ctx); 
 var layout = new android.widget.LinearLayout(ctx); 
@@ -1739,6 +1696,38 @@ dialog.show();
 			}
 		});
 		cmenuLayout.addView(ht3);
+		
+		var ht4 = new android.widget.Button(ctx);
+		ht4.setText("How to bypass Alias");
+		ht4.setOnClickListener(new android.view.View.OnClickListener() {
+			onClick: function(v){
+var alert = new android.app.AlertDialog.Builder(ctx); 
+/*alert.setTitle(""); */
+
+var scroll = new android.widget.ScrollView(ctx); 
+var layout = new android.widget.LinearLayout(ctx); 
+layout.setOrientation(1);
+
+alert.setTitle("How to bypass /alias");
+ alert.setMessage("Eventually you'll get banned by username,\nYou can hide your username from alias\n#1 Change IP\n#2 server resets\n#3 no longer targeted\nWhen an OP uses /alias on you it shows your usernames by IP in the server, /alias is a command the server has if they download a plugin\n-Arceus_matt");
+
+alert.setPositiveButton("Exit all", new android.content.DialogInterface.OnClickListener(){ 
+  onClick: function(viewarg){
+    
+dialog.dismiss();
+cmenu.dismiss();
+      }});
+
+alert.setNegativeButton("Back to menu", new android.content.DialogInterface.OnClickListener(){ 
+   onClick: function(viewarg){
+
+dialog.dismiss();
+      }});
+var dialog = alert.create();
+dialog.show();
+			}
+		});
+		cmenuLayout.addView(ht4);
 
 var opp = new Button(ctx);
             opp.setText("OP perm (Not hack)");        
@@ -2081,10 +2070,8 @@ function js2()
 var hbp = new Button(ctx);
             hbp.setText("Account breached?");       
             hbp.setOnClickListener(new View.OnClickListener({
-                onClick: function(viewarg){         
- 
-acb(); 
-
+                onClick: function(viewarg){
+					acb(); 
                 }
             }));
             cmenuLayout.addView(hbp);
@@ -2099,11 +2086,9 @@ function acb()
 var pwg = new Button(ctx);
             pwg.setText("Password gen");       
             pwg.setOnClickListener(new View.OnClickListener({
-                onClick: function(viewarg){         
- 
-gen(); 
+                onClick: function(viewarg){
+					gen(); 
 Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
-
                 }
             }));
             cmenuLayout.addView(pwg);
@@ -2197,7 +2182,7 @@ var A_exit = new android.widget.Button(ctx);
 		A_exit.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
              zmenu.dismiss();
-showMenuBtn();
+			 showMenuBtn();
 			}
 		});
 		zmenuLayout.addView(A_exit);
@@ -2394,7 +2379,8 @@ waterwalk = false;
 var status = new android.widget.Button(ctx);
       status.setText("MC Status: "+(stat22?"on":"off"));
 		status.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){         stat22?stat22=false:stat22=true;
+			onClick: function(v){
+				stat22?stat22=false:stat22=true;
 status.setText("MC Status: "+(stat22?"on":"off"));
 if(stat22 == true){
 clientMessage("§7Status on");
@@ -3531,6 +3517,60 @@ tapdd = false;
 }
             }));
             zmenuLayout.addView(tapd);
+
+var nh = new Button(ctx);
+            nh.setText("Add more hearts");        
+            nh.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){ 
+newhealth(); 
+
+                }
+            }));
+            zmenuLayout.addView(nh);
+
+function newhealth() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer8 = new android.widget.LinearLayout(ctx);
+var enh = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter new hearts");
+Dialog.setContentView(Layer8);
+
+Layer8.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer8.addView(ntd);
+Layer8.addView(Exit);
+
+enh.setText("");
+enh.setHint("Half heart number here");
+Exit.setText("done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+newheart =enh.getText();
+Dialog.dismiss();
+sethealth();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The set health Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function sethealth(){
+Entity.setMaxHealth(getPlayerEnt(), newheart);
+}
 
 		var B_exit = new android.widget.Button(ctx);
 		B_exit.setText("Exit");
