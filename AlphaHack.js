@@ -3543,7 +3543,7 @@ Dialog.setContentView(Layer8);
 
 Layer8.setOrientation(android.widget.LinearLayout.VERTICAL);
 Dialog.show();
-Layer8.addView(ntd);
+Layer8.addView(enh);
 Layer8.addView(Exit);
 
 enh.setText("");
@@ -6327,6 +6327,60 @@ var d21 = new Button(ctx);
                 }
             }));
             dmenuLayout.addView(d21);
+			
+			var d22 = new Button(ctx);
+            d22.setText("Custom speed");        
+            d22.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){ 
+newspeed(); 
+
+                }
+            }));
+            dmenuLayout.addView(d22);
+
+function newspeed() {
+ctx.runOnUiThread(new java.lang.Runnable(){
+run: function(){ 
+try{
+GetText = new android.widget.PopupWindow();
+var Layer8 = new android.widget.LinearLayout(ctx);
+var vspee = new android.widget.EditText(ctx);
+var Dialog = new android.app.Dialog(ctx);
+var Exit = new android.widget.Button(ctx);
+
+Dialog.setTitle("Enter custom speed");
+Dialog.setContentView(Layer8);
+
+Layer8.setOrientation(android.widget.LinearLayout.VERTICAL);
+Dialog.show();
+Layer8.addView(vspee);
+Layer8.addView(Exit);
+
+vspee.setText("");
+vspee.setHint("numbers here");
+Exit.setText("done");
+
+Exit.setOnClickListener(new android.view.View.OnClickListener(){
+onClick: function(view){
+nspee =vspee.getText();
+Dialog.dismiss();
+setspeed();
+showMenuBtn();
+}
+});
+
+GetText.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
+GetText.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
+} catch (e){
+print("The set speed Dialog Is Malfunctioning:"+e);
+}
+}});
+}
+
+function setspeed(){
+ModPE.setGameSpeed(nspee);
+}
 		
 		var exit2 = new android.widget.Button(ctx);
 		exit2.setText("Exit");
@@ -8245,7 +8299,7 @@ var wtitle = new android.widget.TextView(ctx); wtitle.setGravity(android.view.Gr
 		wmenuLayout.addView(wtitle);
 
             var button = new android.widget.Button(ctx);
-            button.setText("Set wether");
+            button.setText("Custom wether");
             button.setOnClickListener(new android.view.View.OnClickListener({
                 onClick: function(viewarg){
 Wset();
@@ -8254,6 +8308,26 @@ wmenu.dismiss();
                 }
             }));
             wmenuLayout.addView(button);
+			
+			var button3 = new android.widget.Button(ctx);
+            button3.setText("Rain");
+            button3.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+Level.setRainLevel(1);
+net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/weather rain");
+                }
+            }));
+            wmenuLayout.addView(button3);
+			
+			var button4 = new android.widget.Button(ctx);
+            button4.setText("Lightning");
+            button4.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+Level.setLightningLevel(1);
+net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/weather rain");
+                }
+            }));
+            wmenuLayout.addView(button4);
 
 var button2 = new android.widget.Button(ctx);
             button2.setText("Clear weather");
