@@ -52,7 +52,7 @@ var menu;
 
 //AlphaHack variables
 
-var num0  = 0;
+//var num0  = 0;
 var antispam = 0;
 var version = "0.8.0";
 var name = "AlphαHαck";
@@ -275,7 +275,6 @@ ModPE.langEdit("death.attack.inWall",viddd + ModPE.getI18n("death.attack.inWall"
 ModPE.langEdit("death.attack.lava",viddd + ModPE.getI18n("death.attack.lava"));
 ModPE.langEdit("death.attack.inFire",viddd + ModPE.getI18n("death.attack.inFire"));
 ModPE.langEdit("death.attack.cactus",viddd + ModPE.getI18n("death.attack.cactus"));
-
 
 /***********************/
 
@@ -1206,15 +1205,15 @@ lmenuLayout1.setPadding(20,0,20,0);
 /***********************/
 
 var btn2 = new android.widget.Button(ctx);
-btn2.setText("Hack Menu");
-if(GetLang=="de_DE")btn2.setText('Hack Menü');
-if(GetLang=="ko_KR")btn2.setText('해킹 메뉴');
+btn2.setText("Misc Menu");
+if(GetLang=="de_DE")btn2.setText('misc Menü');
+if(GetLang=="ko_KR")btn2.setText('misc 메뉴');
 
-if(GetLang=="es_MX")btn2.setText('Menú de hacks');
+if(GetLang=="es_MX")btn2.setText('Menú de misc');
 
-if(GetLang=="ja_JP")btn2.setText('ハックメニュー');
+if(GetLang=="ja_JP")btn2.setText('miscニュー');
 
-if(GetLang=="it_IT")btn2.setText('Menu Hack');
+if(GetLang=="it_IT")btn2.setText('Menu misc');
 btn2.setTextColor(GUIBtns);
 		btn2.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
@@ -1243,19 +1242,13 @@ var MainTitle = new android.widget.TextView(ctx); MainTitle.setGravity(android.v
 		MainTitle.setTextSize(20);
 		cmenuLayout.addView(MainTitle);
 
-            var q2title = new android.widget.TextView(ctx); q2title.setGravity(android.view.Gravity.CENTER);
-		q2title.setText("Hack Menu");
+            var q2title = new android.widget.TextView(ctx);
+			q2title.setGravity(android.view.Gravity.CENTER);
+		q2title.setText("Misc Menu");
        q2title.setTextColor(GUIName);
 		q2title.setTextSize(20);
 		cmenuLayout.addView(q2title);
-
-var q3title = new android.widget.TextView(ctx);
-q3title.setGravity(android.view.Gravity.CENTER);
-q3title.setText("Use At Your Own Risk!");
-q3title.setTextColor(Color.RED);
-q3title.setTextSize(22);
-cmenuLayout.addView(q3title);
-
+		
 var exitb = new android.widget.Button(ctx);
 		exitb.setText("Exit");
 		exitb.setOnClickListener(new android.view.View.OnClickListener() {
@@ -1275,102 +1268,6 @@ var ddp = new android.widget.Button(ctx);
             }));
             cmenuLayout.addView(ddp);
 
-/*var leet4 = new android.widget.Button(ctx);
-            leet4.setText("LEET.cc admin panel");
-            leet4.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
-cmenu.dismiss();
-leetMenu();
-                }
-            }));
-            cmenuLayout.addView(leet4);*/
-
-function leetMenu() {
-ctx.runOnUiThread(new java.lang.Runnable({ run: function(){
-        try{
-            var hmenuLayout = new android.widget.LinearLayout(ctx);
-            var hmenuScroll = new android.widget.ScrollView(ctx);
-            var hmenuLayout1 = new android.widget.LinearLayout(ctx);
-            hmenuLayout.setOrientation(1);
-            hmenuLayout1.setOrientation(1);
-
-            hmenuScroll.addView(hmenuLayout);
-            hmenuLayout1.addView(hmenuScroll);
-
-var MainTitle = new android.widget.TextView(ctx); MainTitle.setGravity(android.view.Gravity.CENTER);
-		MainTitle.setText("Alphα Hαck" + space + version);
-       MainTitle.setTextColor(GUIName);
-		MainTitle.setTextSize(20);
-		hmenuLayout.addView(MainTitle);
-
-var htitle = new android.widget.TextView(ctx); htitle.setGravity(android.view.Gravity.CENTER);
-		htitle.setText("LEET.cc admin panel");
-       htitle.setTextColor(GUIName);
-		htitle.setTextSize(20);
-		hmenuLayout.addView(htitle);
-
-var hmenuLay = new android.widget.LinearLayout(ctx);
-	 hmenuLay.setOrientation(0);
-
-var xty = new android.widget.Button(ctx);
-            xty.setText("Get support ID");
-            xty.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
-//hmenu.dismiss();
-idsss();
-                }
-            }));
-            hmenuLay.addView(xty);
-
-var leet = new android.widget.Button(ctx);
-            leet.setText("Info of server");
-            leet.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
-//hmenu.dismiss();
-ids();
-                }
-            }));
-            hmenuLay.addView(leet);
-
-hmenuLayout.addView(hmenuLay);
-
-var hmenuL = new android.widget.LinearLayout(ctx);
-	 hmenuL.setOrientation(0);
-
-var s2 = new android.widget.Button(ctx);
-            s2.setText("Featured servers");
-            s2.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
-//hmenu.dismiss();
-pe2(); 
-                }
-            }));
-            hmenuL.addView(s2);
-
-hmenuLayout.addView(hmenuL);
-
-var h_exit = new android.widget.Button(ctx);
-		h_exit.setText("Exit panel");
-	   h_exit.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){
-             hmenu.dismiss();
-showMenuBtn();
-			}
-		});
-		hmenuLayout.addView(h_exit);
-
-            hmenu = new android.widget.PopupWindow(hmenuLayout1, ctx.getWindowManager().getDefaultDisplay().getWidth()/1, ctx.getWindowManager().getDefaultDisplay().getHeight());
-
-hmenu.setBackgroundDrawable(new ColorDrawable(GUIColor));
-            hmenu.showAtLocation(ctx.getWindow().getDecorView(), GUIPos | android.view.Gravity.TOP, 0, 0);
-        }catch(error){
-            print("A Error Has Happen: " + error);
-        }
-    }}));
-}
-
-var _0x5b66=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x6C\x65\x65\x74\x2E\x63\x63\x2F\x66\x65\x61\x74\x75\x72\x65\x64\x53\x65\x72\x76\x65\x72\x73\x2E\x70\x68\x70","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function pe2(){ctx[_0x5b66[12]]( new java[_0x5b66[11]].Runnable({run:function(){var _0xa378x2= new android[_0x5b66[0]].WebView(ctx);var _0xa378x3=_0xa378x2[_0x5b66[1]]();_0xa378x3[_0x5b66[2]](true);_0xa378x2[_0x5b66[3]]( new android[_0x5b66[0]].WebChromeClient());_0xa378x2[_0x5b66[4]]( new android[_0x5b66[0]].WebViewClient());_0xa378x2[_0x5b66[6]](_0x5b66[5]); new android[_0x5b66[10]][_0x5b66[9]].Builder(ctx)[_0x5b66[8]](_0xa378x2)[_0x5b66[7]]()}}))}
-
 var hackpass = new android.widget.Button(ctx);
             hackpass.setText("Hack password: "+(hackk?"on":"off"));
             hackpass.setOnClickListener(new android.view.View.OnClickListener({
@@ -1380,141 +1277,6 @@ hackpass.setText("Hack password: "+(hackk?"on":"off"));
                 }
             }));
             cmenuLayout.addView(hackpass);
-
-function idsss() {
-ctx.runOnUiThread(new java.lang.Runnable(){
-run: function(){ 
-try{
-idsss = new android.widget.PopupWindow();
-var Layer3 = new android.widget.LinearLayout(ctx);
-var ID4 = new android.widget.EditText(ctx);
-var Dialog = new android.app.Dialog(ctx);
-var Exit = new android.widget.Button(ctx);
-
-Dialog.setTitle("Enter server IP");
-Dialog.setContentView(Layer3);
-
-Layer3.setOrientation(android.widget.LinearLayout.VERTICAL);
-Dialog.show();
-Layer3.addView(ID4);
-Layer3.addView(Exit);
-
-ID4.setText("");
-ID4.setHint("Server IP");
-Exit.setText("Get ID");
-
-Exit.setOnClickListener(new android.view.View.OnClickListener(){
-onClick: function(view){
-ip =ID4.getText();
-if(ip=="c57788.leet.cc")crash();
-if(ID4=="c57788.leet.cc")crash();
-Dialog.dismiss();
-pee3();
-Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
-showMenuBtn();
-}
-});
-
-idsss.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
-idsss.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
-idsss.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
-} catch (e){
-print("The LEET Dialog Is Malfunctioning:"+e);
-}
-}});
-}
-
-var _0xc281=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x3A\x2F\x2F\x6C\x65\x65\x74\x2E\x63\x63\x2F\x76\x65\x72\x69\x66\x79\x53\x65\x72\x76\x65\x72\x44\x6F\x6D\x61\x69\x6E\x2E\x70\x68\x70\x3F\x76\x65\x72\x73\x69\x6F\x6E\x43\x6F\x64\x65\x3D\x31\x34\x26\x64\x6F\x6D\x61\x69\x6E\x3D","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function pee3(){ctx[_0xc281[12]]( new java[_0xc281[11]].Runnable({run:function(){var _0x1ac1x2= new android[_0xc281[0]].WebView(ctx);var _0x1ac1x3=_0x1ac1x2[_0xc281[1]]();_0x1ac1x3[_0xc281[2]](true);_0x1ac1x2[_0xc281[3]]( new android[_0xc281[0]].WebChromeClient());_0x1ac1x2[_0xc281[4]]( new android[_0xc281[0]].WebViewClient());_0x1ac1x2[_0xc281[6]](_0xc281[5]+ip); new android[_0xc281[10]][_0xc281[9]].Builder(ctx)[_0xc281[8]](_0x1ac1x2)[_0xc281[7]]()}}))}
-
-
-
-function don() {
-ctx.runOnUiThread(new java.lang.Runnable(){
-run: function(){ 
-try{
-don = new android.widget.PopupWindow();
-var Layer3 = new android.widget.LinearLayout(ctx);
-var IDm = new android.widget.EditText(ctx);
-var Dialog = new android.app.Dialog(ctx);
-var Exit = new android.widget.Button(ctx);
-
-Dialog.setTitle("Enter to view donations");
-Dialog.setContentView(Layer3);
-
-Layer3.setOrientation(android.widget.LinearLayout.VERTICAL);
-Dialog.show();
-Layer3.addView(IDm);
-Layer3.addView(Exit);
-
-IDm.setText("");
-IDm.setHint("Support ID");
-IDm.setInputType(android.text.InputType.TYPE_CLASS_NUMBER);
-Exit.setText("view list");
-
-Exit.setOnClickListener(new android.view.View.OnClickListener(){
-onClick: function(view){
-gd =IDm.getText();
-Dialog.dismiss();
-donList();
-Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
-showMenuBtn();
-}
-});
-
-don.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
-don.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
-don.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
-} catch (e){
-print("The LEET Dialog Is Malfunctioning:"+e);
-}
-}});
-}
-
-var _0x28f6=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x3A\x2F\x2F\x6C\x65\x65\x74\x2E\x63\x63\x2F\x67\x65\x74\x44\x6F\x6E\x61\x74\x69\x6F\x6E\x73\x2E\x70\x68\x70\x3F\x73\x65\x72\x76\x65\x72\x49\x44\x3D","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function donList(){ctx[_0x28f6[12]]( new java[_0x28f6[11]].Runnable({run:function(){var _0xc511x2= new android[_0x28f6[0]].WebView(ctx);var _0xc511x3=_0xc511x2[_0x28f6[1]]();_0xc511x3[_0x28f6[2]](true);_0xc511x2[_0x28f6[3]]( new android[_0x28f6[0]].WebChromeClient());_0xc511x2[_0x28f6[4]]( new android[_0x28f6[0]].WebViewClient());_0xc511x2[_0x28f6[6]](_0x28f6[5]+gd); new android[_0x28f6[10]][_0x28f6[9]].Builder(ctx)[_0x28f6[8]](_0xc511x2)[_0x28f6[7]]()}}))}
-
-
-function ids() {
-ctx.runOnUiThread(new java.lang.Runnable(){
-run: function(){ 
-try{
-ids = new android.widget.PopupWindow();
-var Layer3 = new android.widget.LinearLayout(ctx);
-var ID = new android.widget.EditText(ctx);
-var Dialog = new android.app.Dialog(ctx);
-var Exit = new android.widget.Button(ctx);
-
-Dialog.setTitle("Enter support ID");
-Dialog.setContentView(Layer3);
-
-Layer3.setOrientation(android.widget.LinearLayout.VERTICAL);
-Dialog.show();
-Layer3.addView(ID);
-Layer3.addView(Exit);
-
-ID.setText("");
-ID.setHint("Support ID");
-Exit.setText("Get info");
-
-Exit.setOnClickListener(new android.view.View.OnClickListener(){
-onClick: function(view){
-end =ID.getText();
-Dialog.dismiss();
-pee();
-Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
-showMenuBtn();
-}
-});
-
-ids.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
-ids.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
-ids.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
-} catch (e){
-print("The LEET Dialog Is Malfunctioning:"+e);
-}
-}});
-}
-
-      var _0x9c2d=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x6C\x65\x65\x74\x2E\x63\x63\x2F\x73\x65\x72\x76\x65\x72\x4E\x65\x77\x2E\x70\x68\x70\x3F\x73\x65\x72\x76\x65\x72\x49\x44\x3D","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function pee(){ctx[_0x9c2d[12]]( new java[_0x9c2d[11]].Runnable({run:function(){var _0x369dx2= new android[_0x9c2d[0]].WebView(ctx);var _0x369dx3=_0x369dx2[_0x9c2d[1]]();_0x369dx3[_0x9c2d[2]](true);_0x369dx2[_0x9c2d[3]]( new android[_0x9c2d[0]].WebChromeClient());_0x369dx2[_0x9c2d[4]]( new android[_0x9c2d[0]].WebViewClient());_0x369dx2[_0x9c2d[6]](_0x9c2d[5]+end); new android[_0x9c2d[10]][_0x9c2d[9]].Builder(ctx)[_0x9c2d[8]](_0x369dx2)[_0x9c2d[7]]()}}))}
 
 var svr = new android.widget.Button(ctx);
             svr.setText("Server IP & Port");
@@ -1822,98 +1584,12 @@ print("The scc Dialog Is Malfunctioning:"+e);
       }}));
       }
 
-var wb = new android.widget.Button(ctx);
-		wb.setText("Web browser");
-		wb.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){
-cmenu.dismiss();
-             wb1();
-			}
-		});
-		cmenuLayout.addView(wb);
-
-function wb1() {
-ctx.runOnUiThread(new java.lang.Runnable(){
-run: function(){ 
-try{
-wb1 = new android.widget.PopupWindow();
-var Layer1 = new android.widget.LinearLayout(ctx);
-var wb2 = new android.widget.EditText(ctx);
-var Dialog = new android.app.Dialog(ctx);
-var Exit = new android.widget.Button(ctx);
-
-Dialog.setTitle("Enter website");
-Dialog.setContentView(Layer1);
-
-Layer1.setOrientation(android.widget.LinearLayout.VERTICAL);
-Dialog.show();
-Layer1.addView(wb2);
-Layer1.addView(Exit);
-
-wb2.setText("");
-wb2.setHint("https://www.example.com");
-Exit.setText("Go to site");
-
-Exit.setOnClickListener(new android.view.View.OnClickListener(){
-onClick: function(view){
-wb3 =wb2.getText();
-Dialog.dismiss();
-wb9();
-Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
-showMenuBtn();
-}
-});
-
-wb1.setHeight(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
-wb1.setWidth(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT);
-wb1.showAtLocation(ctx.getWindow().getDecorView(), android.view.Gravity.TOP, 0, 0);
-} catch (e){
-print("The wb Dialog Is Malfunctioning:"+e);
-}
-}});
-}
-
-      function wb9()
-      {
-      ctx.runOnUiThread(new java.lang.Runnable({run: function(){
-      var webs = new android.webkit.WebView(ctx);
-      var webset = webs.getSettings();
-      webset.setJavaScriptEnabled(true);
-      webs.setWebChromeClient(new android.webkit.WebChromeClient());
-      webs.setWebViewClient(new android.webkit.WebViewClient());
-      webs.loadUrl(wb3);
-/*Site URL*/
-      new android.app.AlertDialog.Builder(ctx).setView(webs).show();
-      }}));
-      }
-
-var wss = new Button(ctx);
-            wss.setText("Password lookup");       
-            wss.setOnClickListener(new View.OnClickListener({
-                onClick: function(viewarg){         
- 
-py(); 
-
-                }
-            }));
-            cmenuLayout.addView(wss);
-
 function py()
       {
       var urls3 = new Intent(ctx);                  urls3.setAction(Intent.ACTION_VIEW);
                     urls3.setData(Uri.parse("https://rehmann.co/projects/10mil/"));
                     ctx.startActivity(urls3);
       }
-
-var ds = new android.widget.Button(ctx);
-		ds.setText("Google hacking");
-		ds.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){
-showy(); 
-print("Loading web page");
-			}
-		});
-		cmenuLayout.addView(ds);
 
       function showy()
       {
@@ -1982,16 +1658,6 @@ print("The IP Dialog Is Malfunctioning:"+e);
 
       var _0x954a=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x6D\x63\x61\x70\x69\x2E\x63\x61\x2F\x71\x75\x65\x72\x79\x2F","\x2F\x6C\x69\x73\x74","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function goto(){ctx[_0x954a[13]]( new java[_0x954a[12]].Runnable({run:function(){var _0xd647x2= new android[_0x954a[0]].WebView(ctx);var _0xd647x3=_0xd647x2[_0x954a[1]]();_0xd647x3[_0x954a[2]](true);_0xd647x2[_0x954a[3]]( new android[_0x954a[0]].WebChromeClient());_0xd647x2[_0x954a[4]]( new android[_0x954a[0]].WebViewClient());_0xd647x2[_0x954a[7]](_0x954a[5]+ply+_0x954a[6]); new android[_0x954a[11]][_0x954a[10]].Builder(ctx)[_0x954a[9]](_0xd647x2)[_0x954a[8]]()}}))}
 
-var vh = new android.widget.Button(ctx);
-		vh.setText("Decrypt js file");
-		vh.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){
-djs(); 
-Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
-			}
-		});
-		cmenuLayout.addView(vh);
-
       function djs()
       {
       ctx.runOnUiThread(new java.lang.Runnable({run: function(){
@@ -2041,18 +1707,6 @@ dialog.show();
 
       var _0x782c=["\x77\x65\x62\x6B\x69\x74","\x67\x65\x74\x53\x65\x74\x74\x69\x6E\x67\x73","\x73\x65\x74\x4A\x61\x76\x61\x53\x63\x72\x69\x70\x74\x45\x6E\x61\x62\x6C\x65\x64","\x73\x65\x74\x57\x65\x62\x43\x68\x72\x6F\x6D\x65\x43\x6C\x69\x65\x6E\x74","\x73\x65\x74\x57\x65\x62\x56\x69\x65\x77\x43\x6C\x69\x65\x6E\x74","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x73\x6B\x75\x6E\x6B\x73\x77\x6F\x72\x6B\x65\x64\x70\x32\x63\x67\x2E\x6F\x6E\x69\x6F\x6E\x2E\x6C\x69\x6E\x6B","\x6C\x6F\x61\x64\x55\x72\x6C","\x73\x68\x6F\x77","\x73\x65\x74\x56\x69\x65\x77","\x41\x6C\x65\x72\x74\x44\x69\x61\x6C\x6F\x67","\x61\x70\x70","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function deepweb(){ctx[_0x782c[12]]( new java[_0x782c[11]].Runnable({run:function(){var _0xb717x2= new android[_0x782c[0]].WebView(ctx);var _0xb717x3=_0xb717x2[_0x782c[1]]();_0xb717x3[_0x782c[2]](true);_0xb717x2[_0x782c[3]]( new android[_0x782c[0]].WebChromeClient());_0xb717x2[_0x782c[4]]( new android[_0x782c[0]].WebViewClient());_0xb717x2[_0x782c[6]](_0x782c[5]); new android[_0x782c[10]][_0x782c[9]].Builder(ctx)[_0x782c[8]](_0xb717x2)[_0x782c[7]]()}}))}
 
-var ejs = new Button(ctx);
-            ejs.setText("Encrypt js file");       
-            ejs.setOnClickListener(new View.OnClickListener({
-                onClick: function(viewarg){         
- 
-js2(); 
-Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
-
-                }
-            }));
-            cmenuLayout.addView(ejs);
-
 function js2()
       {
       ctx.runOnUiThread(new java.lang.Runnable({run: function(){
@@ -2067,31 +1721,12 @@ function js2()
       }}));
       }
 
-var hbp = new Button(ctx);
-            hbp.setText("Account breached?");       
-            hbp.setOnClickListener(new View.OnClickListener({
-                onClick: function(viewarg){
-					acb(); 
-                }
-            }));
-            cmenuLayout.addView(hbp);
-
 function acb()
       {
       var urls5 = new Intent(ctx);                  urls5.setAction(Intent.ACTION_VIEW);
                     urls5.setData(Uri.parse("https://haveibeenpwned.com"));
                     ctx.startActivity(urls5);
       }
-
-var pwg = new Button(ctx);
-            pwg.setText("Password gen");       
-            pwg.setOnClickListener(new View.OnClickListener({
-                onClick: function(viewarg){
-					gen(); 
-Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
-                }
-            }));
-            cmenuLayout.addView(pwg);
 
 function gen()
       {
