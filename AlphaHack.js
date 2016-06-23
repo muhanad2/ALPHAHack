@@ -5,7 +5,7 @@ var ctx = com.mojang.minecraftpe.MainActivity.currentMainActivity.get();
 var GetLang = ModPE.getLanguage();
 
 /*
-Main author: ArceusMatt/Arceu_matt.
+Main author: ArceusMatt / Arceus_matt.
 Help by: GodSoft029 & applqpak.
 Started MCPE v0.12.0
 Do not copy code you are not allowed to but...
@@ -498,7 +498,7 @@ Toast.makeText(ctx, "Closed successfully", 1).show();
             menuLayout.addView(news);
 			
 	 var mn1 = new android.widget.Button(ctx);
-		mn1.setText("New server!(new)");
+		mn1.setText("New server!");
 		mn1.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
 var alert = new android.app.AlertDialog.Builder(ctx); 
@@ -529,37 +529,6 @@ dialog.show();
 		});
 		menuLayout.addView(mn1)
 		
-		var mn2 = new android.widget.Button(ctx);
-		mn2.setText("Target servers(new)");
-		mn2.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){
-var alert = new android.app.AlertDialog.Builder(ctx); 
-
-var scroll = new android.widget.ScrollView(ctx);
-var layout = new android.widget.LinearLayout(ctx);
-layout.setOrientation(1);
-
-alert.setTitle("Destroy server");
-alert.setMessage("Spam and grief and attack these servers:\na14762.leet.cc : 14762\nFor not opping their donators\nAs in attacking do whatever you want =) just mess the servers up, enjoy!\nYou could also go to minecraftpocket-servers.com &\nReport their servers so they lose players.");
-
-alert.setPositiveButton("Exit mod", new android.content.DialogInterface.OnClickListener(){ 
-  onClick: function(viewarg){
-    
-dialog.dismiss();
-menu.dismiss();
-      }});
-
-alert.setNegativeButton("Back to menu", new android.content.DialogInterface.OnClickListener(){ 
-   onClick: function(viewarg){
- 
-dialog.dismiss();
-      }});
-var dialog = alert.create();
-dialog.show();
-			}
-		});
-		menuLayout.addView(mn2)
-		
 		var mn3 = new android.widget.Button(ctx);
 		mn3.setText("New server host(new)");
 		mn3.setOnClickListener(new android.view.View.OnClickListener() {
@@ -570,7 +539,7 @@ var scroll = new android.widget.ScrollView(ctx);
 var layout = new android.widget.LinearLayout(ctx); 
 layout.setOrientation(1);
 
-alert.setTitle("Coming soon");
+alert.setTitle("");
 alert.setMessage("There's a new cheap host!\nImagicalHost can now host your own MCPE server\nFor just 1.99 or higher USD per month for the following:\n15 or higher Player slots & many plugins, No lag, no borders, no catches\nJust go to: https://dashboard.imagical.host\nTo buy your own server today! We only charge for slots/uptime which is great.\nHere is the server plans:\nGravel plan 15 slots 1.99$ USD\nStone plan 28 slots 4.99$ USD\nCreeper plan 42 slots 9.99$ USD\nEnderman plan 82 slots 12.99$ USD\nBedrock plan 128 slots 24.99$ USD");
 
 alert.setPositiveButton("Go to site", new android.content.DialogInterface.OnClickListener(){ 
