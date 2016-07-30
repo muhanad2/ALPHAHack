@@ -496,38 +496,6 @@ Toast.makeText(ctx, "Closed successfully", 1).show();
             news.setTextColor(Color.WHITE);
             news.setGravity(Gravity.CENTER);
             menuLayout.addView(news);
-			
-	 var mn1 = new android.widget.Button(ctx);
-		mn1.setText("New server!");
-		mn1.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){
-var alert = new android.app.AlertDialog.Builder(ctx); 
-
-var scroll = new android.widget.ScrollView(ctx); 
-var layout = new android.widget.LinearLayout(ctx); 
-layout.setOrientation(1);
-
-alert.setTitle("Coming soon");
-alert.setMessage("We have a new server!!!" + "\n" + "IP: mc31069.imagical.host PORT: 31069" + "\n" + "Come join us and have some fun! at HugecraftPE.");
-
-alert.setPositiveButton("Exit mod", new android.content.DialogInterface.OnClickListener(){ 
-  onClick: function(viewarg){
-    
-dialog.dismiss();
-menu.dismiss();
-showMenuBtn();
-      }});
-
-alert.setNegativeButton("Back to menu", new android.content.DialogInterface.OnClickListener(){ 
-   onClick: function(viewarg){
- 
-dialog.dismiss();
-      }});
-var dialog = alert.create();
-dialog.show();
-			}
-		});
-		menuLayout.addView(mn1)
 		
 		var mn3 = new android.widget.Button(ctx);
 		mn3.setText("New server host(new)");
