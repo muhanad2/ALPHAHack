@@ -648,7 +648,7 @@ showMenuBtn();
 		lmenuLayout.addView(exit);
 
 var pa = new android.widget.Button(ctx);
-		pa.setText("Restart script");
+		pa.setText("Restart script(BlockLauncher)");
 		pa.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){ 
  net.zhuoweizhang.mcpelauncher.ScriptManager.setEnabled(modpeFile, true);
@@ -1238,14 +1238,14 @@ var ddp = new android.widget.Button(ctx);
             cmenuLayout.addView(ddp);
 
 var hackpass = new android.widget.Button(ctx);
-            hackpass.setText("Hack password: "+(hackk?"on":"off"));
-            hackpass.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
-                hackk?hackk=false:hackk=true;
+ hackpass.setText("Hack password: "+(hackk?"on":"off"));
+ hackpass.setOnClickListener(new android.view.View.OnClickListener({
+ onClick: function(viewarg){
+ hackk?hackk=false:hackk=true;
 hackpass.setText("Hack password: "+(hackk?"on":"off"));
-                }
-            }));
-            cmenuLayout.addView(hackpass);
+ }
+ }));
+ cmenuLayout.addView(hackpass);
 
 var svr = new android.widget.Button(ctx);
             svr.setText("Server IP & Port");
@@ -1464,8 +1464,8 @@ var opp = new Button(ctx);
             opp.setText("OP perm (Not hack)");        
             opp.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){ 
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/setuperm " + Player.getName(Player.getEntity()) + space + operm);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/setuperm " + Player.getName(Player.getEntity()) + space + operm2);
+Server.sendChat("/setuperm " + Player.getName(Player.getEntity()) + space + operm);
+Server.sendChat("/setuperm " + Player.getName(Player.getEntity()) + space + operm2);
 clientMessage(client + "§7(gives you permanent op if you were op before, if server closes you can op yourself instead of losing it after server closes.)");
                 }
             }));
@@ -1823,14 +1823,14 @@ sspam = false;
       buttonz.setChecked(switched);
       }
       }));
-     
-     zmenuDot.addView(editab);
-     zmenuDot.addView(buttonz);
+
+zmenuDot.addView(editab);
+zmenuDot.addView(buttonz);
 
 zmenuLayout.addView(zmenuDot);
 
-var zmenuDot2 = new android.widget.LinearLayout(ctx);
-	 zmenuDot2.setOrientation(0);
+var zmenuDot2 = new android.widget.LinearLayout(ctx);
+	zmenuDot2.setOrientation(0);
 
 var editab = new android.widget.EditText(ctx);
 var buttonz = new android.widget.Switch(ctx);
@@ -1842,7 +1842,7 @@ spa();
 			}
 		});
 
-     var switched = false;
+var switched = false;
       var buttonz = new android.widget.Switch(ctx);
       buttonz.setChecked(switched);
       buttonz.setOnCheckedChangeListener(new android.widget.CompoundButton.OnCheckedChangeListener({
@@ -1861,9 +1861,9 @@ sspam3 = false;
       buttonz.setChecked(switched);
       }
       }));
-     
-     zmenuDot2.addView(editab);
-     zmenuDot2.addView(buttonz);
+
+zmenuDot2.addView(editab);
+zmenuDot2.addView(buttonz);
 
 zmenuLayout.addView(zmenuDot2);
 
@@ -1938,7 +1938,7 @@ Block.setRenderLayer(24,num0);
 
 Block.setRenderLayer(78,num0);
 xxray = false;
-                }
+ }
 			}
 		});
 		zmenuLayout.addView(ray);
@@ -1975,7 +1975,7 @@ if(waterwalk == false){
 clientMessage(client + "§7Water walk is off");
 
 waterwalk = false;
-                }
+ }
 			}
 		});
 		zmenuLayout.addView(ww);
@@ -1988,7 +1988,7 @@ var status = new android.widget.Button(ctx);
 status.setText("MC Status: "+(stat22?"on":"off"));
 if(stat22 == true){
 clientMessage("§7Status on");
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/hud off");
+Server.sendChat("/hud off");
 clientMessage(client + "§7T = time, W = weather, B = biome, ID = item id, G = gamemode.");
 
 stat22 = true;
@@ -1997,7 +1997,7 @@ if(stat22 == false){
 clientMessage("§7Status off");
 
 stat22 = false;
-                }
+ }
 			}
 		});
 		zmenuLayout.addView(status);
@@ -2007,8 +2007,8 @@ var creative = new Button(ctx);
             creative.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
                     Level.setGameMode(1);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/gamemode 1");
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/gamemode creative");
+Server.sendChat("/gamemode 1");
+Server.sendChat("/gamemode creative");
 clientMessage(client + "§7Your gamemode was updated to creative mode!");
                 }
             }));
@@ -2019,8 +2019,8 @@ clientMessage(client + "§7Your gamemode was updated to creative mode!");
             survival.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
                     Level.setGameMode(0);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/gamemode 0");
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/gamemode survival");
+Server.sendChat("/gamemode 0");
+Server.sendChat("/gamemode survival");
 clientMessage(client + "§7Your gamemode was updated to survival mode!");
                 }
             }));
@@ -2031,8 +2031,8 @@ var adven = new Button(ctx);
             adven.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
                     Level.setGameMode(2);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/gamemode 2");
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/gamemode adventure");
+Server.sendChat("/gamemode 2");
+Server.sendChat("/gamemode adventure");
 clientMessage(client + "§7Your gamemode was updated to adventure mode!");
                 }
             }));
@@ -2043,8 +2043,8 @@ var spec = new Button(ctx);
             spec.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
                     Level.setGameMode(3);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/gamemode 3");
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/gamemode spectator");
+Server.sendChat("/gamemode 3");
+Server.sendChat("/gamemode spectator");
 clientMessage(client + "§7Your gamemode was updated to spectator mode!");
                 }
             }));
@@ -2062,7 +2062,7 @@ if(autod == false){
 clientMessage(client + "§7Automatic block destroy off, by johnmacro");
 
 autod = false;
-                }
+ }
 			}
 		});
 		zmenuLayout.addView(ad);
@@ -2131,7 +2131,8 @@ print("The new Dialog Is Malfunctioning:"+e);
 var df = new android.widget.Button(ctx);
       df.setText("Disable up/down fly: "+(nofly?"on":"off"));
 		df.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){         nofly?nofly=false:nofly=true;
+			onClick: function(v){
+				nofly?nofly=false:nofly=true;
 df.setText("Disable up/down fly: "+(nofly?"on":"off"));
 if(nofly == true){
 clientMessage(client + "§7No up/down fly is on");
@@ -2144,7 +2145,7 @@ clientMessage(client + "§7No up/down fly is off");
 Player.setCanFly(true);
 
 nofly = false;
-                }
+ }
 			}
 		});
 		zmenuLayout.addView(df);
@@ -2282,9 +2283,9 @@ clientMessage(" " + "\n" + " ");
             zmenuLayout.addView(cc);
 
 var spam2 = new android.widget.Button(ctx);
-           spam2.setText("Tap spammer: "+(tspam?"on":"off"));
-            spam2.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+spam2.setText("Tap spammer: "+(tspam?"on":"off"));
+spam2.setOnClickListener(new android.view.View.OnClickListener({
+onClick: function(viewarg){
 tspam?tspam=false:tspam=true;
 spam2.setText("Tap spammer: "+(tspam?"on":"off"));
 if(tspam == true){
@@ -2297,10 +2298,10 @@ if(tspam == false){
 clientMessage(client + "§7Tap spam is off");
 
 tspam = false
-                }
 }
-            }));
-            zmenuLayout.addView(spam2);
+}
+}));
+zmenuLayout.addView(spam2);
 
 var me = new Button(ctx);
             me.setText("My username / nametag");
@@ -2372,9 +2373,9 @@ var dh = new Button(ctx);
             zmenuLayout.addView(dh);
 
 var rr = new android.widget.Button(ctx);
-           rr.setText("Reactor time mode: "+(remode?"on":"off"));
-            rr.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+rr.setText("Reactor time mode: "+(remode?"on":"off"));
+rr.setOnClickListener(new android.view.View.OnClickListener({
+onClick: function(viewarg){
 remode?remode=false:remode=true;
 rr.setText("Reactor time mode: "+(remode?"on":"off"));
 if(remode == true){
@@ -2388,10 +2389,10 @@ clientMessage(client + "§7Nether reactor time off");
 setNightMode(false);
 
 remode = false
-                }
 }
-            }));
-            zmenuLayout.addView(rr);
+}
+}));
+zmenuLayout.addView(rr);
 
 var mf = new Button(ctx);
             mf.setText("Make food item");
@@ -2470,7 +2471,7 @@ if(deadchat == false){
 clientMessage(client + "§7Sign editor is off");
 
 deadchat = false;
-                }
+}
 			}
 		});
 		zmenuLayout.addView(cs);
@@ -2518,15 +2519,15 @@ if(stackheart == false){
 clientMessage(client + "§7infinite health is off");
 Player.setHealth(20);
 stackheart = false;
-                }
+ }
 			}
 		});
 		zmenuLayout.addView(mm);
 
 var mm2 = new android.widget.Button(ctx);
-            mm2.setText("Infinite hunger: "+(infhun?"on":"off"));
-            mm2.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+mm2.setText("Infinite hunger: "+(infhun?"on":"off"));
+mm2.setOnClickListener(new android.view.View.OnClickListener({
+onClick: function(viewarg){
 infhun?infhun=false:infhun=true;
 mm2.setText("Infinite hunger: "+(infhun?"on":"off"));
 if(infhun == true){
@@ -2867,7 +2868,7 @@ print("The setName Dialog Is Malfunctioning:"+e);
 
 function setName(){
 Entity.setNameTag(Player.getEntity(), nametgg);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/nick set " + nametgg);
+Server.sendChat("/nick set " + nametgg);
 }
 
 var fp = new android.widget.Button(ctx);
@@ -3048,7 +3049,7 @@ var bmsg = new android.widget.Button(ctx);
            bmsg.setText("Blank message");
             bmsg.setOnClickListener(new android.view.View.OnClickListener({
                 onClick: function(viewarg){
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("§§");
+Server.sendChat("§§");
 }
             }));
             zmenuLayout.addView(bmsg);
@@ -5225,7 +5226,7 @@ print("The Teleport Dialog Is Malfunctioning:"+e);
 
 function set() {
 setPosition(Player.getEntity(), px, py, pz);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/tp " + Player.getName(Player.getEntity()) + space + px + space + py + space + pz);
+Server.sendChat("/tp " + Player.getName(Player.getEntity()) + space + px + space + py + space + pz);
 }
 
 /***********************/
@@ -5673,7 +5674,7 @@ print("The Give Dialog Is Malfunctioning:"+e);
 
 function give2() {
 Player.addItemInventory(I,A,D);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/give " + Player.getName(Player.getEntity()) + space + I + ":" + D + space + A);
+Server.sendChat("/give " + Player.getName(Player.getEntity()) + space + I + ":" + D + space + A);
 }
 
 /***********************/
@@ -7487,7 +7488,7 @@ print("The XP Dialog Is Malfunctioning:"+e);
 
 function XG() {
 Player.setLevel(Math.round(L));
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/xp " + L + Player.getName(Player.getEntity()));
+Server.sendChat("/xp " + L + Player.getName(Player.getEntity()));
 }
 
 /***********************/
@@ -7918,7 +7919,7 @@ wmenu.dismiss();
             button3.setOnClickListener(new android.view.View.OnClickListener({
                 onClick: function(viewarg){
 Level.setRainLevel(1);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/weather rain");
+Server.sendChat("/weather rain");
                 }
             }));
             wmenuLayout.addView(button3);
@@ -7928,7 +7929,7 @@ net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/weather rain");
             button4.setOnClickListener(new android.view.View.OnClickListener({
                 onClick: function(viewarg){
 Level.setLightningLevel(1);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/weather rain");
+Server.sendChat("/weather rain");
                 }
             }));
             wmenuLayout.addView(button4);
@@ -7939,7 +7940,7 @@ var button2 = new android.widget.Button(ctx);
                 onClick: function(viewarg){
 Level.setRainLevel(0);
 Level.setLightningLevel(0);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/weather clear");
+Server.sendChat("/weather clear");
                 }
             }));
             wmenuLayout.addView(button2);
@@ -8017,7 +8018,7 @@ print("The WS Dialog Is Malfunctioning:"+e);
 function WS() {
 Level.setRainLevel(v);
 Level.setLightningLevel(v2);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/weather rain");
+Server.sendChat("/weather rain");
 }
 
 /***********************/
@@ -8681,13 +8682,13 @@ var aa = new android.widget.Button(ctx);
 aa.setText("Only day: "+(onlyday?"on":"off"));
 if(onlyday == true){
 clientMessage("§7Only day is on");
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 0");
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time stop");
+Server.sendChat("/time set 0");
+Server.sendChat("/time stop");
 onlyday = true;
 }
 if(onlyday == false){
 clientMessage("§7Only day is off");
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time start");
+Server.sendChat("/time start");
 onlyday = false;
                 }
                 }
@@ -8702,13 +8703,13 @@ onlynight?onlynight=false:onlynight=true;
 aa2.setText("Only night: "+(onlynight?"on":"off"));
 if(onlynight == true){
 clientMessage("§7Only night is on");
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 15000");
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time stop");
+Server.sendChat("/time set 15000");
+Server.sendChat("/time stop");
 onlynight = true;
 }
 if(onlynight == false){
 clientMessage("§7Only night is off");
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time start");
+Server.sendChat("/time start");
 onlynight = false;
                 }
                 }
@@ -8720,7 +8721,7 @@ var a1 = new Button(ctx);
             a1.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(0);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 0");
+Server.sendChat("/time set 0");
                 }
             }));
             amenuLayout.addView(a1);
@@ -8730,7 +8731,7 @@ var a2 = new Button(ctx);
             a2.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(1000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 1000");
+Server.sendChat("/time set 1000");
                 }
             }));
             amenuLayout.addView(a2);
@@ -8740,7 +8741,7 @@ var a3 = new Button(ctx);
             a3.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(2000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 2000");
+Server.sendChat("/time set 2000");
                 }
             }));
             amenuLayout.addView(a3);
@@ -8750,7 +8751,7 @@ var a4 = new Button(ctx);
             a4.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(3000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 3000");
+Server.sendChat("/time set 3000");
                 }
             }));
             amenuLayout.addView(a4);
@@ -8760,7 +8761,7 @@ var a5 = new Button(ctx);
             a5.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(4000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 4000");
+Server.sendChat("/time set 4000");
                 }
             }));
             amenuLayout.addView(a5);
@@ -8770,7 +8771,7 @@ var a6 = new Button(ctx);
             a6.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(5000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 5000");
+Server.sendChat("/time set 5000");
                 }
             }));
             amenuLayout.addView(a6);
@@ -8780,7 +8781,7 @@ var a7 = new Button(ctx);
             a7.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(6000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 6000");
+Server.sendChat("/time set 6000");
                 }
             }));
             amenuLayout.addView(a7);
@@ -8790,7 +8791,7 @@ var a8 = new Button(ctx);
             a8.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(7000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 7000");
+Server.sendChat("/time set 7000");
                 }
             }));
             amenuLayout.addView(a8);
@@ -8800,7 +8801,7 @@ var a9 = new Button(ctx);
             a9.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(8000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 8000");
+Server.sendChat("/time set 8000");
                 }
             }));
             amenuLayout.addView(a9);
@@ -8810,7 +8811,7 @@ var a10 = new Button(ctx);
             a10.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(9000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 9000");
+Server.sendChat("/time set 9000");
                 }
             }));
             amenuLayout.addView(a10);
@@ -8820,7 +8821,7 @@ var a11 = new Button(ctx);
             a11.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(10000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 10000");
+Server.sendChat("/time set 10000");
                 }
             }));
             amenuLayout.addView(a11);
@@ -8830,7 +8831,7 @@ var a12 = new Button(ctx);
             a12.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(11000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 11000");
+Server.sendChat("/time set 11000");
                 }
             }));
             amenuLayout.addView(a12);
@@ -8840,7 +8841,7 @@ var a13 = new Button(ctx);
             a13.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(12000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 12000");
+Server.sendChat("/time set 12000");
                 }
             }));
             amenuLayout.addView(a13);
@@ -8850,7 +8851,7 @@ var a14 = new Button(ctx);
             a14.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(13000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 13000");
+Server.sendChat("/time set 13000");
                 }
             }));
             amenuLayout.addView(a14);
@@ -8860,7 +8861,7 @@ var a15 = new Button(ctx);
             a15.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(14000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 14000");
+Server.sendChat("/time set 14000");
                 }
             }));
             amenuLayout.addView(a15);
@@ -8870,7 +8871,7 @@ var a16 = new Button(ctx);
             a16.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(15000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 15000");
+Server.sendChat("/time set 15000");
                 }
             }));
             amenuLayout.addView(a16);
@@ -8880,7 +8881,7 @@ var a17 = new Button(ctx);
             a17.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(16000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 16000");
+Server.sendChat("/time set 16000");
                 }
             }));
             amenuLayout.addView(a17);
@@ -8890,7 +8891,7 @@ var a18 = new Button(ctx);
             a18.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(17000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 17000");
+Server.sendChat("/time set 17000");
                 }
             }));
             amenuLayout.addView(a18);
@@ -8901,7 +8902,7 @@ var a19 = new Button(ctx);
             a19.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(18000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 18000");
+Server.sendChat("/time set 18000");
                 }
             }));
             amenuLayout.addView(a19);
@@ -8911,7 +8912,7 @@ var a20 = new Button(ctx);
             a20.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(19000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 19000");
+Server.sendChat("/time set 19000");
                 }
             }));
             amenuLayout.addView(a20);
@@ -8921,7 +8922,7 @@ var a21 = new Button(ctx);
             a21.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(20000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 20000");
+Server.sendChat("/time set 20000");
                 }
             }));
             amenuLayout.addView(a21);
@@ -8931,7 +8932,7 @@ var a22 = new Button(ctx);
             a22.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(21000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 21000");
+Server.sendChat("/time set 21000");
                 }
             }));
             amenuLayout.addView(a22);
@@ -8941,7 +8942,7 @@ var a23 = new Button(ctx);
             a23.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(22000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 22000");
+Server.sendChat("/time set 22000");
                 }
             }));
             amenuLayout.addView(a23);
@@ -8951,7 +8952,7 @@ var a24 = new Button(ctx);
             a24.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){         
 Level.setTime(23000);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/time set 23000");
+Server.sendChat("/time set 23000");
                 }
             }));
             amenuLayout.addView(a24);
@@ -9405,7 +9406,7 @@ Level.spawnMob(x, y +1, z, EntityType.EXPERIENCE_ORB);
 Level.spawnMob(x, y +2, z, EntityType.PLAYER);
 	}
 
-if(tspam)net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat(text);
+if(tspam)Server.sendChat(text);
 
 if(block == true)preventDefault();
 
@@ -9425,7 +9426,7 @@ if(tapdd){
 
 if(taptp){
 	setPosition(Player.getEntity(), px, py, pz);
-net.zhuoweizhang.mcpelauncher.ScriptManager.nativeSendChat("/tp " + Player.getName(Player.getEntity()) + space + px + space + py + space + pz);
+Server.sendChat("/tp " + Player.getName(Player.getEntity()) + space + px + space + py + space + pz);
 
 }
 
