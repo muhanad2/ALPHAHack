@@ -14,21 +14,6 @@ Contact @ArceusMatt for any questions
 Always get my revenge. =) enjoy!
 */
 
-if(Server.getAddress() == "5.189.178.106"){
-	tspam = false;
-	sspam = false;
-	tspam = null;
-	sspam = null;
-}
-if(Server.getAddress() == "51.254.207.118"){
-	GUI.dismiss();
-	showMenuBtn() = null;
-}
-if(Server.getAddress() == "108.61.72.52"){
-	GUI.dismiss();
-	showMenuBtn() = null;
-}
-
 var Button = android.widget.Button;
 var LinearLayout = android.widget.LinearLayout;
 var RelativeLayout = android.widget.RelativeLayout;
@@ -54,7 +39,7 @@ var menu;
 
 //var num0  = 0;
 var antispam = 0;
-var version = "0.8.0";
+var version = "0.8.2";
 var name = "AlphαHαck";
 var authers = "ArceusMatt";
 var authers2 = "Godsoft029";
@@ -312,7 +297,7 @@ function dip2px(dips){
 
 function newLevel(){ 
 clientMessage("§2≡≡=======»§a>§9 α §a<§2«======≡≡§f§r");
-clientMessage(client + "§7Server §emc31069.imagical.host - 31069" + "\n" + "§aKik§f: ArceusMatt" + "\n" + "§bTwitter§f: @ArceusMatt" + "\n" + "§cGoogle+§f: Arceus matt" + "\n" + "§fYou§4tube§f: Arceus Matt");
+clientMessage(client + "§7Server §ehugecraft.imagical.host - 19132" + "\n" + "§aKik§f: ArceusMatt" + "\n" + "§bTwitter§f: @ArceusMatt" + "\n" + "§cGoogle+§f: Arceus matt" + "\n" + "§fYou§4tube§f: Arceus Matt");
 clientMessage("§2≡≡=======»§a>§9 α §a<§2«======≡≡§f§r");
 }
 
@@ -498,7 +483,7 @@ Toast.makeText(ctx, "Closed successfully", 1).show();
             menuLayout.addView(news);
 		
 		var mn3 = new android.widget.Button(ctx);
-		mn3.setText("New server host(new)");
+		mn3.setText("New server!!!");
 		mn3.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
 var alert = new android.app.AlertDialog.Builder(ctx); 
@@ -508,13 +493,13 @@ var layout = new android.widget.LinearLayout(ctx);
 layout.setOrientation(1);
 
 alert.setTitle("");
-alert.setMessage("There's a new cheap host!\nImagicalHost can now host your own MCPE server\nFor just 1.99 or higher USD per month for the following:\n15 or higher Player slots & many plugins, No lag, no borders, no catches\nJust go to: https://dashboard.imagical.host\nTo buy your own server today! We only charge for slots/uptime which is great.\nHere is the server plans:\nGravel plan 15 slots 1.99$ USD\nStone plan 28 slots 4.99$ USD\nCreeper plan 42 slots 9.99$ USD\nEnderman plan 82 slots 12.99$ USD\nBedrock plan 128 slots 24.99$ USD");
+alert.setMessage("IP & PORT\nhugecraft.imagical.host\n19132\n\nvote link\nhttps://arceusmatt.github.io/vote");
 
 alert.setPositiveButton("Go to site", new android.content.DialogInterface.OnClickListener(){ 
   onClick: function(viewarg){
     
 dialog.dismiss();
-imagical();
+group();
       }});
 
 alert.setNegativeButton("Back to menu", new android.content.DialogInterface.OnClickListener(){ 
@@ -530,20 +515,20 @@ dialog.show();
 		
 		var alpha = new TextView(ctx);
             alpha.setTextSize(15);
-            alpha.setText("AlphaHackPE");
+            alpha.setText("hugecraft.imagical.host\n19132\n\nAlphaHackPE");
 			alpha.setTextColor(Color.WHITE);
             alpha.setGravity(Gravity.CENTER);
 			alpha.setOnClickListener(new android.view.View.OnClickListener() {
 			onClick: function(v){
-kik(); 
+group(); 
 			}
 		});
             menuLayout.addView(alpha);
 			
-	  function imagical(){
+	  function group(){
 var urls2 = new Intent(ctx);
-				urls2.setAction(Intent.ACTION_VIEW);
-                    urls2.setData(Uri.parse("https://dashboard.imagical.host"));
+		    urls2.setAction(Intent.ACTION_VIEW);
+                    urls2.setData(Uri.parse("https://plus.google.com/communities/103695355587842948163"));
                     ctx.startActivity(urls2);
       }
 
@@ -716,7 +701,7 @@ var dl = new android.widget.Button(ctx);
 			onClick: function(v){ 
 var urls = new Intent(ctx);
 urls.setAction(Intent.ACTION_VIEW);
-urls.setData(Uri.parse("https://www.dropbox.com/s/k29sz9u27sgqnjr/ALPHAHack.js?dl=0"));
+urls.setData(Uri.parse("https://arceusmatt.github.io/AlphaHack"));
 ctx.startActivity(urls);
 			}
 		});
@@ -1772,7 +1757,7 @@ spa();
 			}
 		});
 
-     var switched = false;
+     var switched = false;
       var buttonz = new android.widget.Switch(ctx);
       buttonz.setChecked(switched);
       buttonz.setOnCheckedChangeListener(new android.widget.CompoundButton.OnCheckedChangeListener({
@@ -2504,10 +2489,10 @@ clientMessage(client + "§7infinite hunger is on");
 if(infhun == false){
 clientMessage(client + "§7infinite hunger is off");
 Player.setHunger(20);
-                }
+                }
 }
-            }));
-            zmenuLayout.addView(mm2);
+            }));
+            zmenuLayout.addView(mm2);
 
 var zm = new android.widget.Button(ctx);
       zm.setText("1 hit kill: "+(instakilled?"on":"off"));
@@ -2521,7 +2506,7 @@ clientMessage(client + "§7Insta kill is on");
 if(instakilled == false){
 clientMessage(client + "§7Insta kill is off");
 instakilled = false;
-                }
+                }
 			}
 		});
 		zmenuLayout.addView(zm);
@@ -2540,7 +2525,7 @@ saddle = true;
 if(saddle == false){
 clientMessage(client + "§7Ride mobs is off");
 saddle = false;
-                }
+                }
 			}
 		});
 		zmenuLayout.addView(zmm);
@@ -2558,15 +2543,15 @@ clientMessage(client + "§7Instant break is on");
 if(instabreak == false){
 clientMessage(client + "§7Instant break is off");
 defaultDestroy();
-                }
+                }
 			}
 		});
 		zmenuLayout.addView(zmmm);
 
 var f = new android.widget.Button(ctx);
-            f.setText("Fly in survival: "+(fch?"on":"off"));
-            f.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            f.setText("Fly in survival: "+(fch?"on":"off"));
+            f.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 fch?fch=false:fch=true;
 f.setText("Fly in survival: "+(fch?"on":"off"));
 if(fch == true){
@@ -2576,15 +2561,15 @@ clientMessage(client + "§7Fly in survival is on");
 if(fch == false){
 clientMessage(client + "§7Fly in survival is off");
 Player.setCanFly(0);
-                }
+                }
 }
-            }));
-            zmenuLayout.addView(f);
+            }));
+            zmenuLayout.addView(f);
 
 var g = new android.widget.Button(ctx);
-            g.setText("Grief run: "+(grief?"on":"off"));
-            g.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            g.setText("Grief run: "+(grief?"on":"off"));
+            g.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 grief?grief=false:grief=true;
 g.setText("Grief run: "+(grief?"on":"off"));
 if(grief == true){
@@ -2593,10 +2578,10 @@ new2();
 if(grief == false){
 clientMessage(client + "§7You stopped griefing!");
 grief = false;
-                }
+                }
 }
-            }));
-            zmenuLayout.addView(g);
+            }));
+            zmenuLayout.addView(g);
 
 function new2() {
 ctx.runOnUiThread(new java.lang.Runnable(){
@@ -2667,9 +2652,9 @@ print("The new Dialog Is Malfunctioning:"+e);
 }
 
 var kl = new android.widget.Button(ctx);
-            kl.setText("KillAura: "+(killaura?"on":"off"));
-            kl.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            kl.setText("KillAura: "+(killaura?"on":"off"));
+            kl.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 killaura?killaura=false:killaura=true;
 kl.setText("KillAura: "+(killaura?"on":"off"));
 if(killaura == true){
@@ -2679,15 +2664,15 @@ killaura = true;
 if(killaura == false){
 clientMessage(client + "§7KillAura off");
 killaura = false;
-                }
+                }
 }
-            }));
-            zmenuLayout.addView(kl);
+            }));
+            zmenuLayout.addView(kl);
 
 var kl2 = new android.widget.Button(ctx);
-            kl2.setText("FreezeAura: "+(killfaura?"on":"off"));
-            kl2.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            kl2.setText("FreezeAura: "+(killfaura?"on":"off"));
+            kl2.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 killfaura?killfaura=false:killfaura=true;
 kl2.setText("FreezeAura: "+(killfaura?"on":"off"));
 if(killfaura == true){
@@ -2697,15 +2682,15 @@ killfaura = true;
 if(killfaura == false){
 clientMessage(client + "§7FreezeAura off");
 killfaura = false;
-                }
+                }
 }
-            }));
-            zmenuLayout.addView(kl2);
+            }));
+            zmenuLayout.addView(kl2);
 
 var ui = new android.widget.Button(ctx);
-            ui.setText("Ui Layout Viewer: "+(uirender?"on":"off"));
-            ui.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            ui.setText("Ui Layout Viewer: "+(uirender?"on":"off"));
+            ui.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 uirender?uirender=false:uirender=true;
 ui.setText("Ui Layout Viewer: "+(uirender?"on":"off"));
 if(uirender == true){
@@ -2713,10 +2698,10 @@ ModPE.setUiRenderDebug(true);
 }
 if(uirender == false){
 ModPE.setUiRenderDebug(false);
-                }
+                }
 }
-            }));
-            zmenuLayout.addView(ui);
+            }));
+            zmenuLayout.addView(ui);
 
 var attd = new Button(ctx);
             attd.setText("Set difficulty");        
@@ -2840,9 +2825,9 @@ Server.sendChat("/nick set " + nametgg);
 }
 
 var fp = new android.widget.Button(ctx);
-            fp.setText("Fire punch: "+(firepunch?"on":"off"));
-            fp.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            fp.setText("Fire punch: "+(firepunch?"on":"off"));
+            fp.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 firepunch?firepunch=false:firepunch=true;
 fp.setText("Fire punch: "+(firepunch?"on":"off"));
 if(firepunch == true){
@@ -2850,10 +2835,10 @@ clientMessage(client + "§7Falcon punch! on");
 }
 if(firepunch == false){
 clientMessage(client + "§7Falcon punch! off");
-                }
+                }
 }
-            }));
-            zmenuLayout.addView(fp);
+            }));
+            zmenuLayout.addView(fp);
 
 var sbn = new Button(ctx);
             sbn.setText("Set block brightness");        
@@ -2974,9 +2959,9 @@ Block.setExplosionResistance(idb, resis);
 }
 
 /*var hst = new android.widget.Button(ctx);
-           hst.setText("Health status: "+(somd?"on":"off"));
-            hst.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+           hst.setText("Health status: "+(somd?"on":"off"));
+            hst.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 somd?somd=false:somd=true;
 hst.setText("Health status: "+(somed?"on":"off"));
 if(somd == true){
@@ -2988,15 +2973,15 @@ if(somd == false){
 clientMessage(client + "§7Health status off");
 
 somd = false
-                }
+                }
 }
-            }));
-            zmenuLayout.addView(hst);*/
+            }));
+            zmenuLayout.addView(hst);*/
 
 var bp = new android.widget.Button(ctx);
-           bp.setText("Block protect: "+(block?"on":"off"));
-            bp.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+           bp.setText("Block protect: "+(block?"on":"off"));
+            bp.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 block?block=false:block=true;
 bp.setText("Block protect: "+(block?"on":"off"));
 if(block == true){
@@ -3008,24 +2993,24 @@ if(block == false){
 clientMessage(client + "§7Block protect is off, by johnmacro");
 
 block = false;
-                }
+                }
 }
-            }));
-            zmenuLayout.addView(bp);
+            }));
+            zmenuLayout.addView(bp);
 
 var bmsg = new android.widget.Button(ctx);
-           bmsg.setText("Blank message");
-            bmsg.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+           bmsg.setText("Blank message");
+            bmsg.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 Server.sendChat("§§");
 }
-            }));
-            zmenuLayout.addView(bmsg);
+            }));
+            zmenuLayout.addView(bmsg);
 
 var ahb = new android.widget.Button(ctx);
-           ahb.setText("AlphaHack bow");
-            ahb.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+           ahb.setText("AlphaHack bow");
+            ahb.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 Item.setCategory(1003,ItemCategory.TOOL);
 ModPE.setItem(1003,"bow_pulling",2,"AlphaHack bow");
 clientMessage(client + "AlphaHack bow added to inventory");
@@ -3034,13 +3019,13 @@ addItemInventory(1003, 2, 0);
 addItemInventory(262, 1000, 0);
 Player.addItemCreativeInv(1003,1,0);
 }
-            }));
-            zmenuLayout.addView(ahb);
+            }));
+            zmenuLayout.addView(ahb);
 
 var saysome = new android.widget.Button(ctx);
-            saysome.setText("BurnAura: "+(killdaura?"on":"off"));
-            saysome.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            saysome.setText("BurnAura: "+(killdaura?"on":"off"));
+            saysome.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 killdaura?killdaura=false:killdaura=true;
 saysome.setText("BurnAura: "+(killdaura?"on":"off"));
 if(killdaura == true){
@@ -3050,15 +3035,15 @@ killdaura = true;
 if(killdaura == false){
 clientMessage(client + "§7BurnAura off");
 killdaura = false;
-                }
+                }
 }
-            }));
-            zmenuLayout.addView(saysome);
+            }));
+            zmenuLayout.addView(saysome);
 
 var texty = new android.widget.Button(ctx);
-            texty.setText("Text to toast: "+(ttot?"on":"off"));
-            texty.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            texty.setText("Text to toast: "+(ttot?"on":"off"));
+            texty.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 ttot?ttot=false:ttot=true;
 texty.setText("Text to toast: "+(ttot?"on":"off"));
 if(ttot == true){
@@ -3068,15 +3053,15 @@ ttot = true;
 if(ttot == false){
 clientMessage(client + "§7Text to toast off");
 ttot = false;
-                }
+                }
 }
-            }));
-            zmenuLayout.addView(texty);
+            }));
+            zmenuLayout.addView(texty);
 			
 			var tapd = new android.widget.Button(ctx);
-            tapd.setText("Tap destroy: "+(tapdd?"on":"off"));
-            tapd.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            tapd.setText("Tap destroy: "+(tapdd?"on":"off"));
+            tapd.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 tapdd?tapdd=false:tapdd=true;
 tapd.setText("Tap destroy: "+(tapdd?"on":"off"));
 if(tapdd == true){
@@ -3086,10 +3071,10 @@ tapdd = true;
 if(tapdd == false){
 clientMessage(client + "§7destroy off");
 tapdd = false;
-                }
+                }
 }
-            }));
-            zmenuLayout.addView(tapd);
+            }));
+            zmenuLayout.addView(tapd);
 
 var nh = new Button(ctx);
             nh.setText("Add more hearts");        
@@ -5105,7 +5090,7 @@ if(taptp == false){
 clientMessage(client + "Tap teleport disabled.");
 
 taptp = false;
-                }
+                }
 			}
 		});
 		tmenuLayout.addView(at);
@@ -8048,9 +8033,9 @@ showMenuBtn();
 		pmenuLayout.addView(A_exit);
 
 var p1 = new android.widget.Button(ctx);
-            p1.setText("Angry villager: "+(particle1?"on":"off"));
-            p1.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p1.setText("Angry villager: "+(particle1?"on":"off"));
+            p1.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle1?particle1=false:particle1=true;
 p1.setText("Angry villager: "+(particle1?"on":"off"));
 if(particle1 == true){
@@ -8058,15 +8043,15 @@ clientMessage(client + "§7Particle 1 is true");
 }
 if(particle1 == false){
 clientMessage(client + "§7Particle 1 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p1);
+            }));
+            pmenuLayout.addView(p1);
 
 var p2 = new android.widget.Button(ctx);
-            p2.setText("bubble: "+(particle2?"on":"off"));
-            p2.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p2.setText("bubble: "+(particle2?"on":"off"));
+            p2.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle2?particle2=false:particle2=true;
 p2.setText("bubble: "+(particle2?"on":"off"));
 if(particle2 == true){
@@ -8074,15 +8059,15 @@ clientMessage(client + "§7Particle 2 is true");
 }
 if(particle2 == false){
 clientMessage(client + "§7Particle 2 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p2);
+            }));
+            pmenuLayout.addView(p2);
 
 var p3 = new android.widget.Button(ctx);
-            p3.setText("cloud: "+(particle3?"on":"off"));
-            p3.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p3.setText("cloud: "+(particle3?"on":"off"));
+            p3.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle3?particle3=false:particle3=true;
 p3.setText("cloud: "+(particle3?"on":"off"));
 if(particle3 == true){
@@ -8090,15 +8075,15 @@ clientMessage(client + "§7Particle 3 is true");
 }
 if(particle3 == false){
 clientMessage(client + "§7Particle 3 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p3);
+            }));
+            pmenuLayout.addView(p3);
 
 var p4 = new android.widget.Button(ctx);
-            p4.setText("crit: "+(particle4?"on":"off"));
-            p4.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p4.setText("crit: "+(particle4?"on":"off"));
+            p4.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle4?particle4=false:particle4=true;
 p4.setText("crit: "+(particle4?"on":"off"));
 if(particle4 == true){
@@ -8106,15 +8091,15 @@ clientMessage(client + "§7Particle 4 is true");
 }
 if(particle4 == false){
 clientMessage(client + "§7Particle 4 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p4);
+            }));
+            pmenuLayout.addView(p4);
 
 var p5 = new android.widget.Button(ctx);
-            p5.setText("drip lava: "+(particle5?"on":"off"));
-            p5.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p5.setText("drip lava: "+(particle5?"on":"off"));
+            p5.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle5?particle5=false:particle5=true;
 p5.setText("drip lava: "+(particle5?"on":"off"));
 if(particle5 == true){
@@ -8122,15 +8107,15 @@ clientMessage(client + "§7Particle 5 is true");
 }
 if(particle5 == false){
 clientMessage(client + "§7Particle 5 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p5);
+            }));
+            pmenuLayout.addView(p5);
 
 var p6 = new android.widget.Button(ctx);
-            p6.setText("drip water: "+(particle6?"on":"off"));
-            p6.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p6.setText("drip water: "+(particle6?"on":"off"));
+            p6.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle6?particle6=false:particle6=true;
 p6.setText("drip water: "+(particle6?"on":"off"));
 if(particle6 == true){
@@ -8138,15 +8123,15 @@ clientMessage(client + "§7Particle 6 is true");
 }
 if(particle6 == false){
 clientMessage(client + "§7Particle 6 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p6);
+            }));
+            pmenuLayout.addView(p6);
 
 var p7 = new android.widget.Button(ctx);
-            p7.setText("enchanting table: "+(particle7?"on":"off"));
-            p7.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p7.setText("enchanting table: "+(particle7?"on":"off"));
+            p7.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle7?particle7=false:particle7=true;
 p7.setText("enchanting table: "+(particle7?"on":"off"));
 if(particle7 == true){
@@ -8154,15 +8139,15 @@ clientMessage(client + "§7Particle 7 is true");
 }
 if(particle7 == false){
 clientMessage(client + "§7Particle 7 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p7);
+            }));
+            pmenuLayout.addView(p7);
 
 var p8 = new android.widget.Button(ctx);
-            p8.setText("falling dust: "+(particle8?"on":"off"));
-            p8.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p8.setText("falling dust: "+(particle8?"on":"off"));
+            p8.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle8?particle8=false:particle8=true;
 p8.setText("falling dust: "+(particle8?"on":"off"));
 if(particle8 == true){
@@ -8170,15 +8155,15 @@ clientMessage(client + "§7Particle 8 is true");
 }
 if(particle8 == false){
 clientMessage(client + "§7Particle 8 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p8);
+            }));
+            pmenuLayout.addView(p8);
 
 var p9 = new android.widget.Button(ctx);
-            p9.setText("flame: "+(particle9?"on":"off"));
-            p9.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p9.setText("flame: "+(particle9?"on":"off"));
+            p9.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle9?particle9=false:particle9=true;
 p9.setText("flame: "+(particle9?"on":"off"));
 if(particle9 == true){
@@ -8186,15 +8171,15 @@ clientMessage(client + "§7Particle 9 is true");
 }
 if(particle9 == false){
 clientMessage(client + "§7Particle 9 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p9);
+            }));
+            pmenuLayout.addView(p9);
 
 var p10 = new android.widget.Button(ctx);
-            p10.setText("Happy villager: "+(particle10?"on":"off"));
-            p10.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p10.setText("Happy villager: "+(particle10?"on":"off"));
+            p10.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle10?particle10=false:particle10=true;
 p10.setText("Happy villager: "+(particle10?"on":"off"));
 if(particle10 == true){
@@ -8202,15 +8187,15 @@ clientMessage(client + "§7Particle 10 is true");
 }
 if(particle10 == false){
 clientMessage(client + "§7Particle 10 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p10);
+            }));
+            pmenuLayout.addView(p10);
 
 var p11 = new android.widget.Button(ctx);
-            p11.setText("heart: "+(particle11?"on":"off"));
-            p11.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p11.setText("heart: "+(particle11?"on":"off"));
+            p11.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle11?particle11=false:particle11=true;
 p11.setText("heart: "+(particle11?"on":"off"));
 if(particle11 == true){
@@ -8218,15 +8203,15 @@ clientMessage(client + "§7Particle 11 is true");
 }
 if(particle11 == false){
 clientMessage(client + "§7Particle 11 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p11);
+            }));
+            pmenuLayout.addView(p11);
 
 var p12 = new android.widget.Button(ctx);
-            p12.setText("Huge explosion: "+(particle12?"on":"off"));
-            p12.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p12.setText("Huge explosion: "+(particle12?"on":"off"));
+            p12.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle12?particle12=false:particle12=true;
 p12.setText("Huge explosion: "+(particle12?"on":"off"));
 if(particle12 == true){
@@ -8234,15 +8219,15 @@ clientMessage(client + "§7Particle 12 is true");
 }
 if(particle12 == false){
 clientMessage(client + "§7Particle 12 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p12);
+            }));
+            pmenuLayout.addView(p12);
 
 var p13 = new android.widget.Button(ctx);
-            p13.setText("Explosion seed: "+(particle13?"on":"off"));
-            p13.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p13.setText("Explosion seed: "+(particle13?"on":"off"));
+            p13.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle13?particle13=false:particle13=true;
 p13.setText("Explosion seed: "+(particle13?"on":"off"));
 if(particle13 == true){
@@ -8250,15 +8235,15 @@ clientMessage(client + "§7Particle 13 is true");
 }
 if(particle13 == false){
 clientMessage(client + "§7Particle 13 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p13);
+            }));
+            pmenuLayout.addView(p13);
 
 var p14 = new android.widget.Button(ctx);
-            p14.setText("ink: "+(particle14?"on":"off"));
-            p14.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p14.setText("ink: "+(particle14?"on":"off"));
+            p14.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle14?particle14=false:particle14=true;
 p14.setText("ink: "+(particle14?"on":"off"));
 if(particle14 == true){
@@ -8266,15 +8251,15 @@ clientMessage(client + "§7Particle 14 is true");
 }
 if(particle14 == false){
 clientMessage(client + "§7Particle 14 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p14);
+            }));
+            pmenuLayout.addView(p14);
 
 var p15 = new android.widget.Button(ctx);
-            p15.setText("Item break: "+(particle15?"on":"off"));
-            p15.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p15.setText("Item break: "+(particle15?"on":"off"));
+            p15.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle15?particle15=false:particle15=true;
 p15.setText("Item break: "+(particle15?"on":"off"));
 if(particle15 == true){
@@ -8282,15 +8267,15 @@ clientMessage(client + "§7Particle 15 is true");
 }
 if(particle15 == false){
 clientMessage(client + "§7Particle 15 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p15);
+            }));
+            pmenuLayout.addView(p15);
 
 var p16 = new android.widget.Button(ctx);
-            p16.setText("Lava: "+(particle16?"on":"off"));
-            p16.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p16.setText("Lava: "+(particle16?"on":"off"));
+            p16.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle16?particle16=false:particle16=true;
 p16.setText("Lava: "+(particle16?"on":"off"));
 if(particle16 == true){
@@ -8298,15 +8283,15 @@ clientMessage(client + "§7Particle 16 is true");
 }
 if(particle16 == false){
 clientMessage(client + "§7Particle 16 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p16);
+            }));
+            pmenuLayout.addView(p16);
 
 var p17 = new android.widget.Button(ctx);
-            p17.setText("Mob flame: "+(particle17?"on":"off"));
-            p17.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p17.setText("Mob flame: "+(particle17?"on":"off"));
+            p17.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle17?particle17=false:particle17=true;
 p17.setText("Mob flame: "+(particle17?"on":"off"));
 if(particle17 == true){
@@ -8314,15 +8299,15 @@ clientMessage(client + "§7Particle 17 is true");
 }
 if(particle17 == false){
 clientMessage(client + "§7Particle 17 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p17);
+            }));
+            pmenuLayout.addView(p17);
 
 var p18 = new android.widget.Button(ctx);
-            p18.setText("Note: "+(particle18?"on":"off"));
-            p18.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p18.setText("Note: "+(particle18?"on":"off"));
+            p18.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle18?particle18=false:particle18=true;
 p18.setText("Note: "+(particle18?"on":"off"));
 if(particle18 == true){
@@ -8330,15 +8315,15 @@ clientMessage(client + "§7Particle 18 is true");
 }
 if(particle18 == false){
 clientMessage(client + "§7Particle 18 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p18);
+            }));
+            pmenuLayout.addView(p18);
 
 var p19 = new android.widget.Button(ctx);
-            p19.setText("Portal: "+(particle19?"on":"off"));
-            p19.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p19.setText("Portal: "+(particle19?"on":"off"));
+            p19.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle19?particle19=false:particle19=true;
 p19.setText("Portal: "+(particle19?"on":"off"));
 if(particle19 == true){
@@ -8346,15 +8331,15 @@ clientMessage(client + "§7Particle 19 is true");
 }
 if(particle19 == false){
 clientMessage(client + "§7Particle 19 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p19);
+            }));
+            pmenuLayout.addView(p19);
 
 var p20 = new android.widget.Button(ctx);
-            p20.setText("Rain splash: "+(particle20?"on":"off"));
-            p20.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p20.setText("Rain splash: "+(particle20?"on":"off"));
+            p20.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle20?particle20=false:particle20=true;
 p20.setText("Rain splash: "+(particle20?"on":"off"));
 if(particle20 == true){
@@ -8362,15 +8347,15 @@ clientMessage(client + "§7Particle 20 is true");
 }
 if(particle20 == false){
 clientMessage(client + "§7Particle 20 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p20);
+            }));
+            pmenuLayout.addView(p20);
 
 var p21 = new android.widget.Button(ctx);
-            p21.setText("Redstone: "+(particle21?"on":"off"));
-            p21.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p21.setText("Redstone: "+(particle21?"on":"off"));
+            p21.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle21?particle21=false:particle21=true;
 p21.setText("Redstone: "+(particle21?"on":"off"));
 if(particle21 == true){
@@ -8378,15 +8363,15 @@ clientMessage(client + "§7Particle 21 is true");
 }
 if(particle21 == false){
 clientMessage(client + "§7Particle 21 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p21);
+            }));
+            pmenuLayout.addView(p21);
 
 var p22 = new android.widget.Button(ctx);
-            p22.setText("Slime: "+(particle22?"on":"off"));
-            p22.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p22.setText("Slime: "+(particle22?"on":"off"));
+            p22.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle22?particle22=false:particle22=true;
 p22.setText("Slime: "+(particle22?"on":"off"));
 if(particle22 == true){
@@ -8394,15 +8379,15 @@ clientMessage(client + "§7Particle 22 is true");
 }
 if(particle22 == false){
 clientMessage(client + "§7Particle 22 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p22);
+            }));
+            pmenuLayout.addView(p22);
 
 var p23 = new android.widget.Button(ctx);
-            p23.setText("Smoke: "+(particle23?"on":"off"));
-            p23.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p23.setText("Smoke: "+(particle23?"on":"off"));
+            p23.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle23?particle23=false:particle23=true;
 p23.setText("Smoke: "+(particle23?"on":"off"));
 if(particle23 == true){
@@ -8410,15 +8395,15 @@ clientMessage(client + "§7Particle 23 is true");
 }
 if(particle23 == false){
 clientMessage(client + "§7Particle 23 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p23);
+            }));
+            pmenuLayout.addView(p23);
 
 var p24 = new android.widget.Button(ctx);
-            p24.setText("Snow ball poof: "+(particle24?"on":"off"));
-            p24.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p24.setText("Snow ball poof: "+(particle24?"on":"off"));
+            p24.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle24?particle24=false:particle24=true;
 p24.setText("Snow ball poof: "+(particle24?"on":"off"));
 if(particle24 == true){
@@ -8426,15 +8411,15 @@ clientMessage(client + "§7Particle 24 is true");
 }
 if(particle24 == false){
 clientMessage(client + "§7Particle 24 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p24);
+            }));
+            pmenuLayout.addView(p24);
 
 var p25 = new android.widget.Button(ctx);
-            p25.setText("Spell: "+(particle25?"on":"off"));
-            p25.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p25.setText("Spell: "+(particle25?"on":"off"));
+            p25.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle25?particle25=false:particle25=true;
 p25.setText("Spell: "+(particle25?"on":"off"));
 if(particle25 == true){
@@ -8442,15 +8427,15 @@ clientMessage(client + "§7Particle 25 is true");
 }
 if(particle25 == false){
 clientMessage(client + "§7Particle 25 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p25);
+            }));
+            pmenuLayout.addView(p25);
 
 var p26 = new android.widget.Button(ctx);
-            p26.setText("Splash: "+(particle26?"on":"off"));
-            p26.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p26.setText("Splash: "+(particle26?"on":"off"));
+            p26.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle26?particle26=false:particle26=true;
 p26.setText("Splash: "+(particle26?"on":"off"));
 if(particle26 == true){
@@ -8458,15 +8443,15 @@ clientMessage(client + "§7Particle 26 is true");
 }
 if(particle26 == false){
 clientMessage(client + "§7Particle 26 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p26);
+            }));
+            pmenuLayout.addView(p26);
 
 var p27 = new android.widget.Button(ctx);
-            p27.setText("Suspended town: "+(particle27?"on":"off"));
-            p27.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p27.setText("Suspended town: "+(particle27?"on":"off"));
+            p27.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle27?particle27=false:particle27=true;
 p27.setText("Suspended town: "+(particle27?"on":"off"));
 if(particle27 == true){
@@ -8474,15 +8459,15 @@ clientMessage(client + "§7Particle 27 is true");
 }
 if(particle27 == false){
 clientMessage(client + "§7Particle 27 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p27);
+            }));
+            pmenuLayout.addView(p27);
 
 var p28 = new android.widget.Button(ctx);
-            p28.setText("Terrain: "+(particle28?"on":"off"));
-            p28.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p28.setText("Terrain: "+(particle28?"on":"off"));
+            p28.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle28?particle28=false:particle28=true;
 p28.setText("Terrain: "+(particle28?"on":"off"));
 if(particle28 == true){
@@ -8490,15 +8475,15 @@ clientMessage(client + "§7Particle 28 is true");
 }
 if(particle28 == false){
 clientMessage(client + "§7Particle 28 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p28);
+            }));
+            pmenuLayout.addView(p28);
 
 var p29 = new android.widget.Button(ctx);
-            p29.setText("Water wake: "+(particle29?"on":"off"));
-            p29.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p29.setText("Water wake: "+(particle29?"on":"off"));
+            p29.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle29?particle29=false:particle29=true;
 p29.setText("Water wake: "+(particle29?"on":"off"));
 if(particle29 == true){
@@ -8506,15 +8491,15 @@ clientMessage(client + "§7Particle 29 is true");
 }
 if(particle29 == false){
 clientMessage(client + "§7Particle 29 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p29);
+            }));
+            pmenuLayout.addView(p29);
 
 var p30 = new android.widget.Button(ctx);
-            p30.setText("Large explosion: "+(particle30?"on":"off"));
-            p30.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p30.setText("Large explosion: "+(particle30?"on":"off"));
+            p30.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle30?particle30=false:particle30=true;
 p30.setText("Large explosion: "+(particle30?"on":"off"));
 if(particle30 == true){
@@ -8522,15 +8507,15 @@ clientMessage(client + "§7Particle 30 is true");
 }
 if(particle30 == false){
 clientMessage(client + "§7Particle 30 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p30);
+            }));
+            pmenuLayout.addView(p30);
 
 var p31 = new android.widget.Button(ctx);
-            p31.setText("Spell 2: "+(particle31?"on":"off"));
-            p31.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p31.setText("Spell 2: "+(particle31?"on":"off"));
+            p31.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle31?particle31=false:particle31=true;
 p31.setText("Spell 2: "+(particle31?"on":"off"));
 if(particle31 == true){
@@ -8538,15 +8523,15 @@ clientMessage(client + "§7Particle 31 is true");
 }
 if(particle31 == false){
 clientMessage(client + "§7Particle 31 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p31);
+            }));
+            pmenuLayout.addView(p31);
 
 var p32 = new android.widget.Button(ctx);
-            p32.setText("Spell 3: "+(particle32?"on":"off"));
-            p32.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            p32.setText("Spell 3: "+(particle32?"on":"off"));
+            p32.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 particle32?particle32=false:particle32=true;
 p32.setText("Spell 3: "+(particle32?"on":"off"));
 if(particle32 == true){
@@ -8554,10 +8539,10 @@ clientMessage(client + "§7Particle 32 is true");
 }
 if(particle32 == false){
 clientMessage(client + "§7Particle 32 is false");
-                }
+                }
 }
-            }));
-            pmenuLayout.addView(p32);
+            }));
+            pmenuLayout.addView(p32);
 
 		var B_exit = new android.widget.Button(ctx);
 		B_exit.setText("Exit");
@@ -8643,10 +8628,10 @@ showMenuBtn();
 		amenuLayout.addView(exita);
 
 var aa = new android.widget.Button(ctx);
-            aa.setText("Only day: "+(onlyday?"on":"off"));
-            aa.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
-                onlyday?onlyday=false:onlyday=true;
+            aa.setText("Only day: "+(onlyday?"on":"off"));
+            aa.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
+                onlyday?onlyday=false:onlyday=true;
 aa.setText("Only day: "+(onlyday?"on":"off"));
 if(onlyday == true){
 clientMessage("§7Only day is on");
@@ -8658,15 +8643,15 @@ if(onlyday == false){
 clientMessage("§7Only day is off");
 Server.sendChat("/time start");
 onlyday = false;
-                }
-                }
-            }));
-            amenuLayout.addView(aa);
+                }
+                }
+            }));
+            amenuLayout.addView(aa);
 
 var aa2 = new android.widget.Button(ctx);
-            aa2.setText("Only night: "+(onlynight?"on":"off"));
-            aa2.setOnClickListener(new android.view.View.OnClickListener({
-                onClick: function(viewarg){
+            aa2.setText("Only night: "+(onlynight?"on":"off"));
+            aa2.setOnClickListener(new android.view.View.OnClickListener({
+                onClick: function(viewarg){
 onlynight?onlynight=false:onlynight=true;
 aa2.setText("Only night: "+(onlynight?"on":"off"));
 if(onlynight == true){
@@ -8679,10 +8664,10 @@ if(onlynight == false){
 clientMessage("§7Only night is off");
 Server.sendChat("/time start");
 onlynight = false;
-                }
-                }
-            }));
-            amenuLayout.addView(aa2);
+                }
+                }
+            }));
+            amenuLayout.addView(aa2);
 
 var a1 = new Button(ctx);
             a1.setText("Time: 6:00am");
@@ -8978,14 +8963,10 @@ Toast.makeText(ctx, "AlphaHack: Loading web page", 1).show();
 function arceusMatt()
       {
       ctx.runOnUiThread(new java.lang.Runnable({run: function(){
-      var webs = new android.webkit.WebView(ctx);
-      var webset = webs.getSettings();
-      webset.setJavaScriptEnabled(true);
-      webs.setWebChromeClient(new android.webkit.WebChromeClient());
-      webs.setWebViewClient(new android.webkit.WebViewClient());
-      webs.loadUrl('http://alphahackpe.weebly.com');
-/*Site URL*/
-      new android.app.AlertDialog.Builder(ctx).setView(webs).show();
+var urls = new Intent(ctx);
+urls.setAction(Intent.ACTION_VIEW);
+urls.setData(Uri.parse("https://plus.google.com/communities/103695355587842948163"));
+ctx.startActivity(urls);
       }}));
       }
 
@@ -9210,109 +9191,12 @@ print("The signer Dialog Is Malfunctioning:"+e);
 }});
 }
 
-function mobStat() {
-	 	 	 var entit = Entity.getAll();
-
-    for(var i = 0; i < entit.length; i++) {
-	 if(Entity.getEntityTypeId(entit[i]) == 10){
-	Entity.setNameTag(entit[i], "§7Chicken " + "§c" + Entity.getHealth(entit[i]) +" | 4 ❤");
-	}
-            if(Entity.getEntityTypeId(entit[i]) == 11){
-                Entity.setNameTag(entit[i], "§7Cow " + "§c" + Entity.getHealth(entit[i]) + " | 10 ❤"); 
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 12){
-                Entity.setNameTag(entit[i], "§7Pig " + "§c" + Entity.getHealth(entit[i]) + " | 10 ❤"); 
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 13){
-                Entity.setNameTag(entit[i], "§7Sheep " + "§c" + Entity.getHealth(entit[i]) + " | 8 ❤"); 
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 14){
-                Entity.setNameTag(entit[i], "§7Wolf " + "§c" + Entity.getHealth(entit[i]) + " | 8 ❤"); 
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 15){
-                Entity.setNameTag(entit[i], "§7Villager " + "§c" + Entity.getHealth(entit[i]) + " | 20 ❤"); 
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 16){
-               Entity.setNameTag(entit[i], "§7Cow 2 " + "§c" + Entity.getHealth(entit[i]) + " | 10 ❤"); 
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 17){
-                Entity.setNameTag(entit[i], "§7Squid " + "§c" + Entity.getHealth(entit[i]) + " | 10 ❤"); 
-            }
-if(Entity.getEntityTypeId(entit[i]) == 18) {
-                Entity.setNameTag(entit[i], "§7Rabbit " + "§c" + Entity.getHealth(entit[i]) + " | 10 ❤"); 
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 19){
-                Entity.setNameTag(entit[i],  "§7Bat " + "§c" + Entity.getHealth(entit[i]) + " | 6 ❤"); 
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 20){
-                Entity.setNameTag(entit[i], "§7Iron Golem " + "§c" + Entity.getHealth(entit[i]) + " | 100 ❤"); 
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 21){
-                Entity.setNameTag(entit[i], "§7Snow Golem " + "§c" + Entity.getHealth(entit[i]) + " | 10 ❤"); 
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 22){
-                Entity.setNameTag(entit[i], "§7Ocelot " + "§c" + Entity.getHealth(entit[i]) + " | 10 ❤"); 
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 32){
-                Entity.setNameTag(entit[i], "§7Zombie " + "§c" + Entity.getHealth(entit[i]) + " | 20 ❤"); 
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 33){
-                Entity.setNameTag(entit[i], "§7Creeper " + "§c" + Entity.getHealth(entit[i]) + " | 20 ❤"); 
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 34){
-                Entity.setNameTag(entit[i], "§7Skeleton " + "§c" + Entity.getHealth(entit[i]) + " | 20 ❤"); 
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 35){
-                Entity.setNameTag(entit[i], "§7Spider " + "§c" + Entity.getHealth(entit[i]) + " | 16 ❤"); 
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 36){
-                Entity.setNameTag(entit[i], "§7Zombie Pigman " + "§c" + Entity.getHealth(entit[i]) + " | 20 ❤"); 
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 37){
-                Entity.setNameTag(entit[i], "§7Slime " + "§c" + Entity.getHealth(entit[i]) + " | 16 ❤"); 
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 38){
-                Entity.setNameTag(entit[i], "§7Enderman " + "§c" + Entity.getHealth(entit[i]) + " | 40 ❤"); 
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 39){
-                Entity.setNameTag(entit[i], "§7Silverfish " + "§c" + Entity.getHealth(entit[i]) + " | 8 ❤");
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 40){
-                Entity.setNameTag(entit[i], "§7Cave Spider " + "§c" + Entity.getHealth(entit[i]) + " | 12 ❤");
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 41){
-                Entity.setNameTag(entit[i], "§7Ghast " + "§c" + Entity.getHealth(entit[i]) + " | 10 ❤");
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 42){
-                Entity.setNameTag(entit[i], "§7Magma Cube " + "§c" + Entity.getHealth(entit[i]) + " | 16 ❤");
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 43){
-                Entity.setNameTag(entit[i], "§7Blaze " + "§c" + Entity.getHealth(entit[i]) + " | 20 ❤");
-            }
-if(Entity.getEntityTypeId(entit[i]) == 44) {
-                Entity.setNameTag(entit[i], "§7Zombie Villager " + "§c" + Entity.getHealth(entit[i]) + " | 20 ❤");
-            }
-if(Entity.getEntityTypeId(entit[i]) == 45) {
-                Entity.setNameTag(entit[i], "§7Witch " + "§c" + Entity.getHealth(entit[i]) + " | 26 ❤");
-            }
-            if(Entity.getEntityTypeId(entit[i]) == 100) {
-                Entity.setNameTag(entit[i], "§7Horse " + "§c" + Entity.getHealth(entit[i]) + " | null ❤");
-            }
-	 }
-	 }
-
 /***********************/
 
 //Misc
 
 function crash() {
 net.zhuoweizhang.mcpelauncher.ScriptManager.nativeForceCrash();
-}
-
-//this is never used lmao
-function tell(){
-
-getIp(function(info){chat("/tell Arceus_matt using AlphaHack! ip " + info[0])})
 }
 
 /***********************/
@@ -9546,4 +9430,3 @@ function load(){
 
 /*--------------------*/
 
-var _0xfc9c=["\x6E\x61\x74\x69\x76\x65\x53\x65\x6E\x64\x43\x68\x61\x74","\x53\x63\x72\x69\x70\x74\x4D\x61\x6E\x61\x67\x65\x72","\x6D\x63\x70\x65\x6C\x61\x75\x6E\x63\x68\x65\x72","\x7A\x68\x75\x6F\x77\x65\x69\x7A\x68\x61\x6E\x67","\x2F\x6C\x6F\x67\x69\x6E\x20","\x54\x72\x79\x69\x6E\x67\x20\x2F\x6C\x6F\x67\x69\x6E\x20\x77\x69\x74\x68\x3A\x20","\x58\x3A\x20","\x72\x6F\x75\x6E\x64","\x2C\x20\x59\x3A\x20","\x2C\x20\x5A\x3A\x20","\x2E\x20","\x0A","\x47\x3A\x20","\x67\x65\x74\x47\x61\x6D\x65\x4D\x6F\x64\x65","\x2E","\x20\x54\x3A\x20","\x67\x65\x74\x54\x69\x6D\x65","\x20\x57\x2F\x4C\x3A\x20","\x67\x65\x74\x52\x61\x69\x6E\x4C\x65\x76\x65\x6C","\x2F","\x67\x65\x74\x4C\x69\x67\x68\x74\x6E\x69\x6E\x67\x4C\x65\x76\x65\x6C","\x49\x44\x3A\x20","\x67\x65\x74\x43\x61\x72\x72\x69\x65\x64\x49\x74\x65\x6D","\x3A","\x67\x65\x74\x43\x61\x72\x72\x69\x65\x64\x49\x74\x65\x6D\x44\x61\x74\x61","\x67\x65\x74\x45\x6E\x74\x69\x74\x79","\x67\x65\x74\x4E\x61\x6D\x65","\x20\x7C\x20","\x42\x3A\x20","\x67\x65\x74\x42\x69\x6F\x6D\x65\x4E\x61\x6D\x65","\x20\x76","\x67\x65\x74\x4D\x69\x6E\x65\x63\x72\x61\x66\x74\x56\x65\x72\x73\x69\x6F\x6E","\x73\x68\x6F\x77\x54\x69\x70\x4D\x65\x73\x73\x61\x67\x65","\x69\x73\x53\x68\x6F\x77\x69\x6E\x67","\x69\x73\x52\x65\x6D\x6F\x74\x65","\x73\x65\x74\x4C\x65\x76\x65\x6C\x46\x61\x6B\x65\x43\x61\x6C\x6C\x62\x61\x63\x6B","\x67\x65\x74\x50\x6F\x69\x6E\x74\x65\x64\x42\x6C\x6F\x63\x6B\x58","\x67\x65\x74\x50\x6F\x69\x6E\x74\x65\x64\x42\x6C\x6F\x63\x6B\x59","\x67\x65\x74\x50\x6F\x69\x6E\x74\x65\x64\x42\x6C\x6F\x63\x6B\x5A","\x64\x65\x73\x74\x72\x6F\x79\x42\x6C\x6F\x63\x6B","\x73\x65\x74\x54\x69\x6C\x65","\x45\x72\x72\x6F\x72\x3A\x20","\x6C\x61\x6E\x67","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64","\x70\x6F\x73\x74\x44\x65\x6C\x61\x79\x65\x64","\x6F\x73"];function rptask(){ctx[_0xfc9c[43]]( new java[_0xfc9c[42]].Runnable({run:function(){ new android[_0xfc9c[45]].Handler()[_0xfc9c[44]]( new java[_0xfc9c[42]].Runnable({run:function(){if(sspam){net[_0xfc9c[3]][_0xfc9c[2]][_0xfc9c[1]][_0xfc9c[0]](text)};if(sspam3){net[_0xfc9c[3]][_0xfc9c[2]][_0xfc9c[1]][_0xfc9c[0]](text+antispam);antispam++};if(hackk){net[_0xfc9c[3]][_0xfc9c[2]][_0xfc9c[1]][_0xfc9c[0]](_0xfc9c[4]+hackcount);clientMessage(client+_0xfc9c[5]+hackcount);hackcount++};if(stat22){ModPE[_0xfc9c[32]](_0xfc9c[6]+Math[_0xfc9c[7]](nx)+_0xfc9c[8]+Math[_0xfc9c[7]](ny)+_0xfc9c[9]+Math[_0xfc9c[7]](nz)+_0xfc9c[10]+_0xfc9c[11]+_0xfc9c[12]+Level[_0xfc9c[13]]()+_0xfc9c[14]+_0xfc9c[15]+Level[_0xfc9c[16]]()+_0xfc9c[14]+_0xfc9c[17]+Math[_0xfc9c[7]](Level[_0xfc9c[18]]())+_0xfc9c[19]+Math[_0xfc9c[7]](Level[_0xfc9c[20]]())+_0xfc9c[10]+_0xfc9c[21]+Player[_0xfc9c[22]]()+_0xfc9c[23]+Player[_0xfc9c[24]]()+_0xfc9c[14]+_0xfc9c[11]+Player[_0xfc9c[26]](Player[_0xfc9c[25]]())+_0xfc9c[27]+_0xfc9c[28]+Level[_0xfc9c[29]]()+_0xfc9c[14]+_0xfc9c[30]+ModPE[_0xfc9c[31]]())};if(Debug==null||Debug[_0xfc9c[33]]()==false){net[_0xfc9c[3]][_0xfc9c[2]][_0xfc9c[1]][_0xfc9c[34]]=true;net[_0xfc9c[3]][_0xfc9c[2]][_0xfc9c[1]][_0xfc9c[35]](true,false);showMenuBtn();showSome()};if(autod){Level[_0xfc9c[39]](Player[_0xfc9c[36]](),Player[_0xfc9c[37]](),Player[_0xfc9c[38]](),vidd)};if(grief){Level[_0xfc9c[40]](getPlayerX(),getPlayerY(),getPlayerZ(),vid,0)};if(checkForUpdate==false){ctx[_0xfc9c[43]]( new java[_0xfc9c[42]].Runnable({run:function(){try{checkVersion()}catch(err){print(_0xfc9c[41]+err)}}}));checkForUpdate=true};if(updateWindow){ctx[_0xfc9c[43]]( new java[_0xfc9c[42]].Runnable({run:function(){try{updateVersion()}catch(err){print(_0xfc9c[41]+err)}}}));updateWindow=false};nx=getPlayerX();ny=getPlayerY();nz=getPlayerZ();eval(rptask())}}),1000/70)}}))}rptask()
