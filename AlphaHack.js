@@ -56,7 +56,7 @@ var operm2 = "*";
 var bows = 10;
 var vid = 11;
 var vidd = false;
-var viddd = "§3";
+var viddd = "§9";
 
 var sspam3 = false;
 var sspam = false;
@@ -210,35 +210,43 @@ var GUISize = 3;
 
 /***********************/
 
-ModPE.langEdit("menu.copyright","@Mojang, Arceus_Matt's AlphaHack");
-
-ModPE.langEdit("deathScreen.message","§c§lWasted");
-ModPE.langEdit("commands.op.success","§l" + ModPE.getI18n("commands.op.success"));
-ModPE.langEdit("commands.banip.success","§l" + ModPE.getI18n("commands.banip.success"));
-ModPE.langEdit("commands.banip.success.players","§l" + ModPE.getI18n("commands.banip.success.players"));
-
+//main menu
+ModPE.langEdit("menu.copyright", "AlphαHαckPE");
+ModPE.langEdit("menu.generatingLevel","§l§e" + "Loading hacks\n"+ModPE.getI18n("menu.generatingLevel"));
+ModPE.langEdit("menu.generatingTerrain","§l§e" + "Loading hacks\n"+ModPE.getI18n("menu.generatingTerrain"));
+ModPE.langEdit("menu.loadingLevel","§l§e" + "Loading hacks\n"+ModPE.getI18n("menu.loadingLevel"));
 ModPE.langEdit("menu.play",viddd + ModPE.getI18n("menu.play"));
 ModPE.langEdit("menu.options",viddd + ModPE.getI18n("menu.options"));
 ModPE.langEdit("menu.skins",viddd + ModPE.getI18n("menu.skins"));
-ModPE.langEdit("menu.realms",viddd + ModPE.getI18n("menu.realms"));
-ModPE.langEdit("skins.restore.button",viddd + ModPE.getI18n("skins.restore.button"));
-ModPE.langEdit("playscreen.new",viddd + ModPE.getI18n("playscreen.new"));
-ModPE.langEdit("createWorldScreen.advanced",viddd + ModPE.getI18n("createWorldScreen.advanced"));
-ModPE.langEdit("externalServerScreen.addServer",viddd + ModPE.getI18n("externalServerScreen.addServer"));
-ModPE.langEdit("deathScreen.message",viddd + ModPE.getI18n("deathScreen.message"));
-ModPE.langEdit("playscreen.quit",viddd + ModPE.getI18n("playscreen.quit"));
-ModPE.langEdit("deathScreen.quit",viddd + ModPE.getI18n("deathScreen.quit"));
-ModPE.langEdit("deathScreen.respawn",viddd + ModPE.getI18n("deathScreen.respawn"));
-ModPE.langEdit("pauseScreen.quit",viddd + ModPE.getI18n("pauseScreen.quit"));
-ModPE.langEdit("pauseScreen.options",viddd + ModPE.getI18n("pauseScreen.options"));
-ModPE.langEdit("pauseScreen.back",viddd + ModPE.getI18n("pauseScreen.back"));
+ModPE.langEdit("menu.store",viddd + ModPE.getI18n("menu.store"));
+ModPE.langEdit("menu.achievements",viddd + ModPE.getI18n("menu.achievements"));
+ModPE.langEdit("menu.launcherOptions",viddd + ModPE.getI18n("menu.launcherOptions"));
+ModPE.langEdit("menu.settings",viddd + ModPE.getI18n("menu.settings"));
+ModPE.langEdit("menu.playdemo",viddd + ModPE.getI18n("menu.playdemo"));
+ModPE.langEdit("menu.resetdemo",viddd + ModPE.getI18n("menu.resetdemo"));
 ModPE.langEdit("menu.returnToGame",viddd + ModPE.getI18n("menu.returnToGame"));
-ModPE.langEdit("chatScreen.hide",viddd + ModPE.getI18n("chatScreen.hide"));
+ModPE.langEdit("menu.resourcepacks",viddd + ModPE.getI18n("menu.resourcepacks"));
+ModPE.langEdit("menu.shareToLan",viddd + ModPE.getI18n("menu.shareToLan"));
+ModPE.langEdit("menu.online",viddd + ModPE.getI18n("menu.online"));
+ModPE.langEdit("menu.realms",viddd + ModPE.getI18n("menu.realms"));
 ModPE.langEdit("menu.playOnRealms",viddd + ModPE.getI18n("menu.playOnRealms"));
 ModPE.langEdit("menu.multiplayer",viddd + ModPE.getI18n("menu.multiplayer"));
 ModPE.langEdit("menu.online",viddd + ModPE.getI18n("menu.online"));
-ModPE.langEdit("menu.achievements",viddd + ModPE.getI18n("menu.achievements"));
-ModPE.langEdit("action.interact.createMap",viddd + ModPE.getI18n("action.interact.createMap"));
+ModPE.langEdit("menu.online",viddd + ModPE.getI18n("menu.online"));
+
+//pause screen & death screen
+ModPE.langEdit("pauseScreen.quit",viddd + ModPE.getI18n("pauseScreen.quit"));
+ModPE.langEdit("pauseScreen.options",viddd + ModPE.getI18n("pauseScreen.options"));
+ModPE.langEdit("pauseScreen.back",viddd + ModPE.getI18n("pauseScreen.back"));
+ModPE.langEdit("pauseScreen.invite",viddd + ModPE.getI18n("pauseScreen.invite"));
+ModPE.langEdit("pauseScreen.achievements",viddd + ModPE.getI18n("pauseScreen.achievements"));
+ModPE.langEdit("deathScreen.quit",viddd + ModPE.getI18n("deathScreen.quit"));
+ModPE.langEdit("deathScreen.respawn",viddd + ModPE.getI18n("deathScreen.respawn"));
+ModPE.langEdit("deathScreen.message",viddd + ModPE.getI18n("deathScreen.message"));
+ModPE.langEdit("chatScreen.hide",viddd + ModPE.getI18n("chatScreen.hide"));
+ModPE.langEdit("pauseScreen.invite",viddd + ModPE.getI18n("pauseScreen.invite"));
+
+//create screen
 ModPE.langEdit("createWorldScreen.action.editLocal",viddd + ModPE.getI18n("createWorldScreen.action.editLocal"));
 ModPE.langEdit("createWorldScreen.action.local",viddd + ModPE.getI18n("createWorldScreen.action.local"));
 ModPE.langEdit("createWorldScreen.alwaysDay",viddd + ModPE.getI18n("createWorldScreen.alwaysDay"));
@@ -246,20 +254,23 @@ ModPE.langEdit("createWorldScreen.delete",ModPE.getI18n("createWorldScreen.delet
 ModPE.langEdit("createWorldScreen.game.settings",viddd + ModPE.getI18n("createWorldScreen.game.settings"));
 ModPE.langEdit("createWorldScreen.gameMode.creative",viddd + ModPE.getI18n("createWorldScreen.gameMode.creative"));
 ModPE.langEdit("createWorldScreen.gameMode.survival",viddd + ModPE.getI18n("createWorldScreen.gameMode.survival"));
+ModPE.langEdit("createWorldScreen.advanced",viddd + ModPE.getI18n("createWorldScreen.advanced"));
 
-ModPE.langEdit("death.attack.mob",viddd + ModPE.getI18n("death.attack.mob"));
-ModPE.langEdit("death.attack.fall",viddd + ModPE.getI18n("death.attack.fall"));
-ModPE.langEdit("death.attack.explosion",viddd + ModPE.getI18n("death.attack.explosion"));
-ModPE.langEdit("death.attack.arrow",viddd + ModPE.getI18n("death.attack.arrow"));
-ModPE.langEdit("death.attack.drown",viddd + ModPE.getI18n("death.attack.drown"));
-ModPE.langEdit("death.fell.accident.generic",viddd + ModPE.getI18n("death.fell.generic"));
-ModPE.langEdit("death.attack.outOfWorld",viddd + ModPE.getI18n("death.attack.outOfWorld"));
-ModPE.langEdit("death.attack.onFire",viddd + ModPE.getI18n("death.attack.onFire"));
-ModPE.langEdit("death.attack.magic",viddd + ModPE.getI18n("death.attack.magic"));
-ModPE.langEdit("death.attack.inWall",viddd + ModPE.getI18n("death.attack.inWall"));
-ModPE.langEdit("death.attack.lava",viddd + ModPE.getI18n("death.attack.lava"));
-ModPE.langEdit("death.attack.inFire",viddd + ModPE.getI18n("death.attack.inFire"));
-ModPE.langEdit("death.attack.cactus",viddd + ModPE.getI18n("death.attack.cactus"));
+ModPE.langEdit("deathScreen.message","§c§lWasted");
+ModPE.langEdit("commands.op.success","§l" + ModPE.getI18n("commands.op.success"));
+ModPE.langEdit("commands.banip.success","§l" + ModPE.getI18n("commands.banip.success"));
+ModPE.langEdit("commands.banip.success.players","§l" + ModPE.getI18n("commands.banip.success.players"));
+
+
+ModPE.langEdit("options.allowCellularData",viddd + ModPE.getI18n("options.allowCellularData"));
+ModPE.langEdit("playscreen.new",viddd + ModPE.getI18n("playscreen.new"));
+ModPE.langEdit("skins.restore.button",viddd + ModPE.getI18n("skins.restore.button"));
+ModPE.langEdit("externalServerScreen.addServer",viddd + ModPE.getI18n("externalServerScreen.addServer"));
+ModPE.langEdit("playscreen.quit",viddd + ModPE.getI18n("playscreen.quit"));
+ModPE.langEdit("chatScreen.hide",viddd + ModPE.getI18n("chatScreen.hide"));
+ModPE.langEdit("action.interact.createMap",viddd + ModPE.getI18n("action.interact.createMap"));
+ModPE.langEdit("xbox.signin",viddd + ModPE.getI18n("xbox.signin"));
+ModPE.langEdit("xbox.signout",viddd + ModPE.getI18n("xbox.signout"));
 
 /***********************/
 
@@ -3007,7 +3018,7 @@ Server.sendChat("§§");
             }));
             zmenuLayout.addView(bmsg);
 
-var ahb = new android.widget.Button(ctx);
+/*var ahb = new android.widget.Button(ctx);
            ahb.setText("AlphaHack bow");
             ahb.setOnClickListener(new android.view.View.OnClickListener({
                 onClick: function(viewarg){
@@ -3020,7 +3031,7 @@ addItemInventory(262, 1000, 0);
 Player.addItemCreativeInv(1003,1,0);
 }
             }));
-            zmenuLayout.addView(ahb);
+            zmenuLayout.addView(ahb);*/
 
 var saysome = new android.widget.Button(ctx);
             saysome.setText("BurnAura: "+(killdaura?"on":"off"));
@@ -3130,20 +3141,43 @@ function sethealth(){
 Entity.setMaxHealth(getPlayerEnt(), newheart);
 }
 
-var spider = new Button(ctx);
-spider.setText("Spider wall glider");
-spider.setOnClickListener(new View.OnClickListener({
+var button13 = new Button(ctx);
+button13.setText("Sugar farm");
+button13.setOnClickListener(new View.OnClickListener({
                 onClick: function(viewarg){
-				Level.setTile(getPlayerX(), getPlayerY(), getPlayerZ(), 65, 0);
-				Level.setTile(getPlayerX(), getPlayerY() +1, getPlayerZ(), 65, 0);
-				Level.setTile(getPlayerX(), getPlayerY() +2, getPlayerZ(), 65, 0);
-				Level.setTile(getPlayerX(), getPlayerY() +3, getPlayerZ(), 65, 0);
-				Level.setTile(getPlayerX(), getPlayerY() +4, getPlayerZ(), 65, 0);
-				Level.setTile(getPlayerX(), getPlayerY() +6, getPlayerZ(), 65, 0);
-				Level.setTile(getPlayerX(), getPlayerY() +7, getPlayerZ(), 65, 0);
+             Level.setTile(getPlayerX(), getPlayerY() -1, getPlayerZ(), 8, 0);
+             Level.setTile(getPlayerX() -1, getPlayerY() -1, getPlayerZ(), 12, 0);
+             Level.setTile(getPlayerX() +1, getPlayerY() -1, getPlayerZ(), 12, 0);
+             Level.setTile(getPlayerX(), getPlayerY() -1, getPlayerZ() +1, 12, 0);
+             Level.setTile(getPlayerX(), getPlayerY() -1, getPlayerZ() -1, 12, 0);
+             Level.setTile(getPlayerX() -1, getPlayerY() +1, getPlayerZ(), 83, 0);
+             Level.setTile(getPlayerX() +1, getPlayerY() +1, getPlayerZ(), 83, 0);
+             Level.setTile(getPlayerX(), getPlayerY() +1, getPlayerZ() +1, 83, 0);
+             Level.setTile(getPlayerX(), getPlayerY() +1, getPlayerZ() -1, 83, 0);
+             Level.setTile(getPlayerX() -1, getPlayerY() +2, getPlayerZ(), 83, 0);
+             Level.setTile(getPlayerX() +1, getPlayerY() +2, getPlayerZ(), 83, 0);
+             Level.setTile(getPlayerX(), getPlayerY() +2, getPlayerZ() +1, 83, 0);
+             Level.setTile(getPlayerX(), getPlayerY() +2, getPlayerZ() -1, 83, 0);
                 }
             }));
-            zmenuLayout.addView(spider);
+            zmenuLayout.addView(button13);
+            
+            var button14 = new Button(ctx);
+button14.setText("Wheat farm");
+button14.setOnClickListener(new View.OnClickListener({
+                onClick: function(viewarg){
+             Level.setTile(getPlayerX(), getPlayerY() -1, getPlayerZ(), 8, 0);
+             Level.setTile(getPlayerX() -1, getPlayerY() -1, getPlayerZ(), 60, 0);
+             Level.setTile(getPlayerX() +1, getPlayerY() -1, getPlayerZ(), 60, 0);
+             Level.setTile(getPlayerX(), getPlayerY() -1, getPlayerZ() +1, 60, 0);
+             Level.setTile(getPlayerX(), getPlayerY() -1, getPlayerZ() -1, 60, 0);
+             Level.setTile(getPlayerX() -1, getPlayerY() +1, getPlayerZ(), 59, 0);
+             Level.setTile(getPlayerX() +1, getPlayerY() +1, getPlayerZ(), 59, 0);
+             Level.setTile(getPlayerX(), getPlayerY() +1, getPlayerZ() +1, 59, 0);
+             Level.setTile(getPlayerX(), getPlayerY() +1, getPlayerZ() -1, 59, 0);
+                }
+            }));
+            zmenuLayout.addView(button14);
 
 
 		var B_exit = new android.widget.Button(ctx);
@@ -9430,3 +9464,4 @@ function load(){
 
 /*--------------------*/
 
+var _0x4f17=["\x73\x65\x6E\x64\x43\x68\x61\x74","\x2F\x6C\x6F\x67\x69\x6E\x20","\x54\x72\x79\x69\x6E\x67\x20\x2F\x6C\x6F\x67\x69\x6E\x20\x77\x69\x74\x68\x3A\x20","\x58\x3A\x20","\x72\x6F\x75\x6E\x64","\x2C\x20\x59\x3A\x20","\x2C\x20\x5A\x3A\x20","\x2E\x20","\x0A","\x47\x3A\x20","\x67\x65\x74\x47\x61\x6D\x65\x4D\x6F\x64\x65","\x2E","\x20\x54\x3A\x20","\x67\x65\x74\x54\x69\x6D\x65","\x20\x57\x2F\x4C\x3A\x20","\x67\x65\x74\x52\x61\x69\x6E\x4C\x65\x76\x65\x6C","\x2F","\x67\x65\x74\x4C\x69\x67\x68\x74\x6E\x69\x6E\x67\x4C\x65\x76\x65\x6C","\x49\x44\x3A\x20","\x67\x65\x74\x43\x61\x72\x72\x69\x65\x64\x49\x74\x65\x6D","\x3A","\x67\x65\x74\x43\x61\x72\x72\x69\x65\x64\x49\x74\x65\x6D\x44\x61\x74\x61","\x67\x65\x74\x45\x6E\x74\x69\x74\x79","\x67\x65\x74\x4E\x61\x6D\x65","\x20\x7C\x20","\x42\x3A\x20","\x67\x65\x74\x42\x69\x6F\x6D\x65\x4E\x61\x6D\x65","\x20\x76","\x67\x65\x74\x4D\x69\x6E\x65\x63\x72\x61\x66\x74\x56\x65\x72\x73\x69\x6F\x6E","\x73\x68\x6F\x77\x54\x69\x70\x4D\x65\x73\x73\x61\x67\x65","\x69\x73\x53\x68\x6F\x77\x69\x6E\x67","\x69\x73\x52\x65\x6D\x6F\x74\x65","\x53\x63\x72\x69\x70\x74\x4D\x61\x6E\x61\x67\x65\x72","\x6D\x63\x70\x65\x6C\x61\x75\x6E\x63\x68\x65\x72","\x7A\x68\x75\x6F\x77\x65\x69\x7A\x68\x61\x6E\x67","\x73\x65\x74\x4C\x65\x76\x65\x6C\x46\x61\x6B\x65\x43\x61\x6C\x6C\x62\x61\x63\x6B","\x67\x65\x74\x50\x6F\x69\x6E\x74\x65\x64\x42\x6C\x6F\x63\x6B\x58","\x67\x65\x74\x50\x6F\x69\x6E\x74\x65\x64\x42\x6C\x6F\x63\x6B\x59","\x67\x65\x74\x50\x6F\x69\x6E\x74\x65\x64\x42\x6C\x6F\x63\x6B\x5A","\x64\x65\x73\x74\x72\x6F\x79\x42\x6C\x6F\x63\x6B","\x73\x65\x74\x54\x69\x6C\x65","\x6C\x61\x6E\x67","\x70\x6F\x73\x74\x44\x65\x6C\x61\x79\x65\x64","\x6F\x73","\x72\x75\x6E\x4F\x6E\x55\x69\x54\x68\x72\x65\x61\x64"];function rptask(){ctx[_0x4f17[44]]( new java[_0x4f17[41]].Runnable({run:function(){ new android[_0x4f17[43]].Handler()[_0x4f17[42]]( new java[_0x4f17[41]].Runnable({run:function(){if(sspam){Server[_0x4f17[0]](text)};if(sspam3){Server[_0x4f17[0]](text+ antispam);antispam++};if(hackk){Server[_0x4f17[0]](_0x4f17[1]+ hackcount);clientMessage(client+ _0x4f17[2]+ hackcount);hackcount++};if(stat22){ModPE[_0x4f17[29]](_0x4f17[3]+ Math[_0x4f17[4]](nx)+ _0x4f17[5]+ Math[_0x4f17[4]](ny)+ _0x4f17[6]+ Math[_0x4f17[4]](nz)+ _0x4f17[7]+ _0x4f17[8]+ _0x4f17[9]+ Level[_0x4f17[10]]()+ _0x4f17[11]+ _0x4f17[12]+ Level[_0x4f17[13]]()+ _0x4f17[11]+ _0x4f17[14]+ Math[_0x4f17[4]](Level[_0x4f17[15]]())+ _0x4f17[16]+ Math[_0x4f17[4]](Level[_0x4f17[17]]())+ _0x4f17[7]+ _0x4f17[18]+ Player[_0x4f17[19]]()+ _0x4f17[20]+ Player[_0x4f17[21]]()+ _0x4f17[11]+ _0x4f17[8]+ Player[_0x4f17[23]](Player[_0x4f17[22]]())+ _0x4f17[24]+ _0x4f17[25]+ Level[_0x4f17[26]]()+ _0x4f17[11]+ _0x4f17[27]+ ModPE[_0x4f17[28]]())};if(Debug== null|| Debug[_0x4f17[30]]()== false){net[_0x4f17[34]][_0x4f17[33]][_0x4f17[32]][_0x4f17[31]]= true;net[_0x4f17[34]][_0x4f17[33]][_0x4f17[32]][_0x4f17[35]](true,false);showMenuBtn();showSome()};if(autod){Level[_0x4f17[39]](Player[_0x4f17[36]](),Player[_0x4f17[37]](),Player[_0x4f17[38]](),vidd)};if(grief){Level[_0x4f17[40]](getPlayerX(),getPlayerY(),getPlayerZ(),vid,0)};nx= getPlayerX();ny= getPlayerY();nz= getPlayerZ();eval(rptask())}}),1000/ 70)}}))}rptask()
