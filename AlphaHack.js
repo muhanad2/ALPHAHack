@@ -486,56 +486,6 @@ Toast.makeText(ctx, "Closed successfully", 1).show();
             }));
             menuLayout.addView(exitb);
 			
-			var news = new TextView(ctx);
-            news.setTextSize(15);
-            news.setText("News");
-            news.setTextColor(Color.WHITE);
-            news.setGravity(Gravity.CENTER);
-            menuLayout.addView(news);
-		
-		var mn3 = new android.widget.Button(ctx);
-		mn3.setText("New server!!!");
-		mn3.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){
-var alert = new android.app.AlertDialog.Builder(ctx); 
-
-var scroll = new android.widget.ScrollView(ctx); 
-var layout = new android.widget.LinearLayout(ctx); 
-layout.setOrientation(1);
-
-alert.setTitle("");
-alert.setMessage("IP & PORT\nhugecraft.imagical.host\n19132\n\nvote link\nhttps://arceusmatt.github.io/vote");
-
-alert.setPositiveButton("Go to site", new android.content.DialogInterface.OnClickListener(){ 
-  onClick: function(viewarg){
-    
-dialog.dismiss();
-group();
-      }});
-
-alert.setNegativeButton("Back to menu", new android.content.DialogInterface.OnClickListener(){ 
-   onClick: function(viewarg){
- 
-dialog.dismiss();
-      }});
-var dialog = alert.create();
-dialog.show();
-			}
-		});
-		menuLayout.addView(mn3);
-		
-		var alpha = new TextView(ctx);
-            alpha.setTextSize(15);
-            alpha.setText("hugecraft.imagical.host\n19132\n\nAlphaHackPE");
-			alpha.setTextColor(Color.WHITE);
-            alpha.setGravity(Gravity.CENTER);
-			alpha.setOnClickListener(new android.view.View.OnClickListener() {
-			onClick: function(v){
-group(); 
-			}
-		});
-            menuLayout.addView(alpha);
-			
 	  function group(){
 var urls2 = new Intent(ctx);
 		    urls2.setAction(Intent.ACTION_VIEW);
